@@ -94,7 +94,7 @@ function Landing() {
           <div className="footer-links">
             <Link to="/menu">{t("nav.viewMenu")}</Link>
           </div>
-
+          {console.log("footer rendered")}
           <div className="footer-social">
             <h4>{t("footer.followUs")}</h4>
             <div className="social-icons">
