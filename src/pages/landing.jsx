@@ -5,6 +5,24 @@ import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../components/LanguageSwitcher.jsx";
 
 const MARQUEE_ITEMS = Array.from({ length: 12 }, (_, i) => i);
+const SOCIAL_LINKS = [
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/shelter.egy/",
+  },
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/Shelterhouseofcheese",
+  },
+  {
+    name: "TikTok",
+    href: "https://www.tiktok.com/@shelterhouseofcheese",
+  },
+  {
+    name: "WhatsApp",
+    href: "https://api.whatsapp.com/send/?phone=201033030430",
+  },
+];
 
 function MarqueeContent() {
   return (
@@ -94,15 +112,23 @@ function Landing() {
           <div className="footer-links">
             <Link to="/menu">{t("nav.viewMenu")}</Link>
           </div>
-          {console.log("footer rendered")}
+
           <div className="footer-social">
             <h4>{t("footer.followUs")}</h4>
-            <div className="social-icons">
-              <a href="https://www.instagram.com/shelter.egy/" target="_blank" rel="noreferrer" className="social-btn">Instagram</a>
-              <a href="https://www.facebook.com/Shelterhouseofcheese" target="_blank" rel="noreferrer" className="social-btn">Facebook</a>
-              <a href="https://www.tiktok.com/@shelterhouseofcheese" target="_blank" rel="noreferrer" className="social-btn">TikTok</a>
-              <a href="https://api.whatsapp.com/send/?phone=201033030430" target="_blank" rel="noreferrer" className="social-btn">WhatsApp</a>
-            </div>
+            <ul className="social-icons">
+              {SOCIAL_LINKS.map((social) => (
+                <li key={social.name} className="social-link-item">
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="social-btn"
+                  >
+                    {social.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 

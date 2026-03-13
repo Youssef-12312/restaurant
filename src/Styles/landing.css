@@ -393,14 +393,30 @@ span.shelter {color: var(--amber-light);}
   display:flex;
   flex-direction:column;
   gap:10px;
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+.social-link-item{
+  display:block;
 }
 
 .social-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:140px;
   text-decoration:none;
   color:white;
   background:#222;
   padding:10px 14px;
   border-radius:10px;
+  font-size:15px;
+  font-weight:600;
+  line-height:1.2;
+  opacity:1;
+  visibility:visible;
   transition:
     background-color 0.25s ease,
     transform 0.25s ease,
