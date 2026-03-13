@@ -8,7 +8,7 @@ import {
   runTransaction,
   doc
 } from "firebase/firestore";
-import { db } from "../services/firebase";
+import { db } from "../Services/firebase";
 import { useTranslation } from "react-i18next";
 
 function isRestaurantOpen() {

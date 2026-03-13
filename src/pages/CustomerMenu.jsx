@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { db } from "../services/firebase";
+import { db } from "../Services/firebase";
 import { collection, onSnapshot } from "firebase/firestore";
 import MenuCard from "../components/MenuCard.jsx";
 import Cart from "../components/Cart.jsx";
