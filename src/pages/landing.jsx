@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { images } from "../assets/Images/images.js";
-import "../Styles/Landing.css";
+import "../Styles/landing.css";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../components/LanguageSwitcher.jsx";
 

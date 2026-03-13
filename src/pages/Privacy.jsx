@@ -1,4 +1,4 @@
-import "../Styles/Privacy.css";
+import "../Styles/privacy.css";
 import { images } from "../assets/Images/images.js";
 import { useTranslation } from "react-i18next";
 
