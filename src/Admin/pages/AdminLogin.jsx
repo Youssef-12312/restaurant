@@ -1,7 +1,7 @@
 import { useState} from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
-import { auth, db } from "../../services/firebase.js";
+import { auth, db } from "../../Services/firebase.js";
 import "../styles/admin.css";
 import { images } from "../../assets/Images/images.js";
 
