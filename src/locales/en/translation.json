@@ -1,0 +1,87 @@
+{
+  "nav": {
+    "home": "Home",
+    "viewMenu": "View Menu",
+    "language": "AR"
+  },
+  "hero": {
+    "tagline": "It's not just about the color — it's a flavor explosion in every bite!",
+    "text": "Golden Fried Chicken, Loaded With Rich Melted Cheese in Every Bite",
+    "viewMenu": "View Menu",
+    "callUs": "Call Us"
+  },
+  "about": {
+    "title": "About",
+    "body": "Shelter House of Cheese is known for its love of crispy fried chicken and rich, melted cheese. Our kitchen focuses on serving golden fried chicken made with care, paired with bold flavors and generous layers of cheese that make every bite unforgettable. At Shelter, we believe great comfort food should be simple, satisfying, and full of flavor."
+  },
+  "footer": {
+    "description": "Shelter is a cozy place where great food meets warm atmosphere. Discover comfort meals crafted with passion.",
+    "followUs": "Follow Us",
+    "rights": "© 2026 Shelter Restaurant. All rights reserved.",
+    "privacy": "Privacy Policy"
+  },
+  "menu": {
+    "title": "Our Menu",
+    "tagline": "A flavor explosion in every bite!",
+    "heroText": "Golden fried chicken, loaded with rich melted cheese — explore every dish we craft with care and bold flavors.",
+    "searchPlaceholder": "Search dishes or ingredients…",
+    "dishFound_one": "{{count}} dish found",
+    "dishFound_other": "{{count}} dishes found",
+    "noResults": "No dishes found",
+    "noResultsSub": "Try a different search or category",
+    "all": "All",
+    "addToCart": "Add to Cart"
+  },
+  "cart": {
+    "title": "Your Order",
+    "empty": "Your cart is empty. Add some delicious items!",
+    "total": "Total",
+    "placeOrder": "Place Order"
+  },
+  "checkout": {
+    "back": "← Back",
+    "title": "Checkout",
+    "step1": "Customer Information",
+    "step2": "Order Summary",
+    "delivery": "Delivery",
+    "pickup": "Pick Up",
+    "fullName": "Full Name *",
+    "namePlaceholder": "e.g. John Smith",
+    "phone": "Phone Number *",
+    "address": "Delivery Address *",
+    "addressPlaceholder": "e.g. 123 Main St",
+    "notes": "Notes",
+    "deliveryFee": "Delivery Fee",
+    "total": "Total",
+    "confirm": "Confirm Order",
+    "empty": "Your cart is empty.",
+    "errors": {
+      "name": "Name is required",
+      "phone": "Phone number is required",
+      "phoneInvalid": "Enter a valid Egyptian phone number",
+      "address": "Address is required"
+    },
+    "success": {
+      "title": "Order Placed!",
+      "msg": "Thank you <1>{{name}}</1>! Your order <1>{{order}}</1> was placed successfully. We'll contact you at <3>{{phone}}</3> shortly.",
+      "backToMenu": "Back to Menu"
+    }
+  },
+  "privacy": {
+    "eyebrow": "Shelter House Of Cheese",
+    "title": "Privacy Policy",
+    "subtitle": "Your privacy matters to us. This page explains what information we collect, how we use it, and how we keep it protected.",
+    "sections": {
+      "1": { "title": "1. Information We Collect", "body": "When you use our website or place an order, we may collect basic customer information such as your name, phone number, delivery address, and order details." },
+      "2": { "title": "2. How We Use Your Information", "body": "We use your information only to process orders, contact you about your order, improve our service, and provide a better ordering experience." },
+      "3": { "title": "3. Sharing Your Data", "body": "We do not sell or trade your personal information. Your data is only used for restaurant operations related to your order and customer service." },
+      "4": { "title": "4. Payment Information", "body": "If payment options are added in the future, payment details will be handled securely through trusted payment providers." },
+      "5": { "title": "5. Cookies and Analytics", "body": "Our website may use basic cookies or analytics tools to understand visitor activity and improve performance and user experience." },
+      "6": { "title": "6. Data Protection", "body": "We take reasonable steps to protect your information from unauthorized access, misuse, or disclosure." },
+      "7": { "title": "7. Your Rights", "body": "You may request updates or removal of your personal information whenever applicable by contacting us directly." },
+      "8": { "title": "8. Changes to This Policy", "body": "We may update this Privacy Policy from time to time. Any updates will be posted on this page." },
+      "9": { "title": "9. Contact Us", "body": "If you have any questions about this Privacy Policy, please contact Shelter House Of Cheese directly." }
+    },
+    "lastUpdated": "Last updated:"
+  }
+}

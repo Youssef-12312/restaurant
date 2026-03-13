@@ -1,0 +1,122 @@
+body {
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    40px 40px,
+    40px 40px;
+}
+
+/* ═══════════════════════════════════
+   MENU CONTROL PAGE
+   ═══════════════════════════════════ */
+
+.mc-page {
+  display: flex;
+  flex-direction: row;   /* ← ده كان column، ده السبب في المشكلة */
+  min-height: 100vh;
+}
+
+.ad-content {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.mc-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.mc-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.mc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.mc-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 1rem 1.1rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mc-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.mc-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.mc-status {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.mc-status--available {
+  background: #ecfdf5;
+  color: #16a34a;
+}
+
+.mc-status--out {
+  background: #fff0f0;
+  color: #ef4444;
+}
+
+.mc-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.mc-btn {
+  flex: 1;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.mc-btn--disable {
+  background: #fff0eb;
+  color: var(--primary);
+}
+
+.mc-btn--disable:hover {
+  background: #ffe1d8;
+}
+
+.mc-btn--enable {
+  background: #ecfdf5;
+  color: #16a34a;
+}
+
+.mc-btn--enable:hover {
+  background: #d1fae5;
+}

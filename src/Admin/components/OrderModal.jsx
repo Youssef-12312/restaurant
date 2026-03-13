@@ -1,0 +1,92 @@
+
+function OrderModal({ order, onClose }) {
+  if (!order) return null;
+
+  const time = order.createdAt?.toDate?.()
+    ? order.createdAt.toDate().toLocaleString("en-EG")
+    : order.createdAt || "—";
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+
+        {/* Header */}
+        <div className="modal-header">
+          <div>
+            <h2 className="modal-title">Order #{order.orderNumber}</h2>
+            <p className="modal-time">{time}</p>
+          </div>
+          <button className="modal-close" onClick={onClose}>✕</button>
+        </div>
+
+        {/* Customer Info */}
+        <div className="modal-section">
+          <h3 className="modal-section__title">Customer</h3>
+          <div className="modal-info-grid">
+            <span className="modal-info__key">Name</span>
+            <span className="modal-info__val">{order.customerName}</span>
+
+            <span className="modal-info__key">Phone</span>
+            <span className="modal-info__val">{order.phone}</span>
+
+            <span className="modal-info__key">Type</span>
+            <span className={`modal-badge modal-badge--${order.orderType}`}>
+              {order.orderType === "delivery" ? "🛵 Delivery" : "🏃 Pickup"}
+            </span>
+
+            {order.address && (
+              <>
+                <span className="modal-info__key">Address</span>
+                <span className="modal-info__val">{order.address}</span>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Items */}
+        <div className="modal-section">
+          <h3 className="modal-section__title">Items</h3>
+          <ul className="modal-items">
+            {(order.items || []).map((item, i) => (
+              <li className="modal-item" key={i}>
+                <span className="modal-item__name">{item.name}</span>
+                <span className="modal-item__qty">× {item.qty}</span>
+                <span className="modal-item__price">
+                  {((item.price || 0) * item.qty).toFixed(2)} EGP
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Notes */}
+        {order.notes && (
+          <div className="modal-section">
+            <h3 className="modal-section__title">Notes</h3>
+            <p className="modal-notes">{order.notes}</p>
+          </div>
+        )}
+
+        {/* Footer */}
+        <div className="modal-footer">
+          <div className="modal-total">
+            <span>Total</span>
+            <span className="modal-total__amount">{order.total} EGP</span>
+          </div>
+
+          <a
+            className="modal-whatsapp"
+            href={`https://wa.me/${order.phone}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            💬 WhatsApp
+          </a>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
+export default OrderModal;
