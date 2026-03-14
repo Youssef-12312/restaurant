@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import { auth } from "../../services/firebase";
+import { auth } from "../../services/firebase.js";
 import OrdersPage from "./OrdersPage.jsx";
 import { setPersistence, browserSessionPersistence } from "firebase/auth";
 import { useEffect } from "react";

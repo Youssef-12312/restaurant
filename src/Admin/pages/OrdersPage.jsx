@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
-import { db } from "../../services/firebase";
+import { db } from "../../services/firebase.js";
 import OrderCard from "../components/OrderCard.jsx";
 import OrderModal from "../components/OrderModal.jsx";
 import StatsCards from "../components/StatsCards.jsx";
