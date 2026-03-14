@@ -1,5 +1,5 @@
 import { images } from "../assets/Images/images.js";
-import "../Styles/menu.css";
+import "../styles/menu.css";
 import { useTranslation } from "react-i18next";
 
 function MenuCard({ item, addToCart }) {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { images } from "../assets/Images/images";
 import { useNavigate } from "react-router-dom";
-import "../Styles/menu.css";
+import "../styles/menu.css";
 import { useTranslation } from "react-i18next";
 
 function getPrice(item) {
