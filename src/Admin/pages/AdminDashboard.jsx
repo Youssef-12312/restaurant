@@ -42,7 +42,7 @@ useEffect(() => {
         </div>
 
         <nav className="ad-sidebar__nav">
-          <Link className="ad-nav-item ad-nav-item--active" to="/admin">
+          <Link className="ad-nav-item ad-nav-item--active" to="/admin/orders">
             <span>📋</span> Orders
           </Link>
 

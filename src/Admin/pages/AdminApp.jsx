@@ -13,6 +13,7 @@ function AdminApp() {
 
   const [user, setUser] = useState(undefined);
   const [isAdmin, setIsAdmin] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,17 +52,25 @@ function AdminApp() {
 
     <Routes>
 
-      {/* Login */}
+      {/* LOGIN PAGE */}
       <Route
         index
         element={
           isAdmin
             ? <Navigate to="dashboard" replace />
-            : <AdminLogin />
+            : (
+              <AdminLogin
+                onLogin={(u)=>{
+                  setUser(u);
+                  setIsAdmin(true);
+                  navigate("/admin/dashboard");
+                }}
+              />
+            )
         }
       />
 
-      {/* Dashboard */}
+      {/* DASHBOARD */}
       <Route
         path="dashboard"
         element={
@@ -71,7 +80,7 @@ function AdminApp() {
         }
       />
 
-      {/* Orders */}
+      {/* ORDERS PAGE */}
       <Route
         path="orders"
         element={
@@ -81,7 +90,7 @@ function AdminApp() {
         }
       />
 
-      {/* Menu */}
+      {/* MENU CONTROL */}
       <Route
         path="menu"
         element={
