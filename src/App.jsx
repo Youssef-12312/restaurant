@@ -1,5 +1,5 @@
 import "./i18n";
-import "./Styles/App.css";
+import "./styles/App.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useTranslation } from "react-i18next";
