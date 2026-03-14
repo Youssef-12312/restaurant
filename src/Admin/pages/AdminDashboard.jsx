@@ -72,7 +72,7 @@ useEffect(() => {
           </div>
         </header>
 
-        <main className="ad-content">
+        <main className="mc-content">
           <OrdersPage />
         </main>
 

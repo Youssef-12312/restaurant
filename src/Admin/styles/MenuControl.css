@@ -18,11 +18,12 @@ body {
   min-height: 100vh;
 }
 
-.ad-content {
+.mc-content {
   flex: 1;
   padding: 1.5rem;
   overflow-y: auto;
 }
+
 
 .mc-header {
   display: flex;

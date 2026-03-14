@@ -100,7 +100,7 @@ function MenuControl() {
 
       </aside>
 
-      <div className="ad-content">
+      <div className="mc-content">
 
         <div className="mc-header">
           <h1 className="mc-title">Menu Control</h1>
