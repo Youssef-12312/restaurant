@@ -1,6 +1,7 @@
 import "./i18n";
 import "./styles/App.css";
 import { useState, useEffect } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Landing from "./pages/landing";
