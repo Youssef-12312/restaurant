@@ -71,30 +71,30 @@ function MenuControl() {
 
     <div className="mc-page">
 
-      <aside className="ad-sidebar">
+      <aside className="dash-sidebar">
 
-        <div className="ad-sidebar__brand">
+        <div className="dash-sidebar__brand">
           <img
             src={images.logo}
             alt="Shelter logo"
-            className="ad-sidebar__logo"
+            className="dash-sidebar__logo"
           />
-          <span className="ad-sidebar__name">Shelter</span>
+          <span className="dash-sidebar__name">Shelter</span>
         </div>
 
-        <nav className="ad-sidebar__nav">
+        <nav className="dash-sidebar__nav">
 
-          <Link className="ad-nav-item" to="/admin">
+          <Link className="dash-nav-item" to="/admin">
             <span>📋</span> Orders
           </Link>
 
-          <Link className="ad-nav-item ad-nav-item--active" to="/admin/menu">
+          <Link className="dash-nav-item dash-nav-item--active" to="/admin/menu">
             <span>🍔</span> Menu Control
           </Link>
 
         </nav>
 
-        <button className="ad-sidebar__logout" onClick={handleLogout}>
+        <button className="dash-sidebar__logout" onClick={handleLogout}>
           <span>🚪</span> Logout
         </button>
 
