@@ -24,7 +24,7 @@
   background: var(--bg);
   background-image:
     radial-gradient(circle at 50% 0%, rgba(232,82,26,0.12) 0%, transparent 60%),
-    linear-gradient(to right,  rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
   background-size: 100% 100%, 40px 40px, 40px 40px;
   display: flex;
@@ -162,10 +162,12 @@
   display: flex;
   flex-direction: column;
   padding: 1.5rem 1rem;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
   height: 100vh;
   flex-shrink: 0;
+  z-index: 100;
 }
 
 .ad-sidebar__brand {
@@ -236,10 +238,13 @@
 /* ── Main Area ── */
 
 .ad-main {
-  flex: 1;
+  margin-left: var(--sidebar-w);
+  width: calc(100% - var(--sidebar-w));
+  min-width: 0;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-width: 0;
+  flex: 1;
 }
 
 .ad-header {
@@ -287,15 +292,19 @@
   flex: 1;
   padding: 2rem;
   overflow-y: auto;
+  min-width: 0;
+  width: 100%;
+  display: block;
 }
 
 /* ══ STATS CARDS ══ */
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
   margin-bottom: 2rem;
+  width: 100%;
 }
 
 .stats-card {
@@ -309,6 +318,7 @@
   gap: 1rem;
   border-left: 4px solid var(--accent, var(--primary));
   transition: transform 0.2s, box-shadow 0.2s;
+  min-width: 0;
 }
 
 .stats-card:hover {
@@ -338,7 +348,11 @@
 
 /* ══ ORDERS PAGE ══ */
 
-.op-page { position: relative; }
+.op-page {
+  position: relative;
+  width: 100%;
+  display: block;
+}
 
 /* Toast */
 .op-toast {
@@ -408,6 +422,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.25rem;
+  width: 100%;
 }
 
 /* ══ ORDER CARD ══ */
@@ -424,6 +439,7 @@
   flex-direction: column;
   gap: 0.75rem;
   animation: fadeInUp 0.3s ease both;
+  min-width: 0;
 }
 
 .order-card:hover {
@@ -432,11 +448,11 @@
   border-color: rgba(232,82,26,0.25);
 }
 
-.order-card--new    { border-top: 3px solid #e8521a; }
+.order-card--new { border-top: 3px solid #e8521a; }
 .order-card--preparing { border-top: 3px solid #f59e0b; }
 .order-card--on_the_way { border-top: 3px solid #3b82f6; }
-.order-card--completed  { border-top: 3px solid #10b981; }
-.order-card--cancelled  { border-top: 3px solid #ef4444; opacity: 0.7; }
+.order-card--completed { border-top: 3px solid #10b981; }
+.order-card--cancelled { border-top: 3px solid #ef4444; opacity: 0.7; }
 
 .order-card__top {
   display: flex;
@@ -490,7 +506,7 @@
 }
 
 .order-card__type--delivery { background: #fff0eb; color: var(--primary); }
-.order-card__type--pickup   { background: #f0fdf4; color: #16a34a; }
+.order-card__type--pickup { background: #f0fdf4; color: #16a34a; }
 
 .order-card__time {
   font-size: 0.78rem;
@@ -527,13 +543,16 @@
   gap: 8px;
   flex-wrap: wrap;
 }
+
 #admin-search {
   margin-bottom: 5px;
 }
+
 #hero-logo {
   width: 40px;
   animation: floatLogo 3.5s ease-in-out infinite;
 }
+
 .order-card__btn {
   padding: 0.45rem 0.9rem;
   border-radius: 999px;
@@ -688,7 +707,7 @@
 }
 
 .modal-badge--delivery { background: #fff0eb; color: var(--primary); }
-.modal-badge--pickup   { background: #f0fdf4; color: #16a34a; }
+.modal-badge--pickup { background: #f0fdf4; color: #16a34a; }
 
 .modal-items {
   list-style: none;
@@ -792,29 +811,55 @@
 /* ══ RESPONSIVE ══ */
 
 @media (max-width: 1024px) {
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
   .ad-sidebar {
-    display: none; 
+    display: none;
   }
 
-  .ad-content { padding: 1rem; }
+  .ad-main {
+    margin-left: 0;
+    width: 100%;
+  }
 
-  .ad-header { padding: 1rem; }
+  .ad-content {
+    padding: 1rem;
+  }
 
-  .ad-header__email { display: none; }
+  .ad-header {
+    padding: 1rem;
+  }
 
-  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .ad-header__email {
+    display: none;
+  }
 
-  .op-grid { grid-template-columns: 1fr; }
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .op-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
-  .stats-grid { grid-template-columns: 1fr 1fr; }
-  .stats-card { padding: 0.9rem 1rem; }
-  .stats-card__value { font-size: 1.2rem; }
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stats-card {
+    padding: 0.9rem 1rem;
+  }
+
+  .stats-card__value {
+    font-size: 1.2rem;
+  }
 }
 
 /* ── Sidebar Logo Image ── */
