@@ -3,7 +3,9 @@ import { images } from "../assets/Images/images.js";
 import "../styles/landing.css";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../components/LanguageSwitcher.jsx";
+import FoodShowcase from "../components/FoodShowcase.jsx";
 
+/* ── Carousel — نفس الكود القديم الشغال ── */
 const MARQUEE_ITEMS = Array.from({ length: 12 }, (_, i) => i);
 
 function MarqueeContent() {
@@ -24,13 +26,14 @@ function Landing() {
 
   return (
     <main className="landing">
+
+      {/* Navbar */}
       <nav className="navbar">
         <div className="nav-container">
           <div className="logo">
             <img src={images.logo} alt="Shelter logo" loading="lazy" />
             <span>Shelter</span>
           </div>
-
           <div className="nav-links">
             <Link to="/menu" className="menu-btn">
               {t("nav.viewMenu")}
@@ -40,17 +43,16 @@ function Landing() {
         </div>
       </nav>
 
+      {/* Hero */}
       <section className="hero">
         <img src={images.logo} alt="Shelter logo" className="hero-logo" loading="lazy" />
         <h1>Shelter</h1>
         <p className="tagline">{t("hero.tagline")}</p>
         <p className="hero-text">{t("hero.text")}</p>
-
         <div className="hero-buttons">
           <Link to="/menu">
             <button className="primary-btn">{t("hero.viewMenu")}</button>
           </Link>
-
           <button className="secondary-btn">
             <a href="tel:17574" className="call-link">
               {t("hero.callUs")}
@@ -59,6 +61,10 @@ function Landing() {
         </div>
       </section>
 
+      {/* Food Showcase */}
+      <FoodShowcase />
+
+      {/* Hotline Carousel — الكود القديم الشغال */}
       <div className="hotline-marquee">
         <div className="marquee-row marquee-row-1">
           <MarqueeContent />
@@ -68,33 +74,27 @@ function Landing() {
         </div>
       </div>
 
+      {/* About */}
       <section id="about" className="about">
         <div className="about-text">
           <h2>{t("about.title")} <span className="shelter">Shelter</span></h2>
           <p>{t("about.body")}</p>
         </div>
-
         <div className="about-img">
           <img src={images.about} alt="About Shelter" loading="lazy" />
         </div>
       </section>
 
+      {/* Footer */}
       <footer className="footer">
         <div className="footer-container">
           <div className="footer-brand">
-            <img
-              src={images.ramadan}
-              alt="Shelter logo"
-              className="footer-logo"
-              loading="lazy"
-            />
+            <img src={images.ramadan} alt="Shelter logo" className="footer-logo" loading="lazy" />
             <p>{t("footer.description")}</p>
           </div>
-
           <div className="footer-links">
             <Link to="/menu">{t("nav.viewMenu")}</Link>
           </div>
-
           <div className="footer-social">
             <h4>{t("footer.followUs")}</h4>
             <div className="social-icons">
@@ -105,17 +105,16 @@ function Landing() {
             </div>
           </div>
         </div>
-
         <div className="footer-bottom">
           <p>{t("footer.rights")}</p>
         </div>
-
         <div className="footer-legal">
           <Link to="/privacy" className="footer-policy-link">
             {t("footer.privacy")}
           </Link>
         </div>
       </footer>
+
     </main>
   );
 }

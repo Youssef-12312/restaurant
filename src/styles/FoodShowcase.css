@@ -1,0 +1,164 @@
+/* ══════════════════════════════════════
+   FoodShowcase — حطه في src/styles/
+   ══════════════════════════════════════ */
+
+.showcase {
+  position: relative;
+  width: 100%;
+  height: 560px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a0a0a;
+}
+
+
+.showcase__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.35) 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  z-index: 2;
+}
+
+.showcase__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  transition: opacity 0.5s ease;
+  opacity: 1;
+}
+
+.showcase__img--fade {
+  opacity: 0;
+}
+
+.showcase__text {
+  position: relative;
+  z-index: 3;
+  max-width: 560px;
+  padding: 0 2.5rem;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.showcase__text--fade {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.showcase__eyebrow {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #ffb347;
+  margin-bottom: 0.75rem;
+  background: rgba(255, 179, 71, 0.12);
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 179, 71, 0.3);
+}
+
+.showcase__title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0.4rem 0 0.75rem;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.showcase__sub {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+}
+
+.showcase__cta {
+  display: inline-block;
+  background: linear-gradient(135deg, #ffb347, #e8521a);
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 8px 24px rgba(232, 82, 26, 0.35);
+}
+
+.showcase__cta:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 14px 32px rgba(232, 82, 26, 0.5);
+}
+
+/* ── Dots ── */
+.showcase__dots {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  gap: 8px;
+}
+
+.showcase__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  padding: 0;
+}
+
+.showcase__dot--active {
+  background: #ffb347;
+  transform: scale(1.4);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .showcase {
+    height: 480px;
+  }
+
+  .showcase__text {
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+
+  .showcase__overlay {
+    background: rgba(0, 0, 0, 0.55);
+  }
+ 
+  .showcase__text {
+    display: none;
+  }
+  
+}
+
+@media (max-width: 480px) {
+  .showcase {
+    height: 420px;
+  }
+
+  .showcase__sub {
+    font-size: 0.92rem;
+  }
+}
