@@ -270,7 +270,13 @@ body{
   border-top: 1px solid rgba(0,0,0,0.05);
   border-bottom: 1px solid rgba(0,0,0,0.05);
 }
+.marquee-row-1.up {
+  animation: scroll2 18s linear infinite;
+}
 
+.marquee-row-2.up {
+  animation: scroll1 18s linear infinite;
+}
 .marquee-row{
   position: absolute;
   top: 0;

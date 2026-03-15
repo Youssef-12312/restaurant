@@ -60,11 +60,20 @@ function Landing() {
           </button>
         </div>
       </section>
-
+      
+      <div className="hotline-marquee up">
+        <div className="marquee-row marquee-row-1 up">
+          <MarqueeContent />
+        </div>
+        <div className="marquee-row marquee-row-2 up">
+          <MarqueeContent />
+        </div>
+      </div>
+      
       {/* Food Showcase */}
       <FoodShowcase />
 
-      {/* Hotline Carousel — الكود القديم الشغال */}
+      {/* Hotline Carousel*/ }
       <div className="hotline-marquee">
         <div className="marquee-row marquee-row-1">
           <MarqueeContent />

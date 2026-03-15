@@ -57,17 +57,8 @@ function FoodShowcase() {
   return (
     <section className="showcase">
 
-      {/* فيديو النار في الخلفية */}
-      <video
-        className="showcase__fire"
-        src="https://cdn.pixabay.com/video/2016/09/12/5163-183549226_tiny.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-      />
 
-      {/* Overlay معتم */}
+
       <div className="showcase__overlay" />
 
       {/* الصورة الحالية */}
