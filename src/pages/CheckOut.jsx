@@ -9,14 +9,14 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../services/firebase";
 import { useTranslation } from "react-i18next";
 
-// function isRestaurantOpen() {
-//   const now = new Date();
-//   const hour = now.getHours();
-//   if (hour >= 3 && hour < 9) {
-//     return false;
-//   }
-//   return true;
-// }
+function isRestaurantOpen() {
+  const now = new Date();
+  const hour = now.getHours();
+  if (hour >= 3 && hour < 9) {
+    return false;
+  }
+  return true;
+}
 
 function getPrice(item) {
   if (item.price) return item.price;
@@ -68,7 +68,7 @@ function Checkout({ cart = [] }) {
 
   const deliveryFee = orderType === "delivery" ? 25 : 0;
   const finalTotal = total + deliveryFee;
-  // const restaurantOpen = isRestaurantOpen();
+  const restaurantOpen = isRestaurantOpen();
   const isBelowMinimum = finalTotal < minimumOrder;
 
   const handleChange = (e) => {
@@ -125,10 +125,10 @@ function LocationMarker() {
   };
 
   const handleConfirm = async () => {
-    // if (!isRestaurantOpen()) {
-    //   alert("Shelter is currently closed. We open at 9 AM.");
-    //   return;
-    // }
+    if (!isRestaurantOpen()) {
+      alert("Shelter is currently closed. We open at 9 AM.");
+      return;
+    }
     
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
@@ -282,21 +282,21 @@ function LocationMarker() {
             <span className="checkout-total__amount">EGP{finalTotal.toFixed(2)}</span>
           </div>
         
-          {/* {!restaurantOpen && (
+          {!restaurantOpen && (
             <div className="restaurant-closed">Shelter closed — opens at 9:00 AM</div>
-          )} */}
+          )}
 
           <button
             className="checkout-confirm-btn"
             onClick={handleConfirm}
-            disabled={cart.length === 0 || isBelowMinimum ||   isSubmitting}
+            disabled={cart.length === 0 || isBelowMinimum || !restaurantOpen || isSubmitting}
           >
-            {isSubmitting ? "جاري الإرسال..." : (isBelowMinimum ? `Minimum order EGP ${minimumOrder} EGP` : t("checkout.confirm"))}
+            {isSubmitting ? "جاري الإرسال..." : (isBelowMinimum ? `Minimum order EGP {minimumOrder} EGP` : t("checkout.confirm"))}
           </button>
         </section>
       </div>  
     </div>
   );
 }
-// !restaurantOpen in line 293 =================================================================================================
+//  in line 293 =================================================================================================
 export default Checkout;
