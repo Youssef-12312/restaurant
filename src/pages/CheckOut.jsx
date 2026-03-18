@@ -291,7 +291,7 @@ function LocationMarker() {
             onClick={handleConfirm}
             disabled={cart.length === 0 || isBelowMinimum ||   isSubmitting}
           >
-            {isSubmitting ? "جاري الإرسال..." : (isBelowMinimum ? `Minimum order EGP {minimumOrder} EGP` : t("checkout.confirm"))}
+            {isSubmitting ? "جاري الإرسال..." : (isBelowMinimum ? `Minimum order EGP ${minimumOrder} EGP` : t("checkout.confirm"))}
           </button>
         </section>
       </div>  
