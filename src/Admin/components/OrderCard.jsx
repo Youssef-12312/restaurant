@@ -131,6 +131,7 @@ You Order From *Shelter House Of cheese* is :
     ${(order.items || [])
   .map((i) => `${i.name} x${i.qty}`)
   .join("\n")}
+    On Address : ${order.address}
     Your Total  : ${order.total} EGP
     Your order *#${order.orderNumber}* is now ${statusInfo.label}.
     If There is Any Proplem Call us on : 17574
