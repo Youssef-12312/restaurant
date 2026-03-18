@@ -22,10 +22,11 @@ function MenuCard({ item, addToCart }) {
 
         <div className="menu-card__footer">
           <span className="menu-card__price">
-            $
+            
             {item.price
               ? item.price.toFixed(2)
               : Object.values(item.prices || {})[0]?.toFixed?.(2) || "0.00"}
+              EGP
           </span>
 
           <button className="menu-card__btn" onClick={() => addToCart(item)}>

@@ -1,155 +1,251 @@
-export const menuItems = [
-  // kids_meals
-{ name: "بيف / تشيكن برجر", category: "kids meals", price: 120, description: "ساندوتش برجر بيف أو تشيكن مع البطاطس والعصير ولعبة هدية", available: true },
-{ name: "استربس كيدز", category: "kids_meals", price: 120, description: "2 قطعة استربس مع بطاطس وخبز وعصير ولعبة هدية", available: true },
-{ name: "أي وجبة أطفال بدون لعبة", category: "kids_meals", price: 95, description: "نفس وجبة الأطفال بدون لعبة", available: true },
-{ name: "لعبة", category: "kids_meals", price: 25, description: "إضافة لعبة", available: true },
- // salads
-{ name: "سلطة خضراء", category: "salads", price: 45, description: "خس وطماطم وخيار وجزر وفلفل ألوان مع اختيار رانش أو سيزر أو أي صوص من اختيارك", available: true },
-{ name: "تشيكن سيزر سلط", category: "salads", price: 100, description: "صدور دجاج مشوية وخس وطماطم شيري وعيش كروتون وصوص السيزر الرابع", available: true },
-{ name: "تشيكن رانش سلط", category: "salads", price: 100, description: "صدور دجاج ورومي مدخن وخس وطماطم وفلفل وبصل وجرجير وعيش تورتيلا محمص وصوص الرانش الرابع", available: true },
-{ name: "كلو سلو", category: "salads", prices: { medium: 25, large: 35 }, description: "سلطة كولو سلو", available: true },
-{ name: "مخلل", category: "salads", price: 15, description: "مخلل", available: true },
-// sides
-{ name: "فرينش فرايز", category: "sides", price: 30, description: "بطاطس مفرمشة ببهار خاص من شلتر", available: true },
-{ name: "بطاطس فريسكس", category: "sides", price: 40, description: "بطاطس بتتبيلة كرسبي خاصة بنا مع صوص الفريسكس الرابع", available: true },
-{ name: "حلقات بصل", category: "sides", price: 40, description: "5 حلقات بصل مفرمشة", available: true },
-{ name: "أصابع موزريلا", category: "sides", price: 50, description: "4 أصابع موزريلا مفرمشة", available: true },
-{ name: "كب زنجر", category: "sides", price: 70, description: "قطع فراخ مفرمشة بصوص من اختيارك: رانش أو شيدر أو سويت أند سور", available: true },
-{ name: "طبق أرز", category: "sides", prices: { medium: 25, large: 40 }, description: "طبق أرز", available: true },
-{ name: "تشيكن ريزو", category: "sides", price: 70, description: "أرز بسمتي مع قطع دجاج الزنجر الحارة وصوص البريزو الرابع الحار", available: true },
-{ name: "ماك آند تشيز", category: "sides", prices: { medium: 30, large: 55 }, description: "طبق مكرونة بنا غرقان بصوص الجبنة الرابع", available: true },
-{ name: "سويت كورن", category: "sides", price: 35, description: "سويت كورن", available: true },
-{ name: "هالبينو تشيز فرايز", category: "sides", price: 60, description: "بطاطس مقلية مع الهالبينو الحار وصوص الجبنة الرابع", available: true },
- //   chicken_burgers
-{ name: "تشيكن هالينو", category: "chicken burgers", prices: { single: 130, double: 165 }, description: "صدور مقلية وصوص البيج تيستي وخيار وخس وطماطم وصوص الشيدر وشرائح الهالينو", available: true },
-{ name: "تشيكن كرانشي", category: "chicken burgers", prices: { single: 130, double: 165 }, description: "صدور مقلية وصوص البيج تيستي وخيار وخس وطماطم وصوص الشيدر ورومي مدخن وجبنة موزريلا", available: true },
-{ name: "تشيكن جريل", category: "chicken burgers", prices: { single: 135, double: 165 }, description: "صدور مشوية ومايونيز وخيار وخس وصوص الكراميل وصوص الشيدر", available: true },
-{ name: "كوردن بلو", category: "chicken burgers", prices: { single: 135, double: 180 }, description: "كوردن بلو ومايونيز وخيار وخس وصوص الشيدر", available: true },
-{ name: "تشيكن شيلتر", category: "chicken burgers", prices: { single: 145, double: 175, triple: 210 }, description: "صدور مفرمشة وصوص البيج تيستي وخيار وخس وبيف بيكون ورومي مدخن وصوص الشيدر", available: true },
-{ name: "تشيكن رانش", category: "chicken burgers", prices: { single: 115, double: 150 }, description: "صدور مفرمشة وصوص الرانش وخيار وخس وطماطم ورومي مدخن", available: true },
- // beef_burgers
-{ name: "ستريت برجر", category: "beef_burgers", prices: { single: 165, double: 210 }, description: "بيف برجر وصوص البيج تيستي وخيار وخس وطماطم وبصل وصوص الشيدر", available: true },
-{ name: "هالينو همراجا", category: "beef_burgers", prices: { single: 175, double: 220 }, description: "بيف برجر وصوص البيج تيستي وخيار وخس وبصل وشرائح هالينو حارة وصوص الشيدر", available: true },
-{ name: "بيكون ماشروم", category: "beef_burgers", prices: { single: 175, double: 220 }, description: "بيف برجر وصوص المايونيز وخيار وخس وبصل وطماطم وبيف بيكون وماشروم فريش وصوص الشيدر", available: true },
-{ name: "سموكي تشيز برجر", category: "beef_burgers", prices: { single: 180, double: 260 }, description: "بيف برجر مع شرائح السموك بيف وصوص البيج تيستي وخيار وخس وبصل وطماطم وماشروم وصوص الشيدر", available: true },
-{ name: "مولتن تشيز برجر", category: "beef_burgers", prices: { single: 180, double: 240 }, description: "بيف برجر محشو مكس تشيز الرابع وصوص البيج تيستي وخيار وخس وبصل مكرمل ومشروم بصوص الجمبلاس وبيف بيكون وصوص الشيدر", available: true },
-{ name: "سماش برجر", category: "beef_burgers", prices: { single: 165, double: 200 }, description: "شريحة لحمة وصوص البيج تيستي وخيار وبصل وخس وطماطم وصوص الشيدر", available: true },
-{ name: "شيلتر رينجز", category: "beef_burgers", prices: { single: 180, double: 235 }, description: "بيف برجر وصوص البيج تيستي وخيار وخس وحلقات بصل مقلية وأصابع موزريلا وصوص الشيدر", available: true },
- // broast
-{ name: "سناك بوكس", category: "broast", price: 140, description: "2 قطعة بروست مع الأرز والبطاطس والخبز والكلو سلو وصوص البريزو الحار", available: true },
-{ name: "دينر بوكس", category: "broast", price: 185, description: "3 قطع بروست مع الأرز والبطاطس والخبز والكلو سلو وصوص البريزو الحار", available: true },
-{ name: "وجبة 4 قطع بروست", category: "broast", price: 225, description: "4 قطع بروست مع الأرز والبطاطس والخبز والكلو سلو وصوص البريزو الحار", available: true },
-{ name: "سوبر دينر", category: "broast", price: 255, description: "5 قطع بروست مع الأرز والبطاطس والخبز والكلو سلو وصوص البريزو الحار", available: true },
- //budget_meals
-{ name: "سناك بوكس موفرة", category: "budget_meals", price: 110, description: "2 قطعة بروست وبطاطس وخبز وصوص البريزو الحار", available: true },
-{ name: "دينر بوكس موفرة", category: "budget_meals", price: 150, description: "3 قطع بروست وبطاطس وخبز وصوص البريزو الحار", available: true },
-{ name: "4 قطع بروست موفرة", category: "budget_meals", price: 180, description: "4 قطع بروست والبطاطس والخبز وصوص البريزو الحار", available: true },
-{ name: "سوبر دينر موفرة", category: "budget_meals", price: 215, description: "5 قطع بروست والبطاطس والخبز وصوص البريزو الحار", available: true },
- // family_meals
-{ name: "وجبة 10 قطع استربس", category: "family_meals", price: 360, description: "10 قطع استربس مع البطاطس و4 خبز وكلو سلو عائلي ومشروب غازي لتر وصوص البريزو الحار", available: true },
-{ name: "وجبة 9 قطع بروست", category: "family_meals", price: 435, description: "9 قطع بروست مع البطاطس و3 خبز وكلو سلو عائلي ومشروب غازي لتر وصوص البريزو الحار", available: true },
-{ name: "وجبة 12 قطعة بروست", category: "family_meals", price: 585, description: "12 قطعة بروست مع البطاطس و4 خبز وكلو سلو عائلي ومشروب غازي لتر وصوص البريزو الحار", available: true },
-{ name: "تورته بروست", category: "family_meals", price: 820, description: "20 قطعة بروست مع البطاطس و10 خبز و2 كولو سلو عائلي و2 مشروب غازي لتر وصوص البريزو الحار", available: true },
-{ name: "وجبة مكس", category: "family_meals", price: 660, description: "12 قطعة بروست و4 قطع استربس وبطاطس و5 خبز و2 كولو سلو عائلي ومشروب غازي لتر وصوص البريزو الحار", available: true },
-{ name: "عرض الشلة", category: "family_meals", price: 785, description: "14 قطعة بروست مع البطاطس و4 خبز ومشروب غازي لتر ونافورة الجبنة", available: true },
- // pasta
-{ name: "نجرسكو", category: "pasta", price: 142, description: "مكرونة بصوص جبنة شيلتر الرابع مع الشاورما المشوية والجبنة الموزريلا", available: true },
-{ name: "تشيكن بولز (سبايسي)", category: "pasta", price: 147, description: "مكرونة بصوص جبنة شيلتر الرابع مع شرائح الزنجر الحارة والجبنة الموزريلا والجبنة الرومي", available: true },
-{ name: "كوردن باستا", category: "pasta", price: 157, description: "مكرونة بصوص جبنة شيلتر الرابع مع 5 قطع من الكوردن بلو والجبنة الموزريلا والجبنة الرومي", available: true },
-{ name: "تشيكن باربكيو", category: "pasta", price: 142, description: "مكرونة بصوص جبنة شيلتر الرابع مع صدور مشوية وفلفل ألوان وصوص الباربكيو", available: true },
-{ name: "الفريدو", category: "pasta", price: 163, description: "مكرونة بصوص جبنة شيلتر الرابع مع الشاورما الفراخ المشوية والمشروم والجبنة الموزريلا والجبنة الرومي", available: true },
-{ name: "باستا سي فود (مشوي ومقلي)", category: "pasta", price: 182, description: "مكرونة بصوص جبنة شيلتر الرابع مع الجمبري وشرائح الكابوريا والكاليماري والجبنة الموزريلا", available: true },
-{ name: "باستا جمبري (مشوي ومقلي)", category: "pasta", price: 177, description: "مكرونة بصوص جبنة شيلتر الرابع مع الجمبري والجبنة الموزريلا والجبنة الرومي", available: true },
-{ name: "بنا ريد صوص", category: "pasta", price: 65, description: "مكرونة بنا بالصوص الطماطم الرابع وفلفل الألوان", available: true },
-{ name: "باستا بولونيز", category: "pasta", price: 99, description: "مكرونة بنا بصوص الطماطم الرابع واللحمة المفرومة وفلفل الألوان", available: true },
-{ name: "نودلز خضروات", category: "pasta", price: 60, description: "نودلز خضروات", available: true },
-{ name: "نودلز زنجر", category: "pasta", price: 100, description: "نودلز مع زنجر", available: true },
-{ name: "نودلز صدور مشوية", category: "pasta", price: 100, description: "نودلز مع صدور مشوية", available: true },
- // cheese_plates
-{ name: "تشيلي تشيز فرايز", category: "cheese_plates", prices: { g200: null, g250: 130 }, description: "صوص الجبنة الخاصة شيلتر مع اللحمة المفرومة والبطاطس المقلية والجبنة الموزريلا", available: true },
-{ name: "سجق تشيز طاسه", category: "cheese_plates", prices: { g200: 125, g250: 140 }, description: "صوص الجبنة الخاصة شيلتر مع شرائح السجق المشوي والجبنة الموزريلا", available: true },
-{ name: "سبانخ ماشروم تشيز طاسه", category: "cheese_plates", prices: { g200: 110, g250: 125 }, description: "صوص الجبنة الخاصة شيلتر مع الماشروم وشرائح السبانخ الفريش الرابعة والجبنة الموزريلا", available: true },
-{ name: "زنجر تشيز طاسه (سبايسي)", category: "cheese_plates", prices: { g200: 145, g250: 160 }, description: "صوص الجبنة الخاصة شيلتر مع شرائح الزنجر الحارة المقلية والجبنة الموزريلا", available: true },
-{ name: "مكس لحوم تشيز طاسه", category: "cheese_plates", prices: { g200: 120, g250: 135 }, description: "صوص الجبنة الخاصة شيلتر مع الهوت دوج والسجق والبيبروني والسلامي والجبنة الموزريلا", available: true },
-{ name: "سي فود تشيز طاسه", category: "cheese_plates", prices: { g200: 165, g250: 190 }, description: "صوص الجبنة الخاصة شيلتر مع الجمبري وكاليماري وشرائح الكابوريا والجبنة الموزريلا", available: true },
-{ name: "جمبري تشيز طاسه (مقلي ومشوي)", category: "cheese_plates", prices: { g200: 160, g250: 185 }, description: "صوص الجبنة الخاصة شيلتر مع الجمبري المقلي أو المشوي والجبنة الموزريلا", available: true },
- // waffles
-{ name: "شريحة وافل كراميل", category: "waffles", price: 25, description: "وافل كراميل", available: true },
-{ name: "شريحة وافل نوتيلا", category: "waffles", price: 25, description: "وافل نوتيلا", available: true },
-{ name: "شريحة وافل وايت شوكليت", category: "waffles", price: 25, description: "وافل وايت شوكليت", available: true },
-{ name: "شريحة وافل لوتس", category: "waffles", price: 30, description: "وافل لوتس", available: true },
-{ name: "تورتة وافل", category: "waffles", price: 90, description: "كراميل - لوتس - وايت شوكليت - نوتيلا", available: true },
- // drinks
-{ name: "مياه معدنية صغيرة", category: "drinks", price: 10, description: "مياه معدنية صغيرة", available: true },
-{ name: "مشروب غازي", category: "drinks", price: 20, description: "مشروب غازي", available: true },
-{ name: "مشروب غازي لتر", category: "drinks", price: 35, description: "مشروب غازي لتر", available: true },
-{ name: "عصير سن توب", category: "drinks", price: 20, description: "عصير سن توب", available: true },
-// mojitos
-{ name: "موهيتو ليمون نعناع", category: "mojito", price: 40, description: "موهيتو ليمون نعناع", available: true },
-{ name: "موهيتو بلو بيري", category: "mojito", price: 45, description: "موهيتو بلو بيري", available: true },
-{ name: "موهيتو فراولة", category: "mojito", price: 45, description: "موهيتو فراولة", available: true },
-{ name: "موهيتو فواكه استوائية", category: "mojito", price: 45, description: "موهيتو فواكه استوائية", available: true },
- // extras
-{ name: "قطعة بروست صدر", category: "extras", price: 45, description: "قطعة بروست صدر", available: true },
-{ name: "قطعة بروست فخذ", category: "extras", price: 40, description: "قطعة بروست فخذ", available: true },
-{ name: "قطعة بروست دبوس", category: "extras", price: 35, description: "قطعة بروست دبوس", available: true },
-{ name: "شريحة استربس", category: "extras", price: 35, description: "شريحة استربس", available: true },
-{ name: "2 قطعة زنجر", category: "extras", price: 20, description: "2 قطعة زنجر", available: true },
-{ name: "هوت دوج", category: "extras", price: 20, description: "هوت دوج", available: true },
-{ name: "بيف بيكون أو رومي مدخن", category: "extras", price: 15, description: "بيف بيكون أو رومي مدخن", available: true },
-{ name: "جبنة موزريلا", category: "extras", price: 20, description: "جبنة موزريلا", available: true },
-{ name: "سجق", category: "extras", price: 20, description: "سجق", available: true },
-{ name: "بيبروني أو سلامي", category: "extras", price: 20, description: "بيبروني أو سلامي", available: true },
-{ name: "خبز كايزر وجبة", category: "extras", price: 5, description: "خبز كايزر وجبة", available: true },
-{ name: "خبز كايزر كبير برجر", category: "extras", price: 10, description: "خبز كايزر كبير برجر", available: true },
-{ name: "خبز محمص", category: "extras", price: 10, description: "خبز محمص", available: true },
- // sauces
-{ name: "صوص جبنة شيلتر", category: "sauces", price: 15, description: "صوص جبنة شيلتر", available: true },
-{ name: "صوص رانش", category: "sauces", price: 15, description: "صوص رانش", available: true },
-{ name: "صوص بافلو حار", category: "sauces", price: 10, description: "صوص بافلو حار", available: true },
-{ name: "صوص ريزو حار", category: "sauces", price: 15, description: "صوص ريزو حار", available: true },
-{ name: "صوص طحينة", category: "sauces", price: 10, description: "صوص طحينة", available: true },
-{ name: "صوص الثومية", category: "sauces", price: 10, description: "صوص الثومية", available: true },
-{ name: "باربكيو صوص", category: "sauces", price: 15, description: "باربكيو صوص", available: true },
-{ name: "صوص مايونيز", category: "sauces", price: 10, description: "صوص مايونيز", available: true },
-{ name: "صوص فريسكس", category: "sauces", price: 15, description: "صوص فريسكس", available: true },
-{ name: "ميني جار جبنة شيدر", category: "sauces", price: 30, description: "ميني جار جبنة شيدر", available: true },
-{ name: "جار جبنة شيدر", category: "sauces", price: 75, description: "جار جبنة شيدر", available: true },
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../services/firebase";
 
-{ name: "MIX BOX 2", category: "mix_box", price: 135, description: "ساندوتش بيف برجر وساندوتشين تشيكن برجر مع بطاطس ومشروب وصوص", available: true },
-{ name: "MIX BOX 4", category: "mix_box", price: 250, description: "2 بيف برجر و2 تشيكن برجر مع البطاطس ومشروب لتر و2 صوص", available: true },
-{ name: "MIX BOX 6", category: "mix_box", price: 375, description: "3 بيف برجر و3 تشيكن برجر مع بطاطس وحلقات بصل ومشروب لتر و3 صوص", available: true },
-  // chicken sandwiches
-{ name: "فاهيتا تشيكن", category: "chicken_sandwiches", prices: { medium: 95, large: 115 }, description: "فاهيتا الدجاج المشوية مع المايونيز والخيار وصوص الباربكيو والفلفل والبصل والزيتون", available: true },
-{ name: "شيش طاووق", category: "chicken_sandwiches", prices: { medium: 90, large: 110 }, description: "شيش طاووق مع صوص الثومية والخيار والفلفل والبصل والخس", available: true },
-{ name: "تشيكن زنجر (سبايسي أو أوريجنال)", category: "chicken_sandwiches", price: 115, description: "استربس مقرمش مع المايونيز والخيار والخس والرومي المدخن والجبنة الموزريلا وصوص التانجير الحار", available: true },
-{ name: "كوردن بلو", category: "chicken_sandwiches", price: 120, description: "2 أصابع كوردن مع المايونيز والخيار والخس وصوص الجبنة الشيدر", available: true },
-{ name: "تشيكن رول", category: "chicken_sandwiches", price: 115, description: "الاستربس المقرمش في العيش السوري مع المايونيز والخيار والخس وصوص الجبنة وصوص التانجير الحار", available: true },
-  // beef sandwiches
-{ name: "الكفتة المشوية", category: "beef_sandwiches", prices: { medium: 100, large: 130 }, description: "كفتة مشوية مع صوص الطحينة والخيار وخضار الكفتة طماطم وبصل وبقدونس", available: true },
-{ name: "السجق المشوي", category: "beef_sandwiches", prices: { medium: 80, large: 95 }, description: "السجق المشوي مع صوص المايونيز والخيار والفلفل والطماطم وصوص السجق", available: true },
- // seafood sandwiches
-{ name: "جمبري مقلي", category: "seafood_sandwiches", price: 140, description: "قطع الجمبري المتبل والمقلي مع صوص التارتار الرابع والخيار والخس والمبهرات", available: true },
-{ name: "جمبري مشوي", category: "seafood_sandwiches", price: 140, description: "الجمبري المشوي والمتبل مع صوص التارتار والخيار والخس والفلفل والبصل والزيتون وصوص الباربكيو", available: true },
-{ name: "سي فود مقلي", category: "seafood_sandwiches", price: 140, description: "الجمبري المقلي مع شرائح الكابوريا وجمبري وكاليماري وصوص التارتار والخيار والخس", available: true },
-{ name: "سي فود مشوي (سبايسي)", category: "seafood_sandwiches", price: 145, description: "الجمبري المشوي وشرائح الكابوريا وجمبري وكاليماري مع صوص التارتار والسبايسي وصوص الباربكيو والجبنة الموزريلا", available: true },
-  // pizza
-{ name: "مكس تشيز", category: "pizza", price: 145, description: "صلصة البيتزا الرابعة مع الجبنة الموزريلا وجبنة أمنتالي والجبنة الرومي المبشورة وجبنة كيري وصوص جبنة شيدر", available: true },
-{ name: "تشيكن رانش", category: "pizza", price: 190, description: "صوص الرانش الخاص شيلتر وصدور مشوية وفلفل وبيبروني والجبنة الموزريلا وجبنة أمنتالي", available: true },
-{ name: "الفريدو وايت صوص", category: "pizza", price: 185, description: "وايت صوص الرابع مع الشيش طاووق وشرائح المشروم الفريش وفلفل وزيتون والجبنة الموزريلا وجبنة أمنتالي", available: true },
-{ name: "تشيكن بافلو زنجر", category: "pizza", price: 190, description: "صوص البافلو الحار والرومي المدخن وقطع الاستربس الحارة والرومي المدخن والفلفل والزيتون والجبنة الموزريلا وجبنة أمنتالي", available: true },
-{ name: "سوبريم لحوم", category: "pizza", price: 200, description: "صلصة البيتزا والكفتة المشوية وشرائح الهوت دوج والبيبروني والسجق والفلفل والبصل والزيتون والجبنة الموزريلا وجبنة أمنتالي", available: true },
- // meals
-{ name: "مكس جريل", category: "meals", price: 230, description: "شيش طاووق مع الكفتة المشوية والصدور المشوية والخبز والكلو سلو والطحينة", available: true },
-{ name: "شيش طاووق", category: "meals", price: 190, description: "قطع الشيش طاووق المتبلة شيلتر والفلفل والبصل والخبز والثومية والكلو سلو", available: true },
-{ name: "صدور مشوية", category: "meals", price: 200, description: "شرائح الصدور المشوية مع الخبز وصوص الثومية الرابع من شيلتر والكلو سلو", available: true },
-{ name: "تشيكن مشروم", category: "meals", price: 200, description: "الصدور المشوية مع صوص الجمبلاس والمشروم الرابع مع الخبز والكلو سلو", available: true },
-{ name: "كوردن بلو", category: "meals", price: 185, description: "5 قطع كوردن بلو مع الخبز والكلو سلو", available: true },
-{ name: "كرانشي تشيز سموكد (سبايسي وأوريجنال)", category: "meals", price: 180, description: "4 قطع استربس المقرمش الحار مع البيف بيكون وصوص الشيدر والخبز والكلو سلو", available: true },
-{ name: "تشيكن استيكس (سبايسي وأوريجنال)", category: "meals", price: 130, description: "3 قطع استربس مفرمش حار مع الخبز وصوص البريو الحار", available: true },
-{ name: "استربس كرانشي (سبايسي وأوريجنال)", category: "meals", price: 190, description: "5 قطع استربس مفرمش حار مع الخبز وصوص البريو الحار والكلو سلو", available: true },
+const menu = [
+
+  // ───────── MILKSHAKES ─────────
+  {
+    category: "Milkshake",
+    name: "Chocolate Milkshake",
+    price: 50,
+    description: "ميلك شيك شوكولاتة",
+    options: {
+      sauces: ["caramel", "chocolate", "blueberry", "strawberry"]
+    }
+  },
+  {
+    category: "Milkshake",
+    name: "Vanilla Milkshake",
+    price: 45,
+    description: "ميلك شيك فانيليا",
+    options: {
+      sauces: ["caramel", "chocolate", "blueberry", "strawberry"]
+    }
+  },
+  {
+    category: "Milkshake",
+    name: "Strawberry Milkshake",
+    price: 45,
+    description: "ميلك شيك فراولة",
+    options: {
+      sauces: ["caramel", "chocolate", "blueberry", "strawberry"]
+    }
+  },
+
+  // ───────── MOJITO ─────────
+  { category: "Mojito", name: "Mint Lemon Mojito", price: 40 },
+  { category: "Mojito", name: "Blueberry Mojito", price: 45 },
+  { category: "Mojito", name: "Strawberry Mojito", price: 45 },
+  { category: "Mojito", name: "Tropical Fruit Mojito", price: 45 },
+
+  // ───────── MEALS ─────────
+  {
+    category: "Meals",
+    name: "Mix Grill",
+    price: 235,
+    description: "شيش طاووق + كفتة + صدور مشوية + خبز + كول سلو + طحينة",
+    options: {
+      sides: ["rice", "fries", "vegetables", "mac & cheese", "sweet corn"]
+    }
+  },
+  {
+    category: "Meals",
+    name: "Shish Tawook",
+    price: 200,
+    description: "قطع دجاج متبلة + خبز + بطاطس + صوص",
+    options: {
+      sides: ["rice", "fries", "vegetables", "mac & cheese", "sweet corn"]
+    }
+  },
+  {
+    category: "Meals",
+    name: "Grilled Chicken Breasts",
+    price: 200,
+    description: "صدور مشوية + خبز + صوص",
+    options: {
+      sides: ["rice", "fries", "vegetables", "mac & cheese", "sweet corn"]
+    }
+  },
+  {
+    category: "Meals",
+    name: "Chicken Mushroom",
+    price: 210,
+    description: "صدور + مشروم + صوص ديمي جلاس",
+  },
+  {
+    category: "Meals",
+    name: "Cordon Bleu",
+    price: 200,
+    description: "قطع كوردن بلو + خبز + كول سلو",
+  },
+
+  // ───────── CRUNCHY / STRIPS ─────────
+  {
+    category: "Meals",
+    name: "Crunchy Smoked Cheese",
+    price: 190,
+    description: "4 قطع استربس + صوص شيدر + بيكون",
+  },
+  {
+    category: "Meals",
+    name: "Chicken Sticks",
+    price: 140,
+    description: "3 قطع استربس + خبز + صوص",
+  },
+  {
+    category: "Meals",
+    name: "Crunchy Strips",
+    price: 195,
+    description: "5 قطع استربس + خبز + صوص",
+  },
+  {
+    category: "Meals",
+    name: "Nashville",
+    price: 150,
+    description: "3 قطع استربس + بطاطس + ماك تشيز",
+  },
+  {
+    category: "Meals",
+    name: "Tandoori Meal",
+    price: 200,
+    description: "5 قطع دجاج تندوري + خبز + صوص",
+  },
+
+  // ───────── BROAST ─────────
+  {
+    category: "Broast",
+    name: "Snack Box",
+    price: 155,
+    description: "2 قطع بروست + رز + بطاطس + خبز + صوص",
+  },
+  {
+    category: "Broast",
+    name: "Dinner Box",
+    price: 200,
+    description: "3 قطع بروست + رز + بطاطس + خبز + صوص",
+  },
+  {
+    category: "Broast",
+    name: "4 Piece Broast Meal",
+    price: 235,
+  },
+  {
+    category: "Broast",
+    name: "Super Dinner",
+    price: 270,
+  },
+
+  // Saver
+  { category: "Broast", name: "Snack Box Saver", price: 125 },
+  { category: "Broast", name: "Dinner Box Saver", price: 165 },
+  { category: "Broast", name: "4 Piece Saver", price: 200 },
+  { category: "Broast", name: "Super Dinner Saver", price: 235 },
+
+  // Family Meals
+  { category: "Broast", name: "10 Piece Chicken Meal", price: 370 },
+  { category: "Broast", name: "9 Piece Chicken Meal", price: 450 },
+  { category: "Broast", name: "12 Piece Chicken Meal", price: 595 },
+  { category: "Broast", name: "Chicken Cake", price: 840 },
+  { category: "Broast", name: "Mix Meal", price: 670 },
+  { category: "Broast", name: "Gang Deal", price: 795 },
+
+  // ───────── PIZZA ─────────
+  { category: "Pizza", name: "Mixed Cheese", price: 150 },
+  { category: "Pizza", name: "Chicken Ranch", price: 195 },
+  { category: "Pizza", name: "Alfredo White Sauce", price: 195 },
+  { category: "Pizza", name: "Buffalo Zinger", price: 190 },
+  { category: "Pizza", name: "Meat Supreme", price: 205 },
+  { category: "Pizza", name: "Double Pepperoni", price: 210 },
+  { category: "Pizza", name: "Pastrami Pizza", price: 205 },
+
+  // ───────── PASTA ─────────
+  { category: "Pasta", name: "Seafood Pasta", price: 190 },
+  { category: "Pasta", name: "Shrimp Pasta", price: 180 },
+  { category: "Pasta", name: "Penne Red", price: 65 },
+  { category: "Pasta", name: "Bolognese", price: 105 },
+  { category: "Pasta", name: "Alfredo", price: 170 },
+  { category: "Pasta", name: "Cordon Bleu Pasta", price: 165 },
+  { category: "Pasta", name: "Chicken Balls Pasta", price: 155 },
+
+  // ───────── CHEESE PAN ─────────
+  { category: "Cheese Pan", name: "Meat Mix Cheese", price: 145 },
+  { category: "Cheese Pan", name: "Seafood Cheese", price: 190 },
+  { category: "Cheese Pan", name: "Shrimp Cheese", price: 160 },
+  { category: "Cheese Pan", name: "Chili Cheese Fries", price: 135 },
+  { category: "Cheese Pan", name: "Sausage Cheese", price: 140 },
+  { category: "Cheese Pan", name: "Spinach Mushroom Cheese", price: 125 },
+  { category: "Cheese Pan", name: "Zinger Cheese", price: 165 },
+  { category: "Cheese Pan", name: "Cheese Fries", price: 115 },
+  { category: "Cheese Pan", name: "Pastrami Cheese", price: 140 },
+
+  // ───────── BEEF BURGER ─────────
+  { category: "Beef Burger", name: "Street Burger", price: 165, priceLarge: 210 },
+  { category: "Beef Burger", name: "Jalapeno Maharaja", price: 175, priceLarge: 220 },
+  { category: "Beef Burger", name: "Bacon Mushroom", price: 175, priceLarge: 220 },
+  { category: "Beef Burger", name: "Smoky Cheese Burger", price: 180, priceLarge: 260 },
+  { category: "Beef Burger", name: "Molten Cheese Burger", price: 180, priceLarge: 240 },
+  { category: "Beef Burger", name: "Smash Burger", price: 165, priceLarge: 200 },
+  { category: "Beef Burger", name: "Shelter Rings Burger", price: 180, priceLarge: 235 },
+
+  // ───────── CHICKEN BURGER ─────────
+  { category: "Chicken Burger", name: "Chicken Jalapeno", price: 130 },
+  { category: "Chicken Burger", name: "Chicken Crunchy", price: 130 },
+  { category: "Chicken Burger", name: "Chicken Grill", price: 135 },
+  { category: "Chicken Burger", name: "Cordon Bleu Burger", price: 135 },
+  { category: "Chicken Burger", name: "Chicken Shelter", price: 145 },
+  { category: "Chicken Burger", name: "Chicken Ranch", price: 115 },
+
+  // ───────── MIX BOX ─────────
+  { category: "Mix Box", name: "Mix Box 2", price: 150 },
+  { category: "Mix Box", name: "Mix Box 4", price: 260 },
+  { category: "Mix Box", name: "Mix Box 6", price: 390 },
+
+  // ───────── SANDWICH ─────────
+  { category: "Chicken Sandwich", name: "Chicken Fajita", price: 95 },
+  { category: "Chicken Sandwich", name: "Shish Tawook Sandwich", price: 90 },
+  { category: "Chicken Sandwich", name: "Tashken Zinger", price: 115 },
+  { category: "Chicken Sandwich", name: "Cordon Bleu Sandwich", price: 120 },
+  { category: "Chicken Sandwich", name: "Chicken Roll", price: 115 },
+
+  { category: "Beef Sandwich", name: "Grilled Kofta", price: 100 },
+  { category: "Beef Sandwich", name: "Grilled Sausage", price: 80 },
+
+  // ───────── DRINKS ─────────
+  { category: "Drinks", name: "Water", price: 15 },
+  { category: "Drinks", name: "Soda", price: 20 },
+  { category: "Drinks", name: "1 Liter Soda", price: 35 },
+  { category: "Drinks", name: "Sun Top", price: 20 },
+
+  // ───────── SIDES ─────────
+  { category: "Sides", name: "French Fries", price: 35 },
+  { category: "Sides", name: "Friskies Fries", price: 45 },
+  { category: "Sides", name: "Onion Rings", price: 40 },
+  { category: "Sides", name: "Mozzarella Sticks", price: 50 },
+  { category: "Sides", name: "Zinger Cup", price: 70 },
+  { category: "Sides", name: "Chicken Risotto", price: 70 },
+  { category: "Sides", name: "Mac & Cheese", price: 55 },
+  { category: "Sides", name: "Jalapeno Cheese Fries", price: 60 },
+  { category: "Sides", name: "Rice Dish", price: 40 },
+  { category: "Sides", name: "Sweet Corn", price: 35 },
+
+  // ───────── SAUCES ─────────
+  { category: "Sauces", name: "BBQ Sauce", price: 15 },
+  { category: "Sauces", name: "Mayonnaise", price: 10 },
+  { category: "Sauces", name: "Friskies Sauce", price: 15 },
+  { category: "Sauces", name: "Cheddar Jar", price: 75 },
+  { category: "Sauces", name: "Ranch", price: 15 },
+  { category: "Sauces", name: "Buffalo", price: 10 },
+  { category: "Sauces", name: "Tahini", price: 10 },
+  { category: "Sauces", name: "Garlic", price: 10 },
+
 ];
-
-
-// 129 Dish
+export const uploadMenu = async () => {
+  try {
+    for (let item of menu) {
+      await addDoc(collection(db, "menu"), item);
+    }
+    console.log("🔥 FULL MENU UPLOADED");
+  } catch (err) {
+    console.error(err);
+  }
+};

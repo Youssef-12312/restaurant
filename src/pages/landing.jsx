@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../components/LanguageSwitcher.jsx";
 import FoodShowcase from "../components/FoodShowcase.jsx";
 
-/* ── Carousel — نفس الكود القديم الشغال ── */
+
 const MARQUEE_ITEMS = Array.from({ length: 12 }, (_, i) => i);
 
 function MarqueeContent() {

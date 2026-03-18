@@ -2,7 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/checkout.css";
 
-// نضفنا الـ Imports ومفيش أي حاجة بتقرأ من الداتابيز هنا (شيلنا getDocs خالص)
+import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../services/firebase";
 import { useTranslation } from "react-i18next";
@@ -25,6 +27,18 @@ function getPrice(item) {
   return 0;
 }
 
+async function getAddressFromCoords(lat, lng) {
+  const res = await fetch(
+    `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=ar`
+  );
+
+  if (!res.ok) return "";
+
+  const data = await res.json();
+
+  return data.display_name || "";
+}
+
 function Checkout({ cart = [] }) {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -39,6 +53,8 @@ function Checkout({ cart = [] }) {
     address: "",
     notes: ""
   });
+
+  const [mapPosition, setMapPosition] = useState([31.0409, 31.3785]);
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
@@ -68,15 +84,34 @@ function Checkout({ cart = [] }) {
     }
   };
 
+function LocationMarker() {
+  useMapEvents({
+    click: async (e) => {
+      const { lat, lng } = e.latlng;
+
+      setMapPosition([lat, lng]);
+
+      const addressText = await getAddressFromCoords(lat, lng);
+
+      setFormData((prev) => ({
+        ...prev,
+        address: addressText || `${lat},${lng}`
+      }));
+    }
+  });
+
+  return <Marker position={mapPosition} />;
+}
+
   const validate = () => {
     const newErrors = {};
     const nameValue = formData.name.trim();
 
     if (!nameValue) {
-  newErrors.name = t("checkout.errors.name");
-  } 
+      newErrors.name = t("checkout.errors.name");
+    } 
     else if (/\d/.test(nameValue)) { 
-    newErrors.name = "Name cannot contain numbers";
+      newErrors.name = "Name cannot contain numbers";
     }
     
     const phoneDigits = formData.phone.replace(/\D/g, "");
@@ -89,7 +124,6 @@ function Checkout({ cart = [] }) {
     return newErrors;
   };
 
-  /* ── Confirm Order (Ultimate Secure) ── */
   const handleConfirm = async () => {
     if (!isRestaurantOpen()) {
       alert("Shelter is currently closed. We open at 9 AM.");
@@ -109,7 +143,6 @@ function Checkout({ cart = [] }) {
       const shortOrderNumber = Math.random().toString(36).substring(2, 8).toUpperCase();
       setOrderNumber(shortOrderNumber);
 
-    
       await addDoc(collection(db, "orders"), {
         orderNumber: shortOrderNumber, 
         customerName: formData.name,
@@ -192,7 +225,22 @@ function Checkout({ cart = [] }) {
           {orderType === "delivery" && (
             <div className={`checkout-field ${errors.address ? "checkout-field--error" : ""}`}>
               <label className="checkout-field__label">{t("checkout.address")}</label>
-              <input className="checkout-field__input" name="address" type="text" value={formData.address} onChange={handleChange} placeholder={t("checkout.addressPlaceholder")} />
+
+              <MapContainer
+                center={mapPosition}
+                zoom={15}
+                style={{ height: "250px", width: "100%", borderRadius: "10px" }}
+              >
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <LocationMarker />
+              </MapContainer>
+              {formData.address && (
+  <p style={{marginTop:"8px",fontSize:"14px"}}>
+    📍 {formData.address}
+  </p>
+)}
               {errors.address && <span className="checkout-field__error">{errors.address}</span>}
             </div>
           )}
@@ -216,7 +264,7 @@ function Checkout({ cart = [] }) {
                     <span className="checkout-item__name">{item.name}</span>
                     <span className="checkout-item__qty">× {item.qty}</span>
                   </div>
-                  <span className="checkout-item__price">${(getPrice(item) * item.qty).toFixed(2)}</span>
+                  <span className="checkout-item__price">EGP {(getPrice(item) * item.qty).toFixed(2)}</span>
                 </li>
               ))}
             </ul>
@@ -231,7 +279,7 @@ function Checkout({ cart = [] }) {
 
           <div className="checkout-total">
             <span className="checkout-total__label">{t("checkout.total")}</span>
-            <span className="checkout-total__amount">${finalTotal.toFixed(2)}</span>
+            <span className="checkout-total__amount">EGP{finalTotal.toFixed(2)}</span>
           </div>
         
           {!restaurantOpen && (
@@ -243,12 +291,12 @@ function Checkout({ cart = [] }) {
             onClick={handleConfirm}
             disabled={cart.length === 0 || isBelowMinimum || !restaurantOpen || isSubmitting}
           >
-            {isSubmitting ? "جاري الإرسال..." : (isBelowMinimum ? `Minimum order ${minimumOrder} EGP` : t("checkout.confirm"))}
+            {isSubmitting ? "جاري الإرسال..." : (isBelowMinimum ? `Minimum order EGP {minimumOrder} EGP` : t("checkout.confirm"))}
           </button>
         </section>
       </div>  
     </div>
   );
 }
-
+//  in line 293 =================================================================================================
 export default Checkout;

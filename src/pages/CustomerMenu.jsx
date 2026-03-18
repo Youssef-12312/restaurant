@@ -6,12 +6,11 @@ import Cart from "../components/Cart.jsx";
 import { images } from "../assets/Images/images.js";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../components/LanguageSwitcher.jsx";
-
 function CustomerMenu({ cart, setCart }) {
   const { t } = useTranslation();
   const [menu, setMenu]           = useState([]);
   const [search, setSearch]       = useState("");
-  const [activeTab, setActiveTab] = useState("All");
+  const [activeTab, setActiveTab] = useState("الكل");
 
   /* ── Cart actions ── */
   function addToCart(item) {

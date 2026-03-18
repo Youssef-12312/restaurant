@@ -3,6 +3,7 @@ import { auth } from "../../services/firebase.js";
 import OrdersPage from "./OrdersPage.jsx";
 import { useEffect } from "react";
 import "../styles/admin.css";
+import { onAuthStateChanged } from "firebase/auth";
 import { images } from "../../assets/Images/images.js";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -16,18 +17,26 @@ function AdminDashboard() {
     navigate("/admin");
   };
 
-  useEffect(() => {
-    const handleClose = () => {
-      signOut(auth);
-    };
+useEffect(() => {
 
-    window.addEventListener("beforeunload", handleClose);
+  const unsub = onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      navigate("/admin");
+    }
+  });
 
-    return () => {
-      window.removeEventListener("beforeunload", handleClose);
-    };
-  }, []);
+  const handleClose = () => {
+    signOut(auth);
+  };
 
+  window.addEventListener("beforeunload", handleClose);
+
+  return () => {
+    unsub();
+    window.removeEventListener("beforeunload", handleClose);
+  };
+
+}, []);
   return (
     <div className="dash-layout">
       <aside className="dash-sidebar">
@@ -41,7 +50,7 @@ function AdminDashboard() {
         </div>
 
         <nav className="dash-sidebar__nav">
-          <Link className="dash-nav-item dash-nav-item--active" to="/admin/orders">
+          <Link className="dash-nav-item dash-nav-item--active" to="/admin">
             <span>📋</span> Orders
           </Link>
 

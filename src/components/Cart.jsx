@@ -32,7 +32,7 @@ function CartContent({ cart, removeFromCart, decreaseQty, addToCart, total, navi
               <div className="cart__item-info">
                 <p className="cart__item-name">{item.name}</p>
                 <p className="cart__item-price">
-                  ${(getPrice(item) * item.qty).toFixed(2)}
+                  EGP {(getPrice(item) * item.qty).toFixed(2)}
                 </p>
               </div>
               <div className="cart__item-controls">
@@ -49,7 +49,7 @@ function CartContent({ cart, removeFromCart, decreaseQty, addToCart, total, navi
       <div className="cart__footer">
         <div className="cart__total">
           <span className="cart__total-label">{t("cart.total")}</span>
-          <span className="cart__total-amount">${total.toFixed(2)}</span>
+          <span className="cart__total-amount">EGP {total.toFixed(2)}</span>
         </div>
         <button
           className="cart__checkout-btn"

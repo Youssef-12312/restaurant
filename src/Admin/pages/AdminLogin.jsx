@@ -20,9 +20,9 @@ function AdminLogin({ onLogin }) {
 
     try {
       const cred = await signInWithEmailAndPassword(auth, email, password);
-console.log("UID:", cred.user.uid);
+
 const adminDoc = await getDoc(doc(db, "admins", cred.user.uid));
-console.log("Admin doc exists:", adminDoc.exists());
+
       if (!adminDoc.exists()) {
         await auth.signOut();
         setError("You don't have admin access.");

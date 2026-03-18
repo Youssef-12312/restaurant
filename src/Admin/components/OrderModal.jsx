@@ -1,4 +1,3 @@
-
 function OrderModal({ order, onClose }) {
   if (!order) return null;
 
@@ -37,7 +36,20 @@ function OrderModal({ order, onClose }) {
             {order.address && (
               <>
                 <span className="modal-info__key">Address</span>
-                <span className="modal-info__val">{order.address}</span>
+
+                <div className="modal-address">
+                  <span className="modal-info__val">
+                    {order.address}
+                  </span>
+
+                  <a
+                    href={`https://www.google.com/maps?q=${order.address}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    View Location
+                  </a>
+                </div>
               </>
             )}
           </div>

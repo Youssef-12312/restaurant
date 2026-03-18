@@ -5,8 +5,8 @@ import OrderCard from "../components/OrderCard.jsx";
 import OrderModal from "../components/OrderModal.jsx";
 import StatsCards from "../components/StatsCards.jsx";
 import notificationSound from "../../../public/notification.mp3";
-
-const FILTERS = ["all", "new", "preparing", "on the way", "completed", "cancelled"];
+import { doc, deleteDoc } from "firebase/firestore";
+const FILTERS = ["all", "new", "preparing", "on_the_way", "completed", "cancelled"];
 
 function OrdersPage() {
 
@@ -38,12 +38,13 @@ function OrdersPage() {
       </head>
 
       <body>
-
-        <h2>Shelter</h2>
-
+        <h2> Shelter </h2>
+        
         <p>Order #${String(order.orderNumber).padStart(4,"0")}</p>
 
         <p>Customer: ${order.customerName}</p>
+
+        <p>Address : ${order.address} </p>
 
         <p>Phone: ${order.phone}</p>
 
@@ -58,7 +59,7 @@ function OrdersPage() {
 
         <hr>
 
-        <h3>Total: ${order.total} EGP</h3>
+        <h3>Total: EGP {order.total} EGP</h3>
 
       </body>
       </html>
@@ -67,7 +68,27 @@ function OrdersPage() {
     printWindow.document.close();
     printWindow.print();
   };
+/* ───────── Clear List ───────── */
+const clearCurrentList = async () => {
+  if (filtered.length === 0) return;
 
+  const confirmDelete = window.confirm(
+    `Delete ${filtered.length} orders?`
+  );
+  if (!confirmDelete) return;
+
+  try {
+    for (const order of filtered) {
+      console.log("Deleting:", order.id);
+      await deleteDoc(doc(db, "orders", order.id));
+    }
+
+    console.log("DONE DELETE");
+
+  } catch (err) {
+    console.error("Delete error:", err);
+  }
+}; 
   /* ───────── REALTIME LISTENER ───────── */
 
   useEffect(() => {
@@ -193,18 +214,27 @@ function OrdersPage() {
             onClick={() => setFilter(f)}
           >
 
-            {f === "all"
-              ? "All"
-              : f.replace("_"," ").replace(/\b\w/g,c=>c.toUpperCase())}
+<>
+        {f === "all"
+          ? "All"
+            : f.replaceAll("_"," ").replace(/\b\w/g,c=>c.toUpperCase())
+  }
 
-            {f === "all"
-              ? ` (${orders.length})`
-              : ` (${orders.filter((o)=>o.status===f).length})`}
+{f === "all"
+  ? ` (${visibleOrders.length})`
+  : ` (${visibleOrders.filter((o)=>o.status===f).length})`
+}
+</>
 
           </button>
 
         ))}
-
+      <button
+    className="op-clear-btn"
+    onClick={clearCurrentList}
+  >
+    🗑 Clear List
+  </button>
       </div>
 
       {/* Orders */}
