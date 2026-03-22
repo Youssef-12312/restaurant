@@ -1,6 +1,6 @@
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../services/firebase";
-
+import "../styles/ModalBadges.css";
 /* ───────── STATUS CONSTANTS ───────── */
 
 const STATUS = {
@@ -70,10 +70,26 @@ const ACTION_BUTTONS = [
   }
 ];
 
+function getText(value) {
+  if (typeof value === "string") return value;
+  if (!value || typeof value !== "object") return "";
+  return value.ar || value.en || "";
+}
+
+function getPrice(item) {
+  if (typeof item.price === "number") return item.price;
+
+  if (item.prices && typeof item.prices === "object") {
+    const vals = Object.values(item.prices).filter((v) => typeof v === "number");
+    if (vals.length > 0) return vals[0];
+  }
+
+  return 0;
+}
+
 /* ───────── COMPONENT ───────── */
 
 function OrderCard({ order, onOpen }) {
-
   const statusInfo =
     STATUS_LABELS[order.status] || STATUS_LABELS[STATUS.NEW];
 
@@ -83,8 +99,6 @@ function OrderCard({ order, onOpen }) {
         minute: "2-digit"
       })
     : "—";
-
-  /* ───────── UPDATE STATUS ───────── */
 
   const updateStatus = async (e, newStatus) => {
     e.stopPropagation();
@@ -97,8 +111,6 @@ function OrderCard({ order, onOpen }) {
       console.error("Update status error:", err);
     }
   };
-
-  /* ───────── CANCEL ORDER ───────── */
 
   const cancelOrder = async (e) => {
     e.stopPropagation();
@@ -114,8 +126,6 @@ function OrderCard({ order, onOpen }) {
     }
   };
 
-  /* ───────── WHATSAPP ───────── */
-
   const sendWhatsApp = (e) => {
     e.stopPropagation();
 
@@ -127,22 +137,19 @@ function OrderCard({ order, onOpen }) {
     const phone = order.phone.replace(/^0/, "20");
 
     const message = `Hello ${order.customerName}
-You Order From *Shelter House Of cheese* is :
-    ${(order.items || [])
-  .map((i) => `${i.name} x${i.qty}`)
+Your order from *Shelter House Of Cheese* is:
+${(order.items || [])
+  .map((i) => `${getText(i.name)} x${i.qty}`)
   .join("\n")}
-    On Address : ${order.address}
-    Your Total  : ${order.total} EGP
-    Your order *#${order.orderNumber}* is now ${statusInfo.label}.
-    If There is Any Proplem Call us on : 17574
-    Thank you for ordering from *Shelter House Of cheese*`;
+Address: ${order.address || "—"}
+Total: ${order.total} EGP
+Your order *#${order.orderNumber}* is now ${statusInfo.label}.
+If there is any problem call us on: 17574
+Thank you for ordering from *Shelter House Of Cheese*`;
 
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-      
     window.open(url, "_blank");
   };
-
-  /* ───────── ACTION BUTTON ───────── */
 
   const actionBtn = ACTION_BUTTONS.find(
     (a) => a.status === order.status
@@ -153,7 +160,6 @@ You Order From *Shelter House Of cheese* is :
       className={`order-card order-card--${order.status}`}
       onClick={() => onOpen(order)}
     >
-      {/* Top Row */}
       <div className="order-card__top">
         <span className="order-card__num">
           #{order.orderNumber}
@@ -170,7 +176,6 @@ You Order From *Shelter House Of cheese* is :
         </span>
       </div>
 
-      {/* Customer */}
       <div className="order-card__customer">
         <span className="order-card__name">
           {order.customerName}
@@ -180,7 +185,6 @@ You Order From *Shelter House Of cheese* is :
         </span>
       </div>
 
-      {/* Meta */}
       <div className="order-card__meta">
         <span
           className={`order-card__type order-card__type--${order.orderType}`}
@@ -193,18 +197,16 @@ You Order From *Shelter House Of cheese* is :
         <span className="order-card__time">{time}</span>
       </div>
 
-      {/* Items preview */}
       <p className="order-card__items-preview">
         {(order.items || [])
           .slice(0, 2)
-          .map((i) => `${i.name} ×${i.qty}`)
+          .map((i) => `${getText(i.name)} ×${i.qty}`)
           .join(" · ")}
 
         {order.items?.length > 2 &&
           ` +${order.items.length - 2} more`}
       </p>
 
-      {/* Total */}
       <div className="order-card__total">
         <span>Total</span>
         <span className="order-card__total-amount">
@@ -212,7 +214,6 @@ You Order From *Shelter House Of cheese* is :
         </span>
       </div>
 
-      {/* Actions */}
       <div
         className="order-card__actions"
         onClick={(e) => e.stopPropagation()}

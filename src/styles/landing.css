@@ -436,7 +436,12 @@ span.shelter {color: var(--amber-light);}
 .footer-social h4{
   margin-bottom:15px;
 }
-
+.powerd-name {
+  position: relative;
+  text-align: center;
+  color: var(--muted);
+  top: 35px;
+}
 .social-icons{
   display:flex;
   flex-direction:column;
@@ -469,7 +474,9 @@ span.shelter {color: var(--amber-light);}
   color:#aaa;
   font-size:14px;
 }
-
+.footer-policy-link {
+  
+}
 @media(max-width:900px){
   .hero h1{
     font-size:46px;

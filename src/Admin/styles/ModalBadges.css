@@ -1,0 +1,59 @@
+/* ── زود الـ CSS دي في ملف الـ admin CSS بتاعك ── */
+
+/* الـ badges row تحت اسم الأكل */
+.modal-item {
+  display: flex;
+  flex-wrap: wrap;        /* ← غير من الـ default */
+  align-items: center;
+  gap: 6px;
+}
+
+.modal-item__badges {
+  flex-basis: 100%;       /* تاخد سطر كامل تحت الاسم */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 2px;
+  padding-bottom: 4px;
+}
+
+/* الـ badge الأساسي */
+.modal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'Cairo', sans-serif;
+  white-space: nowrap;
+}
+
+/* حجم */
+.modal-badge--size {
+  background: #fff2ec;
+  color: #c2440e;
+  border: 1px solid #ffd5bf;
+}
+
+/* حار */
+.modal-badge--spicy {
+  background: #fff5f5;
+  color: #c53030;
+  border: 1px solid #fca5a5;
+}
+
+/* مش حار */
+.modal-badge--mild {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+/* اختيارات */
+.modal-badge--option {
+  background: #f5f3ff;
+  color: #5b21b6;
+  border: 1px solid #c4b5fd;
+}

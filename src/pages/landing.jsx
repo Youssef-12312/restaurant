@@ -117,6 +117,7 @@ function Landing() {
         <div className="footer-bottom">
           <p>{t("footer.rights")}</p>
         </div>
+        <p className="powerd-name">Powerd by : <a target="_blank" href="https://api.whatsapp.com/send/?phone=201007403490">Youssef Amr</a> </p>
         <div className="footer-legal">
           <Link to="/privacy" className="footer-policy-link">
             {t("footer.privacy")}

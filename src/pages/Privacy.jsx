@@ -17,24 +17,20 @@ function PrivacyPolicy() {
           <p className="privacy-subtitle">{t("privacy.subtitle")}</p>
         </div>
       </section>
-
       <section className="privacy-content">
         <div className="privacy-card">
-
           {sections.map((num) => (
             <div className="privacy-section" key={num}>
               <h2>{t(`privacy.sections.${num}.title`)}</h2>
               <p>{t(`privacy.sections.${num}.body`)}</p>
             </div>
           ))}
-
           <div className="privacy-note">
             <strong>{t("privacy.lastUpdated")}</strong> March 2026
           </div>
-
-        </div>
-      </section>
-    </main>
+      </div>
+    </section>
+  </main>
   );
 }
 

@@ -5,7 +5,7 @@
 .showcase {
   position: relative;
   width: 100%;
-  height: 520px;
+  height: 550px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -131,7 +131,9 @@
   background: #ffb347;
   transform: scale(1.4);
 }
-
+  .phone-pic {
+  display: none;
+}
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .showcase {
@@ -149,9 +151,16 @@
  
   .showcase__text {
     display: none;
+  
+
+  }
+  .phone-pic {
+    display: block;
   }
 
 }
+
+
 
 @media (max-width: 480px) {
   .showcase {

@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { db } from "../services/firebase.js";
 import { collection, onSnapshot } from "firebase/firestore";
 import MenuCard from "../components/MenuCard.jsx";
@@ -6,20 +6,24 @@ import Cart from "../components/Cart.jsx";
 import { images } from "../assets/Images/images.js";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../components/LanguageSwitcher.jsx";
+import ItemDrawer from "../components/ItemDrawer.jsx";
 function CustomerMenu({ cart, setCart }) {
   const { t } = useTranslation();
-  const [menu, setMenu]           = useState([]);
-  const [search, setSearch]       = useState("");
-  const [activeTab, setActiveTab] = useState("الكل");
+  const [menu, setMenu] = useState([]);
+  const [search, setSearch] = useState("");
+  const [activeTab, setActiveTab] = useState("ALL");
+  const [selectedItem, setSelectedItem] = useState(null);
 
-  /* ── Cart actions ── */
   function addToCart(item) {
     setCart((prev) => {
       const exists = prev.find((c) => c.id === item.id);
-      if (exists)
+
+      if (exists) {
         return prev.map((c) =>
           c.id === item.id ? { ...c, qty: c.qty + 1 } : c
         );
+      }
+
       return [...prev, { ...item, qty: 1 }];
     });
   }
@@ -36,69 +40,82 @@ function CustomerMenu({ cart, setCart }) {
       )
     );
 
-  /* ── Fetch from Firestore ── */
   useEffect(() => {
-    const ref   = collection(db, "menu");
-    const unsub = onSnapshot(ref, (snap) => {
-      setMenu(snap.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    const ref = collection(db, "menu");
+
+    const unsub = onSnapshot(ref, (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        docId: doc.id,
+      }));
+      setMenu(data);
     });
+
     return () => unsub();
   }, []);
 
-  /* ── Dynamic categories ── */
-  const categories = useMemo(() => {
-    const cats = [...new Set(menu.map((i) => i.category).filter(Boolean))];
-    return [t("menu.all"), ...cats];
-  }, [menu, t]);
+  const categories = [
+    "ALL",
+    ...new Set(menu.map((item) => item.category).filter(Boolean)),
+  ];
 
-  /* ── Filtered menu ── */
-const filtered = useMemo(() => {
-  const q = search.toLowerCase().trim();
+  const filtered = menu.filter((item) => {
+    const q = search.trim().toLowerCase();
 
-  return menu.filter((item) => {
+    const itemName =
+      typeof item.name === "string"
+        ? item.name.toLowerCase()
+        : `${item.name?.ar || ""} ${item.name?.en || ""}`.toLowerCase();
 
-    const available = item.available !== false;
+    const itemDescription =
+      typeof item.description === "string"
+        ? item.description.toLowerCase()
+        : `${item.description?.ar || ""} ${item.description?.en || ""}`.toLowerCase();
+
+    const itemCategory = (item.category || "").toLowerCase();
 
     const matchSearch =
       !q ||
-      item.name?.toLowerCase().includes(q) ||
-      item.description?.toLowerCase().includes(q);
+      itemName.includes(q) ||
+      itemDescription.includes(q) ||
+      itemCategory.includes(q);
 
     const matchTab =
-      activeTab === t("menu.all") || item.category === activeTab;
+      activeTab === "ALL" || item.category === activeTab;
 
-    return available && matchSearch && matchTab;
-
+    return matchSearch && matchTab;
   });
 
-}, [menu, search, activeTab, t]);
-
-  /* ── Render ── */
   return (
     <>
-      {/* ══ NAVBAR ══ */}
       <nav className="navbar">
         <div className="nav-container">
           <div className="logo">
             <img src={images.logo} alt="Shelter logo" loading="lazy" />
             <span>Shelter</span>
           </div>
+
           <div className="nav-links">
-            <a href="/" className="menu-btn">{t("nav.home")}</a>
+            <a href="/" className="menu-btn">
+              {t("nav.home")}
+            </a>
             <LanguageSwitcher />
           </div>
         </div>
       </nav>
 
-      {/* ══ HERO ══ */}
       <section className="menu-hero">
-        <img src={images.logo} alt="Shelter logo" className="hero-logo" loading="lazy" />
+        <img
+          src={images.logo}
+          alt="Shelter logo"
+          className="hero-logo"
+          loading="lazy"
+        />
         <h1>{t("menu.title")}</h1>
         <p className="tagline">{t("menu.tagline")}</p>
         <p className="hero-text">{t("menu.heroText")}</p>
       </section>
 
-      {/* ══ SEARCH + FILTER ══ */}
       <div className="menu-controls">
         <div className="search-wrapper">
           <svg
@@ -127,6 +144,7 @@ const filtered = useMemo(() => {
               className="search-clear"
               onClick={() => setSearch("")}
               aria-label="Clear search"
+              type="button"
             >
               ✕
             </button>
@@ -144,28 +162,26 @@ const filtered = useMemo(() => {
           {categories.map((cat) => (
             <button
               key={cat}
-              className={`category-tab${activeTab === cat ? " active" : ""}`}
+              className={`category-tab ${activeTab === cat ? "active" : ""}`}
               onClick={() => setActiveTab(cat)}
+              type="button"
             >
-              {cat}
+              {cat === "ALL" ? "الكل" : cat}
             </button>
           ))}
         </div>
       </div>
 
-      {/* ══ MENU GRID + CART ══ */}
       <div className="customer-menu">
         <div className="menu-grid">
           {filtered.length > 0 ? (
-            filtered.map((item) => (
-              <div key={item.id}>
-                <MenuCard item={item} addToCart={addToCart} />
-
-                {item.available === false && (
-                  <button disabled>
-                    Out of Stock
-                  </button>
-                )}
+            filtered.map((item, index) => (
+              <div key={item.docId || item.id || index}>
+<MenuCard
+  item={item}
+  onClick={() => setSelectedItem(item)}
+  addToCart={() => setSelectedItem(item)}
+/>
               </div>
             ))
           ) : (
@@ -176,7 +192,7 @@ const filtered = useMemo(() => {
             </div>
           )}
         </div>
-          
+
         <Cart
           cart={cart}
           removeFromCart={removeFromCart}
@@ -184,6 +200,13 @@ const filtered = useMemo(() => {
           addToCart={addToCart}
         />
       </div>
+      {selectedItem && (
+  <ItemDrawer
+    item={selectedItem}
+    onClose={() => setSelectedItem(null)}
+    addToCart={addToCart}
+  />
+)}
     </>
   );
 }

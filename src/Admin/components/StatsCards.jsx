@@ -1,42 +1,60 @@
-function StatsCards({ orders }) {
+function StatsCards({ orders = [] }) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-  const today = new Date().toDateString();
+  const visibleOrders = orders.filter((order) => {
+    if (!order.createdAt) return true;
 
-  const newOrders = orders.filter(
+    const orderDate = order.createdAt.toDate
+      ? order.createdAt.toDate()
+      : new Date(order.createdAt);
+
+    if (order.status?.toLowerCase() === "completed" && orderDate < today) {
+      return false;
+    }
+
+    return true;
+  });
+
+  const newOrders = visibleOrders.filter(
     (o) => o.status?.toLowerCase() === "new"
   ).length;
 
-  const preparing = orders.filter(
+  const preparing = visibleOrders.filter(
     (o) => o.status?.toLowerCase() === "preparing"
   ).length;
 
-  const completed = orders.filter(
+  const completed = visibleOrders.filter(
     (o) => o.status?.toLowerCase() === "completed"
   ).length;
 
-  const todaySales = orders
+  const todaySales = visibleOrders
     .filter((o) => {
-
       if (!o.createdAt) return false;
 
       const d = o.createdAt.toDate
         ? o.createdAt.toDate()
         : new Date(o.createdAt);
 
+      d.setHours(0, 0, 0, 0);
+
       return (
-        d.toDateString() === today &&
+        d.getTime() === today.getTime() &&
         o.status?.toLowerCase() === "completed"
       );
-
     })
-    .reduce((sum, o) => sum + (o.total || 0), 0);
-
+    .reduce((sum, o) => sum + (Number(o.total) || 0), 0);
 
   const cards = [
     { label: "New Orders", value: newOrders, icon: "🔔", color: "#e8521a" },
     { label: "Preparing", value: preparing, icon: "👨‍🍳", color: "#f59e0b" },
     { label: "Completed", value: completed, icon: "✅", color: "#10b981" },
-    { label: "Today Sales", value: `${todaySales} EGP`, icon: "💰", color: "#6366f1" },
+    {
+      label: "Today Sales",
+      value: `${todaySales} EGP`,
+      icon: "💰",
+      color: "#6366f1"
+    }
   ];
 
   return (
@@ -53,7 +71,6 @@ function StatsCards({ orders }) {
             <span className="stats-card__value">{c.value}</span>
             <span className="stats-card__label">{c.label}</span>
           </div>
-
         </div>
       ))}
     </div>

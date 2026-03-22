@@ -1,32 +1,47 @@
-import { images } from "../assets/Images/images.js";
+
 import "../styles/menu.css";
 import { useTranslation } from "react-i18next";
 
-function MenuCard({ item, addToCart }) {
-  const { t } = useTranslation();
+function MenuCard({ item, addToCart, onClick }) {
+  const { t, i18n } = useTranslation();
+
+  const lang = i18n.language?.startsWith("ar") ? "ar" : "en";
+
+  const getText = (value) => {
+    if (typeof value === "string") return value;
+    if (!value || typeof value !== "object") return "";
+    return value[lang] || value.ar || value.en || "";
+  };
+
+  const getPrice = () => {
+    if (typeof item.price === "number") return item.price.toFixed(2);
+
+    if (item.prices && typeof item.prices === "object") {
+      const firstPrice = Object.values(item.prices)[0];
+      return typeof firstPrice === "number" ? firstPrice.toFixed(2) : "0.00";
+    }
+
+    return "0.00";
+  };
 
   return (
-    <div className="menu-card">
+    <div className="menu-card" onClick={onClick}>
       <div className="menu-card__image-wrapper">
         <img
           className="menu-card__img"
-          src={images[item.category] || images.placeholder}
-          alt={item.name}
-          loading="lazy"
+        src={`/images/${item.id}.webp`}
+        alt={getText(item.name)}
+        loading="lazy"
         />
       </div>
 
       <div className="menu-card__body">
-        <h3 className="menu-card__name">{item.name}</h3>
-        <p className="menu-card__description">{item.description}</p>
+        <h3 className="menu-card__name">{getText(item.name)}</h3>
+        <p className="menu-card__description">{getText(item.description)}</p>
 
         <div className="menu-card__footer">
           <span className="menu-card__price">
-            
-            {item.price
-              ? item.price.toFixed(2)
-              : Object.values(item.prices || {})[0]?.toFixed?.(2) || "0.00"}
-              EGP
+            {getPrice()} EGP
           </span>
 
           <button className="menu-card__btn" onClick={() => addToCart(item)}>
