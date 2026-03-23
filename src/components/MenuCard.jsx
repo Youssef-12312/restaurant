@@ -14,17 +14,14 @@ function MenuCard({ item, addToCart, onClick }) {
   };
 
 const getPrice = () => {
-
   if (typeof item.price === "number") {
     return item.price.toFixed(2);
   }
 
-
   if (item.prices && typeof item.prices === "object") {
-
-    if (item.prices.large) return item.prices.large.toFixed(2);
-    if (item.prices.medium) return item.prices.medium.toFixed(2);
-    if (item.prices.small) return item.prices.small.toFixed(2);
+    if (item.prices.single) return item.prices.single.toFixed(2);
+    if (item.prices.double) return item.prices.double.toFixed(2);
+    if (item.prices.triple) return item.prices.triple.toFixed(2);
   }
 
   return "0.00";
