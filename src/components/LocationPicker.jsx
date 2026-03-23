@@ -1,6 +1,14 @@
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import { useState } from "react";
 import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+
+const customIcon = new L.Icon({
+  iconUrl: "/marker-icon.png",
+  shadowUrl: "/marker-shadow.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+});
 
 function LocationPicker({ setLocation }) {
   const [position, setPosition] = useState([31.0409, 31.3785]);
@@ -14,7 +22,7 @@ function LocationPicker({ setLocation }) {
       }
     });
 
-    return <Marker position={position} />;
+    return <Marker position={position} icon={customIcon} />;
   }
 
   return (
