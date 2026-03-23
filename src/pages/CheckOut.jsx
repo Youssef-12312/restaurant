@@ -4,8 +4,7 @@ import "../styles/checkout.css";
 import L from "leaflet";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import markerIcon from "leaflet/dist/images/marker-icon.png";
-import markerShadow from "leaflet/dist/images/marker-shadow.png";
+
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../services/firebase";
 import { useTranslation } from "react-i18next";
@@ -18,11 +17,11 @@ function isRestaurantOpen() {
   }
   return true;
 }
-delete L.Icon.Default.prototype._getIconUrl;
-
-L.Icon.Default.mergeOptions({
-  iconUrl: markerIcon,
-  shadowUrl: markerShadow,
+const customIcon = new L.Icon({
+  iconUrl: "/marker-icon.png",
+  shadowUrl: "/marker-shadow.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
 });
 async function getAddressFromCoords(lat, lng) {
   const res = await fetch(
@@ -126,7 +125,7 @@ const finalTotal = subtotal + vat + deliveryFee;
       }
     });
 
-    return <Marker position={mapPosition} />;
+return <Marker position={mapPosition} icon={customIcon} />;
   }
 
   const validate = () => {
