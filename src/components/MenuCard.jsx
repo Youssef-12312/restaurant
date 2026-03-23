@@ -13,16 +13,22 @@ function MenuCard({ item, addToCart, onClick }) {
     return value[lang] || value.ar || value.en || "";
   };
 
-  const getPrice = () => {
-    if (typeof item.price === "number") return item.price.toFixed(2);
+const getPrice = () => {
 
-    if (item.prices && typeof item.prices === "object") {
-      const firstPrice = Object.values(item.prices)[0];
-      return typeof firstPrice === "number" ? firstPrice.toFixed(2) : "0.00";
-    }
+  if (typeof item.price === "number") {
+    return item.price.toFixed(2);
+  }
 
-    return "0.00";
-  };
+
+  if (item.prices && typeof item.prices === "object") {
+
+    if (item.prices.large) return item.prices.large.toFixed(2);
+    if (item.prices.medium) return item.prices.medium.toFixed(2);
+    if (item.prices.small) return item.prices.small.toFixed(2);
+  }
+
+  return "0.00";
+};
 
   return (
     <div className="menu-card" onClick={onClick}>

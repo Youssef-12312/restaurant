@@ -7,6 +7,7 @@ import { images } from "../assets/Images/images.js";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../components/LanguageSwitcher.jsx";
 import ItemDrawer from "../components/ItemDrawer.jsx";
+
 function CustomerMenu({ cart, setCart }) {
   const { t } = useTranslation();
   const [menu, setMenu] = useState([]);
@@ -59,6 +60,7 @@ function CustomerMenu({ cart, setCart }) {
     ...new Set(menu.map((item) => item.category).filter(Boolean)),
   ];
 
+  /* 🔥 FILTER (FIXED) */
   const filtered = menu.filter((item) => {
     const q = search.trim().toLowerCase();
 
@@ -83,7 +85,10 @@ function CustomerMenu({ cart, setCart }) {
     const matchTab =
       activeTab === "ALL" || item.category === activeTab;
 
-    return matchSearch && matchTab;
+    /* 🔥 أهم سطر */
+    const isAvailable = item.available !== false;
+
+    return matchSearch && matchTab && isAvailable;
   });
 
   return (
@@ -124,8 +129,6 @@ function CustomerMenu({ cart, setCart }) {
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
           >
             <circle cx="11" cy="11" r="8" />
             <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -143,7 +146,6 @@ function CustomerMenu({ cart, setCart }) {
             <button
               className="search-clear"
               onClick={() => setSearch("")}
-              aria-label="Clear search"
               type="button"
             >
               ✕
@@ -162,7 +164,9 @@ function CustomerMenu({ cart, setCart }) {
           {categories.map((cat) => (
             <button
               key={cat}
-              className={`category-tab ${activeTab === cat ? "active" : ""}`}
+              className={`category-tab ${
+                activeTab === cat ? "active" : ""
+              }`}
               onClick={() => setActiveTab(cat)}
               type="button"
             >
@@ -177,11 +181,11 @@ function CustomerMenu({ cart, setCart }) {
           {filtered.length > 0 ? (
             filtered.map((item, index) => (
               <div key={item.docId || item.id || index}>
-<MenuCard
-  item={item}
-  onClick={() => setSelectedItem(item)}
-  addToCart={() => setSelectedItem(item)}
-/>
+                <MenuCard
+                  item={item}
+                  onClick={() => setSelectedItem(item)}
+                  addToCart={() => setSelectedItem(item)}
+                />
               </div>
             ))
           ) : (
@@ -200,13 +204,14 @@ function CustomerMenu({ cart, setCart }) {
           addToCart={addToCart}
         />
       </div>
+
       {selectedItem && (
-  <ItemDrawer
-    item={selectedItem}
-    onClose={() => setSelectedItem(null)}
-    addToCart={addToCart}
-  />
-)}
+        <ItemDrawer
+          item={selectedItem}
+          onClose={() => setSelectedItem(null)}
+          addToCart={addToCart}
+        />
+      )}
     </>
   );
 }

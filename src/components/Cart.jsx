@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { images } from "../assets/Images/images";
 import { useNavigate } from "react-router-dom";
 import "../styles/menu.css";
 import { useTranslation } from "react-i18next";
@@ -53,11 +52,17 @@ function CartContent({
 
             return (
               <div className="cart__item" key={itemKey}>
-                <img
-                  className="cart__item-img"
-                  src={images[item.category] || images.placeholder}
-                  alt={getText(item.name)}
-                />
+<img
+  className="cart__item-img"
+  src={
+    item.image
+      ? item.image
+      : item.id
+      ? `/images/${item.id}.webp`
+      : "/images/placeholder.webp"
+  }
+  alt={getText(item.name)}
+/>
 
                 <div className="cart__item-info">
                   <p className="cart__item-name">{getText(item.name)}</p>

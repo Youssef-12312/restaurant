@@ -91,7 +91,7 @@ function OrderModal({ order, onClose }) {
                       {/* الحجم */}
                       {item.sizeLabel && (
                         <span className="modal-badge modal-badge--size">
-                          📐 {item.sizeLabel}
+                           {item.sizeLabel}
                         </span>
                       )}
 

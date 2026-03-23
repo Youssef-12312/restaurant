@@ -71,7 +71,7 @@ const total = subtotal + vat + delivery;
       <img src="/Print.webp" style="display:block; margin:15px auto;width:100px;" />
         <h1>Shelter</h1>
 
-        <p>Order #${String(order.orderNumber).padStart(4, "0")}</p>
+        <p>Order <strong>#${String(order.orderNumber).padStart(4, "0")}</strong></p>
         <p>Customer: ${order.customerName || "—"}</p>
         <p>Address: ${order.address || "—"}</p>
         <p>Phone: ${order.phone || "—"}</p>
@@ -237,10 +237,17 @@ const total = subtotal + vat + delivery;
       </div>
 
       {filtered.length === 0 ? (
-        <div className="op-empty">
-          <span>🍽️</span>
-          <p>No orders found</p>
-        </div>
+<div className="op-empty">
+  <span>
+    <img 
+      src="/MainLogowebp.webp" 
+      alt="" 
+      loading="lazy"
+      style={{ width: "80px", height: "auto", opacity: 0.8 }}
+    />
+  </span>
+  <p>No orders found</p>
+</div>
       ) : (
         <div className="op-grid">
           {filtered.map((order) => (

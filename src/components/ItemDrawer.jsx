@@ -10,11 +10,7 @@ const getLang = (field, lang = "en") => {
   return field[lang] ?? field["en"] ?? field["ar"] ?? Object.values(field)[0] ?? "";
 };
 
-/**
- * Firestore maps come back as plain objects.
- * Filter out null values (e.g. triple: null in Chicken Burger).
- * Returns [{ key, label, value }, ...]
- */
+
 const parseSizes = (prices) => {
   if (!prices || typeof prices !== "object" || Array.isArray(prices)) return [];
   return Object.entries(prices)
@@ -27,10 +23,7 @@ const parseSizes = (prices) => {
     .filter((s) => !isNaN(s.value) && s.value > 0);
 };
 
-/**
- * Robust check: is `prices` a real non-empty plain object?
- * Handles Firestore maps, null, arrays, strings safely.
- */
+
 const detectPrices = (prices) => {
   if (prices === null || prices === undefined) return false;
   if (typeof prices !== "object")              return false; // string / number
@@ -130,28 +123,40 @@ useEffect(() => {
       [groupIdx]: prev[groupIdx] === optLabel ? undefined : optLabel,
     }));
 
-  const handleAdd = () => {
-    if (!canAdd) {
-      setShake(true);
-      setTimeout(() => setShake(false), 600);
-      return;
-    }
-    addToCart?.({
-      id:        item.docId || item.id || crypto.randomUUID(),
-      name:      getLang(item.name, lang),
-      image:     item.image ?? null,
-      category:  item.category,
-      sizeKey:   selectedSizeKey,
-      sizeLabel: selectedSizeKey
-                   ? selectedSizeKey.charAt(0).toUpperCase() + selectedSizeKey.slice(1)
-                   : null,
-      spicy:     isSpicy,
-      options:   selectedOptions,
-      price:     totalPrice,
-    });
-    setAddedAnim(true);
-    setTimeout(() => onClose?.(), 820);
-  };
+const handleAdd = () => {
+  if (!canAdd) {
+    setShake(true);
+    setTimeout(() => setShake(false), 600);
+    return;
+  }
+
+  addToCart?.({
+    id: item.docId || item.id || crypto.randomUUID(),
+
+    name: getLang(item.name, lang),
+
+    
+    image: item.id
+      ? `/images/${item.id}.webp`
+      : "/images/placeholder.webp",
+
+    category: item.category,
+
+    sizeKey: selectedSizeKey,
+    sizeLabel: selectedSizeKey
+      ? selectedSizeKey.charAt(0).toUpperCase() +
+        selectedSizeKey.slice(1)
+      : null,
+
+    spicy: isSpicy,
+    options: selectedOptions,
+
+    price: totalPrice,
+  });
+
+  setAddedAnim(true);
+  setTimeout(() => onClose?.(), 820);
+};
 
   /* ── render ── */
   const itemName = getLang(item.name, lang);
