@@ -89,6 +89,7 @@ const adminDoc = await getDoc(doc(db, "admins", cred.user.uid));
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
+              autoComplete="current-password"
               required
             />
           </div>

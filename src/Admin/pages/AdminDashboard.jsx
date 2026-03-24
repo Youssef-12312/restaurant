@@ -58,7 +58,7 @@ useEffect(() => {
             <span>🍔</span> Menu Control
           </Link>
         </nav>
-
+      
         <button className="dash-sidebar__logout" onClick={handleLogout}>
           <span>🚪</span> Logout
         </button>

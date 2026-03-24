@@ -104,6 +104,29 @@ function Landing() {
           <div className="footer-links">
             <Link to="/menu">{t("nav.viewMenu")}</Link>
           </div>
+          <div className="footer-locations">
+            <h4>Our Branches</h4>
+                    <p className="footer-address">
+                      
+                              <a
+                      href="https://maps.app.goo.gl/ExfhJkUuegP9AdXs9"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="footer-map-link"
+                    >
+                      📍  الفرع الأول ، المنصورة(اضغط لفتح الموقع)
+                    </a>
+                    </p>
+
+                    <a
+                      href="https://maps.app.goo.gl/ES8wz8UCVS6uBnCg7"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="footer-map-link"
+                    >
+                      📍 الفرع الثاني ، المنصورة (اضغط لفتح الموقع)
+                    </a>
+                  </div>
           <div className="footer-social">
             <h4>{t("footer.followUs")}</h4>
             <div className="social-icons">
