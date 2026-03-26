@@ -101,7 +101,7 @@ function Landing() {
 
     <div className="footer-brand">
       <div className="footer-brand-icon"><img src={images.ramadan} alt="Logo" /></div>
-      <div className="footer-brand-name">SHELTER</div>
+      <div className="footer-brand-name">S H E L T E R</div>
       <p>{t("footer.description")}</p>
     </div>
 
