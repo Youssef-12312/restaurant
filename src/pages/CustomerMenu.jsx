@@ -7,7 +7,8 @@ import { images } from "../assets/Images/images.js";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../components/LanguageSwitcher.jsx";
 import ItemDrawer from "../components/ItemDrawer.jsx";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 function CustomerMenu({ cart, setCart }) {
   const { t } = useTranslation();
   const [menu, setMenu] = useState([]);
@@ -59,8 +60,6 @@ function CustomerMenu({ cart, setCart }) {
     "ALL",
     ...new Set(menu.map((item) => item.category).filter(Boolean)),
   ];
-
-  /* 🔥 FILTER (FIXED) */
   const filtered = menu.filter((item) => {
     const q = search.trim().toLowerCase();
 
@@ -85,7 +84,6 @@ function CustomerMenu({ cart, setCart }) {
     const matchTab =
       activeTab === "ALL" || item.category === activeTab;
 
-    /* 🔥 أهم سطر */
     const isAvailable = item.available !== false;
 
     return matchSearch && matchTab && isAvailable;
@@ -212,6 +210,31 @@ function CustomerMenu({ cart, setCart }) {
           addToCart={addToCart}
         />
       )}
+<a
+  href="https://api.whatsapp.com/send/?phone=201033030430"
+  target="_blank"
+  rel="noreferrer"
+  aria-label="WhatsApp"
+  style={{
+    position: "fixed",
+    right: "20px",
+    bottom: "20px",
+    width: "58px",
+    height: "58px",
+    borderRadius: "50%",
+    backgroundColor: "#25D366",
+    color: "#fff",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    textDecoration: "none",
+    boxShadow: "0 10px 25px rgba(0,0,0,0.22)",
+    zIndex: 9999,
+  }}
+>
+  <FontAwesomeIcon icon={faWhatsapp} size="xl" />
+</a>
+
     </>
   );
 }

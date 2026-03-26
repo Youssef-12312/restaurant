@@ -4,7 +4,8 @@ import "../styles/landing.css";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../components/LanguageSwitcher.jsx";
 import FoodShowcase from "../components/FoodShowcase.jsx";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 const MARQUEE_ITEMS = Array.from({ length: 12 }, (_, i) => i);
 
@@ -94,60 +95,75 @@ function Landing() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="footer">
-        <div className="footer-container">
-          <div className="footer-brand">
-            <img src={images.ramadan} alt="Shelter logo" className="footer-logo" loading="lazy" />
-            <p>{t("footer.description")}</p>
-          </div>
-          <div className="footer-links">
-            <Link to="/menu">{t("nav.viewMenu")}</Link>
-          </div>
-          <div className="footer-locations">
-            <h4>Our Branches</h4>
-                    <p className="footer-address">
-                      
-                              <a
-                      href="https://maps.app.goo.gl/ExfhJkUuegP9AdXs9"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="footer-map-link"
-                    >
-                      📍  الفرع الأول ، المنصورة(اضغط لفتح الموقع)
-                    </a>
-                    </p>
+<footer className="footer">
+  <div className="footer-accent" />
+  <div className="footer-container">
 
-                    <a
-                      href="https://maps.app.goo.gl/ES8wz8UCVS6uBnCg7"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="footer-map-link"
-                    >
-                      📍 الفرع الثاني ، المنصورة (اضغط لفتح الموقع)
-                    </a>
-                  </div>
-          <div className="footer-social">
-            <h4>{t("footer.followUs")}</h4>
-            <div className="social-icons">
-              <a href="https://www.instagram.com/shelter.egy/" target="_blank" rel="noreferrer" className="social-btn">Instagram</a>
-              <a href="https://www.facebook.com/Shelterhouseofcheese" target="_blank" rel="noreferrer" className="social-btn">Facebook</a>
-              <a href="https://www.tiktok.com/@shelterhouseofcheese" target="_blank" rel="noreferrer" className="social-btn">TikTok</a>
-              <a href="https://api.whatsapp.com/send/?phone=201033030430" target="_blank" rel="noreferrer" className="social-btn">WhatsApp</a>
-            </div>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <p>{t("footer.rights")}</p>
-        </div>
-        <p className="powerd-name">Powerd by : <a target="_blank" href="https://api.whatsapp.com/send/?phone=201007403490">Youssef Amr</a> </p>
-        <div className="footer-legal">
-          <Link to="/privacy" className="footer-policy-link">
-            {t("footer.privacy")}
-          </Link>
-        </div>
-      </footer>
+    <div className="footer-brand">
+      <div className="footer-brand-icon"><img src={images.ramadan} alt="Logo" /></div>
+      <div className="footer-brand-name">SHELTER</div>
+      <p>{t("footer.description")}</p>
+    </div>
 
+    <div className="footer-links">
+      <div className="footer-col-title">{t("Quick Links ")}</div>
+      <Link to="/menu">{t("nav.viewMenu")}</Link>
+    </div>
+
+    <div className="footer-locations">
+      <div className="footer-col-title">Our Branches</div>
+      <a href="https://maps.app.goo.gl/ExfhJkUuegP9AdXs9" target="_blank" rel="noreferrer" className="footer-map-link">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+        الفرع الأول — المنصورة
+      </a>
+      <a href="https://maps.app.goo.gl/ES8wz8UCVS6uBnCg7" target="_blank" rel="noreferrer" className="footer-map-link">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+        الفرع الثاني — المنصورة
+      </a>
+    </div>
+
+    <div className="footer-social">
+      <div className="footer-col-title">{t("footer.followUs")}</div>
+      <div className="social-icons">
+        <a href="https://www.instagram.com/shelter.egy/" target="_blank" rel="noreferrer" className="social-btn">Instagram</a>
+        <a href="https://www.facebook.com/Shelterhouseofcheese" target="_blank" rel="noreferrer" className="social-btn">Facebook</a>
+        <a href="https://www.tiktok.com/@shelterhouseofcheese" target="_blank" rel="noreferrer" className="social-btn">TikTok</a>
+        <a href="https://api.whatsapp.com/send/?phone=201033030430" target="_blank" rel="noreferrer" className="social-btn">WhatsApp</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div className="footer-bottom">
+    <p>{t("footer.rights")}</p>
+    <p className="powerd-name">Powered by <a target="_blank" href="https://api.whatsapp.com/send/?phone=201007403490">Youssef Amr</a></p>
+    <Link to="/privacy" className="footer-policy-link">{t("footer.privacy")}</Link>
+  </div>
+</footer>
+<a
+  href="https://api.whatsapp.com/send/?phone=201033030430"
+  target="_blank"
+  rel="noreferrer"
+  aria-label="WhatsApp"
+  style={{
+    position: "fixed",
+    right: "20px",
+    bottom: "20px",
+    width: "58px",
+    height: "58px",
+    borderRadius: "50%",
+    backgroundColor: "#25D366",
+    color: "#fff",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    textDecoration: "none",
+    boxShadow: "0 10px 25px rgba(0,0,0,0.22)",
+    zIndex: 9999,
+  }}
+>
+  <FontAwesomeIcon icon={faWhatsapp} size="xl" />
+</a>
     </main>
   );
 }
