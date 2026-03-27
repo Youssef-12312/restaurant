@@ -159,6 +159,28 @@ body{
   100% { bottom: -100px; right: -100px; opacity: 0; }
 }
 
+/* ── Hero Logo ── */
+.hero-logo-wrap {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  overflow: hidden;
+  animation: floatLogo 3.5s ease-in-out infinite;
+  box-shadow: 0 12px 32px rgba(255, 140, 66, 0.22);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-logo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* kept for backward-compat if used elsewhere */
 .hero-logo{
   width:140px;
   margin-bottom:20px;
@@ -266,6 +288,104 @@ body{
   width:100%;
   height:100%;
 }
+
+/* ── Floating Badges ── */
+.hero-badge {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  padding: 8px 13px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #444;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.07);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 3;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  pointer-events: none;
+  letter-spacing: 0.01em;
+}
+
+.badge-tl { top: 28px;    left: 32px;   animation: bf1 4s   ease-in-out infinite; }
+.badge-ml { top: 42%;     left: 18px;   animation: bf2 5s   ease-in-out infinite 0.5s; }
+.badge-tr { top: 20%;     right: 28px;  animation: bf3 4.5s ease-in-out infinite 1s; }
+.badge-br { bottom: 52px; right: 28px;  animation: bf1 5.5s ease-in-out infinite 0.3s; }
+
+@keyframes bf1 { 0%,100%{transform:translateY(0)}           50%{transform:translateY(-6px)} }
+@keyframes bf2 { 0%,100%{transform:translateY(0)}           50%{transform:translateY(6px)} }
+@keyframes bf3 { 0%,100%{transform:translateY(0) rotate(-0.8deg)} 50%{transform:translateY(-5px) rotate(0.8deg)} }
+
+.sdot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: background 0.4s, box-shadow 0.4s;
+}
+.sdot-open   { background: #16a34a; box-shadow: 0 0 0 2.5px rgba(22,163,74,0.2); }
+.sdot-closed { background: #dc2626; box-shadow: 0 0 0 2.5px rgba(220,38,38,0.18); }
+
+.badge-sub {
+  color: #aaa;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+/* ── Stat Chips ── */
+.stat-chips {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 14px auto 24px;
+  max-width: 560px;
+}
+
+.stat-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  border-radius: 8px;
+  padding: 6px 13px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #444;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  text-decoration: none;
+  animation: chipIn 0.45s ease both;
+}
+
+.stat-chip strong  { color: #c45e0a; font-weight: 600; }
+.chip-sub          { color: #aaa; font-size: 11px; font-weight: 400; }
+
+.stat-chip-link {
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.stat-chip-link:hover {
+  border-color: rgba(217, 109, 18, 0.3);
+  color: #d96d12;
+}
+
+@keyframes chipIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.stat-chip:nth-child(1){ animation-delay: 0.08s; }
+.stat-chip:nth-child(2){ animation-delay: 0.16s; }
+.stat-chip:nth-child(3){ animation-delay: 0.24s; }
+.stat-chip:nth-child(4){ animation-delay: 0.32s; }
+.stat-chip:nth-child(5){ animation-delay: 0.40s; }
+
 /* ── ضيف الكود ده في landing.css بعد .call-link ── */
 
 .marquee-wrapper {
@@ -607,10 +727,6 @@ span.shelter {color: var(--amber-light);}
   text-decoration: none;
 }
 
-
-.footer-policy-link {
-  
-}
 @media(max-width:900px){
   .hero h1{
     font-size:46px;
@@ -655,10 +771,6 @@ span.shelter {color: var(--amber-light);}
     padding:80px 18px;
   }
 
-  .hero-logo{
-    width:110px;
-  }
-
   .hero h1{
     font-size:38px;
   }
@@ -672,6 +784,35 @@ span.shelter {color: var(--amber-light);}
   .call-link{
     width:100%;
     max-width:260px;
+  }
+
+  /* إخفاء الـ badges الجانبية على موبايل */
+  .badge-ml,
+  .badge-tr {
+    display: none;
+  }
+
+  .badge-tl {
+    top: 10px;
+    left: 10px;
+    font-size: 11.5px;
+    padding: 6px 10px;
+  }
+
+  .badge-br {
+    bottom: 16px;
+    right: 10px;
+    font-size: 11.5px;
+    padding: 6px 10px;
+  }
+
+  .stat-chips {
+    gap: 6px;
+  }
+
+  .stat-chip {
+    font-size: 11.5px;
+    padding: 5px 11px;
   }
 }
 
@@ -703,6 +844,4 @@ span.shelter {color: var(--amber-light);}
   .cta h2{
     font-size:28px;
   }
-
-
 }
