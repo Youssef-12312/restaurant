@@ -90,7 +90,7 @@ async function getAddressFromCoords(lat, lng) {
       return data.display_name || `${lat}, ${lng}`;
     }
 
-    // 👇 تنظيف قيم غلط زي "أول"
+
     const clean = (v) =>
       v
         ?.replace(/ميت طلخا|طلخا|مركز|أول|ثاني/g, "")
@@ -129,6 +129,7 @@ function Checkout({ cart = [] }) {
     name: "",
     phone: "",
     address: "",
+    manualAddress: "",
     notes: ""
   });
 
@@ -208,31 +209,62 @@ function Checkout({ cart = [] }) {
     }
   };
 
-  const validate = () => {
-    const newErrors = {};
-    const nameValue = formData.name.trim();
+const validate = () => {
+  const newErrors = {};
+  const nameValue = formData.name.trim();
 
-    if (!nameValue) {
-      newErrors.name = t("checkout.errors.name");
-    } else if (/\d/.test(nameValue)) {
-      newErrors.name = "Name cannot contain numbers";
+  // --- الاسم ---
+  if (!nameValue) {
+    newErrors.name = t("checkout.errors.name");
+  } else if (/\d/.test(nameValue)) {
+    newErrors.name = "Name cannot contain numbers";
+  }
+
+  if (!isDineIn) {
+    // --- الموبايل ---
+    const phoneDigits = formData.phone.replace(/\D/g, "");
+    if (!phoneDigits) {
+      newErrors.phone = t("checkout.errors.phone");
+    } else if (!/^01\d{9}$/.test(phoneDigits)) {
+      newErrors.phone = t("checkout.errors.phoneInvalid");
     }
 
-    if (!isDineIn) {
-      const phoneDigits = formData.phone.replace(/\D/g, "");
-      if (!phoneDigits) {
-        newErrors.phone = t("checkout.errors.phone");
-      } else if (!/^01\d{9}$/.test(phoneDigits)) {
-        newErrors.phone = t("checkout.errors.phoneInvalid");
-      }
+  
+if (orderType === "delivery") {
+  const manual = formData.manualAddress.trim();
 
-      if (orderType === "delivery" && !formData.address.trim()) {
-        newErrors.address = t("checkout.errors.address");
-      }
-    }
+  // ❌ لازم يحدد موقع من الخريطة
+  if (!mapPosition || mapPosition.length !== 2) {
+    newErrors.address =
+      lang === "ar"
+        ? "برجاء تحديد موقعك من الخريطة"
+        : "Please select your location on the map";
+  }
 
-    return newErrors;
-  };
+  // ❌ تأكد إن الموقع مش default (يعني المستخدم مختارش حاجة)
+  else if (
+    mapPosition[0] === 31.0409 &&
+    mapPosition[1] === 31.3785
+  ) {
+    newErrors.address =
+      lang === "ar"
+        ? "برجاء تحديد موقعك من الخريطة"
+        : "Please select your location on the map";
+  }
+
+  // ❌ العنوان التفصيلي
+  if (!manual) {
+    newErrors.manualAddress =
+      "برجاء كتابة عنوانك بالتفصيل";
+  } else if (manual.length < 15) {
+    newErrors.manualAddress =
+      "برجاء كتابة عنوانك بالتفصيل في ما لا يقل عن 15 حرف";
+  }
+}
+  }
+
+  return newErrors;
+};
 
   const handleConfirm = async () => {
     if (!isRestaurantOpen()) {
@@ -266,6 +298,7 @@ function Checkout({ cart = [] }) {
         customerName: formData.name,
         phone: isDineIn ? "" : formData.phone,
         address: isDineIn ? "" : formData.address,
+        manualAddress: formData.manualAddress,
         notes: formData.notes || "",
         orderType: isDineIn ? "dine-in" : orderType,
         table: isDineIn ? tableNumber : null,
@@ -281,7 +314,7 @@ function Checkout({ cart = [] }) {
         lat: mapPosition[0],
         lng: mapPosition[1]
       });
-
+      
       if (isDineIn) {
         sessionStorage.removeItem("tableNumber");
         sessionStorage.removeItem("branchName"); 
@@ -295,7 +328,6 @@ function Checkout({ cart = [] }) {
       setIsSubmitting(false);
     }
   };
-
   if (submitted) {
     return (
       <div className="checkout-success">
@@ -437,6 +469,34 @@ function Checkout({ cart = [] }) {
                 errors.address ? "checkout-field--error" : ""
               }`}
             >
+              <div
+  className={`checkout-field ${
+    errors.manualAddress ? "checkout-field--error" : ""
+  }`}
+>
+  <label className="checkout-field__label">
+    {lang === "ar" ? "اكتب عنوانك يدويًا" : "Enter your address manually"}
+  </label>
+
+  <input
+    className="checkout-field__input"
+    type="text"
+    name="manualAddress"
+    value={formData.manualAddress}
+    onChange={handleChange}
+    placeholder={
+      lang === "ar"
+        ? "مثال: شارع الجيش، برج 10، الدور الثالث، شقة 5"
+        : "Example: Street, building, floor, apartment..."
+    }
+  />
+
+  {errors.manualAddress && (
+    <span className="checkout-field__error">
+      {errors.manualAddress}
+    </span>
+  )}
+</div>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
                 <label className="checkout-field__label" style={{ margin: 0 }}>
                   {t("checkout.address")}
@@ -460,7 +520,18 @@ function Checkout({ cart = [] }) {
                   📍 {lang === "ar" ? "موقعي الحالي" : "My Location"}
                 </button>
               </div>
-
+                  <input type="text" readOnly
+  className="checkout-field__input"
+  style={{ marginTop: "12px" }}
+  name="address"
+  value={formData.address}
+  onChange={handleChange}
+  placeholder={
+    lang === "ar"
+      ? "العنوان من الخريطة"
+      : "Location On The Map"
+  }
+/>
                <LocationPicker
   initialPosition={mapPosition}
   addressText={formData.address}
@@ -497,19 +568,7 @@ function Checkout({ cart = [] }) {
   }}
 />
 
-<input
-  className="checkout-field__input"
-  style={{ marginTop: "12px" }}
-  type="text"
-  name="address"
-  value={formData.address}
-  onChange={handleChange}
-  placeholder={
-    lang === "ar"
-      ? "تفاصيل العنوان (رقم العمارة، علامة مميزة ،الشارع)..."
-      : "Address details (Building, Street)..."
-  }
-/>
+
 
               {errors.address && (
                 <span className="checkout-field__error">{errors.address}</span>

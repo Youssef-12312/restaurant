@@ -103,38 +103,40 @@ function OrderModal({ order, onClose }) {
                 : ""}
             </span>
 
-            {order.address && (
-              <>
-                <span className="modal-info__key">
-                  {t("admin.modal.address")}
-                </span>
-                <div className="modal-address">
-                  <span className="modal-info__val">{order.address}</span>
-                  {/* استخدمنا اللينك ده عشان الطيار يقدر يفتح جوجل ماب لو متخزن إحداثيات (lat, lng) */}
-                  <a
-                    href={
-                      order.lat && order.lng 
-                      ? `http://googleusercontent.com/maps.google.com/4${order.lat},${order.lng}`
-                      : `http://googleusercontent.com/maps.google.com/5${encodeURIComponent(order.address)}`
-                    }
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ 
-                      display: "inline-block", 
-                      marginTop: "5px", 
-                      backgroundColor: "#e8521a", 
-                      color: "white", 
-                      padding: "4px 8px", 
-                      borderRadius: "6px", 
-                      textDecoration: "none",
-                      fontSize: "12px"
-                    }}
-                  >
-                    🗺️ {t("admin.modal.viewLocation")}
-                  </a>
-                </div>
-              </>
-            )}
+{(order.address || order.manualAddress) && (
+  <>
+    <span className="modal-info__key">
+      {lang === "ar" ? "العنوان" : "Address"}
+    </span>
+
+    <div className="modal-address">
+      
+      {/* 👇 العنوان من الخريطة */}
+      {order.address && (
+        <span className="modal-info__val">
+          📍 {order.address}
+        </span>
+      )}
+
+      {/* 👇 العنوان التفصيلي (الأهم) */}
+      {order.manualAddress && (
+        <span
+          className="modal-info__val"
+          style={{
+            display: "block",
+            marginTop: "6px",
+            fontWeight: "bold",
+            color: "#e8521a"
+          }}
+        >
+          📝 {lang === "ar" ? "تفاصيل العنوان:" : "Details:"}{" "}
+          {order.manualAddress}
+        </span>
+      )}
+      
+    </div>
+  </>
+)}
           </div>
         </div>
 

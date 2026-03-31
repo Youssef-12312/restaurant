@@ -7,7 +7,7 @@ import LanguageSwitcher from "../components/LanguageSwitcher.jsx";
 import FoodShowcase from "../components/FoodShowcase.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-
+import CategorySlider from "../components/slider.jsx";  
 const MARQUEE_ITEMS = Array.from({ length: 12 }, (_, i) => i);
 
 function MarqueeContent() {
@@ -114,7 +114,7 @@ function Landing() {
         <p className="tagline">{t("hero.tagline")}</p>
 <div className="stat-chips">
   <div className="stat-chip">
-    <strong>4.0</strong>
+    <strong>4.6</strong>
     <span className="chip-sub">{t("chip.rating")}</span>
   </div>
 
@@ -170,7 +170,7 @@ function Landing() {
           <MarqueeContent />
         </div>
       </div>
-
+      <CategorySlider/>
       {/* About */}
       <section id="about" className="about">
         <div className="about-text">
@@ -240,7 +240,7 @@ function Landing() {
         <div className="footer-bottom">
           <p>{t("footer.rights")}</p>
           <p className="d">
-            Powered by{" "}
+            Developed by{" "}
             <a target="_blank" href="https://api.whatsapp.com/send/?phone=201007403490">
               Youssef Amr
             </a>
