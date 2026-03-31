@@ -47,7 +47,7 @@ function Typewriter({ text }) {
         @media (max-width: 768px) {
            .nav-typing-text {
               font-size: 11px !important;
-              top: 50px; 
+              top: 60px; 
            }
         }
       `}</style>
@@ -70,7 +70,7 @@ useEffect(() => {
   const loadData = async () => {
     const data = await fetchMenuData();
     if (data && Array.isArray(data)) {
-      // تعديل كل الأصناف مرة واحدة لإضافة مسار الصورة
+
       const dataWithImages = data.map(item => ({
         ...item,
        image: item.image || `/images/${item.id}.webp` 
