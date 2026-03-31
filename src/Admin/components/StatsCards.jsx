@@ -1,4 +1,8 @@
+import { useTranslation } from "react-i18next";
+
 function StatsCards({ orders = [] }) {
+  const { t } = useTranslation();
+
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
@@ -46,12 +50,31 @@ function StatsCards({ orders = [] }) {
     .reduce((sum, o) => sum + (Number(o.total) || 0), 0);
 
   const cards = [
-    { label: "New Orders", value: newOrders, icon: "🔔", color: "#e8521a" },
-    { label: "Preparing", value: preparing, icon: "👨‍🍳", color: "#f59e0b" },
-    { label: "Completed", value: completed, icon: "✅", color: "#10b981" },
     {
-      label: "Today Sales",
-      value: `${todaySales} EGP`,
+      key: "newOrders",
+      label: t("admin.stats.newOrders"),
+      value: newOrders,
+      icon: "🔔",
+      color: "#e8521a"
+    },
+    {
+      key: "preparing",
+      label: t("admin.stats.preparing"),
+      value: preparing,
+      icon: "👨‍🍳",
+      color: "#f59e0b"
+    },
+    {
+      key: "completed",
+      label: t("admin.stats.completed"),
+      value: completed,
+      icon: "✅",
+      color: "#10b981"
+    },
+    {
+      key: "todaySales",
+      label: t("admin.stats.todaySales"),
+      value: `${todaySales} ${t("common.egp")}`,
       icon: "💰",
       color: "#6366f1"
     }
@@ -62,7 +85,7 @@ function StatsCards({ orders = [] }) {
       {cards.map((c) => (
         <div
           className="stats-card"
-          key={c.label}
+          key={c.key}
           style={{ "--accent": c.color }}
         >
           <div className="stats-card__icon">{c.icon}</div>

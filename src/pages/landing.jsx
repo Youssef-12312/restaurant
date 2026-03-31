@@ -239,7 +239,7 @@ function Landing() {
 
         <div className="footer-bottom">
           <p>{t("footer.rights")}</p>
-          <p className="powerd-name">
+          <p className="d">
             Powered by{" "}
             <a target="_blank" href="https://api.whatsapp.com/send/?phone=201007403490">
               Youssef Amr

@@ -60,8 +60,7 @@ function FoodShowcase() {
 
 
       <div className="showcase__overlay" />
-
-      {/* الصورة الحالية */}
+      
       <img
         className={`showcase__img${fading ? " showcase__img--fade" : ""}`}
         src={SLIDES[current].img}

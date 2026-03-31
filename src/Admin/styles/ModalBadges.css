@@ -9,7 +9,7 @@
 }
 
 .modal-item__badges {
-  flex-basis: 100%;       /* تاخد سطر كامل تحت الاسم */
+  flex-basis: 100%;       
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
@@ -24,7 +24,7 @@
   gap: 3px;
   padding: 2px 9px;
   border-radius: 20px;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
   font-family: 'Cairo', sans-serif;
   white-space: nowrap;

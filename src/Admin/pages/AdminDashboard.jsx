@@ -6,7 +6,7 @@ import "../styles/admin.css";
 import { onAuthStateChanged } from "firebase/auth";
 import { images } from "../../assets/Images/images.js";
 import { Link, useNavigate } from "react-router-dom";
-
+import LanguageSwitcher from "../../components/LanguageSwitcher.jsx";
 setPersistence(auth, browserSessionPersistence);
 
 function AdminDashboard() {
@@ -72,7 +72,7 @@ useEffect(() => {
               Shelter Restaurant — Real-time Management
             </p>
           </div>
-
+          <LanguageSwitcher />
           <div className="dash-header__user">
             <span className="dash-header__avatar">👤</span>
             <span className="dash-header__email">Admin</span>

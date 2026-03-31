@@ -12,7 +12,7 @@ export const menu = [
   // Shelter Rice (1 item)
   {
     category: "Shelter Rice",
-    id: "",
+    id: "unique-name",
     name: { ar: "شيلتر رايس", en: "Shelter Rice" },
     price: 120,
     description: "معاه صوص من اختيارك: شيلتر ناشفل / شيلتر تندوري / شيلتر رايز كريسي / شيلتر فاهيتا / شيلتر شيش. معاه صوص من (رانش، سموكي، سويت اند، ساور، تشيز).",
@@ -31,7 +31,7 @@ export const menu = [
   // Sauces (11 items)
   {
     category: "Sauces",
-    id: "",
+    id: "unique-name",
     name: { ar: "باربيكيو صوص", en: "باربيكيو صوص" },
     price: 15,
     description: ""
@@ -45,49 +45,49 @@ export const menu = [
   },
   {
     category: "Sauces",
-    id: "",
+    id: "unique-name",
     name: { ar: "صوص فريسكس", en: "صوص فريسكس" },
     price: 15,
     description: ""
   },
   {
     category: "Sauces",
-    id: "",
+    id: "unique-name",
     name: { ar: "ميني جار جبنة شيدر", en: "ميني جار جبنة شيدر" },
     price: 30,
     description: ""
   },
   {
     category: "Sauces",
-    id: "",
+    id: "unique-name",
     name: { ar: "جار جبنة شيدر", en: "جار جبنة شيدر" },
     price: 75,
     description: ""
   },
   {
     category: "Sauces",
-    id: "",
+    id: "unique-name",
     name: { ar: "صوص جبنة شيلتر", en: "صوص جبنة شيلتر" },
     price: 15,
     description: ""
   },
   {
     category: "Sauces",
-    id: "",
+    id: "unique-name",
     name: { ar: "صوص رانش", en: "صوص رانش" },
     price: 15,
     description: ""
   },
   {
     category: "Sauces",
-    id: "",
+    id: "unique-name",
     name: { ar: "صوص بافلو حار", en: "صوص بافلو حار" },
     price: 10,
     description: ""
   },
   {
     category: "Sauces",
-    id: "",
+    id: "unique-name",
     name: { ar: "صوص ريزو حار", en: "صوص ريزو حار" },
     price: 15,
     description: ""
@@ -110,14 +110,14 @@ export const menu = [
   // Extras (13 items)
   {
     category: "Extras",
-    id: "",
+    id: "unique-name",
     name: { ar: "خبز كايزر برجر", en: "خبز كايزر برجر" },
     price: 10,
     description: ""
   },
   {
     category: "Extras",
-    id: "",
+    id: "unique-name",
     name: { ar: "خبز محمص", en: "خبز محمص" },
     price: 10,
     description: ""
@@ -145,56 +145,56 @@ export const menu = [
   },
   {
     category: "Extras",
-    id: "",
+    id: "unique-name",
     name: { ar: "خبز كايزر وجبة", en: "خبز كايزر وجبة" },
     price: 5,
     description: ""
   },
   {
     category: "Extras",
-    id: "",
+    id: "unique-name",
     name: { ar: "قطعه بروست صدر", en: "قطعه بروست صدر" },
     price: 50,
     description: ""
   },
   {
     category: "Extras",
-    id: "",
+    id: "unique-name",
     name: { ar: "قطعة بروست فخذ", en: "قطعة بروست فخذ" },
     price: 45,
     description: ""
   },
   {
     category: "Extras",
-    id: "",
+    id: "unique-name",
     name: { ar: "قطعة بروست دبوس", en: "قطعة بروست دبوس" },
     price: 35,
     description: ""
   },
   {
     category: "Extras",
-    id: "",
+    id: "unique-name",
     name: { ar: "شريحة استريس", en: "شريحة استريس" },
     price: 35,
     description: ""
   },
   {
     category: "Extras",
-    id: "",
+    id: "unique-name",
     name: { ar: "2 قطعة زنجر", en: "2 قطعة زنجر" },
     price: 20,
     description: ""
   },
   {
     category: "Extras",
-    id: "",
+    id: "unique-name",
     name: { ar: "هوت دوج", en: "هوت دوج" },
     price: 20,
     description: ""
   },
   {
     category: "Extras",
-    id: "",
+    id: "unique-name",
     name: { ar: "بيف بيكون أو رومي مدخن", en: "بيف بيكون أو رومي مدخن" },
     price: 15,
     description: ""
@@ -234,28 +234,28 @@ export const menu = [
   // Kids' Meals (4 items)
   {
     category: "Kids' Meals",
-    id: "",
+    id: "unique-name",
     name: { ar: "بيف / تشيكن برجر", en: "Beef/Chicken Burger" },
     price: 120,
     description: "ساندوتش بيف أو تشيكن من اختيارك والبطاطس والعصير ولعبة هدية"
   },
   {
     category: "Kids' Meals",
-    id: "",
+    id: "unique-name",
     name: { ar: "استريس كيدز", en: "Stress Kids" },
     price: 120,
     description: "2 قطعة استريس وبطاطس و عصير و لعبة هدية"
   },
   {
     category: "Kids' Meals",
-    id: "",
+    id: "unique-name",
     name: { ar: "أي وجبة أطفال بدون لعبة", en: "أي وجبة أطفال بدون لعبة" },
     price: 95,
     description: ""
   },
   {
     category: "Kids' Meals",
-    id: "",
+    id: "unique-name",
     name: { ar: "لعبة", en: "Toy" },
     price: 25,
     description: ""
@@ -285,14 +285,14 @@ export const menu = [
   },
   {
     category: "Waffle",
-    id: "",
+    id: "unique-name",
     name: { ar: "شريحة وافل لوتس", en: "Lotus" },
     price: 30,
     description: ""
   },
   {
     category: "Waffle",
-    id: "",
+    id: "unique-name",
     name: { ar: "تورتة وافل", en: "Waffle Cake" },
     price: 90,
     description: ""
@@ -301,28 +301,28 @@ export const menu = [
   // Drinks (4 items)
   {
     category: "Drinks",
-    id: "",
+    id: "unique-name",
     name: { ar: "مياه معدنية صغيرة", en: "Small Water" },
     price: 15,
     description: ""
   },
   {
     category: "Drinks",
-    id: "",
+    id: "unique-name",
     name: { ar: "مشروب غازي", en: "Soda" },
     price: 20,
     description: ""
   },
   {
     category: "Drinks",
-    id: "",
+    id: "unique-name",
     name: { ar: "مشروب غازي لتر", en: "1 Liter Soda" },
     price: 35,
     description: ""
   },
   {
     category: "Drinks",
-    id: "",
+    id: "unique-name",
     name: { ar: "عصير صن توب", en: "Sun Top" },
     price: 20,
     description: ""
@@ -359,14 +359,14 @@ export const menu = [
   },
   {
     category: "Sides",
-    id: "",
+    id: "unique-name",
     name: { ar: "كب زنجر", en: "Zinger Cup" },
     price: 70,
     description: "4 ( رانش صوص + شيدر صوص & سويت أند ساور صوص ) قطع فراخ مقرمشة بصوص من اختيارك"
   },
   {
     category: "Sides",
-    id: "",
+    id: "unique-name",
     name: { ar: "تشيكن ريزو", en: "Chicken risotto" },
     price: 70,
     description: "أرز بسمتي مع قطع دجاج الزنجر الحارة و غرقانة صوص الريزو الرائع الحار"
@@ -381,7 +381,7 @@ export const menu = [
   },
   {
     category: "Sides",
-    id: "",
+    id: "unique-name",
     name: { ar: "هالينو تشيز فرايز", en: "Jalapeño Cheese Fries" },
     price: 60,
     description: "بطاطس مقلية مع الهالينو الحار و صوص الجبنة الرائع"
@@ -405,7 +405,7 @@ export const menu = [
   // Shelter Milkshake (3 items)
   {
     category: "Shelter Milkshake",
-    id: "",
+    id: "unique-name",
     name: { ar: "ميلك تشيك شيكولاتة", en: "Chocolate Milkshake" },
     price: 50,
     description: "مع اضافه صوص من اختيارك ( كراميل / شيكولاتة / بلو بيري / فراولة )",
@@ -413,7 +413,7 @@ export const menu = [
   },
   {
     category: "Shelter Milkshake",
-    id: "",
+    id: "unique-name",
     name: { ar: "ميلك تشيك فانيليا", en: "Vanilla Milkshake" },
     price: 45,
     description: "مع اضافه صوص من اختيارك ( كراميل / شيكولاتة / بلو بيري / فراولة )",
@@ -421,7 +421,7 @@ export const menu = [
   },
   {
     category: "Shelter Milkshake",
-    id: "",
+    id: "unique-name",
     name: { ar: "ميلك تشيك فراولة", en: "Strawberry Milkshake" },
     price: 45,
     description: "مع اضافه صوص من اختيارك ( كراميل / شيكولاتة / بلو بيري / فراولة )",
@@ -431,28 +431,28 @@ export const menu = [
   // Mojitos (4 items)
   {
     category: "Mojitos",
-    id: "",
+    id: "unique-name",
     name: { ar: "موهيتو ليمون نعناع", en: "Mint Lemon Mojito" },
     price: 40,
     description: ""
   },
   {
     category: "Mojitos",
-    id: "",
+    id: "unique-name",
     name: { ar: "موهيتو بلوبيري", en: "Blueberry Mojito" },
     price: 45,
     description: ""
   },
   {
     category: "Mojitos",
-    id: "",
+    id: "unique-name",
     name: { ar: "موهيتو فراولة", en: "Strawberry Mojito" },
     price: 45,
     description: ""
   },
   {
     category: "Mojitos",
-    id: "",
+    id: "unique-name",
     name: { ar: "موهيتو فواكه استوائية", en: "Tropical Fruit Mojito" },
     price: 45,
     description: ""
@@ -477,7 +477,7 @@ export const menu = [
   },
   {
     category: "Meals",
-    id: "",
+    id: "unique-name",
     name: { ar: "صدور مشوية", en: "Grilled Chicken Breasts" },
     price: 200,
     description: "شرائح الصدور المشوية مع الخبز و صوص الثومية الرائع من شيلتر و الكلو سلو",
@@ -485,7 +485,7 @@ export const menu = [
   },
   {
     category: "Meals",
-    id: "",
+    id: "unique-name",
     name: { ar: "تشيكن مشروم", en: "Chicken Mushroom" },
     price: 210,
     description: "الصدور المشوية مع صوص الديمجلاس و الماشروم الرائع مع الخبز و الكلو سلو",
@@ -493,7 +493,7 @@ export const menu = [
   },
   {
     category: "Meals",
-    id: "",
+    id: "unique-name",
     name: { ar: "كوردن بلو", en: "Cordon Bleu" },
     price: 200,
     description: "5 قطع كوردن بلو مع الخبز و الكلو سلو",
@@ -501,7 +501,7 @@ export const menu = [
   },
   {
     category: "Meals",
-    id: "",
+    id: "unique-name",
     name: { ar: "كرانشي تشيز سموكد", en: "Crunchy Smoked Cheese" },
     price: 190,
     description: "4 قطع استرس المقرمش الحار مع اسف بيكون و صوص الشيدر و الخبز و الكلو سلو",
@@ -525,7 +525,7 @@ export const menu = [
   },
   {
     category: "Meals",
-    id: "",
+    id: "unique-name",
     name: { ar: "ناشفل", en: "Nashville" },
     price: 150,
     description: "3 قطع استريس معاهم بطاطس وماك تشيز وصوص عسل وعيش ورايب",
@@ -533,7 +533,7 @@ export const menu = [
   },
   {
     category: "Meals",
-    id: "",
+    id: "unique-name",
     name: { ar: "وجبة تندوري", en: "Tandoori Meal" },
     price: 200,
     description: "5 قطع تندوري وخبز وكلو سلو وصوص",
@@ -629,16 +629,10 @@ export const menu = [
     price: 840,
     description: "20 قطعة بروست و البطاطس و 10 خبز و 2 كلو سلو عائلي و 2 مشروب غازي لتر و صوص الريزو الحار"
   },
+
   {
     category: "Family Meals",
-    id: "12-Piece-broasted-chicken-meal",
-    name: { ar: "وجبة مكس", en: "Mix Meal (Broasted & Strips)" },
-    price: 670,
-    description: "12 قطعة بروست و 4 قطع استريس و بطاطس و 5 خبز و 2 كلو سلو عائلي و مشروب غازي لتر و صوص الريزو الحار"
-  },
-  {
-    category: "Family Meals",
-    id: "",
+    id: "unique-name",
     name: { ar: "عرض الشلة", en: "Gang Deal" },
     price: 795,
     description: "14 قطعة بروست و البطاطس و 4 خبز و مشروب غازي لتر و نافورة الجبنة"
@@ -663,7 +657,7 @@ export const menu = [
   },
   {
     category: "Pizza",
-    id: "",
+    id: "unique-name",
     name: { ar: "ألفريدو وايت صوص", en: "Alfredo White Sauce" },
     price: 195,
     description: "الوايت صوص الرائع مع الشيش طاووق وشرائح المشروم الفريش والفلفل والزيتون و الجبنة الموتزريلا وجبنة افانتي",
@@ -671,7 +665,7 @@ export const menu = [
   },
   {
     category: "Pizza",
-    id: "",
+    id: "unique-name",
     name: { ar: "تشيكن بافلو زنجر", en: "Chicken Buffalo Zinger" },
     price: 190,
     description: "صوص البافلو الحار والرومي المدخن و قطع الاستربس الحارة و الرومي المدخن والفلفل والزيتون والجبنة الموتزريلا وجبنة افانتي",
@@ -695,7 +689,7 @@ export const menu = [
   },
   {
     category: "Pizza",
-    id: "",
+    id: "unique-name",
     name: { ar: "بيتزا بسطرمة", en: "Pastrami Pizza" },
     price: 205,
     description: "",
@@ -705,21 +699,21 @@ export const menu = [
   // Pasta (10 items)
   {
     category: "Pasta",
-    id: "",
+    id: "unique-name",
     name: { ar: "باستا سي فود", en: "Seafood Pasta (Grilled or Fried)" },
     price: 190,
     description: "المكرونة بصوص جبنة شيدر الرائع مع الجمبري المشوي والمقلي و شرائح الكابوريا والكاليماري و الجبنة الموتزريلا"
   },
   {
     category: "Pasta",
-    id: "",
+    id: "unique-name",
     name: { ar: "باستا جمبري", en: "Shrimp Pasta (Grilled or Fried)" },
     price: 180,
     description: "المكرونة بصوص جبنة شيدر الرائع مع الجمبري و الجبنة الموتزريلا و الجبنة الرومي"
   },
   {
     category: "Pasta",
-    id: "",
+    id: "unique-name",
     name: { ar: "بنا ريد صوص", en: "Penne Red" },
     price: 65,
     description: "المكرونة البنا بالصوص الطماطم الرائع و الفلفل الألوان"
@@ -733,21 +727,21 @@ export const menu = [
   },
   {
     category: "Pasta",
-    id: "",
+    id: "unique-name",
     name: { ar: "نودلز صدور مشوية", en: "نودلز صدور مشوية" },
     price: 100,
     description: ""
   },
   {
     category: "Pasta",
-    id: "",
+    id: "unique-name",
     name: { ar: "نودلز زنجر", en: "نودلز زنجر" },
     price: 100,
     description: ""
   },
   {
     category: "Pasta",
-    id: "",
+    id: "unique-name",
     name: { ar: "نودلز خضروات", en: "نودلز خضروات" },
     price: 60,
     description: ""
@@ -784,14 +778,14 @@ export const menu = [
   },
   {
     category: "Cheese Pan",
-    id: "",
+    id: "unique-name",
     name: { ar: "سي فود تشيز طاسة", en: "Seafood Cheese (Grilled or Fried)" },
     price: 190,
     description: "صوص الجبنة الخاصة بشيلتر مع الجمبري و كالماري و شرائح الكابوريا و الجبنة الموتزريلا"
   },
   {
     category: "Cheese Pan",
-    id: "",
+    id: "unique-name",
     name: { ar: "جمبري تشيز طاسة", en: "Shrimp Cheese (Grilled or Fried)" },
     price: 160,
     description: "صوص الجبنة الخاصة بشيلتر مع الجمبري المقلي أو المشوي و الجبنة الموتزريلا"
@@ -826,14 +820,14 @@ export const menu = [
   },
   {
     category: "Cheese Pan",
-    id: "",
+    id: "unique-name",
     name: { ar: "تشيز فرايز", en: "Cheese Fries" },
     price: 115,
     description: ""
   },
   {
     category: "Cheese Pan",
-    id: "",
+    id: "unique-name",
     name: { ar: "طاسة بسطرمة", en: "Pastrami" },
     price: 140,
     description: ""
@@ -856,14 +850,14 @@ export const menu = [
   },
   {
     category: "Beef Burger",
-    id: "",
+    id: "unique-name",
     name: { ar: "بيكون ماشروم", en: "Bacon Mushroom" },
     prices: { single: 175, double: 220 },
     description: "بيف برجر - صوص المايونيز - الخيار - الخس - البصل - الطماطم - البيف بيكون - الماشروم الفريش - صوص الشيدر"
   },
   {
     category: "Beef Burger",
-    id: "",
+    id: "unique-name",
     name: { ar: "سموكي تشيز برجر", en: "Smoky Cheese Burger" },
     prices: { single: 180, double: 260 },
     description: "بيف برجر مع شرائح السموك بيف - صوص البيج تيستي - خيار - خس - بصل - طماطم - ماشرووم - صوص الشيدر"
@@ -884,7 +878,7 @@ export const menu = [
   },
   {
     category: "Beef Burger",
-    id: "",
+    id: "unique-name",
     name: { ar: "شيلتر رينجز", en: "Shelter rings" },
     prices: { single: 180, double: 235 },
     description: "بيف برجر - صوص البيج تيستي - الخيار - الخس - حلقات البصل المقلية - أصابع موزتريلا - صوص الشيدر"
@@ -928,7 +922,7 @@ export const menu = [
   },
   {
     category: "Chicken Burger",
-    id: "",
+    id: "unique-name",
     name: { ar: "تشيكن رانش", en: "Chicken Ranch" },
     prices: { single: 115, double: 150, triple: null },
     description: "صدور مقرمشة - صوص الرانش - خيار - خس - طماطم - رومي مدخن"
@@ -937,21 +931,21 @@ export const menu = [
   // Mix Box (3 items)
   {
     category: "Mix Box",
-    id: "",
+    id: "unique-name",
     name: { ar: "ميكس بوكس 2", en: "Mix Box 2" },
     price: 150,
     description: "ساندويش بيف برجر و ساندوتش تشيكن برجر مع بطاطس و مشروب و صوص"
   },
   {
     category: "Mix Box",
-    id: "",
+    id: "unique-name",
     name: { ar: "ميكس بوكس 4", en: "Mix Box 4" },
     price: 260,
     description: "2 بيف برجر و 2 تشيكن برجر مع البطاطس و مشروب لتر و 2 صوص"
   },
   {
     category: "Mix Box",
-    id: "",
+    id: "unique-name",
     name: { ar: "ميكس بوكس 6", en: "Mix Box 6" },
     price: 390,
     description: "3 بيف برجر و 3 تشيكن برجر مع بطاطس و حلقات بصل و مشروب لتر و 3 صوص",
@@ -970,7 +964,7 @@ export const menu = [
   // Chicken Sandwich (5 items)
   {
     category: "Chicken Sandwich",
-    id: "",
+    id: "unique-name",
     name: { ar: "فاهيتا تشكن", en: "Chicken Fajita" },
     prices: { price1: 115, price2: 95 },
     priceNote: "Two prices are shown in the menu without visible labels.",
@@ -978,7 +972,7 @@ export const menu = [
   },
   {
     category: "Chicken Sandwich",
-    id: "",
+    id: "unique-name",
     name: { ar: "شيش طاووق", en: "Shish Tawook" },
     prices: { price1: 110, price2: 90 },
     priceNote: "Two prices are shown in the menu without visible labels.",
@@ -986,21 +980,21 @@ export const menu = [
   },
   {
     category: "Chicken Sandwich",
-    id: "",
+    id: "unique-name",
     name: { ar: "تاشكن زنجر", en: "Tashken Zanjar" },
     price: 115,
     description: "استريس مقرمش مع المايونيز و الخيار والمخلل والخس و الرومي المدخن والجبنة الموتزريلا و صوص التايجر الحار"
   },
   {
     category: "Chicken Sandwich",
-    id: "",
+    id: "unique-name",
     name: { ar: "كوردن بلو", en: "Cordon Bleu" },
     price: 120,
     description: "2 صابع كوردن مع المايونيز والخيار والمخلل و الخس و صوص الجبنة الشيدر"
   },
   {
     category: "Chicken Sandwich",
-    id: "",
+    id: "unique-name",
     name: { ar: "تشيكن رول", en: "Chicken Roll" },
     price: 115,
     description: "الاستربس المقرمش في العيش السوري مع المايونيز و الخيار والمخلل والخس وصوص الجبنة و صوص التايجر الحار"
@@ -1009,7 +1003,7 @@ export const menu = [
   // Beef Sandwich (2 items)
   {
     category: "Beef Sandwich",
-    id: "",
+    id: "unique-name",
     name: { ar: "الكفتة المشوية", en: "Grilled Kofta" },
     prices: { price1: 130, price2: 100 },
     priceNote: "Two prices are shown in the menu without visible labels.",
@@ -1017,7 +1011,7 @@ export const menu = [
   },
   {
     category: "Beef Sandwich",
-    id: "",
+    id: "unique-name",
     name: { ar: "السجق المشوي", en: "Grilled Sausage" },
     prices: { price1: 95, price2: 80 },
     priceNote: "Two prices are shown in the menu without visible labels.",

@@ -14,14 +14,21 @@ function MenuCard({ item, addToCart, onClick }) {
   };
 
 const getPrice = () => {
-  if (typeof item.price === "number") {
-    return item.price.toFixed(2);
+  if (item?.price !== undefined && item?.price !== null) {
+    const numericPrice = Number(item.price);
+    if (!Number.isNaN(numericPrice)) {
+      return numericPrice.toFixed(2);
+    }
   }
+ 
+  if (item?.prices && typeof item.prices === "object") {
+    const validPrice = Object.values(item.prices).find(
+      (value) => value !== null && value !== undefined && !Number.isNaN(Number(value))
+    );
 
-  if (item.prices && typeof item.prices === "object") {
-    if (item.prices.single) return item.prices.single.toFixed(2);
-    if (item.prices.double) return item.prices.double.toFixed(2);
-    if (item.prices.triple) return item.prices.triple.toFixed(2);
+    if (validPrice !== undefined) {
+      return Number(validPrice).toFixed(2);
+    }
   }
 
   return "0.00";

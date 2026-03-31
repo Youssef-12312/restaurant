@@ -1,64 +1,136 @@
-function getText(value) {
+import { useTranslation } from "react-i18next";
+
+function getText(value, lang = "en") {
   if (typeof value === "string") return value;
   if (!value || typeof value !== "object") return "";
-  return value.ar || value.en || "";
+  return value[lang] || value.ar || value.en || "";
 }
 
 function getPrice(item) {
   if (typeof item.price === "number") return item.price;
   if (item.prices && typeof item.prices === "object") {
-    const vals = Object.values(item.prices).filter((v) => typeof v === "number");
+    const vals = Object.values(item.prices).filter(
+      (v) => typeof v === "number"
+    );
     if (vals.length > 0) return vals[0];
   }
   return 0;
 }
 
+function getOrderTypeLabel(orderType, t) {
+  if (orderType === "delivery") return `🛵 ${t("admin.orderType.delivery")}`;
+  if (orderType === "pickup") return `🏃 ${t("admin.orderType.pickup")}`;
+  if (orderType === "dine-in") return `🍽️ ${t("admin.orderType.dineIn")}`;
+  return orderType || "—";
+}
+
+// دالة صغيرة عشان نترجم اسم الفرع بشكل لطيف
+function getBranchLabel(branchCode, lang) {
+  if (branchCode === "mashaya") return lang === "ar" ? "📍 فرع المشاية" : "📍 Mashaya Branch";
+  if (branchCode === "gamaa") return lang === "ar" ? "📍 فرع حي الجامعة" : "📍 Gamaa Branch";
+  return branchCode || "—";
+}
+
 function OrderModal({ order, onClose }) {
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language?.startsWith("ar") ? "ar" : "en";
+
   if (!order) return null;
 
+  const locale = lang === "ar" ? "ar-EG" : "en-EG";
+
   const time = order.createdAt?.toDate?.()
-    ? order.createdAt.toDate().toLocaleString("en-EG")
+    ? order.createdAt.toDate().toLocaleString(locale)
     : order.createdAt || "—";
 
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-card" onClick={(e) => e.stopPropagation()}>
-
-        {/* ── Header ── */}
         <div className="modal-header">
           <div>
-            <h2 className="modal-title">Order #{order.orderNumber}</h2>
+            <h2 className="modal-title">
+              {t("admin.modal.order")} #{order.orderNumber}
+            </h2>
             <p className="modal-time">{time}</p>
           </div>
-          <button className="modal-close" onClick={onClose}>✕</button>
+          <button className="modal-close" onClick={onClose}>
+            ✕
+          </button>
         </div>
 
-        {/* ── Customer Info ── */}
         <div className="modal-section">
-          <h3 className="modal-section__title">Customer</h3>
+          <h3 className="modal-section__title">
+            {t("admin.modal.customer")}
+          </h3>
+
           <div className="modal-info-grid">
-            <span className="modal-info__key">Name</span>
-            <span className="modal-info__val">{order.customerName}</span>
+            
+          
+            {order.branch && (
+              <>
+                <span className="modal-info__key" style={{ alignSelf: "center" }}>
+                  {lang === "ar" ? "الفرع" : "Branch"}
+                </span>
+                <span 
+                  className="modal-info__val" 
+                  style={{ 
+                    fontWeight: "bold", 
+                    fontSize: "18px", // تكبير الخط
+                    color: order.branch === "mashaya" ? "#0369a1" : "#854d0e",
+                    backgroundColor: order.branch === "mashaya" ? "#e0f2fe" : "#fef08a",
+                    padding: "6px 12px",
+                    borderRadius: "8px",
+                    display: "inline-block",
+                    width: "fit-content"
+                  }}
+                >
+                   {getBranchLabel(order.branch, lang)}
+                </span>
+              </>
+            )}
 
-            <span className="modal-info__key">Phone</span>
-            <span className="modal-info__val">{order.phone}</span>
+            <span className="modal-info__key">{t("admin.modal.name")}</span>
+            <span className="modal-info__val">{order.customerName || "—"}</span>
 
-            <span className="modal-info__key">Type</span>
+            <span className="modal-info__key">{t("admin.modal.phone")}</span>
+            <span className="modal-info__val">{order.phone || "—"}</span>
+
+            <span className="modal-info__key">{t("admin.modal.type")}</span>
             <span className={`modal-badge modal-badge--${order.orderType}`}>
-              {order.orderType === "delivery" ? "🛵 Delivery" : "🏃 Pickup"}
+              {getOrderTypeLabel(order.orderType, t)}
+              {order.orderType === "dine-in" && order.table
+                ? ` - ${lang === "ar" ? "ترابيزة" : "Table"} ${order.table}`
+                : ""}
             </span>
 
             {order.address && (
               <>
-                <span className="modal-info__key">Address</span>
+                <span className="modal-info__key">
+                  {t("admin.modal.address")}
+                </span>
                 <div className="modal-address">
                   <span className="modal-info__val">{order.address}</span>
+                  {/* استخدمنا اللينك ده عشان الطيار يقدر يفتح جوجل ماب لو متخزن إحداثيات (lat, lng) */}
                   <a
-                    href={`https://www.google.com/maps?q=${encodeURIComponent(order.address)}`}
+                    href={
+                      order.lat && order.lng 
+                      ? `http://googleusercontent.com/maps.google.com/4${order.lat},${order.lng}`
+                      : `http://googleusercontent.com/maps.google.com/5${encodeURIComponent(order.address)}`
+                    }
                     target="_blank"
                     rel="noreferrer"
+                    style={{ 
+                      display: "inline-block", 
+                      marginTop: "5px", 
+                      backgroundColor: "#e8521a", 
+                      color: "white", 
+                      padding: "4px 8px", 
+                      borderRadius: "6px", 
+                      textDecoration: "none",
+                      fontSize: "12px"
+                    }}
                   >
-                    View Location
+                    🗺️ {t("admin.modal.viewLocation")}
                   </a>
                 </div>
               </>
@@ -66,87 +138,91 @@ function OrderModal({ order, onClose }) {
           </div>
         </div>
 
-        {/* ── Items ── */}
         <div className="modal-section">
-          <h3 className="modal-section__title">Items</h3>
+          <h3 className="modal-section__title">{t("admin.modal.items")}</h3>
+
           <ul className="modal-items">
             {(order.items || []).map((item, i) => {
               const optionValues = Object.values(item.options || {}).filter(Boolean);
-              const hasBadges = item.sizeLabel || item.spicy != null || optionValues.length > 0;
+              const hasBadges =
+                item.sizeLabel || item.spicy != null || optionValues.length > 0;
 
               return (
                 <li className="modal-item" key={i}>
+                  <div className="modal-item__details">
+                     <span className="modal-item__name">
+                        {getText(item.name, lang)}
+                     </span>
+                     <span className="modal-item__qty">× {item.qty}</span>
+                  </div>
 
-                  {/* الصف الأول: اسم + كمية + سعر */}
-                  <span className="modal-item__name">{getText(item.name)}</span>
-                  <span className="modal-item__qty">× {item.qty}</span>
                   <span className="modal-item__price">
-                    {(getPrice(item) * (item.qty || 1)).toFixed(2)} EGP
+                    {(getPrice(item) * (item.qty || 1)).toFixed(2)}{" "}
+                    {t("common.egp")}
                   </span>
 
-                  {/* الـ badges تحت الاسم */}
                   {hasBadges && (
                     <div className="modal-item__badges">
-
-                      {/* الحجم */}
                       {item.sizeLabel && (
                         <span className="modal-badge modal-badge--size">
-                           {item.sizeLabel}
+                          {item.sizeLabel}
                         </span>
                       )}
 
-                      {/* الحرارة */}
                       {item.spicy === true && (
                         <span className="modal-badge modal-badge--spicy">
-                          🌶️ حار
-                        </span>
-                      )}
-                      {item.spicy === false && (
-                        <span className="modal-badge modal-badge--mild">
-                          😌 مش حار
+                          {lang === "ar" ? "🌶️ حار" : "🌶️ Spicy"}
                         </span>
                       )}
 
-                      {/* الاختيارات */}
+                      {item.spicy === false && (
+                        <span className="modal-badge modal-badge--mild">
+                          {lang === "ar" ? "😌 مش حار" : "😌 Not Spicy"}
+                        </span>
+                      )}
+
                       {optionValues.map((opt, oi) => (
-                        <span key={oi} className="modal-badge modal-badge--option">
+                        <span
+                          key={oi}
+                          className="modal-badge modal-badge--option"
+                        >
                           ✔ {opt}
                         </span>
                       ))}
-
                     </div>
                   )}
-
                 </li>
               );
             })}
           </ul>
         </div>
 
-        {/* ── Notes ── */}
         {order.notes && (
           <div className="modal-section">
-            <h3 className="modal-section__title">Notes</h3>
+            <h3 className="modal-section__title">{t("admin.modal.notes")}</h3>
             <p className="modal-notes">{order.notes}</p>
           </div>
         )}
 
-        {/* ── Footer ── */}
         <div className="modal-footer">
           <div className="modal-total">
-            <span>Total</span>
-            <span className="modal-total__amount">{order.total} EGP</span>
+            <span>{t("admin.modal.total")}</span>
+            <span className="modal-total__amount">
+              {order.total} {t("common.egp")}
+            </span>
           </div>
-          <a
-            className="modal-whatsapp"
-            href={`https://wa.me/${order.phone}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            💬 WhatsApp
-          </a>
-        </div>
 
+          {order.phone && (
+            <a
+              className="modal-whatsapp"
+              href={`https://wa.me/${order.phone.replace(/^0/, "20")}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              💬 {t("admin.actions.whatsapp")}
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );

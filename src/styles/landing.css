@@ -723,8 +723,6 @@ span.shelter {color: var(--amber-light);}
 }
 
 .powerd-name a {
-  color: #FFC107;
-  text-decoration: none;
 }
 
 @media(max-width:900px){

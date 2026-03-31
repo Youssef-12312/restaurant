@@ -8,7 +8,7 @@ import CustomerMenu from "./pages/CustomerMenu";
 import Checkout from "./pages/CheckOut.jsx";
 import PrivacyPolicy from "./pages/Privacy.jsx";
 import AdminApp from "./Admin/pages/AdminApp";  
-
+import RedirectHandler from "./components/RedirectHandler";
 function App() {
   const [cart, setCart] = useState([]);
   const { i18n } = useTranslation();
@@ -21,6 +21,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <RedirectHandler />
       <Routes>
         <Route path="/"         element={<Landing />} />
         <Route path="/menu"     element={<CustomerMenu cart={cart} setCart={setCart} />} />

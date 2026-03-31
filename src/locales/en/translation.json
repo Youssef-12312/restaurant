@@ -32,6 +32,48 @@
     "all": "All",
     "addToCart": "Add to Cart"
   },
+  "admin": {
+    "stats": {
+      "newOrders": "New Orders",
+      "preparing": "Preparing",
+      "completed": "Completed",
+      "todaySales": "Today Sales"
+    },
+    "orderType": {
+      "delivery": "Delivery",
+      "pickup": "Pickup",
+      "dineIn": "Dine-in"
+  },
+  "status": {
+    "new": "New",
+    "preparing": "Preparing",
+    "onTheWay": "On The Way",
+    "completed": "Completed",
+    "cancelled": "Cancelled"
+  },
+  "actions": {
+    "accept": "Accept",
+    "onTheWay": "On The Way",
+    "complete": "Complete",
+    "cancel": "Cancel",
+    "whatsapp": "WhatsApp"
+  },
+  "modal": {
+    "order": "Order",
+    "customer": "Customer",
+    "name": "Name",
+    "phone": "Phone",
+    "type": "Type",
+    "address": "Address",
+    "viewLocation": "View Location",
+    "items": "Items",
+    "notes": "Notes",
+    "total": "Total"
+  }
+},
+"common": {
+  "egp": "EGP"
+},
   "cart": {
     "title": "Your Order",
     "empty": "Your cart is empty. Add some delicious items!",
