@@ -81,7 +81,7 @@ function LocationPicker({ setLocation, initialPosition, addressText }) {
       minZoom={13}
       maxBounds={MANSOURA_BOUNDS}
       maxBoundsViscosity={1.0}
-      style={{ height: "300px", width: "100%", borderRadius: "10px" }}
+      style={{ height: "300px", width: "100%", borderRadius: "10px"}}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <LocationMarker />

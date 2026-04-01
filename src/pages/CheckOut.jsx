@@ -139,7 +139,8 @@ function Checkout({ cart = [] }) {
   const [submitted, setSubmitted] = useState(false);
   const [orderNumber, setOrderNumber] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const [showErrors, setShowErrors] = useState(false);
+  
   const getText = (value) => {
     if (typeof value === "string") return value;
     if (!value || typeof value !== "object") return "";
@@ -199,8 +200,8 @@ function Checkout({ cart = [] }) {
             address: addressText || `${latitude},${longitude}`
           }));
         },
-(error) => {
-          console.error("GPS Error:", error); // استخدمنا المتغير هنا
+        (error) => {
+          console.error("GPS Error:", error); 
           alert(lang === "ar" ? "برجاء السماح للمتصفح بمعرفة موقعك (GPS) لتحديد العنوان بدقة." : "Please enable GPS to locate your address.");
         }
       );
@@ -209,64 +210,65 @@ function Checkout({ cart = [] }) {
     }
   };
 
-const validate = () => {
-  const newErrors = {};
-  const nameValue = formData.name.trim();
+  const validate = () => {
+    const newErrors = {};
+    const nameValue = formData.name.trim();
 
-  // --- الاسم ---
-  if (!nameValue) {
-    newErrors.name = t("checkout.errors.name");
-  } else if (/\d/.test(nameValue)) {
-    newErrors.name = "Name cannot contain numbers";
-  }
-
-  if (!isDineIn) {
-    // --- الموبايل ---
-    const phoneDigits = formData.phone.replace(/\D/g, "");
-    if (!phoneDigits) {
-      newErrors.phone = t("checkout.errors.phone");
-    } else if (!/^01\d{9}$/.test(phoneDigits)) {
-      newErrors.phone = t("checkout.errors.phoneInvalid");
+    // --- الاسم ---
+    if (!nameValue) {
+      newErrors.name = t("checkout.errors.name");
+    } else if (/\d/.test(nameValue)) {
+      newErrors.name = "Name cannot contain numbers";
     }
 
-  
-if (orderType === "delivery") {
-  const manual = formData.manualAddress.trim();
+    if (!isDineIn) {
+      // --- الموبايل ---
+      const phoneDigits = formData.phone.replace(/\D/g, "");
+      if (!phoneDigits) {
+        newErrors.phone = t("checkout.errors.phone");
+      } else if (!/^01\d{9}$/.test(phoneDigits)) {
+        newErrors.phone = t("checkout.errors.phoneInvalid");
+      }
 
-  // ❌ لازم يحدد موقع من الخريطة
-  if (!mapPosition || mapPosition.length !== 2) {
-    newErrors.address =
-      lang === "ar"
-        ? "برجاء تحديد موقعك من الخريطة"
-        : "Please select your location on the map";
-  }
+      if (orderType === "delivery") {
+        const manual = formData.manualAddress.trim();
 
-  // ❌ تأكد إن الموقع مش default (يعني المستخدم مختارش حاجة)
-  else if (
-    mapPosition[0] === 31.0409 &&
-    mapPosition[1] === 31.3785
-  ) {
-    newErrors.address =
-      lang === "ar"
-        ? "برجاء تحديد موقعك من الخريطة"
-        : "Please select your location on the map";
-  }
+        // ❌ لازم يحدد موقع من الخريطة
+        if (!mapPosition || mapPosition.length !== 2) {
+          newErrors.address =
+            lang === "ar"
+              ? "برجاء تحديد موقعك من الخريطة"
+              : "Please select your location on the map";
+        }
 
-  // ❌ العنوان التفصيلي
-  if (!manual) {
-    newErrors.manualAddress =
-      "برجاء كتابة عنوانك بالتفصيل";
-  } else if (manual.length < 15) {
-    newErrors.manualAddress =
-      "برجاء كتابة عنوانك بالتفصيل في ما لا يقل عن 15 حرف";
-  }
-}
-  }
+        // ❌ تأكد إن الموقع مش default (يعني المستخدم مختارش حاجة)
+        else if (
+          mapPosition[0] === 31.0409 &&
+          mapPosition[1] === 31.3785
+        ) {
+          newErrors.address =
+            lang === "ar"
+              ? "برجاء تحديد موقعك من الخريطة"
+              : "Please select your location on the map";
+        }
 
-  return newErrors;
-};
+        // ❌ العنوان التفصيلي
+        if (!manual) {
+          newErrors.manualAddress =
+            "برجاء كتابة عنوانك بالتفصيل";
+        } else if (manual.length < 15) {
+          newErrors.manualAddress =
+            "برجاء كتابة عنوانك بالتفصيل في ما لا يقل عن 15 حرف";
+        }
+      }
+    }
+
+    return newErrors;
+  };
 
   const handleConfirm = async () => {
+    setShowErrors(true); // 👈 مهم
+
     if (!isRestaurantOpen()) {
       alert("Shelter is currently closed. We open at 9 AM.");
       return;
@@ -278,6 +280,7 @@ if (orderType === "delivery") {
       return;
     }
 
+    setErrors({});
     setIsSubmitting(true);
 
     try {
@@ -287,8 +290,7 @@ if (orderType === "delivery") {
 
       setOrderNumber(shortOrderNumber);
 
-      // --- حساب الفرع النهائي ---
-      let finalBranch = branchName; 
+      let finalBranch = branchName;
       if (!isDineIn && orderType === "delivery") {
         finalBranch = getClosestBranch(mapPosition[0], mapPosition[1]);
       }
@@ -302,7 +304,7 @@ if (orderType === "delivery") {
         notes: formData.notes || "",
         orderType: isDineIn ? "dine-in" : orderType,
         table: isDineIn ? tableNumber : null,
-        branch: finalBranch || null, 
+        branch: finalBranch || null,
         items: cart,
         subtotal,
         vat,
@@ -310,14 +312,13 @@ if (orderType === "delivery") {
         total: finalTotal,
         status: "new",
         createdAt: serverTimestamp(),
-        // تخزين الإحداثيات عشان نستخدمها للطيار في الداشبورد
         lat: mapPosition[0],
         lng: mapPosition[1]
       });
-      
+
       if (isDineIn) {
         sessionStorage.removeItem("tableNumber");
-        sessionStorage.removeItem("branchName"); 
+        sessionStorage.removeItem("branchName");
       }
 
       setSubmitted(true);
@@ -328,6 +329,7 @@ if (orderType === "delivery") {
       setIsSubmitting(false);
     }
   };
+
   if (submitted) {
     return (
       <div className="checkout-success">
@@ -470,33 +472,33 @@ if (orderType === "delivery") {
               }`}
             >
               <div
-  className={`checkout-field ${
-    errors.manualAddress ? "checkout-field--error" : ""
-  }`}
->
-  <label className="checkout-field__label">
-    {lang === "ar" ? "اكتب عنوانك يدويًا" : "Enter your address manually"}
-  </label>
+                className={`checkout-field ${
+                  errors.manualAddress ? "checkout-field--error" : ""
+                }`}
+              >
+                <label className="checkout-field__label">
+                  {lang === "ar" ? "اكتب عنوانك يدويًا" : "Enter your address manually"}
+                </label>
 
-  <input
-    className="checkout-field__input"
-    type="text"
-    name="manualAddress"
-    value={formData.manualAddress}
-    onChange={handleChange}
-    placeholder={
-      lang === "ar"
-        ? "مثال: شارع الجيش، برج 10، الدور الثالث، شقة 5"
-        : "Example: Street, building, floor, apartment..."
-    }
-  />
+                <input
+                  className="checkout-field__input"
+                  type="text"
+                  name="manualAddress"
+                  value={formData.manualAddress}
+                  onChange={handleChange}
+                  placeholder={
+                    lang === "ar"
+                      ? "مثال: شارع الجيش، برج 10، الدور الثالث، شقة 5"
+                      : "Example: Street, building, floor, apartment..."
+                  }
+                />
 
-  {errors.manualAddress && (
-    <span className="checkout-field__error">
-      {errors.manualAddress}
-    </span>
-  )}
-</div>
+                {errors.manualAddress && (
+                  <span className="checkout-field__error">
+                    {errors.manualAddress}
+                  </span>
+                )}
+              </div>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
                 <label className="checkout-field__label" style={{ margin: 0 }}>
                   {t("checkout.address")}
@@ -520,55 +522,52 @@ if (orderType === "delivery") {
                   📍 {lang === "ar" ? "موقعي الحالي" : "My Location"}
                 </button>
               </div>
-                  <input type="text" readOnly
-  className="checkout-field__input"
-  style={{ marginTop: "12px" }}
-  name="address"
-  value={formData.address}
-  onChange={handleChange}
-  placeholder={
-    lang === "ar"
-      ? "العنوان من الخريطة"
-      : "Location On The Map"
-  }
-/>
-               <LocationPicker
-  initialPosition={mapPosition}
-  addressText={formData.address}
+              <input type="text" readOnly
+                className="checkout-field__input"
+                style={{ marginTop: "12px" }}
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+                placeholder={
+                  lang === "ar"
+                    ? "العنوان من الخريطة"
+                    : "Location On The Map"
+                }
+              />
+              <LocationPicker
+                initialPosition={mapPosition}
+                addressText={formData.address}
+                setLocation={async (coords) => {
+                  setMapPosition([coords.lat, coords.lng]);
 
-  setLocation={async (coords) => {
-    setMapPosition([coords.lat, coords.lng]);
+                  // 👇 مهم: خلي في fallback فورًا عشان الـ UI ما يفضلش فاضي
+                  setFormData((prev) => ({
+                    ...prev,
+                    address: `${coords.lat.toFixed(6)}, ${coords.lng.toFixed(6)}`
+                  }));
 
-    // 👇 مهم: خلي في fallback فورًا عشان الـ UI ما يفضلش فاضي
-    setFormData((prev) => ({
-      ...prev,
-      address: `${coords.lat.toFixed(6)}, ${coords.lng.toFixed(6)}`
-    }));
+                  try {
+                    const addressText = await getAddressFromCoords(
+                      coords.lat,
+                      coords.lng
+                    );
 
-    try {
-      const addressText = await getAddressFromCoords(
-        coords.lat,
-        coords.lng
-      );
+                    setFormData((prev) => ({
+                      ...prev,
+                      address:
+                        addressText?.trim() ||
+                        `${coords.lat.toFixed(6)}, ${coords.lng.toFixed(6)}`
+                    }));
+                  } catch (err) {
+                    console.error("Reverse geocoding error:", err);
 
-      setFormData((prev) => ({
-        ...prev,
-        address:
-          addressText?.trim() ||
-          `${coords.lat.toFixed(6)}, ${coords.lng.toFixed(6)}`
-      }));
-    } catch (err) {
-      console.error("Reverse geocoding error:", err);
-
-      setFormData((prev) => ({
-        ...prev,
-        address: `${coords.lat.toFixed(6)}, ${coords.lng.toFixed(6)}`
-      }));
-    }
-  }}
-/>
-
-
+                    setFormData((prev) => ({
+                      ...prev,
+                      address: `${coords.lat.toFixed(6)}, ${coords.lng.toFixed(6)}`
+                    }));
+                  }
+                }}
+              />
 
               {errors.address && (
                 <span className="checkout-field__error">{errors.address}</span>
@@ -694,6 +693,31 @@ if (orderType === "delivery") {
                 : t("checkout.confirm")}
             </button>
           )}
+
+          {/* 👇 الجزء الخاص بعرض جميع الأخطاء تحت الأزرار 👇 */}
+          {showErrors && Object.keys(errors).length > 0 && (
+            <div className="checkout-summary-errors" style={{ 
+                marginTop: "15px", 
+                padding: "10px", 
+                backgroundColor: "#fff5f5", 
+                borderRadius: "8px",
+                border: "1px solid #feb2b2" 
+            }}>
+              {Object.values(errors).map((errorMsg, idx) => (
+                <p key={idx} className="checkout-field__error" style={{ 
+                    color: "#e53e3e", 
+                    fontSize: "13px", 
+                    margin: "5px 0",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px"
+                }}>
+                  ⚠️ {errorMsg}
+                </p>
+              ))}
+            </div>
+          )}
+
         </section>
       </div>
     </div>
