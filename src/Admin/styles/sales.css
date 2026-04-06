@@ -1,0 +1,244 @@
+/* ══════════════════════════════════════════
+   SALES DASHBOARD  (sd-*)
+   ══════════════════════════════════════════ */
+
+.sd-page {
+  padding: 2rem;
+  animation: fadeInUp 0.35s ease;
+}
+
+/* ── header ── */
+.sd-header   { margin-bottom: 1.5rem; }
+.sd-heading  { font-size: 1.5rem; font-weight: 800; color: var(--text); margin: 0 0 .25rem; }
+.sd-sub      { font-size: .88rem; color: var(--muted); margin: 0; font-weight: 600; }
+
+/* ── month pills ── */
+.sd-months-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.sd-month-btn {
+  padding: .45rem 1.05rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  font-size: .82rem;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: all .2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.sd-month-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: #fff8f5;
+}
+.sd-month-btn--active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(232,82,26,.28);
+}
+
+.sd-no-data {
+  font-size: .88rem;
+  color: var(--muted);
+  padding: .5rem;
+}
+
+/* ── main grid ── */
+.sd-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* ── donut card ── */
+.sd-donut-card {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  padding: 2rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* animated radial glow */
+.sd-donut-card__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%,
+    rgba(232,82,26,.07) 0%, transparent 68%);
+  pointer-events: none;
+  animation: sdPulse 4s ease-in-out infinite;
+}
+@keyframes sdPulse {
+  0%,100% { opacity: .55; transform: scale(1);    }
+  50%      { opacity: 1;   transform: scale(1.08); }
+}
+
+.sd-circle-svg {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 6px 22px rgba(232,82,26,.14));
+}
+
+/* ── circle wrap + orders badge ── */
+.sd-circle-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .9rem;
+  position: relative;
+  z-index: 1;
+}
+
+.sd-orders-badge {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  background: #fff8f5;
+  border: 1.5px solid rgba(232,82,26,.22);
+  border-radius: 999px;
+  padding: .4rem 1.4rem;
+}
+.sd-orders-badge__val {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+}
+.sd-orders-badge__lbl {
+  font-size: .76rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* ── side stat cards ── */
+.sd-stats-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.sd-stat-card {
+  animation: fadeInUp .4s ease both;
+}
+.sd-stat-card:nth-child(1) { animation-delay: .04s; }
+.sd-stat-card:nth-child(2) { animation-delay: .10s; }
+.sd-stat-card:nth-child(3) { animation-delay: .16s; }
+
+/* ── shimmer skeleton ── */
+.sd-shimmer-rect,
+.sd-shimmer-pill {
+  display: inline-block;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    #f0ede8 25%, #e4ddd5 50%, #f0ede8 75%
+  );
+  background-size: 200% 100%;
+  animation: sdShimmer 1.5s infinite;
+}
+.sd-shimmer-pill { width: 90px; height: 34px; }
+
+@keyframes sdShimmer {
+  0%   { background-position:  200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── responsive ── */
+@media (max-width: 900px) {
+  .sd-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .sd-stats-col { width: 100%; }
+}
+@media (max-width: 768px) {
+  .sd-page { padding: 1rem; }
+  .sd-donut-card { padding: 1.5rem; }
+}
+/* ══ Branch Breakdown ══ */
+
+.sd-branches-section {
+  margin-top: 2rem;
+}
+
+.sd-branches-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 1rem;
+}
+
+.sd-branches-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.sd-branch-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  animation: fadeInUp 0.4s ease both;
+}
+
+.sd-branch-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sd-branch-card__label {
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.sd-branch-card__pct {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+/* progress bar */
+.sd-branch-bar__track {
+  height: 10px;
+  background: #f0ede8;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.sd-branch-bar__fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.sd-branch-card__nums {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.sd-branch-card__nums strong {
+  color: var(--text);
+}
+
+@media (max-width: 600px) {
+  .sd-branches-grid { grid-template-columns: 1fr; }
+}

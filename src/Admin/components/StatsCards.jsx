@@ -74,7 +74,7 @@ function StatsCards({ orders = [] }) {
     {
       key: "todaySales",
       label: t("admin.stats.todaySales"),
-      value: `${todaySales} ${t("common.egp")}`,
+      value: `${todaySales.toFixed(2)} ${t("common.egp")}`,
       icon: "💰",
       color: "#6366f1"
     }

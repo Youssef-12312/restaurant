@@ -1,9 +1,9 @@
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc} from "firebase/firestore";
 import { db } from "../../services/firebase";
 import "../styles/ModalBadges.css";
 import { useTranslation } from "react-i18next";
-
-/* ───────── STATUS CONSTANTS ───────── */
+import { addOrderToSales } from "../../services/salesService";/* ───────── STATUS CONSTANTS ───────── */
+import { getCartItemVariantSuffix } from "../../utils/cartItem.js";
 const STATUS = {
   NEW: "new",
   PREPARING: "preparing",
@@ -12,13 +12,6 @@ const STATUS = {
   CANCELLED: "cancelled",
 };
 
-const STATUS_FLOW = [
-  STATUS.NEW,
-  STATUS.PREPARING,
-  STATUS.ON_THE_WAY,
-  STATUS.COMPLETED
-];
-
 /* ───────── HELPERS ───────── */
 function getText(value, lang = "en") {
   if (typeof value === "string") return value;
@@ -26,7 +19,6 @@ function getText(value, lang = "en") {
   return value[lang] || value.ar || value.en || "";
 }
 
-// دالة لمعرفة اسم الفرع
 function getBranchLabel(branchCode, lang) {
   if (branchCode === "mashaya") return lang === "ar" ? "📍 المشاية" : "📍 Mashaya";
   if (branchCode === "gamaa") return lang === "ar" ? "📍 حي الجامعة" : "📍 Gamaa";
@@ -62,10 +54,9 @@ function getOrderTypeLabel(orderType, t) {
 function OrderCard({ order, onOpen }) {
   const { t, i18n } = useTranslation();
   const lang = i18n.language?.startsWith("ar") ? "ar" : "en";
-
+  
   const STATUS_LABELS = getStatusLabels(t);
   const ACTION_BUTTONS = getActionButtons(t);
-
   const statusInfo = STATUS_LABELS[order.status] || STATUS_LABELS[STATUS.NEW];
 
   const time = order.createdAt?.toDate?.()
@@ -75,14 +66,23 @@ function OrderCard({ order, onOpen }) {
       )
     : "—";
 
-  const updateStatus = async (e, newStatus) => {
-    e.stopPropagation();
-    try {
-      await updateDoc(doc(db, "orders", order.id), { status: newStatus });
-    } catch (err) {
-      console.error("Update status error:", err);
+ const updateStatus = async (e, newStatus) => {
+  e.stopPropagation();
+  try {
+    await updateDoc(doc(db, "orders", order.id), { status: newStatus });
+
+    if (newStatus === STATUS.COMPLETED && !order.addedToSales) {
+      await addOrderToSales(order);
+
+      await updateDoc(doc(db, "orders", order.id), {
+        addedToSales: true,
+      });
     }
-  };
+
+  } catch (err) {
+    console.error("Update status error:", err);
+  }
+};
 
   const cancelOrder = async (e) => {
     e.stopPropagation();
@@ -102,10 +102,15 @@ function OrderCard({ order, onOpen }) {
       return;
     }
     const phone = order.phone.replace(/^0/, "20");
-    const message =
-      lang === "ar"
-        ? `مرحبًا ${order.customerName}\nطلبك من *Shelter House Of Cheese* هو:\n${(order.items || []).map((i) => `${getText(i.name, lang)} x${i.qty}`).join("\n")}\nالعنوان: ${order.address || "—"}\nالإجمالي: ${order.total} ${t("common.egp")}\nحالة طلبك *#${order.orderNumber}* الآن: ${statusInfo.label}\nلو في أي مشكلة كلمنا على: 17574\nشكرًا لطلبك من *Shelter House Of Cheese*`
-        : `Hello ${order.customerName}\nYour order from *Shelter House Of Cheese* is:\n${(order.items || []).map((i) => `${getText(i.name, lang)} x${i.qty}`).join("\n")}\nAddress: ${order.address || "—"}\nTotal: ${order.total} ${t("common.egp")}\nYour order *#${order.orderNumber}* is now ${statusInfo.label}.\nIf there is any problem call us on: 17574\nThank you for ordering from *Shelter House Of Cheese*`;
+    const formatOrderItem = (item) => {
+      const itemName = getText(item.name, lang);
+      const variantSuffix = getCartItemVariantSuffix(item, lang);
+
+      return variantSuffix ? `${itemName} (${variantSuffix})` : itemName;
+    };
+    const message = lang === "ar"
+      ? `مرحبًا ${order.customerName}\nطلبك من *Shelter House Of Cheese* هو:\n${(order.items || []).map((i) => `${formatOrderItem(i)} x${i.qty}`).join("\n")}\nالإجمالي: ${order.total} ${t("common.egp")}\nحالة طلبك الآن: ${statusInfo.label}`
+      : `Hello ${order.customerName}\nYour order from *Shelter House Of Cheese* is now ${statusInfo.label}.`;
 
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
@@ -114,36 +119,21 @@ function OrderCard({ order, onOpen }) {
   const actionBtn = ACTION_BUTTONS.find((a) => a.status === order.status);
 
   return (
-    <div
-      className={`order-card order-card--${order.status}`}
-      onClick={() => onOpen(order)}
-    >
+    <div className={`order-card order-card--${order.status}`} onClick={() => onOpen(order)}>
       <div className="order-card__top">
-        {/* الحاوية دي بتخلي رقم الأوردر واسم الفرع جنب بعض */}
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <span className="order-card__num">
-            #{order.orderNumber}
-          </span>
-          
-          {/* شارة الفرع الملونة - التعديل هنا */}
+          <span className="order-card__num">#{order.orderNumber}</span>
           {order.branch && (
             <span style={{ 
               backgroundColor: order.branch === "mashaya" ? "#e0f2fe" : "#fef08a", 
               color: order.branch === "mashaya" ? "#0369a1" : "#854d0e",
-              padding: "2px 8px", 
-              borderRadius: "12px", 
-              fontSize: "12px", 
-              fontWeight: "bold" 
+              padding: "2px 8px", borderRadius: "12px", fontSize: "12px", fontWeight: "bold" 
             }}>
               {getBranchLabel(order.branch, lang)}
             </span>
           )}
         </div>
-
-        <span
-          className="order-card__status"
-          style={{ color: statusInfo.color, background: statusInfo.bg }}
-        >
+        <span className="order-card__status" style={{ color: statusInfo.color, background: statusInfo.bg }}>
           {statusInfo.label}
         </span>
       </div>
@@ -156,26 +146,13 @@ function OrderCard({ order, onOpen }) {
       <div className="order-card__meta">
         <span className={`order-card__type order-card__type--${order.orderType}`}>
           {getOrderTypeLabel(order.orderType, t)}
-          {order.orderType === "dine-in" && order.table
-            ? ` - ${lang === "ar" ? "ترابيزة" : "Table"} ${order.table}`
-            : ""}
         </span>
         <span className="order-card__time">{time}</span>
       </div>
 
-      <p className="order-card__items-preview">
-        {(order.items || [])
-          .slice(0, 2)
-          .map((i) => `${getText(i.name, lang)} ×${i.qty}`)
-          .join(" · ")}
-        {order.items?.length > 2 && ` +${order.items.length - 2} ${t("admin.labels.more")}`}
-      </p>
-
       <div className="order-card__total">
         <span>{t("admin.modal.total")}</span>
-        <span className="order-card__total-amount">
-          {order.total} {t("common.egp")}
-        </span>
+        <span className="order-card__total-amount">{order.total} {t("common.egp")}</span>
       </div>
 
       <div className="order-card__actions" onClick={(e) => e.stopPropagation()}>
@@ -184,7 +161,9 @@ function OrderCard({ order, onOpen }) {
             className="order-card__btn order-card__btn--primary"
             onClick={(e) => updateStatus(e, actionBtn.next)}
           >
-            {actionBtn.label}
+            {actionBtn.next === STATUS.COMPLETED
+              ? `✅ ${actionBtn.label} + Save to Sales`
+              : actionBtn.label}
           </button>
         )}
         <button className="order-card__btn order-card__btn--whatsapp" onClick={sendWhatsApp}>
@@ -201,4 +180,3 @@ function OrderCard({ order, onOpen }) {
 }
 
 export default OrderCard;
-

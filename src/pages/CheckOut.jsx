@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import "../styles/checkout.css";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../services/firebase";
+import { normalizeBranchKey } from "../services/branchSales";
 import { useTranslation } from "react-i18next";
 import useTable from "../components/useTable";
+import { getCartItemKey, getCartItemVariantLabels } from "../utils/cartItem.js";
 
 // استدعاء ملف الخريطة
 import LocationPicker from "../components/LocationPicker";
@@ -117,13 +119,15 @@ function Checkout({ cart = [] }) {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
-  const { tableNumber, branchName } = useTable();
+  const { tableNumber, branchName, tableToken } = useTable();
   const isDineIn = Boolean(tableNumber);
 
   const lang = i18n.language?.startsWith("ar") ? "ar" : "en";
   const minimumOrder = 100;
 
   const [orderType, setOrderType] = useState("delivery");
+  // إضافة حالة لفرع الاستلام، وجعل "mashaya" هو الافتراضي
+  const [pickupBranch, setPickupBranch] = useState("mashaya");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -261,6 +265,11 @@ function Checkout({ cart = [] }) {
             "برجاء كتابة عنوانك بالتفصيل في ما لا يقل عن 15 حرف";
         }
       }
+
+      // التحقق من فرع الاستلام لو الطلب تيك اواي
+      if (orderType === "pickup" && !pickupBranch) {
+        newErrors.pickupBranch = lang === "ar" ? "برجاء اختيار فرع الاستلام" : "Please select a pickup branch";
+      }
     }
 
     return newErrors;
@@ -290,10 +299,17 @@ function Checkout({ cart = [] }) {
 
       setOrderNumber(shortOrderNumber);
 
-      let finalBranch = branchName;
-      if (!isDineIn && orderType === "delivery") {
-        finalBranch = getClosestBranch(mapPosition[0], mapPosition[1]);
+      // تحديد الفرع الذي سيتم إرساله في قاعدة البيانات
+      let finalBranch = branchName; // الافتراضي للـ Dine-in
+      if (!isDineIn) {
+        if (orderType === "delivery") {
+          finalBranch = getClosestBranch(mapPosition[0], mapPosition[1]);
+        } else if (orderType === "pickup") {
+          finalBranch = pickupBranch; // إرسال فرع الاستلام المختار للـ Admin
+        }
       }
+
+      const normalizedBranch = normalizeBranchKey(finalBranch) || finalBranch || null;
 
       await addDoc(collection(db, "orders"), {
         orderNumber: shortOrderNumber,
@@ -303,8 +319,9 @@ function Checkout({ cart = [] }) {
         manualAddress: formData.manualAddress,
         notes: formData.notes || "",
         orderType: isDineIn ? "dine-in" : orderType,
-        table: isDineIn ? tableNumber : null,
-        branch: finalBranch || null,
+        table: isDineIn ? Number(tableNumber) : null, 
+        branch: normalizedBranch,
+        tableToken: isDineIn ? tableToken : null,
         items: cart,
         subtotal,
         vat,
@@ -319,16 +336,27 @@ function Checkout({ cart = [] }) {
       if (isDineIn) {
         sessionStorage.removeItem("tableNumber");
         sessionStorage.removeItem("branchName");
+        sessionStorage.removeItem("tableToken");
       }
 
       setSubmitted(true);
-    } catch (err) {
+} catch (err) {
       console.error("Order error:", err);
-      alert("حدث خطأ أثناء إرسال الطلب، برجاء المحاولة مرة أخرى.");
+      
+     
+      if (err.code === 'permission-denied') {
+        alert(lang === "ar" 
+          ? "عذراً، يبدو أن هناك مشكلة في بيانات الطاولة. يرجى مسح الكود من على الطاولة مرة أخرى وعدم تعديل الرابط." 
+          : "Invalid QR Code data. Please scan the table's QR code again.");
+      } else {
+        alert(lang === "ar" 
+          ? "حدث خطأ أثناء إرسال الطلب، برجاء المحاولة مرة أخرى." 
+          : "An error occurred, please try again.");
+      }
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }; 
 
   if (submitted) {
     return (
@@ -395,29 +423,65 @@ function Checkout({ cart = [] }) {
           )}
 
           {!isDineIn && (
-            <div className="checkout-order-type">
-              <label className="order-type-option">
-                <input
-                  type="radio"
-                  name="orderType"
-                  value="delivery"
-                  checked={orderType === "delivery"}
-                  onChange={(e) => setOrderType(e.target.value)}
-                />
-                {t("checkout.delivery")}
-              </label>
+            <>
+              <div className="checkout-order-type">
+                <label className="order-type-option">
+                  <input
+                    type="radio"
+                    name="orderType"
+                    value="delivery"
+                    checked={orderType === "delivery"}
+                    onChange={(e) => setOrderType(e.target.value)}
+                  />
+                  {t("checkout.delivery")}
+                </label>
 
-              <label className="order-type-option">
-                <input
-                  type="radio"
-                  name="orderType"
-                  value="pickup"
-                  checked={orderType === "pickup"}
-                  onChange={(e) => setOrderType(e.target.value)}
-                />
-                {t("checkout.pickup")}
-              </label>
-            </div>
+                <label className="order-type-option">
+                  <input
+                    type="radio"
+                    name="orderType"
+                    value="pickup"
+                    checked={orderType === "pickup"}
+                    onChange={(e) => setOrderType(e.target.value)}
+                  />
+                  {t("checkout.pickup")}
+                </label>
+              </div>
+
+              {/* 👇 الجزء الخاص باختيار فرع الاستلام 👇 */}
+              {orderType === "pickup" && (
+                <div className={`checkout-field ${errors.pickupBranch ? "checkout-field--error" : ""}`} style={{ marginTop: "15px", padding: "15px", backgroundColor: "#f9f9f9", borderRadius: "8px" }}>
+                  <label className="checkout-field__label" style={{ marginBottom: "10px", display: "block", color: "#333" }}>
+                    {lang === "ar" ? "اختر فرع الاستلام" : "Select Pickup Branch"}
+                  </label>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                    <label className="order-type-option" style={{ margin: 0 }}>
+                      <input
+                        type="radio"
+                        name="pickupBranch"
+                        value="mashaya"
+                        checked={pickupBranch === "mashaya"}
+                        onChange={(e) => setPickupBranch(e.target.value)}
+                      />
+                      {lang === "ar" ? "المشاية (أسفل فيلا غيث)" : "Mashaya (Below Ghaith Villa)"}
+                    </label>
+                    <label className="order-type-option" style={{ margin: 0 }}>
+                      <input
+                        type="radio"
+                        name="pickupBranch"
+                        value="gamaa"
+                        checked={pickupBranch === "gamaa"}
+                        onChange={(e) => setPickupBranch(e.target.value)}
+                      />
+                      {lang === "ar" ? "حي الجامعة" : "Hay El Gamaa"}
+                    </label>
+                  </div>
+                  {errors.pickupBranch && (
+                    <span className="checkout-field__error" style={{ marginTop: "8px", display: "block" }}>{errors.pickupBranch}</span>
+                  )}
+                </div>
+              )}
+            </>
           )}
 
           <div
@@ -602,12 +666,24 @@ function Checkout({ cart = [] }) {
               {cart.map((item, index) => (
                 <li
                   className="checkout-item"
-                  key={item.id || `${getText(item.name)}-${index}`}
+                  key={getCartItemKey(item) || `${getText(item.name)}-${index}`}
                 >
                   <div className="checkout-item__details">
                     <span className="checkout-item__name">
                       {getText(item.name)}
                     </span>
+                    {getCartItemVariantLabels(item, lang).length > 0 && (
+                      <span
+                        style={{
+                          display: "block",
+                          marginTop: "4px",
+                          color: "#6b7280",
+                          fontSize: "0.9rem"
+                        }}
+                      >
+                        {getCartItemVariantLabels(item, lang).join(", ")}
+                      </span>
+                    )}
                     <span className="checkout-item__qty">
                       × {item.qty || 1}
                     </span>

@@ -26,14 +26,14 @@ function MarqueeContent() {
 function StatusBadge() {
   const [status, setStatus] = useState({ open: false, label: "..." });
 
-  useEffect(() => {
+useEffect(() => {
     function check() {
       const now    = new Date();
       const day    = now.getDay();                          // 0=Sun … 5=Fri … 6=Sat
       const mins   = now.getHours() * 60 + now.getMinutes();
-      const openAt = day === 5 ? 14 * 60 : 10 * 60 + 30;  // الجمعة 2:00 م، باقي الأيام 10:30 ص
-      const closeAt = 1 * 60 + 30;                         // 1:30 صباحًا
-      const isOpen = mins >= openAt || mins < closeAt;
+      const openAt = day === 5 ? 14 * 60 : 10 * 60 + 30;  
+      const closeAt = 21 * 60 + 30;                       
+      const isOpen = mins >= openAt && mins < closeAt;
    
       const nextOpen = day === 4 ? "2:00 م" : "10:30 ص";
       setStatus({

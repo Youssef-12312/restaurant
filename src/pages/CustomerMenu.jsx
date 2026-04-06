@@ -7,6 +7,7 @@ import LanguageSwitcher from "../components/LanguageSwitcher.jsx";
 import ItemDrawer from "../components/ItemDrawer.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { getCartItemKey } from "../utils/cartItem.js";
 
 // استيراد الخدمات والهوكس
 import { fetchMenuData } from "../services/menuService.js";
@@ -18,6 +19,7 @@ function Typewriter({ text }) {
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
+    
     let timer;
     if (!isDeleting && displayedText.length < text.length) {
       timer = setTimeout(() => setDisplayedText(text.slice(0, displayedText.length + 1)), 40);
@@ -70,7 +72,6 @@ useEffect(() => {
   const loadData = async () => {
     const data = await fetchMenuData();
     if (data && Array.isArray(data)) {
-
       const dataWithImages = data.map(item => ({
         ...item,
        image: item.image || `/images/${item.id}.webp` 
@@ -84,23 +85,30 @@ useEffect(() => {
   // وظائف السلة
   function addToCart(item) {
     setCart((prev) => {
-      const exists = prev.find((c) => c.id === item.id);
+      const itemKey = getCartItemKey(item);
+      const exists = prev.find((cartItem) => getCartItemKey(cartItem) === itemKey);
+
       if (exists) {
-        return prev.map((c) =>
-          c.id === item.id ? { ...c, qty: c.qty + 1 } : c
+        return prev.map((cartItem) =>
+          getCartItemKey(cartItem) === itemKey
+            ? { ...cartItem, qty: (cartItem.qty || 1) + 1 }
+            : cartItem
         );
       }
+
       return [...prev, { ...item, qty: 1 }];
     });
   }
 
-  const removeFromCart = (id) =>
-    setCart((prev) => prev.filter((item) => item.id !== id));
+  const removeFromCart = (itemKey) =>
+    setCart((prev) =>
+      prev.filter((item) => getCartItemKey(item) !== itemKey)
+    );
 
-  const decreaseQty = (id) =>
+  const decreaseQty = (itemKey) =>
     setCart((prev) =>
       prev.map((item) =>
-        item.id === id
+        getCartItemKey(item) === itemKey
           ? { ...item, qty: item.qty > 1 ? item.qty - 1 : 1 }
           : item
       )
@@ -198,7 +206,7 @@ useEffect(() => {
               onClick={() => setActiveTab(cat)}
               type="button"
             >
-              {cat === "ALL" ? "الكل" : cat}
+              {cat === "الكل" ? "All" : cat}
             </button>
           ))}
         </div>

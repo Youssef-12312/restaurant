@@ -9,6 +9,7 @@ import Checkout from "./pages/CheckOut.jsx";
 import PrivacyPolicy from "./pages/Privacy.jsx";
 import AdminApp from "./Admin/pages/AdminApp";  
 import RedirectHandler from "./components/RedirectHandler";
+
 function App() {
   const [cart, setCart] = useState([]);
   const { i18n } = useTranslation();
@@ -23,11 +24,13 @@ function App() {
     <BrowserRouter>
       <RedirectHandler />
       <Routes>
+
         <Route path="/"         element={<Landing />} />
         <Route path="/menu"     element={<CustomerMenu cart={cart} setCart={setCart} />} />
         <Route path="/checkout" element={<Checkout cart={cart} />} />
         <Route path="/privacy"  element={<PrivacyPolicy />} />
         <Route path="/admin/*"    element={<AdminApp />} />
+
       </Routes>
     </BrowserRouter>
   );

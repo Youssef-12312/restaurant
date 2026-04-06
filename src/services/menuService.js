@@ -1,49 +1,77 @@
-import { collection, getDocs } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore"; // ⚠️ لاحظ إننا غيرنا collection و getDocs
 import { db } from "./firebase.js";
 import localMenu from "../data/menu.json";
 
 export async function fetchMenuData() {
+  // غيرنا أسماء مفاتيح الكاش عشان المتصفح ميقراش الداتا القديمة بالغلط
+  const CACHE_KEY = "cached_menu_data_v2"; 
+  const CACHE_TIME_KEY = "cached_menu_time_v2";
+  const EXPIRATION_HOURS = 12; // الكاش هيتجدد كل 12 ساعة
+
   try {
-    console.log("🔍 جاري محاولة جلب المنيو من كوليكشن 'menu'...");
+    // ==========================================
+    // 1. محاولة جلب الداتا من الكاش أولاً (0 Reads)
+    // ==========================================
+    const lastCache = localStorage.getItem(CACHE_KEY);
+    const cacheTime = localStorage.getItem(CACHE_TIME_KEY);
 
-  
-    const menuCollectionRef = collection(db, "menu");
-    const querySnapshot = await getDocs(menuCollectionRef);
-
-  
-    if (querySnapshot.empty) {
-      throw new Error("Collection 'menu' is empty or not found");
+    if (lastCache && cacheTime) {
+      // بنحسب هل عدى 12 ساعة ولا لأ
+      const isExpired = (Date.now() - parseInt(cacheTime)) > (EXPIRATION_HOURS * 60 * 60 * 1000);
+      
+      if (!isExpired) {
+        console.log("📦 تم التحميل من الكاش (0 Reads من فيربيز) - الداتا لسه طازة!");
+        return JSON.parse(lastCache);
+      }
     }
 
-    // 2. تحويل الدوكيومنتس لمصفوفة (Array) أصناف
-    const firebaseData = querySnapshot.docs.map(doc => ({
-      docId: doc.id,
-      ...doc.data()
-    }));
+    // ==========================================
+    // 2. جلب الداتا من فيربيز الهيكل الجديد (1 Read)
+    // ==========================================
+    console.log("🔍 جاري جلب المنيو من كوليكشن 'menu_v2'...");
+    
+    // بنشاور على الدوكيومنت الواحد اللي اسمه active_menu
+    const docRef = doc(db, "menu_v2", "active_menu");
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
+      throw new Error("Document 'active_menu' not found in 'menu_v2'");
+    }
+
+    // بنسحب مصفوفة الأصناف من جوه الدوكيومنت
+    const firebaseData = docSnap.data().items || [];
 
     console.log(`✅ تم جلب ${firebaseData.length} صنف من فيربيز بنجاح.`);
 
-    // حفظ النسخة دي في الكاش عشان لو النت فصل المرة الجاية
-    localStorage.setItem("cached_menu_data", JSON.stringify(firebaseData));
+    // ==========================================
+    // 3. تحديث الكاش بالداتا الجديدة والوقت الحالي
+    // ==========================================
+    localStorage.setItem(CACHE_KEY, JSON.stringify(firebaseData));
+    localStorage.setItem(CACHE_TIME_KEY, Date.now().toString());
     
     return firebaseData;
 
   } catch (error) {
-    // -------------------------------------------------------
-    // 🚨 تفعيل خطة الطوارئ لو الكوتا خلصت أو مفيش نت
-    // -------------------------------------------------------
+    // ==========================================
+    // 🚨 خطة الطوارئ لو النت فصل أو الكوتا خلصت
+    // ==========================================
     console.warn("⚠️ فشل جلب البيانات من فيربيز، جاري استخدام البدائل...");
     console.error("السبب:", error.message);
 
-    // أولاً: جرب لو فيه حاجة متسيفة في الكاش من المرة اللي فاتت
-    const lastCache = localStorage.getItem("cached_menu_data");
+    // أولاً: جرب لو فيه حاجة متسيفة في الكاش حتى لو قديمة
+    const lastCache = localStorage.getItem(CACHE_KEY);
     if (lastCache) {
-      console.log("📦 تم التحميل من الكاش المحلي.");
-      return JSON.parse(lastCache);
+      console.log("📦 تم التحميل من الكاش المحلي كبديل طوارئ.");
+      try {
+  return JSON.parse(lastCache);
+} catch {
+  localStorage.removeItem(CACHE_KEY);
+}   
     }
 
-    // ثانياً: لو مفيش كاش، هات من ملف الـ JSON اللي في الكود
+    // ثانياً: لو مفيش كاش خالص، هات من ملف الـ JSON المحلي
     console.log("📂 تم التحميل من ملف menu.json المحلي.");
-    return localMenu.menu || [];
+    // يرجى التأكد إن هيكل localMenu.menu متوافق مع الداتا
+    return localMenu.menu || []; 
   }
 }

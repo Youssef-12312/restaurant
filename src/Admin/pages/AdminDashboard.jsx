@@ -1,42 +1,54 @@
 import { signOut, setPersistence, browserSessionPersistence } from "firebase/auth";
 import { auth } from "../../services/firebase.js";
 import OrdersPage from "./OrdersPage.jsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "../styles/admin.css";
 import { onAuthStateChanged } from "firebase/auth";
 import { images } from "../../assets/Images/images.js";
 import { Link, useNavigate } from "react-router-dom";
 import LanguageSwitcher from "../../components/LanguageSwitcher.jsx";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../services/firebase.js";
+
 setPersistence(auth, browserSessionPersistence);
 
 function AdminDashboard() {
   const navigate = useNavigate();
-
+  
   const handleLogout = async () => {
     await signOut(auth);
     navigate("/admin");
   };
 
-useEffect(() => {
+  const [adminName, setAdminName] = useState("");
+  
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        navigate("/admin");
+      } else {
+        // 🔥 هات الاسم من Firestore
+        const docRef = doc(db, "admins", user.uid);
+        const snap = await getDoc(docRef);
 
-  const unsub = onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      navigate("/admin");
-    }
-  });
+        if (snap.exists()) {
+          setAdminName(snap.data().name);
+        }
+      }
+    });
 
-  const handleClose = () => {
-    signOut(auth);
-  };
+    const handleClose = () => {
+      signOut(auth);
+    };
 
-  window.addEventListener("beforeunload", handleClose);
+    window.addEventListener("beforeunload", handleClose);
 
-  return () => {
-    unsub();
-    window.removeEventListener("beforeunload", handleClose);
-  };
+    return () => {
+      unsub();
+      window.removeEventListener("beforeunload", handleClose);
+    };
+  }, [navigate]);
 
-}, []);
   return (
     <div className="dash-layout">
       <aside className="dash-sidebar">
@@ -57,8 +69,9 @@ useEffect(() => {
           <Link className="dash-nav-item" to="/admin/menu">
             <span>🍔</span> Menu Control
           </Link>
+
         </nav>
-      
+              
         <button className="dash-sidebar__logout" onClick={handleLogout}>
           <span>🚪</span> Logout
         </button>
@@ -75,7 +88,10 @@ useEffect(() => {
           <LanguageSwitcher />
           <div className="dash-header__user">
             <span className="dash-header__avatar">👤</span>
-            <span className="dash-header__email">Admin</span>
+            
+            <span className="dash-header__email">
+              {adminName || auth.currentUser?.email || "Admin"}
+            </span>
           </div>
         </header>
 

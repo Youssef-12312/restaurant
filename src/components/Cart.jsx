@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/menu.css";
 import { useTranslation } from "react-i18next";
+import { getCartItemKey, getCartItemVariantLabels } from "../utils/cartItem.js";
 
 function getPrice(item) {
   if (typeof item.price === "number") return item.price;
@@ -34,13 +35,6 @@ function CartContent({
     return value[lang] || value.ar || value.en || "";
   };
 
-  const getItemKey = (item) => {
-    if (item.id) return item.id;
-    if (item.name?.en) return item.name.en;
-    if (item.name?.ar) return item.name.ar;
-    return `${item.category}-${getText(item.name)}`;
-  };
-
   return (
     <>
       <div className="cart__body">
@@ -48,7 +42,8 @@ function CartContent({
           <p className="cart__empty">{t("cart.empty")}</p>
         ) : (
           cart.map((item, index) => {
-            const itemKey = getItemKey(item) || index;
+            const itemKey = getCartItemKey(item) || index;
+            const variantLabels = getCartItemVariantLabels(item, lang);
 
             return (
               <div className="cart__item" key={itemKey}>
@@ -66,6 +61,14 @@ function CartContent({
 
                 <div className="cart__item-info">
                   <p className="cart__item-name">{getText(item.name)}</p>
+                  {variantLabels.length > 0 && (
+                    <p
+                      className="cart__item-variants"
+                      style={{ margin: "4px 0 0", fontSize: "0.85rem", color: "#6b7280" }}
+                    >
+                      {variantLabels.join(", ")}
+                    </p>
+                  )}
                   <p className="cart__item-price">
                     EGP {(getPrice(item) * (item.qty || 1)).toFixed(2)}
                   </p>
