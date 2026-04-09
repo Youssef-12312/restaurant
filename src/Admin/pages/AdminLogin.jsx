@@ -1,12 +1,14 @@
-import { useState} from "react";
+import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
+import { useTranslation } from "react-i18next";
 import { auth, db } from "../../services/firebase.js";
 import "../styles/admin.css";
 import { images } from "../../assets/Images/images.js";
 
 
 function AdminLogin({ onLogin }) {
+  const { t } = useTranslation();
   const [email, setEmail]       = useState("");
   const [password, setPassword] = useState("");
   const [error, setError]       = useState("");
@@ -21,11 +23,11 @@ function AdminLogin({ onLogin }) {
     try {
       const cred = await signInWithEmailAndPassword(auth, email, password);
 
-const adminDoc = await getDoc(doc(db, "admins", cred.user.uid));
+      const adminDoc = await getDoc(doc(db, "admins", cred.user.uid));
 
       if (!adminDoc.exists()) {
         await auth.signOut();
-        setError("You don't have admin access.");
+        setError(t("admin.login.errors.noAccess"));
         setLoading(false);
         return;
       }
@@ -40,13 +42,13 @@ const adminDoc = await getDoc(doc(db, "admins", cred.user.uid));
         code === "auth/wrong-password" ||
         code === "auth/invalid-credential"
       ) {
-        setError("Invalid email or password.");
+        setError(t("admin.login.errors.invalidCredentials"));
       } else if (code === "auth/too-many-requests") {
-        setError("Too many attempts. Please try again later.");
+        setError(t("admin.login.errors.tooManyRequests"));
       } else if (code === "auth/network-request-failed") {
-        setError("Network error. Check your connection.");
+        setError(t("admin.login.errors.network"));
       } else {
-        setError("Something went wrong. Please try again.");
+        setError(t("admin.login.errors.generic"));
       }
     } finally {
       setLoading(false);
@@ -59,36 +61,36 @@ const adminDoc = await getDoc(doc(db, "admins", cred.user.uid));
 
         <div className="al-logo">
           <span className="logo" style={{ marginLeft: "0px" }}>  
-            <img src={images.logo} alt="Shelter logo" loading="lazy" />
+            <img src={images.logo} alt={t("admin.brand.logoAlt")} loading="lazy" />
           </span>
           <span className="al-logo__text">Shelter</span>
         </div>
 
-        <h1 className="al-title">Admin Login</h1>
-        <p className="al-sub">Restaurant Management Panel</p>
+        <h1 className="al-title">{t("admin.login.title")}</h1>
+        <p className="al-sub">{t("admin.login.subtitle")}</p>
 
         <form className="al-form" onSubmit={handleLogin}>
 
           <div className="al-field">
-            <label className="al-label">Email</label>
+            <label className="al-label">{t("admin.login.email")}</label>
             <input
               className="al-input"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="admin@shelter.com"
+              placeholder={t("admin.login.emailPlaceholder")}
               required
             />
           </div>
 
           <div className="al-field">
-            <label className="al-label">Password</label>
+            <label className="al-label">{t("admin.login.password")}</label>
             <input
               className="al-input"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
+              placeholder={t("admin.login.passwordPlaceholder")}
               autoComplete="current-password"
               required
             />
@@ -97,7 +99,7 @@ const adminDoc = await getDoc(doc(db, "admins", cred.user.uid));
           {error && <p className="al-error">{error}</p>}
 
           <button className="al-btn" type="submit" disabled={loading}>
-            {loading ? "Signing in…" : "Sign In"}
+            {loading ? t("admin.login.signingIn") : t("admin.login.signIn")}
           </button>
 
         </form>

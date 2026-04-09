@@ -25,9 +25,9 @@ function getOrderTypeLabel(orderType, t) {
 }
 
 // دالة صغيرة عشان نترجم اسم الفرع بشكل لطيف
-function getBranchLabel(branchCode, lang) {
-  if (branchCode === "mashaya") return lang === "ar" ? "📍 فرع المشاية" : "📍 Mashaya Branch";
-  if (branchCode === "gamaa") return lang === "ar" ? "📍 فرع حي الجامعة" : "📍 Gamaa Branch";
+function getBranchLabel(branchCode, t) {
+  if (branchCode === "mashaya") return `📍 ${t("admin.branches.mashayaBranch")}`;
+  if (branchCode === "gamaa") return `📍 ${t("admin.branches.gamaaBranch")}`;
   return branchCode || "—";
 }
 
@@ -37,7 +37,7 @@ function OrderModal({ order, onClose }) {
 
   if (!order) return null;
 
-  const locale = lang === "ar" ? "ar-EG" : "en-EG";
+  const locale = lang === "ar" ? "ar-EG" : "en-US";
 
   const time = order.createdAt?.toDate?.()
     ? order.createdAt.toDate().toLocaleString(locale)
@@ -69,7 +69,7 @@ function OrderModal({ order, onClose }) {
             {order.branch && (
               <>
                 <span className="modal-info__key" style={{ alignSelf: "center" }}>
-                  {lang === "ar" ? "الفرع" : "Branch"}
+                  {t("admin.modal.branch")}
                 </span>
                 <span 
                   className="modal-info__val" 
@@ -84,7 +84,7 @@ function OrderModal({ order, onClose }) {
                     width: "fit-content"
                   }}
                 >
-                   {getBranchLabel(order.branch, lang)}
+                   {getBranchLabel(order.branch, t)}
                 </span>
               </>
             )}
@@ -99,14 +99,14 @@ function OrderModal({ order, onClose }) {
             <span className={`modal-badge modal-badge--${order.orderType}`}>
               {getOrderTypeLabel(order.orderType, t)}
               {order.orderType === "dine-in" && order.table
-                ? ` - ${lang === "ar" ? "ترابيزة" : "Table"} ${order.table}`
+                ? ` - ${t("admin.modal.table")} ${order.table}`
                 : ""}
             </span>
 
 {(order.address || order.manualAddress) && (
   <>
     <span className="modal-info__key">
-      {lang === "ar" ? "العنوان" : "Address"}
+      {t("admin.modal.address")}
     </span>
 
     <div className="modal-address">
@@ -129,7 +129,7 @@ function OrderModal({ order, onClose }) {
             color: "#e8521a"
           }}
         >
-          📝 {lang === "ar" ? "تفاصيل العنوان:" : "Details:"}{" "}
+          📝 {t("admin.modal.details")}:{" "}
           {order.manualAddress}
         </span>
       )}
@@ -145,7 +145,9 @@ function OrderModal({ order, onClose }) {
 
           <ul className="modal-items">
             {(order.items || []).map((item, i) => {
-              const optionValues = Object.values(item.options || {}).filter(Boolean);
+              const optionValues = Object.values(item.options || {})
+                .filter(Boolean)
+                .map((option) => getText(option, lang));
               const hasBadges =
                 item.sizeLabel || item.spicy != null || optionValues.length > 0;
 
@@ -167,19 +169,19 @@ function OrderModal({ order, onClose }) {
                     <div className="modal-item__badges">
                       {item.sizeLabel && (
                         <span className="modal-badge modal-badge--size">
-                          {item.sizeLabel}
+                          {getText(item.sizeLabel, lang)}
                         </span>
                       )}
 
                       {item.spicy === true && (
                         <span className="modal-badge modal-badge--spicy">
-                          {lang === "ar" ? "🌶️ حار" : "🌶️ Spicy"}
+                          🌶️ {t("admin.modal.spicy")}
                         </span>
                       )}
 
                       {item.spicy === false && (
                         <span className="modal-badge modal-badge--mild">
-                          {lang === "ar" ? "😌 مش حار" : "😌 Not Spicy"}
+                          😌 {t("admin.modal.notSpicy")}
                         </span>
                       )}
 

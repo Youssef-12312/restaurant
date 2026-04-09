@@ -1,0 +1,218 @@
+.menu-loading-screen {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at top, rgba(255, 208, 128, 0.35), transparent 36%),
+    radial-gradient(circle at bottom, rgba(232, 82, 26, 0.16), transparent 32%),
+    linear-gradient(160deg, #fff8ef 0%, #fff3e2 52%, #fde7d4 100%);
+  overflow: hidden;
+  z-index: 999;
+}
+
+.menu-loading-screen__glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(8px);
+  opacity: 0.65;
+  animation: menu-loading-float 6s ease-in-out infinite;
+}
+
+.menu-loading-screen__glow--one {
+  width: 300px;
+  height: 300px;
+  top: -70px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(255, 193, 7, 0.5), transparent 70%);
+}
+
+.menu-loading-screen__glow--two {
+  width: 320px;
+  height: 320px;
+  right: -100px;
+  bottom: -80px;
+  background: radial-gradient(circle, rgba(232, 82, 26, 0.34), transparent 72%);
+  animation-delay: -3s;
+}
+
+.menu-loading-card {
+  position: relative;
+  width: min(100%, 420px);
+  padding: 38px 28px 32px;
+  border: 1px solid rgba(217, 109, 18, 0.16);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow:
+    0 22px 70px rgba(163, 74, 16, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(18px);
+  text-align: center;
+}
+
+.menu-loading-card::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  pointer-events: none;
+}
+
+.menu-loading-orbit {
+  position: relative;
+  width: 154px;
+  height: 154px;
+  margin: 0 auto 24px;
+  display: grid;
+  place-items: center;
+}
+
+.menu-loading-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.menu-loading-ring--outer {
+  border: 1px solid rgba(232, 82, 26, 0.18);
+}
+
+.menu-loading-ring--inner {
+  inset: 12px;
+  border-top: 4px solid #e8521a;
+  border-right: 4px solid rgba(255, 193, 7, 0.88);
+  border-left: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  animation: menu-loading-spin 1.2s linear infinite;
+}
+
+.menu-loading-logo-wrap {
+  width: 96px;
+  height: 96px;
+  border-radius: 28px;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(255, 243, 226, 0.96));
+  box-shadow:
+    0 14px 34px rgba(232, 82, 26, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.menu-loading-logo {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+  animation: menu-loading-pulse 1.9s ease-in-out infinite;
+}
+
+.menu-loading-dots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.menu-loading-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ffb347 0%, #e8521a 100%);
+  animation: menu-loading-bounce 1.15s ease-in-out infinite;
+}
+
+.menu-loading-dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.menu-loading-dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.menu-loading-title {
+  margin: 0;
+  color: #2b2117;
+  font-size: clamp(1.55rem, 4vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.menu-loading-subtitle {
+  margin: 10px 0 0;
+  color: #6b4b36;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+@keyframes menu-loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes menu-loading-pulse {
+  0%,
+  100% {
+    transform: scale(0.96);
+  }
+
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes menu-loading-bounce {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+
+  40% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}
+
+@keyframes menu-loading-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, 18px, 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .menu-loading-card {
+    padding: 32px 22px 28px;
+    border-radius: 24px;
+  }
+
+  .menu-loading-orbit {
+    width: 136px;
+    height: 136px;
+    margin-bottom: 20px;
+  }
+
+  .menu-loading-logo-wrap {
+    width: 86px;
+    height: 86px;
+    border-radius: 24px;
+  }
+
+  .menu-loading-logo {
+    width: 56px;
+    height: 56px;
+  }
+
+  .menu-loading-subtitle {
+    font-size: 0.95rem;
+  }
+}

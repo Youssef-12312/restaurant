@@ -242,3 +242,139 @@
 @media (max-width: 600px) {
   .sd-branches-grid { grid-template-columns: 1fr; }
 }
+
+.sd-bottom-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 1.25rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.sd-daily-aside {
+  background: var(--white);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  padding: 1rem;
+  position: sticky;
+  top: 1rem;
+}
+
+.sd-daily-aside__head {
+  margin-bottom: 1rem;
+}
+
+.sd-daily-aside__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.sd-daily-aside__sub {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.sd-daily-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 620px;
+  overflow-y: auto;
+  padding-right: 0.2rem;
+}
+
+.sd-day-card {
+  border: 1px solid rgba(232, 82, 26, 0.12);
+  background: linear-gradient(180deg, #fffdfb 0%, #fff7f2 100%);
+  border-radius: 18px;
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.sd-day-card--empty,
+.sd-day-card--loading {
+  background: #fff;
+  border-style: dashed;
+}
+
+.sd-day-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.sd-day-card__day {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.sd-day-card__status {
+  border-radius: 999px;
+  padding: 0.18rem 0.55rem;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.sd-day-card__status--closed {
+  background: #ecfdf5;
+  color: #15803d;
+}
+
+.sd-day-card__revenue {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.sd-day-card__revenue strong {
+  font-size: 1.15rem;
+  color: var(--primary);
+}
+
+.sd-day-card__revenue span {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.sd-day-card__meta,
+.sd-day-card__branches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.sd-day-card__top-item {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.sd-day-card__empty {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 1100px) {
+  .sd-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sd-daily-aside {
+    position: static;
+  }
+}

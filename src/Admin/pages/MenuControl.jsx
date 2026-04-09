@@ -2,14 +2,17 @@ import { useEffect, useState } from "react";
 import { db, auth } from "../../services/firebase.js";
 import { collection, onSnapshot, doc, updateDoc } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { images } from "../../assets/Images/images.js";
 import "../styles/MenuControl.css";
 import { signOut } from "firebase/auth";
 
 function MenuControl() {
+  const { t, i18n } = useTranslation();
   const [search, setSearch] = useState("");
   const [menu, setMenu] = useState([]);
   const navigate = useNavigate();
+  const lang = i18n.language?.startsWith("ar") ? "ar" : "en";
 
   /* ── Logout ── */
   const handleLogout = async () => {
@@ -21,7 +24,7 @@ function MenuControl() {
   const getText = (value) => {
     if (typeof value === "string") return value;
     if (!value || typeof value !== "object") return "";
-    return value.ar || value.en || "";
+    return value[lang] || value.ar || value.en || "";
   };
 
   /* ── Search Filter ── */
@@ -75,7 +78,7 @@ function MenuControl() {
         <div className="dash-sidebar__brand">
           <img
             src={images.logo}
-            alt="Shelter logo"
+            alt={t("admin.brand.logoAlt")}
             className="dash-sidebar__logo"
           />
           <span className="dash-sidebar__name">Shelter</span>
@@ -83,25 +86,25 @@ function MenuControl() {
 
         <nav className="dash-sidebar__nav">
           <Link className="dash-nav-item" to="/admin">
-            <span>📋</span> Orders
+            <span>📋</span> {t("admin.nav.orders")}
           </Link>
 
           <Link
             className="dash-nav-item dash-nav-item--active"
             to="/admin/menu"
           >
-            <span>🍔</span> Menu Control
+            <span>🍔</span> {t("admin.nav.menuControl")}
           </Link>
         </nav>
 
         <button className="dash-sidebar__logout" onClick={handleLogout}>
-          <span>🚪</span> Logout
+          <span>🚪</span> {t("admin.nav.logout")}
         </button>
       </aside>
 
       <div className="mc-content">
         <div className="mc-header">
-          <h1 className="mc-title">Menu Control</h1>
+          <h1 className="mc-title">{t("admin.menuControl.title")}</h1>
         </div>
 
         {/* 🔍 Search */}
@@ -110,7 +113,7 @@ function MenuControl() {
             type="text"
             className="search-input"
             id="admin-search"
-            placeholder="Search by name..."
+            placeholder={t("admin.menuControl.searchPlaceholder")}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -118,38 +121,44 @@ function MenuControl() {
 
         {/* 📦 Menu Grid */}
         <div className="mc-grid">
-          {filteredMenu.map((item) => (
-            <div className="mc-card" key={item.docId}>
-              <span className="mc-name">{getText(item.name)}</span>
+          {filteredMenu.length === 0 ? (
+            <div className="mc-card">
+              <span className="mc-name">{t("admin.menuControl.empty")}</span>
+            </div>
+          ) : (
+            filteredMenu.map((item) => (
+              <div className="mc-card" key={item.docId}>
+                <span className="mc-name">{getText(item.name)}</span>
 
-              <span
-                className={
-                  item.available !== false
-                    ? "mc-status mc-status--available"
-                    : "mc-status mc-status--out"
-                }
-              >
-                {item.available !== false
-                  ? "🟢 Available"
-                  : "🔴 Out of Stock"}
-              </span>
-
-              <div className="mc-actions">
-                <button
+                <span
                   className={
                     item.available !== false
-                      ? "mc-btn mc-btn--disable"
-                      : "mc-btn mc-btn--enable"
+                      ? "mc-status mc-status--available"
+                      : "mc-status mc-status--out"
                   }
-                  onClick={() => toggleStock(item)}
                 >
                   {item.available !== false
-                    ? "Out of Stock"
-                    : "Make Available"}
-                </button>
+                    ? `🟢 ${t("admin.menuControl.available")}`
+                    : `🔴 ${t("admin.menuControl.outOfStock")}`}
+                </span>
+
+                <div className="mc-actions">
+                  <button
+                    className={
+                      item.available !== false
+                        ? "mc-btn mc-btn--disable"
+                        : "mc-btn mc-btn--enable"
+                    }
+                    onClick={() => toggleStock(item)}
+                  >
+                    {item.available !== false
+                      ? t("admin.actions.markOutOfStock")
+                      : t("admin.actions.makeAvailable")}
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </div>

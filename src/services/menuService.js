@@ -20,7 +20,7 @@ export async function fetchMenuData() {
       const isExpired = (Date.now() - parseInt(cacheTime)) > (EXPIRATION_HOURS * 60 * 60 * 1000);
       
       if (!isExpired) {
-        console.log("📦 تم التحميل من الكاش (0 Reads من فيربيز) - الداتا لسه طازة!");
+        console.log("0 Reads");
         return JSON.parse(lastCache);
       }
     }

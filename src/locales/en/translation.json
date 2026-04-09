@@ -33,6 +33,41 @@
     "addToCart": "Add to Cart"
   },
   "admin": {
+    "brand": {
+      "logoAlt": "Shelter logo",
+      "fallbackUser": "Admin"
+    },
+    "app": {
+      "loading": "Loading admin data...",
+      "noAccess": "Sorry, you do not have permission to access the admin panel."
+    },
+    "nav": {
+      "orders": "Orders",
+      "menuControl": "Menu Control",
+      "sales": "Sales Report",
+      "logout": "Logout"
+    },
+    "dashboard": {
+      "title": "Orders Dashboard",
+      "subtitle": "Shelter Restaurant — Real-time Management"
+    },
+    "login": {
+      "title": "Admin Login",
+      "subtitle": "Restaurant Management Panel",
+      "email": "Email",
+      "password": "Password",
+      "emailPlaceholder": "admin@shelter.com",
+      "passwordPlaceholder": "••••••••",
+      "signIn": "Sign In",
+      "signingIn": "Signing in...",
+      "errors": {
+        "noAccess": "You don't have admin access.",
+        "invalidCredentials": "Invalid email or password.",
+        "tooManyRequests": "Too many attempts. Please try again later.",
+        "network": "Network error. Check your connection.",
+        "generic": "Something went wrong. Please try again."
+      }
+    },
     "stats": {
       "newOrders": "New Orders",
       "preparing": "Preparing",
@@ -43,37 +78,140 @@
       "delivery": "Delivery",
       "pickup": "Pickup",
       "dineIn": "Dine-in"
+    },
+    "status": {
+      "new": "New",
+      "preparing": "Preparing",
+      "onTheWay": "On The Way",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "actions": {
+      "accept": "Accept",
+      "onTheWay": "On The Way",
+      "complete": "Complete",
+      "cancel": "Cancel",
+      "whatsapp": "WhatsApp",
+      "printOrder": "Print Order",
+      "clear": "Clear",
+      "closeDay": "Close Day",
+      "done": "Done",
+      "makeAvailable": "Make Available",
+      "markOutOfStock": "Out of Stock"
+    },
+    "menuControl": {
+      "title": "Menu Control",
+      "searchPlaceholder": "Search by item name...",
+      "available": "Available",
+      "outOfStock": "Out of Stock",
+      "empty": "No menu items match this search."
+    },
+    "modal": {
+      "order": "Order",
+      "customer": "Customer",
+      "name": "Name",
+      "phone": "Phone",
+      "type": "Type",
+      "branch": "Branch",
+      "address": "Address",
+      "viewLocation": "View Location",
+      "details": "Details",
+      "table": "Table",
+      "items": "Items",
+      "spicy": "Spicy",
+      "notSpicy": "Not Spicy",
+      "notes": "Notes",
+      "total": "Total"
+    },
+    "branches": {
+      "mashaya": "Mashaya",
+      "gamaa": "Gamaa",
+      "mashayaBranch": "Mashaya Branch",
+      "gamaaBranch": "Gamaa Branch"
+    },
+    "whatsapp": {
+      "statusOnly": "Hello {{name}}\nYour order from *Shelter House Of Cheese* is now {{status}}."
+    },
+    "messages": {
+      "cancelConfirm": "Are you sure you want to cancel this order?",
+      "noPhone": "This order has no phone number.",
+      "updateFailed": "Failed to update the order status.",
+      "saveAndComplete": "Complete + Save to Sales",
+      "saving": "Saving..."
+    }
   },
-  "status": {
-    "new": "New",
-    "preparing": "Preparing",
-    "onTheWay": "On The Way",
-    "completed": "Completed",
-    "cancelled": "Cancelled"
+  "adminSales": {
+    "heading": "Sales Report",
+    "selectMonth": "Select a month to view details",
+    "noData": "No data yet",
+    "revenueTotal": "Total Revenue",
+    "ordersThisMonth": "Orders this month",
+    "totalOrders": "Total Orders",
+    "avgOrderValue": "Average order value (EGP)",
+    "totalRevenue": "Total Revenue (EGP)",
+    "branchesComparison": "Branch Comparison",
+    "savedDays": "Saved Days",
+    "daysSubtitleEmpty": "Select a month to view daily details",
+    "noDaysForMonth": "No available days for this month.",
+    "day": "Day {{day}}",
+    "unsaved": "Not Saved",
+    "noDayDetails": "No saved details for this day.",
+    "saved": "Saved",
+    "live": "Live",
+    "ordersUnit": "orders",
+    "ordersCount": "{{count}} orders",
+    "cancelledCount": "{{count}} cancelled",
+    "branchOrders": "{{branch}}: {{count}} orders",
+    "topItem": "Top item: {{name}} ({{qty}})"
   },
-  "actions": {
-    "accept": "Accept",
-    "onTheWay": "On The Way",
-    "complete": "Complete",
-    "cancel": "Cancel",
-    "whatsapp": "WhatsApp"
+  "ordersPage": {
+    "filters": {
+      "all": "All",
+      "new": "New",
+      "preparing": "Preparing",
+      "onTheWay": "On The Way",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "mostSoldTitle": "Most Sold Today",
+    "soldCount": "Sold: {{count}}",
+    "searchPlaceholder": "Search by order number...",
+    "empty": "No orders",
+    "toastNewOrder": "New order #{{orderNumber}} arrived!",
+    "summary": {
+      "title": "Daily Summary",
+      "revenue": "Revenue: {{amount}} {{currency}}",
+      "orders": "Orders: {{count}}",
+      "cancelled": "Cancelled: {{count}}",
+      "saved": "Saved to Sales Dashboard.",
+      "failed": "Failed to save today's summary."
+    },
+    "receipt": {
+      "title": "Order #{{orderNumber}}",
+      "customer": "Customer",
+      "phone": "Phone",
+      "address": "Address",
+      "detailedAddress": "Detailed Address",
+      "time": "Time",
+      "type": "Type",
+      "item": "Item",
+      "qty": "Qty",
+      "price": "Price",
+      "subtotal": "Subtotal",
+      "vat": "VAT (12%)",
+      "delivery": "Delivery",
+      "total": "TOTAL",
+      "thanks": "Thank you for choosing Shelter!"
+    },
+    "actions": {
+      "deleteConfirm_one": "Delete {{count}} order?",
+      "deleteConfirm_other": "Delete {{count}} orders?",
+      "saving": "Saving..."
+    }
   },
-  "modal": {
-    "order": "Order",
-    "customer": "Customer",
-    "name": "Name",
-    "phone": "Phone",
-    "type": "Type",
-    "address": "Address",
-    "viewLocation": "View Location",
-    "items": "Items",
-    "notes": "Notes",
-    "total": "Total"
-  }
-},
-"common": {
-  "egp": "EGP"
-},
+  "common": {
+    "egp": "EGP"
+  },
   "cart": {
     "title": "Your Order",
     "empty": "Your cart is empty. Add some delicious items!",

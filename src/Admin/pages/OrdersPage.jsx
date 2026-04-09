@@ -1,30 +1,34 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
+  Timestamp,
   collection,
+  updateDoc,
+  doc,
   onSnapshot,
   query,
-  orderBy,
-  doc,
-  deleteDoc,
-
+  where,
 } from "firebase/firestore";
 import { db } from "../../services/firebase.js";
 import OrderCard from "../components/OrderCard.jsx";
 import OrderModal from "../components/OrderModal.jsx";
 import StatsCards from "../components/StatsCards.jsx";
 import notificationSound from "../../../public/notification.mp3";
+import { buildBranchStatsFromOrders } from "../../services/branchSales.js";
+import { saveDailyOrdersSnapshot } from "../../services/salesService.js";
 import { getCartItemVariantSuffix } from "../../utils/cartItem.js";
+import { useTranslation } from "react-i18next";
+const ACTIVE_STATUSES = ["new", "preparing", "on_the_way"];
 const FILTERS = ["all", "new", "preparing", "on_the_way", "completed", "cancelled"];
 
-function getText(value) {
+function getText(value, lang = "en") {
   if (typeof value === "string") return value;
   if (!value || typeof value !== "object") return "";
-  return value.ar || value.en || "";
+  return value[lang] || value.ar || value.en || "";
 }
 
 function getPrice(item) {
   if (typeof item.price === "number") return item.price;
-  
+
   if (item.prices && typeof item.prices === "object") {
     const vals = Object.values(item.prices).filter((v) => typeof v === "number");
     if (vals.length > 0) return vals[0];
@@ -33,50 +37,215 @@ function getPrice(item) {
   return 0;
 }
 
-function getPrintableItemName(item) {
-  const itemName = getText(item.name);
-  const variantSuffix = getCartItemVariantSuffix(item, "ar");
-
+function getPrintableItemName(item, lang) {
+  const itemName = getText(item.name, lang);
+  const variantSuffix = getCartItemVariantSuffix(item, lang);
   return variantSuffix ? `${itemName} (${variantSuffix})` : itemName;
 }
 
+function getOrderTypeText(orderType, t) {
+  if (orderType === "delivery") return t("admin.orderType.delivery");
+  if (orderType === "pickup") return t("admin.orderType.pickup");
+  if (orderType === "dine-in") return t("admin.orderType.dineIn");
+  return orderType || "—";
+}
+
+function getDayStart(date = new Date()) {
+  const dayStart = new Date(date);
+  dayStart.setHours(0, 0, 0, 0);
+  return dayStart;
+}
+
+function getOrderDate(order) {
+  const value = order?.createdAt?.toDate
+    ? order.createdAt.toDate()
+    : order?.createdAt
+      ? new Date(order.createdAt)
+      : null;
+
+  if (!value || Number.isNaN(value.getTime())) {
+    return null;
+  }
+
+  return value;
+}
+
+function isSameDay(date, dayStart) {
+  if (!date || !dayStart) return false;
+
+  const nextDay = new Date(dayStart);
+  nextDay.setDate(nextDay.getDate() + 1);
+
+  return date >= dayStart && date < nextDay;
+}
+
+function sortOrdersByDateDesc(orders) {
+  return [...orders].sort((a, b) => {
+    const aTime = getOrderDate(a)?.getTime() ?? 0;
+    const bTime = getOrderDate(b)?.getTime() ?? 0;
+    return bTime - aTime;
+  });
+}
+
+function mergeOrders(...groups) {
+  const map = new Map();
+
+  for (const group of groups) {
+    for (const order of group) {
+      if (order?.id) {
+        map.set(order.id, order);
+      }
+    }
+  }
+
+  return sortOrdersByDateDesc(Array.from(map.values()));
+}
+
+function getMostSoldItem(orders = []) {
+  const counter = new Map();
+
+  for (const order of orders) {
+    for (const item of order.items || []) {
+      const rawName = item?.name;
+      const key =
+        typeof rawName === "object"
+          ? JSON.stringify(rawName)
+          : String(rawName || "");
+
+      if (!key) {
+        continue;
+      }
+
+      const existing = counter.get(key) || { name: rawName, qty: 0 };
+      existing.qty += item.qty || 1;
+      counter.set(key, existing);
+    }
+  }
+
+  let topItem = null;
+  let topQty = 0;
+
+  for (const entry of counter.values()) {
+    if (entry.qty > topQty) {
+      topItem = entry.name;
+      topQty = entry.qty;
+    }
+  }
+
+  return topItem ? { name: topItem, qty: topQty } : null;
+}
+
 function OrdersPage() {
-  const [orders, setOrders] = useState([]);
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language?.startsWith("ar") ? "ar" : "en";
+  const locale = lang === "ar" ? "ar-EG" : "en-US";
+  const [activeOrders, setActiveOrders] = useState([]);
+  const [todayOrders, setTodayOrders] = useState([]);
+  const [cancelledOrders, setCancelledOrders] = useState([]);
   const [filter, setFilter] = useState("all");
   const [selectedOrder, setSelected] = useState(null);
   const [toast, setToast] = useState(null);
   const [search, setSearch] = useState("");
+  const [showSummary, setShowSummary] = useState(false);
+  const [isSavingSummary, setIsSavingSummary] = useState(false);
+  const [summarySaveState, setSummarySaveState] = useState(null);
 
-  const prevIds = useRef(new Set());
+  const todayStartRef = useRef(getDayStart());
+  const prevActiveIds = useRef(new Set());
+  const activeReadyRef = useRef(false);
   const audioRef = useRef(null);
 
- const printOrder = (order) => {
+  const todayStart = todayStartRef.current;
+
+  const FILTER_LABELS = {
+    all: t("ordersPage.filters.all"),
+    new: t("ordersPage.filters.new"),
+    preparing: t("ordersPage.filters.preparing"),
+    on_the_way: t("ordersPage.filters.onTheWay"),
+    completed: t("ordersPage.filters.completed"),
+    cancelled: t("ordersPage.filters.cancelled"),
+  };
+
+  const orders = mergeOrders(activeOrders, todayOrders, cancelledOrders);
+
+  const visibleOrders = orders.filter((order) => {
+    const orderDate = getOrderDate(order);
+
+    if (order.status === "completed" && orderDate && orderDate < todayStart) {
+      return false;
+    }
+
+    return true;
+  });
+
+  const filtered = visibleOrders.filter((order) => {
+    const matchFilter = filter === "all" || order.status === filter;
+    const cleanSearch = search.replace("#", "");
+    const matchSearch =
+      search === "" || String(order.orderNumber || "").includes(cleanSearch);
+
+    return matchFilter && matchSearch;
+  });
+
+  const todayCompleted = orders.filter(
+    (order) =>
+      order.status === "completed" &&
+      isSameDay(getOrderDate(order), todayStart)
+  );
+
+  const todayCancelled = orders.filter(
+    (order) =>
+      order.status === "cancelled" &&
+      isSameDay(getOrderDate(order), todayStart)
+  );
+
+  const todayRevenue = todayCompleted.reduce(
+    (sum, order) => sum + (Number(order.total) || 0),
+    0
+  );
+
+  const todayBranchStats = buildBranchStatsFromOrders(todayCompleted);
+  const mostSold = getMostSoldItem(todayCompleted);
+
+  const printOrder = (order) => {
     const printWindow = window.open("", "", "width=400,height=600");
+    if (!printWindow) {
+      return;
+    }
 
     const subtotal = (order.items || []).reduce(
       (sum, item) => sum + getPrice(item) * (item.qty || 1),
       0
     );
 
-    const vat = subtotal * 0.14;
+    const vat = subtotal * 0.12;
     const delivery = order.orderType === "delivery" ? 25 : 0;
     const total = subtotal + vat + delivery;
+    const direction = lang === "ar" ? "rtl" : "ltr";
+    const textAlign = lang === "ar" ? "right" : "left";
+    const orderTime = order.createdAt
+      ? new Date(
+          order.createdAt.toDate ? order.createdAt.toDate() : order.createdAt
+        ).toLocaleString(locale)
+      : "—";
+    const orderTypeText = getOrderTypeText(order.orderType, t);
+    const currency = t("common.egp");
 
     printWindow.document.write(`
-      <html>
+      <html lang="${lang}" dir="${direction}">
       <head>
-        <title>Order #${order.orderNumber}</title>
+        <title>${t("ordersPage.receipt.title", { orderNumber: order.orderNumber })}</title>
         <style>
           @page { margin: 0; }
-          body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            padding: 20px; 
-            max-width: 80mm; /* عرض مناسب لطابعات الكاشير */
+          body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            max-width: 80mm;
             margin: 0 auto;
             color: #000;
+            direction: ${direction};
+            text-align: ${textAlign};
           }
-          
-          /* تصميم الهيدر (الصور في الزوايا) */
           .header-container {
             display: flex;
             justify-content: space-between;
@@ -89,16 +258,12 @@ function OrdersPage() {
           .header-info { text-align: center; flex-grow: 1; padding: 0 10px; }
           .header-info h1 { margin: 0; font-size: 22px; text-transform: uppercase; letter-spacing: 1px; }
           .header-info p { margin: 5px 0 0; font-weight: bold; font-size: 16px; }
-          
-          /* بيانات العميل */
           .customer-info {
             margin-bottom: 20px;
             font-size: 14px;
             line-height: 1.6;
           }
           .customer-info p { margin: 3px 0; }
-          
-          /* تصميم جدول الأصناف */
           table {
             width: 100%;
             border-collapse: collapse;
@@ -106,7 +271,7 @@ function OrdersPage() {
             font-size: 14px;
           }
           th {
-            text-align: left;
+            text-align: ${textAlign};
             border-bottom: 2px solid #000;
             padding-bottom: 8px;
             font-weight: bold;
@@ -116,9 +281,7 @@ function OrdersPage() {
             border-bottom: 1px dotted #888;
           }
           .col-qty { text-align: center; width: 40px; }
-          .col-price { text-align: right; width: 70px; }
-          
-          /* الحسابات النهائية */
+          .col-price { text-align: ${textAlign}; width: 70px; }
           .totals-container {
             margin-top: 15px;
             font-size: 14px;
@@ -135,8 +298,6 @@ function OrdersPage() {
             padding-top: 10px;
             margin-top: 10px;
           }
-          
-          /* الفوتر */
           .footer {
             text-align: center;
             margin-top: 25px;
@@ -151,147 +312,216 @@ function OrdersPage() {
           <img src="/Print.webp" class="logo" alt="Logo" />
           <div class="header-info">
             <h1>Shelter</h1>
-            <p>Order #${String(order.orderNumber).padStart(4, "0")}</p>
+            <p>${t("ordersPage.receipt.title", {
+              orderNumber: String(order.orderNumber).padStart(4, "0"),
+            })}</p>
           </div>
           <img src="/QrCode Shelter.webp" class="qr" alt="QR" />
         </div>
 
         <div class="customer-info">
-          <p><strong>Customer:</strong> ${order.customerName || "—"}</p>
-          <p><strong>Phone:</strong> ${order.phone || "—"}</p>
-          <p><strong>Address:</strong> ${order.address || "—"}</p>
-          ${order.orderType ? `<p><strong>Type:</strong> ${order.orderType.toUpperCase()}</p>` : ''}
-          </div>
+          <p><strong>${t("ordersPage.receipt.customer")}:</strong> ${order.customerName || "—"}</p>
+          <p><strong>${t("ordersPage.receipt.phone")}:</strong> ${order.phone || "—"}</p>
+          <p><strong>${t("ordersPage.receipt.address")}:</strong> ${order.address || "—"}</p>
+          <p><strong>${t("ordersPage.receipt.detailedAddress")}:</strong> ${order.manualAddress || "—"}</p>
+          <p><strong>${t("ordersPage.receipt.time")}:</strong> ${orderTime}</p>
+          ${order.orderType ? `<p><strong>${t("ordersPage.receipt.type")}:</strong> ${orderTypeText}</p>` : ""}
+        </div>
 
         <table>
           <thead>
             <tr>
-              <th>Item (الصنف)</th>
-              <th class="col-qty">Qty</th>
-              <th class="col-price">Price</th>
+              <th>${t("ordersPage.receipt.item")}</th>
+              <th class="col-qty">${t("ordersPage.receipt.qty")}</th>
+              <th class="col-price">${t("ordersPage.receipt.price")}</th>
             </tr>
           </thead>
           <tbody>
-            ${(order.items || []).map((item) => `
+            ${(order.items || [])
+              .map(
+                (item) => `
               <tr>
-                <td>${getPrintableItemName(item)}</td>
+                <td>${getPrintableItemName(item, lang)}</td>
                 <td class="col-qty">x${item.qty || 1}</td>
                 <td class="col-price">${(getPrice(item) * (item.qty || 1)).toFixed(2)}</td>
               </tr>
-            `).join("")}
+            `
+              )
+              .join("")}
           </tbody>
         </table>
 
         <div class="totals-container">
           <div class="total-row">
-            <span>Subtotal</span>
-            <span>${subtotal.toFixed(2)} EGP</span>
+            <span>${t("ordersPage.receipt.subtotal")}</span>
+            <span>${subtotal.toFixed(2)} ${currency}</span>
           </div>
           <div class="total-row">
-            <span>VAT (14%)</span>
-            <span>${vat.toFixed(2)} EGP</span>
+            <span>${t("ordersPage.receipt.vat")}</span>
+            <span>${vat.toFixed(2)} ${currency}</span>
           </div>
           <div class="total-row">
-            <span>Delivery</span>
-            <span>${delivery.toFixed(2)} EGP</span>
+            <span>${t("ordersPage.receipt.delivery")}</span>
+            <span>${delivery.toFixed(2)} ${currency}</span>
           </div>
           <div class="total-row grand-total">
-            <span>TOTAL</span>
-            <span>${total.toFixed(2)} EGP</span>
+            <span>${t("ordersPage.receipt.total")}</span>
+            <span>${total.toFixed(2)} ${currency}</span>
           </div>
         </div>
 
         <div class="footer">
-          <p>Thank you for choosing Shelter!</p>
+          <p>${t("ordersPage.receipt.thanks")}</p>
         </div>
-
       </body>
       </html>
     `);
 
     printWindow.document.close();
-    
-    // الانتظار ثانية واحدة علشان الصور تلحق تحمل قبل ما شاشة الطباعة تظهر
     setTimeout(() => {
       printWindow.print();
     }, 500);
   };
 
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  
-  const visibleOrders = orders.filter((order) => {
-    if (!order.createdAt) return true;
 
-    const orderDate = order.createdAt.toDate
-      ? order.createdAt.toDate()
-      : new Date(order.createdAt);
+const clearCurrentList = async () => {
+  if (filtered.length === 0) return;
 
-    if (order.status === "completed" && orderDate < today) {
-      return false;
+  const confirmDelete = window.confirm(
+    t("ordersPage.actions.deleteConfirm", { count: filtered.length })
+  );
+  if (!confirmDelete) return;
+
+  try {
+    for (const order of filtered) {
+      await updateDoc(doc(db, "orders", order.id), {
+        hidden: true
+      });
     }
+  } catch (err) {
+    console.error("Update error:", err);
+  }
+};
+  const openDailySummary = async () => {
+    setShowSummary(true);
+    setIsSavingSummary(true);
+    setSummarySaveState(null);
 
-    return true;
-  });
-
-  const filtered = visibleOrders.filter((order) => {
-    const matchFilter = filter === "all" || order.status === filter;
-    const cleanSearch = search.replace("#", "");
-    const matchSearch =
-    search === "" || String(order.orderNumber || "").includes(cleanSearch);
-    
-    return matchFilter && matchSearch;
-  });
-
-  const clearCurrentList = async () => {
-    if (filtered.length === 0) return;
-    
-    const confirmDelete = window.confirm(`Delete ${filtered.length} orders?`);
-    if (!confirmDelete) return;
-    
     try {
-      for (const order of filtered) {
-        await deleteDoc(doc(db, "orders", order.id));
-      }
+      await saveDailyOrdersSnapshot({
+        date: todayStart,
+        revenue: todayRevenue,
+        orders: todayCompleted.length,
+        cancelledOrders: todayCancelled.length,
+        topItem: mostSold,
+        branches: todayBranchStats,
+      });
+
+      setSummarySaveState({
+        type: "success",
+        message: t("ordersPage.summary.saved"),
+      });
     } catch (err) {
-      console.error("Delete error:", err);
+  console.error("Daily summary save error:", err);
+  setSummarySaveState({
+    type: "error",
+    message: t("ordersPage.summary.failed"),
+  });
+} finally {
+      setIsSavingSummary(false);
     }
   };
 
-  useEffect(() => {
-    try {
-      const q = query(collection(db, "orders"), orderBy("createdAt", "desc"));
-      
-      const unsub = onSnapshot(
-        q,
-        (snap) => {
-          const docs = snap.docs.map((d) => ({
-            id: d.id,
-            ...d.data(),
-          }));
+  const getFilterCount = (filterKey) => {
+    if (filterKey === "all") {
+      return visibleOrders.length;
+    }
 
-          const newOnes = docs.filter((d) => !prevIds.current.has(d.id));
-          
-          if (newOnes.length > 0 && prevIds.current.size > 0) {
+    return visibleOrders.filter((order) => order.status === filterKey).length;
+  };
+
+  useEffect(() => {
+    const activeQuery = query(
+      collection(db, "orders"),
+      where("status", "in", ACTIVE_STATUSES)
+    );
+    const todayQuery = query(
+      collection(db, "orders"),
+      where("createdAt", ">=", Timestamp.fromDate(todayStart))
+    );
+    const cancelledQuery = query(
+      collection(db, "orders"),
+      where("status", "==", "cancelled")
+    );
+
+    const unsubActive = onSnapshot(
+      activeQuery,
+      (snap) => {
+        const docs = sortOrdersByDateDesc(
+          snap.docs.map((orderDoc) => ({
+            id: orderDoc.id,
+            ...orderDoc.data(),
+          }))
+        );
+
+        if (activeReadyRef.current) {
+          const newOnes = docs.filter((order) => !prevActiveIds.current.has(order.id));
+
+          if (newOnes.length > 0) {
             audioRef.current?.play().catch(() => {});
-            setToast(`🔔 New order #${newOnes[0].orderNumber} arrived!`);
+            setToast(t("ordersPage.toastNewOrder", { orderNumber: newOnes[0].orderNumber }));
             setTimeout(() => setToast(null), 4000);
           }
-          
-          prevIds.current = new Set(docs.map((d) => d.id));
-          setOrders(docs);
-        },
-        (error) => {
-          console.error("Firestore listener error:", error);
         }
-      );
-      
-      return () => unsub();
-    } catch (err) {
-      console.error("Query error:", err);
-    }
-  }, []);
-  
+
+        prevActiveIds.current = new Set(docs.map((order) => order.id));
+        activeReadyRef.current = true;
+        setActiveOrders(docs);
+      },
+      (error) => {
+        console.error("Active orders listener error:", error);
+      }
+    );
+
+    const unsubToday = onSnapshot(
+      todayQuery,
+      (snap) => {
+        const docs = sortOrdersByDateDesc(
+          snap.docs.map((orderDoc) => ({
+            id: orderDoc.id,
+            ...orderDoc.data(),
+          }))
+        );
+        setTodayOrders(docs);
+      },
+      (error) => {
+        console.error("Today orders listener error:", error);
+      }
+    );
+
+    const unsubCancelled = onSnapshot(
+      cancelledQuery,
+      (snap) => {
+        const docs = sortOrdersByDateDesc(
+          snap.docs.map((orderDoc) => ({
+            id: orderDoc.id,
+            ...orderDoc.data(),
+          }))
+        );
+        setCancelledOrders(docs);
+      },
+      (error) => {
+        console.error("Cancelled orders listener error:", error);
+      }
+    );
+
+    return () => {
+      unsubActive();
+      unsubToday();
+      unsubCancelled();
+    };
+  }, [t, todayStart]);
+
   return (
     <div className="op-page">
       <audio ref={audioRef} src={notificationSound} preload="auto" />
@@ -300,50 +530,55 @@ function OrdersPage() {
 
       <StatsCards orders={visibleOrders} />
 
+      {mostSold && (
+        <div className="most-sold-card">
+          <div className="most-sold-title">🔥 {t("ordersPage.mostSoldTitle")}</div>
+          <div className="most-sold-name">{getText(mostSold.name, lang)}</div>
+          <div className="most-sold-qty">
+            {t("ordersPage.soldCount", { count: mostSold.qty })}
+          </div>
+        </div>
+      )}
+
       <div className="op-search">
         <input
           type="text"
           className="search-input"
           id="admin-search"
-          placeholder="Search by order number..."
+          placeholder={t("ordersPage.searchPlaceholder")}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
 
       <div className="op-filters">
-        {FILTERS.map((f) => (
+        {FILTERS.map((filterKey) => (
           <button
-          key={f}
-          className={`op-filter-btn${filter === f ? " op-filter-btn--active" : ""}`}
-          onClick={() => setFilter(f)}
+            key={filterKey}
+            className={`op-filter-btn${filter === filterKey ? " op-filter-btn--active" : ""}`}
+            onClick={() => setFilter(filterKey)}
           >
-            {f === "all"
-              ? "All"
-              : f.replaceAll("_", " ").replace(/\b\w/g, (c) => c.toUpperCase())}
-            {f === "all"
-              ? ` (${visibleOrders.length})`
-              : ` (${visibleOrders.filter((o) => o.status === f).length})`}
+            {FILTER_LABELS[filterKey] || filterKey} ({getFilterCount(filterKey)})
           </button>
         ))}
 
         <button className="op-clear-btn" onClick={clearCurrentList}>
-          🗑 Clear List
+          🗑 {t("admin.actions.clear")}
+        </button>
+
+        <button
+          className="op-close-day-btn"
+          onClick={openDailySummary}
+          disabled={isSavingSummary}
+        >
+          {isSavingSummary ? t("ordersPage.actions.saving") : t("admin.actions.closeDay")}
         </button>
       </div>
 
       {filtered.length === 0 ? (
-<div className="op-empty">
-  <span>
-    <img 
-      src="/MainLogowebp.webp" 
-      alt="" 
-      loading="lazy"
-      style={{ width: "80px", height: "auto", opacity: 0.8 }}
-    />
-  </span>
-  <p>No orders found</p>
-</div>
+        <div className="op-empty">
+          <p>{t("ordersPage.empty")}</p>
+        </div>
       ) : (
         <div className="op-grid">
           {filtered.map((order) => (
@@ -362,7 +597,7 @@ function OrdersPage() {
                   cursor: "pointer",
                 }}
               >
-                🧾 Print Order
+                🧾 {t("admin.actions.printOrder")}
               </button>
             </div>
           ))}
@@ -370,6 +605,48 @@ function OrdersPage() {
       )}
 
       <OrderModal order={selectedOrder} onClose={() => setSelected(null)} />
+
+      {showSummary && (
+        <div className="summary-overlay" onClick={() => setShowSummary(false)}>
+          <div className="summary-card" onClick={(e) => e.stopPropagation()}>
+            <h2>📊 {t("ordersPage.summary.title")}</h2>
+
+            <div>
+              💰 {t("ordersPage.summary.revenue", {
+                amount: todayRevenue.toLocaleString(locale, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                }),
+                currency: t("common.egp"),
+              })}
+            </div>
+            <div>✅ {t("ordersPage.summary.orders", { count: todayCompleted.length })}</div>
+            <div>❌ {t("ordersPage.summary.cancelled", { count: todayCancelled.length })}</div>
+
+            {mostSold && (
+              <div>
+                🔥 {getText(mostSold.name, lang)} ({mostSold.qty})
+              </div>
+            )}
+
+            {summarySaveState && (
+              <div
+                style={{
+                  marginTop: "10px",
+                  color: summarySaveState.type === "success" ? "#15803d" : "#b91c1c",
+                  fontWeight: 700,
+                }}
+              >
+                {summarySaveState.message}
+              </div>
+            )}
+
+            <button onClick={() => setShowSummary(false)} disabled={isSavingSummary}>
+              {isSavingSummary ? t("ordersPage.actions.saving") : t("admin.actions.done")}
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -15,48 +15,186 @@
   "fresh": "طازج يومياً",
   "branches": "فرعين"
 },
-"admin": {
-  "stats": {
-    "newOrders": "طلبات جديدة",
-    "preparing": "قيد التحضير",
-    "completed": "مكتملة",
-    "todaySales": "مبيعات اليوم"
+  "admin": {
+    "brand": {
+      "logoAlt": "شعار Shelter",
+      "fallbackUser": "أدمن"
+    },
+    "app": {
+      "loading": "جارٍ تحميل بيانات لوحة التحكم...",
+      "noAccess": "عذرًا، لا تملك صلاحية الدخول إلى لوحة التحكم."
+    },
+    "nav": {
+      "orders": "الطلبات",
+      "menuControl": "التحكم في المنيو",
+      "sales": "تقرير المبيعات",
+      "logout": "تسجيل الخروج"
+    },
+    "dashboard": {
+      "title": "لوحة الطلبات",
+      "subtitle": "إدارة مطعم Shelter لحظيًا"
+    },
+    "login": {
+      "title": "تسجيل دخول الأدمن",
+      "subtitle": "لوحة إدارة المطعم",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "emailPlaceholder": "admin@shelter.com",
+      "passwordPlaceholder": "••••••••",
+      "signIn": "تسجيل الدخول",
+      "signingIn": "جارٍ تسجيل الدخول...",
+      "errors": {
+        "noAccess": "ليس لديك صلاحية دخول الأدمن.",
+        "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+        "tooManyRequests": "عدد المحاولات كبير. حاول مرة أخرى لاحقًا.",
+        "network": "خطأ في الشبكة. تأكد من الاتصال.",
+        "generic": "حدث خطأ ما. حاول مرة أخرى."
+      }
+    },
+    "stats": {
+      "newOrders": "طلبات جديدة",
+      "preparing": "قيد التحضير",
+      "completed": "مكتملة",
+      "todaySales": "مبيعات اليوم"
+    },
+    "orderType": {
+      "delivery": "دليفري",
+      "pickup": "استلام",
+      "dineIn": "صالة"
+    },
+    "status": {
+      "new": "جديد",
+      "preparing": "قيد التحضير",
+      "onTheWay": "في الطريق",
+      "completed": "مكتمل",
+      "cancelled": "ملغي"
+    },
+    "actions": {
+      "accept": "قبول",
+      "onTheWay": "في الطريق",
+      "complete": "إكمال",
+      "cancel": "إلغاء",
+      "whatsapp": "واتساب",
+      "printOrder": "طباعة الطلب",
+      "clear": "مسح",
+      "closeDay": "إغلاق اليوم",
+      "done": "تم",
+      "makeAvailable": "جعله متاحًا",
+      "markOutOfStock": "نفدت الكمية"
+    },
+    "menuControl": {
+      "title": "التحكم في المنيو",
+      "searchPlaceholder": "ابحث باسم الصنف...",
+      "available": "متاح",
+      "outOfStock": "غير متوفر",
+      "empty": "لا توجد أصناف مطابقة لهذا البحث."
+    },
+    "modal": {
+      "order": "طلب",
+      "customer": "العميل",
+      "name": "الاسم",
+      "phone": "الهاتف",
+      "type": "النوع",
+      "branch": "الفرع",
+      "address": "العنوان",
+      "viewLocation": "عرض الموقع",
+      "details": "تفاصيل",
+      "table": "ترابيزة",
+      "items": "الأصناف",
+      "spicy": "حار",
+      "notSpicy": "غير حار",
+      "notes": "ملاحظات",
+      "total": "الإجمالي"
+    },
+    "branches": {
+      "mashaya": "المشاية",
+      "gamaa": "حي الجامعة",
+      "mashayaBranch": "فرع المشاية",
+      "gamaaBranch": "فرع حي الجامعة"
+    },
+    "whatsapp": {
+      "statusWithItems": "مرحبًا {{name}}\nطلبك من *Shelter House Of Cheese* هو:\n{{items}}\nالإجمالي: {{total}} {{currency}}\nحالة طلبك الآن: {{status}}"
+    },
+    "messages": {
+      "cancelConfirm": "هل أنت متأكد من إلغاء هذا الطلب؟",
+      "noPhone": "هذا الطلب لا يحتوي على رقم هاتف.",
+      "updateFailed": "فشل تحديث حالة الطلب.",
+      "saveAndComplete": "إكمال + حفظ في المبيعات",
+      "saving": "جارٍ الحفظ..."
+    }
   },
-  "orderType": {
-    "delivery": "دليفري",
-    "pickup": "استلام",
-    "dineIn": "صالة"
+  "adminSales": {
+    "heading": "تقرير المبيعات",
+    "selectMonth": "اختر شهرًا لعرض التفاصيل",
+    "noData": "لا توجد بيانات حتى الآن",
+    "revenueTotal": "إجمالي الإيرادات",
+    "ordersThisMonth": "طلبات هذا الشهر",
+    "totalOrders": "إجمالي الطلبات",
+    "avgOrderValue": "متوسط قيمة الطلب (ج.م)",
+    "totalRevenue": "إجمالي الإيرادات (ج.م)",
+    "branchesComparison": "مقارنة الفروع",
+    "savedDays": "الأيام المحفوظة",
+    "daysSubtitleEmpty": "اختر شهرًا لعرض التفاصيل اليومية",
+    "noDaysForMonth": "لا توجد أيام متاحة لهذا الشهر.",
+    "day": "يوم {{day}}",
+    "unsaved": "بدون حفظ",
+    "noDayDetails": "لا توجد تفاصيل محفوظة لهذا اليوم.",
+    "saved": "محفوظ",
+    "live": "مباشر",
+    "ordersUnit": "طلب",
+    "ordersCount": "{{count}} طلب",
+    "cancelledCount": "{{count}} ملغي",
+    "branchOrders": "{{branch}}: {{count}} طلب",
+    "topItem": "الأكثر مبيعًا: {{name}} ({{qty}})"
   },
-  "status": {
-    "new": "جديد",
-    "preparing": "قيد التحضير",
-    "onTheWay": "في الطريق",
-    "completed": "مكتمل",
-    "cancelled": "ملغي"
+  "ordersPage": {
+    "filters": {
+      "all": "الكل",
+      "new": "جديد",
+      "preparing": "قيد التحضير",
+      "onTheWay": "في الطريق",
+      "completed": "مكتمل",
+      "cancelled": "ملغي"
+    },
+    "mostSoldTitle": "الأكثر مبيعًا اليوم",
+    "soldCount": "تم بيع: {{count}}",
+    "searchPlaceholder": "ابحث برقم الطلب...",
+    "empty": "لا توجد طلبات",
+    "toastNewOrder": "وصل طلب جديد رقم #{{orderNumber}}!",
+    "summary": {
+      "title": "ملخص اليوم",
+      "revenue": "الإيراد: {{amount}} {{currency}}",
+      "orders": "الطلبات: {{count}}",
+      "cancelled": "الملغي: {{count}}",
+      "saved": "تم الحفظ في لوحة المبيعات.",
+      "failed": "فشل حفظ ملخص اليوم."
+    },
+    "receipt": {
+      "title": "طلب رقم #{{orderNumber}}",
+      "customer": "العميل",
+      "phone": "رقم الهاتف",
+      "address": "العنوان",
+      "detailedAddress": "العنوان التفصيلي",
+      "time": "الوقت",
+      "type": "النوع",
+      "item": "الصنف",
+      "qty": "الكمية",
+      "price": "السعر",
+      "subtotal": "المجموع الفرعي",
+      "vat": "الضريبة (12%)",
+      "delivery": "التوصيل",
+      "total": "الإجمالي",
+      "thanks": "شكرًا لاختيارك Shelter!"
+    },
+    "actions": {
+      "deleteConfirm_one": "حذف {{count}} طلب؟",
+      "deleteConfirm_other": "حذف {{count}} طلب؟",
+      "saving": "جارٍ الحفظ..."
+    }
   },
-  "actions": {
-    "accept": "قبول",
-    "onTheWay": "في الطريق",
-    "complete": "إكمال",
-    "cancel": "إلغاء",
-    "whatsapp": "واتساب"
+  "common": {
+    "egp": "ج.م"
   },
-  "modal": {
-    "order": "طلب",
-    "customer": "العميل",
-    "name": "الاسم",
-    "phone": "الهاتف",
-    "type": "النوع",
-    "address": "العنوان",
-    "viewLocation": "عرض الموقع",
-    "items": "الأصناف",
-    "notes": "ملاحظات",
-    "total": "الإجمالي"
-  }
-},
-"common": {
-  "egp": "ج.م"
-},
   "about": {
     "title": "عن",
     "body": "Shelter House of Cheese معروفة بعشقها للدجاج المقلي المقرمش والجبنة الغنية المذابة. مطبخنا يركز على تقديم دجاج مقلي ذهبي مصنوع بعناية، مع نكهات جريئة وطبقات سخية من الجبنة تجعل كل لقمة لا تُنسى. في Shelter، نؤمن أن الطعام المريح يجب أن يكون بسيطاً ومُرضياً ومليئاً بالنكهة."

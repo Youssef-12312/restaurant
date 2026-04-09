@@ -3,6 +3,7 @@ import MenuCard from "../components/MenuCard.jsx";
 import Cart from "../components/Cart.jsx";
 import { images } from "../assets/Images/images.js";
 import { useTranslation } from "react-i18next";
+import "../styles/menu.css";
 import LanguageSwitcher from "../components/LanguageSwitcher.jsx";
 import ItemDrawer from "../components/ItemDrawer.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -57,30 +58,93 @@ function Typewriter({ text }) {
   );
 }
 
+function MenuLoadingScreen({ lang }) {
+  const isArabic = lang === "ar";
+
+  return (
+    <div className="menu-loading-screen" role="status" aria-live="polite">
+      <div className="menu-loading-screen__glow menu-loading-screen__glow--one" />
+      <div className="menu-loading-screen__glow menu-loading-screen__glow--two" />
+
+      <div className="menu-loading-card">
+        <div className="menu-loading-orbit">
+          <span className="menu-loading-ring menu-loading-ring--outer" />
+          <span className="menu-loading-ring menu-loading-ring--inner" />
+          <div className="menu-loading-logo-wrap">
+            <img
+              src={images.logo}
+              alt="Shelter logo"
+              className="menu-loading-logo"
+            />
+          </div>
+        </div>
+
+        <div className="menu-loading-dots" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </div>
+
+        <h1 className="menu-loading-title">
+          {isArabic ? "انتظر لتحميل المنيو" : "Loading the menu"}
+        </h1>
+
+        <p className="menu-loading-subtitle">
+          {isArabic
+            ? "برجاء الانتظار لحظات قليلة..."
+            : "Please wait a few moments..."}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 // المكون الرئيسي للمنيو
 function CustomerMenu({ cart, setCart }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language?.startsWith("ar") ? "ar" : "en";
   const [menu, setMenu] = useState([]); // بيبدأ بمصفوفة فاضية
   const [search, setSearch] = useState("");
   const [activeTab, setActiveTab] = useState("ALL");
   const [selectedItem, setSelectedItem] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { tableNumber } = useTable();
 
   // جلب البيانات (Firebase مع Fallback للـ JSON)
-useEffect(() => {
-  const loadData = async () => {
-    const data = await fetchMenuData();
-    if (data && Array.isArray(data)) {
-      const dataWithImages = data.map(item => ({
-        ...item,
-       image: item.image || `/images/${item.id}.webp` 
-      }));
-      setMenu(dataWithImages);
-    }
-  };
-  loadData();
-}, []);
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadData = async () => {
+      try {
+        const data = await fetchMenuData();
+
+        if (!isMounted) {
+          return;
+        }
+
+        if (data && Array.isArray(data)) {
+          const dataWithImages = data.map((item) => ({
+            ...item,
+            image: item.image || `/images/${item.id}.webp`,
+          }));
+          setMenu(dataWithImages);
+        } else {
+          setMenu([]);
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    loadData();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   // وظائف السلة
   function addToCart(item) {
@@ -149,6 +213,10 @@ useEffect(() => {
 
     return matchSearch && matchTab && isAvailable;
   });
+
+  if (isLoading) {
+    return <MenuLoadingScreen lang={lang} />;
+  }
 
   return (
     <>

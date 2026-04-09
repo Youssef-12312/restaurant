@@ -2,6 +2,7 @@ import { signOut, setPersistence, browserSessionPersistence } from "firebase/aut
 import { auth } from "../../services/firebase.js";
 import OrdersPage from "./OrdersPage.jsx";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import "../styles/admin.css";
 import { onAuthStateChanged } from "firebase/auth";
 import { images } from "../../assets/Images/images.js";
@@ -13,6 +14,7 @@ import { db } from "../../services/firebase.js";
 setPersistence(auth, browserSessionPersistence);
 
 function AdminDashboard() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   
   const handleLogout = async () => {
@@ -30,7 +32,6 @@ function AdminDashboard() {
         // 🔥 هات الاسم من Firestore
         const docRef = doc(db, "admins", user.uid);
         const snap = await getDoc(docRef);
-
         if (snap.exists()) {
           setAdminName(snap.data().name);
         }
@@ -55,7 +56,7 @@ function AdminDashboard() {
         <div className="dash-sidebar__brand">
           <img
             src={images.logo}
-            alt="Shelter logo"
+            alt={t("admin.brand.logoAlt")}
             className="dash-sidebar__logo"
           />
           <span className="dash-sidebar__name">Shelter</span>
@@ -63,34 +64,32 @@ function AdminDashboard() {
 
         <nav className="dash-sidebar__nav">
           <Link className="dash-nav-item dash-nav-item--active" to="/admin">
-            <span>📋</span> Orders
+            <span>📋</span> {t("admin.nav.orders")}
           </Link>
 
           <Link className="dash-nav-item" to="/admin/menu">
-            <span>🍔</span> Menu Control
+            <span>🍔</span> {t("admin.nav.menuControl")}
           </Link>
 
         </nav>
               
         <button className="dash-sidebar__logout" onClick={handleLogout}>
-          <span>🚪</span> Logout
+          <span>🚪</span> {t("admin.nav.logout")}
         </button>
       </aside>
 
       <div className="dash-main">
         <header className="dash-header">
           <div>
-            <h1 className="dash-header__title">Orders Dashboard</h1>
-            <p className="dash-header__sub">
-              Shelter Restaurant — Real-time Management
-            </p>
+            <h1 className="dash-header__title">{t("admin.dashboard.title")}</h1>
+            <p className="dash-header__sub">{t("admin.dashboard.subtitle")}</p>
           </div>
           <LanguageSwitcher />
           <div className="dash-header__user">
             <span className="dash-header__avatar">👤</span>
             
             <span className="dash-header__email">
-              {adminName || auth.currentUser?.email || "Admin"}
+              {adminName || auth.currentUser?.email || t("admin.brand.fallbackUser")}
             </span>
           </div>
         </header>

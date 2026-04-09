@@ -39,7 +39,7 @@ function getClosestBranch(userLat, userLng) {
 function isRestaurantOpen() {
   const now = new Date();
   const hour = now.getHours();
-  if (hour >= 3 && hour < 9) {
+  if (hour >= 3 && hour < 11) {
     return false;
   }
   return true;
@@ -169,7 +169,7 @@ function Checkout({ cart = [] }) {
     0
   );
 
-  const vat = subtotal * 0.14;
+  const vat = subtotal * 0.12;
   const deliveryFee = !isDineIn && orderType === "delivery" ? 25 : 0;
   const finalTotal = subtotal + vat + deliveryFee;
 
@@ -279,7 +279,7 @@ function Checkout({ cart = [] }) {
     setShowErrors(true); // 👈 مهم
 
     if (!isRestaurantOpen()) {
-      alert("Shelter is currently closed. We open at 9 AM.");
+      alert("Shelter is currently closed. We open at 11 AM.");
       return;
     }
 
@@ -705,7 +705,7 @@ function Checkout({ cart = [] }) {
           )}
 
           <div className="checkout-delivery">
-            <span>VAT 14%</span>
+            <span>VAT 12% (ضريبة القيمة المضافة )</span>
             <span>{vat.toFixed(2)} EGP</span>
           </div>
 
@@ -721,7 +721,7 @@ function Checkout({ cart = [] }) {
 
           {!restaurantOpen && (
             <div className="restaurant-closed">
-              Shelter closed — opens at 9:00 AM
+              Shelter closed — opens at 11:00 AM
             </div>
           )}
 

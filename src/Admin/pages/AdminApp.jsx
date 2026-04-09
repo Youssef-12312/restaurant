@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { auth, db } from "../../services/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
@@ -12,6 +13,7 @@ import OrdersPage from "./OrdersPage";
 import MenuControl from "./MenuControl";
 
 function AdminApp() {
+  const { t } = useTranslation();
   const location = useLocation();
   const [role, setRole] = useState(null); 
   const [isChecking, setIsChecking] = useState(true);
@@ -41,7 +43,7 @@ function AdminApp() {
             // لو عنده رول غريب ومش معروف، نخرجه من الحساب
             setRole(null);
             await auth.signOut();
-            alert("عفواً، لا تملك صلاحيات الدخول للوحة التحكم.");
+            alert(t("admin.app.noAccess"));
           }
         } else {
           setRole(null);
@@ -55,10 +57,10 @@ function AdminApp() {
     });
 
     return () => unsub();
-  }, []);
+  }, [t]);
 
   if (isChecking) {
-    return <div className="loading-screen">Loading Admin Data...</div>;
+    return <div className="loading-screen">{t("admin.app.loading")}</div>;
   }
 
   // دالة مساعدة لتحديد مسار البداية بناءً على الرول
