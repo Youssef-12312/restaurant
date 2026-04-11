@@ -31,7 +31,9 @@ export function normalizeBranchKey(value) {
   if (
     branch === "mashaya" ||
     branch.includes("mash") ||
-    branch.includes("مشاي")
+    branch.includes("مشاي") ||
+    branch.includes("مشاية") ||
+    branch.includes("المشاية")
   ) {
     return "mashaya";
   }
@@ -42,6 +44,9 @@ export function normalizeBranchKey(value) {
     branch.includes("gam3") ||
     branch.includes("جامعة") ||
     branch.includes("جامعه") ||
+    branch.includes("الجامعة") ||
+    branch.includes("الجامعه") ||
+    branch.includes("university") ||
     (branch.includes("حي") && (branch.includes("جامعة") || branch.includes("جامعه")))
   ) {
     return "gamaa";
@@ -157,20 +162,3 @@ export function buildBranchStatsFromOrders(orders = []) {
   return stats;
 }
 
-export function mergeBranchStats(primary, fallback) {
-  const merged = createEmptyBranchStats();
-
-  for (const branchKey of Object.keys(merged)) {
-    const primaryRevenue = toNumber(primary?.[branchKey]?.revenue);
-    const primaryOrders = toNumber(primary?.[branchKey]?.orders);
-    const fallbackRevenue = toNumber(fallback?.[branchKey]?.revenue);
-    const fallbackOrders = toNumber(fallback?.[branchKey]?.orders);
-
-    merged[branchKey] = {
-      revenue: Math.max(primaryRevenue, fallbackRevenue),
-      orders: Math.max(primaryOrders, fallbackOrders),
-    };
-  }
-
-  return merged;
-}

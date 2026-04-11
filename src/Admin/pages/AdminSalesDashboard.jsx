@@ -22,7 +22,6 @@ import {
   createEmptyBranchStats,
   extractBranchStats,
   buildBranchStatsFromOrders,
-  mergeBranchStats,
 } from "../../services/branchSales";
 
 setPersistence(auth, browserSessionPersistence);
@@ -644,15 +643,19 @@ function AdminSalesDashboard() {
           const fallbackTotals = buildMonthTotalsFromDailySummaries(days);
           const fallbackBranches = buildBranchStatsFromDailySummaries(days);
           const summaryData = summarySnap.exists() ? summarySnap.data() : null;
+          const summaryBranches = extractBranchStats(summaryData);
+          const dailyHasBranchBreakdown =
+            fallbackBranches.mashaya.revenue + fallbackBranches.gamaa.revenue > 0 ||
+            fallbackBranches.mashaya.orders + fallbackBranches.gamaa.orders > 0;
 
           setDailySummaries(days);
           setData({
             totalRevenue: Number(summaryData?.totalRevenue || fallbackTotals.totalRevenue),
             totalOrders: Number(summaryData?.totalOrders || fallbackTotals.totalOrders),
-            branches: mergeBranchStats(
-              extractBranchStats(summaryData),
-              fallbackBranches
-            ),
+            branches:
+              days.length > 0 && dailyHasBranchBreakdown
+                ? fallbackBranches
+                : summaryBranches,
           });
           return;
         }

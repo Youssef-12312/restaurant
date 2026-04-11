@@ -206,6 +206,8 @@
     "actions": {
       "deleteConfirm_one": "Delete {{count}} order?",
       "deleteConfirm_other": "Delete {{count}} orders?",
+      "hiddenCount": "Hidden {{count}} order(s) from the dashboard.",
+      "hideFailed": "Could not hide orders. Check your connection and Firestore rules.",
       "saving": "Saving..."
     }
   },

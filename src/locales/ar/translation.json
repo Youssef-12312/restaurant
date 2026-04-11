@@ -189,6 +189,8 @@
     "actions": {
       "deleteConfirm_one": "حذف {{count}} طلب؟",
       "deleteConfirm_other": "حذف {{count}} طلب؟",
+      "hiddenCount": "تم إخفاء {{count}} طلب/طلبات من لوحة التحكم.",
+      "hideFailed": "تعذر إخفاء الطلبات. تحقق من الاتصال وقواعد Firestore.",
       "saving": "جارٍ الحفظ..."
     }
   },

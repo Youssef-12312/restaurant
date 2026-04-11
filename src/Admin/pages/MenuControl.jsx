@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { db, auth } from "../../services/firebase.js";
-import { collection, onSnapshot, doc, updateDoc } from "firebase/firestore";
+import { doc, onSnapshot, updateDoc, getDoc } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { images } from "../../assets/Images/images.js";
 import "../styles/MenuControl.css";
 import { signOut } from "firebase/auth";
+import { invalidateMenuV2Cache } from "../../services/menuService.js";
+
+const ACTIVE_MENU_REF = doc(db, "menu_v2", "active_menu");
 
 function MenuControl() {
   const { t, i18n } = useTranslation();
@@ -34,18 +37,22 @@ function MenuControl() {
     return search === "" || name.includes(q);
   });
 
-  /* ── Fetch Menu ── */
+  /* ── Live menu (same source as customer site: menu_v2/active_menu) ── */
   useEffect(() => {
-    const ref = collection(db, "menu");
-
-    const unsub = onSnapshot(ref, (snap) => {
-      setMenu(
-        snap.docs.map((doc) => ({
-          docId: doc.id, // 🔥 ده الـ id الحقيقي
-          ...doc.data(),
-        }))
-      );
-    });
+    const unsub = onSnapshot(
+      ACTIVE_MENU_REF,
+      (snap) => {
+        if (!snap.exists()) {
+          setMenu([]);
+          return;
+        }
+        const items = snap.data().items;
+        setMenu(Array.isArray(items) ? items : []);
+      },
+      (err) => {
+        console.error("MenuControl snapshot error:", err);
+      }
+    );
 
     return () => unsub();
   }, []);
@@ -63,13 +70,31 @@ function MenuControl() {
     };
   }, []);
 
-  /* ── Toggle Stock ── */
+  /* ── Toggle availability on nested items[] inside active_menu ── */
   const toggleStock = async (item) => {
-    const ref = doc(db, "menu", item.docId); // ✅ FIXED
+    if (!item?.id) {
+      console.warn("Menu item missing id", item);
+      return;
+    }
 
-    await updateDoc(ref, {
-      available: item.available === false,
-    });
+    try {
+      const snap = await getDoc(ACTIVE_MENU_REF);
+      if (!snap.exists()) {
+        console.warn("menu_v2/active_menu is missing");
+        return;
+      }
+
+      const items = snap.data().items || [];
+      const nextAvailable = item.available === false;
+      const nextItems = items.map((it) =>
+        it.id === item.id ? { ...it, available: nextAvailable } : it
+      );
+
+      await updateDoc(ACTIVE_MENU_REF, { items: nextItems });
+      invalidateMenuV2Cache();
+    } catch (err) {
+      console.error("toggleStock error:", err);
+    }
   };
 
   return (
@@ -127,7 +152,7 @@ function MenuControl() {
             </div>
           ) : (
             filteredMenu.map((item) => (
-              <div className="mc-card" key={item.docId}>
+              <div className="mc-card" key={item.id}>
                 <span className="mc-name">{getText(item.name)}</span>
 
                 <span

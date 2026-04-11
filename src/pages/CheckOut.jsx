@@ -309,7 +309,8 @@ function Checkout({ cart = [] }) {
         }
       }
 
-      const normalizedBranch = normalizeBranchKey(finalBranch) || finalBranch || null;
+      const normalizedBranch =
+        normalizeBranchKey(finalBranch) ?? normalizeBranchKey(String(finalBranch ?? "")) ?? null;
 
       await addDoc(collection(db, "orders"), {
         orderNumber: shortOrderNumber,

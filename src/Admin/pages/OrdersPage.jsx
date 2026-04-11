@@ -166,7 +166,9 @@ function OrdersPage() {
     cancelled: t("ordersPage.filters.cancelled"),
   };
 
-  const orders = mergeOrders(activeOrders, todayOrders, cancelledOrders);
+  const orders = mergeOrders(activeOrders, todayOrders, cancelledOrders).filter(
+    (order) => order.hidden !== true
+  );
 
   const visibleOrders = orders.filter((order) => {
     const orderDate = getOrderDate(order);
@@ -384,24 +386,26 @@ function OrdersPage() {
   };
 
 
-const clearCurrentList = async () => {
-  if (filtered.length === 0) return;
+  const clearCurrentList = async () => {
+    if (filtered.length === 0) return;
 
-  const confirmDelete = window.confirm(
-    t("ordersPage.actions.deleteConfirm", { count: filtered.length })
-  );
-  if (!confirmDelete) return;
+    const confirmDelete = window.confirm(
+      t("ordersPage.actions.deleteConfirm", { count: filtered.length })
+    );
+    if (!confirmDelete) return;
 
-  try {
-    for (const order of filtered) {
-      await updateDoc(doc(db, "orders", order.id), {
-        hidden: true
-      });
+    try {
+      for (const order of filtered) {
+        await updateDoc(doc(db, "orders", order.id), { hidden: true });
+      }
+      setToast(t("ordersPage.actions.hiddenCount", { count: filtered.length }));
+      setTimeout(() => setToast(null), 4000);
+    } catch (err) {
+      console.error("Update error:", err);
+      setToast(t("ordersPage.actions.hideFailed"));
+      setTimeout(() => setToast(null), 5000);
     }
-  } catch (err) {
-    console.error("Update error:", err);
-  }
-};
+  };
   const openDailySummary = async () => {
     setShowSummary(true);
     setIsSavingSummary(true);

@@ -4,6 +4,8 @@ import {
   increment,
   runTransaction,
   serverTimestamp,
+  getDoc,
+  updateDoc,
 } from "firebase/firestore";
 import { db } from "./firebase";
 import { createEmptyBranchStats, normalizeBranchKey } from "./branchSales";
@@ -153,31 +155,54 @@ export async function saveDailyOrdersSnapshot({
 
 export async function completeOrderAndSaveToSales(orderId) {
   const orderRef = doc(db, "orders", orderId);
+  const orderSnap = await getDoc(orderRef);
 
-  await runTransaction(db, async (transaction) => {
-    const orderSnap = await transaction.get(orderRef);
+  if (!orderSnap.exists()) {
+    throw new Error(`Order ${orderId} does not exist`);
+  }
 
-    if (!orderSnap.exists()) {
-      throw new Error(`Order ${orderId} does not exist`);
-    }
+  const order = {
+    id: orderSnap.id,
+    ...orderSnap.data(),
+  };
 
-    const order = {
-      id: orderSnap.id,
-      ...orderSnap.data(),
-    };
-    const orderUpdate = {
+  const updates = [];
+
+  if (!order.addedToSales) {
+    const { ref: monthRef, update: monthUpdate } = buildSalesSummaryUpdate(order);
+    const { ref: dayRef, update: dayUpdate } = buildDailySummaryUpdate(order);
+
+    updates.push(setDoc(monthRef, monthUpdate, { merge: true }));
+    updates.push(setDoc(dayRef, dayUpdate, { merge: true }));
+  }
+
+  updates.push(
+    updateDoc(orderRef, {
       status: "completed",
-    };
+      addedToSales: true,
+      completedAt: serverTimestamp(),
+    })
+  );
 
-    if (!order.addedToSales) {
-      const { ref: monthRef, update: monthUpdate } = buildSalesSummaryUpdate(order);
-      const { ref: dayRef, update: dayUpdate } = buildDailySummaryUpdate(order);
-      transaction.set(monthRef, monthUpdate, { merge: true });
-      transaction.set(dayRef, dayUpdate, { merge: true });
-      orderUpdate.addedToSales = true;
-      orderUpdate.completedAt = serverTimestamp();
+  const settled = await Promise.allSettled(updates);
+  const orderIdx = updates.length - 1;
+  const orderSettled = settled[orderIdx];
+
+  if (orderSettled.status === "rejected") {
+    throw orderSettled.reason;
+  }
+
+  if (updates.length === 3) {
+    const monthSettled = settled[0];
+    const daySettled = settled[1];
+    if (monthSettled.status === "rejected") {
+      throw monthSettled.reason;
     }
-
-    transaction.update(orderRef, orderUpdate);
-  });
+    if (daySettled.status === "rejected") {
+      console.warn(
+        "[sales] Month aggregate updated but sales_summary …/days write was denied; allow writes on sales_summary/{month}/days/{dayId} in Firestore rules.",
+        { orderId, code: daySettled.reason?.code }
+      );
+    }
+  }
 }

@@ -2,10 +2,20 @@ import { doc, getDoc } from "firebase/firestore"; // ⚠️ لاحظ إننا غ
 import { db } from "./firebase.js";
 import localMenu from "../data/menu.json";
 
+const CACHE_KEY = "cached_menu_data_v2";
+const CACHE_TIME_KEY = "cached_menu_time_v2";
+
+/** Clears client menu cache so the next customer menu load refetches Firestore (e.g. after admin stock change). */
+export function invalidateMenuV2Cache() {
+  try {
+    localStorage.removeItem(CACHE_KEY);
+    localStorage.removeItem(CACHE_TIME_KEY);
+  } catch {
+    /* ignore */
+  }
+}
+
 export async function fetchMenuData() {
-  // غيرنا أسماء مفاتيح الكاش عشان المتصفح ميقراش الداتا القديمة بالغلط
-  const CACHE_KEY = "cached_menu_data_v2"; 
-  const CACHE_TIME_KEY = "cached_menu_time_v2";
   const EXPIRATION_HOURS = 12; // الكاش هيتجدد كل 12 ساعة
 
   try {
