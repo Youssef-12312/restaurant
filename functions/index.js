@@ -132,7 +132,10 @@ function calculateItem(menuItem, requested) {
 exports.createOrder = onCall({
   region: "us-central1",
   enforceAppCheck: false,
-  cors: ["http://localhost:5173"]
+  cors: [
+    "http://localhost:5173",
+    "https://shelter-restaurant1.vercel.app"
+  ]
 }, async (request) => {  const data = request.data || {};
   const customerName = text(data.customerName, "customer name", 120);
   const orderType = data.orderType;
