@@ -1013,7 +1013,7 @@ export const menu = [
     category: "Beef Sandwich",
     id: "unique-name",
     name: { ar: "السجق المشوي", en: "Grilled Sausage" },
-    prices: { price1: 95, price2: 80 },
+    prices: { price1: 900, price2: 80 },
     priceNote: "Two prices are shown in the menu without visible labels.",
     description: "السجق المشوي مع صوص المايونيز و الخيار و الفلفل و الطماطم وصوص السجق"
   }

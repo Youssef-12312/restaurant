@@ -16,6 +16,8 @@ export default function useTable() {
     }
     if (tokenFromURL) {
       sessionStorage.setItem("tableToken", tokenFromURL); // 👈 حفظ التوكن في السيشن
+    } else if (tableFromURL || branchFromURL) {
+      sessionStorage.removeItem("tableToken");
     }
 
     // إرجاع رقم الترابيزة واسم الفرع والتوكن في شكل Object

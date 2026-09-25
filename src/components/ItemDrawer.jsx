@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "../styles/drawer.css";
+import { getItemSelectedPrice, getItemVariants, getVariantLabel, toText } from "../utils/menuSchema.js";
 
 /* ─── helpers ──────────────────────────────────────────────────────────────── */
 
@@ -8,6 +9,14 @@ const getLang = (field, lang = "en") => {
   if (!field) return "";
   if (typeof field === "string") return field;
   return field[lang] ?? field["en"] ?? field["ar"] ?? Object.values(field)[0] ?? "";
+};
+
+const getOptionLabel = (option, lang) =>
+  typeof option === "string" ? option : getLang(option?.label ?? option?.name ?? option?.value, lang);
+
+const getOptionExtra = (option) => {
+  const extra = Number(option?.extra ?? 0);
+  return Number.isFinite(extra) && extra >= 0 ? extra : 0;
 };
 
 
@@ -54,15 +63,17 @@ export default function ItemDrawer({ item, onClose, addToCart }) {
   const [addedAnim,       setAddedAnim]       = useState(false);
 
   /* reset on every new item */
-useEffect(() => {
-  if (!item) return;
+  useEffect(() => {
+    if (!item) return;
 
-  setTimeout(() => {
-    setSelectedSizeKey(null);
-    setSelectedOptions({});
-    setIsSpicy(null);
-  }, 0);
-}, [item]);
+    const frame = requestAnimationFrame(() => {
+      setSelectedSizeKey(null);
+      setSelectedOptions({});
+      setIsSpicy(null);
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [item]);
 
   /* lock body scroll */
   useEffect(() => {
@@ -79,35 +90,26 @@ useEffect(() => {
 
   if (!item) return null;
 
-  /* ── DEBUG LOG ─────────────────────────────────────────────────────────────
-     شيل الـ console.log دا بعد ما تتأكد إن كل حاجة شغالة تمام              */
-  console.log("🧪 ItemDrawer →", item.name?.ar ?? item.name, {
-    "item.price":       item.price,
-    "item.prices":      item.prices,
-    "typeof prices":    typeof item.prices,
-    "prices keys":      item.prices ? Object.keys(item.prices) : "—",
-    "detectPrices()":   detectPrices(item.prices),
-    "category":         item.category,
-    "showSpicy":        SPICY_CATS.has(item.category),
-  });
-  /* ─────────────────────────────────────────────────────────────────────── */
-
   /* ── derived values ── */
-  const hasPrices      = detectPrices(item.prices);
-  const hasSinglePrice = !hasPrices && (item.price !== null && item.price !== undefined);
-  const sizes          = hasPrices ? parseSizes(item.prices) : [];
-  const showSpicy      = SPICY_CATS.has(item.category);
+  const itemVariants = getItemVariants(item);
+  const hasPrices = itemVariants.length > 0;
+  const hasSinglePrice = itemVariants.length === 1;
+  const sizes = itemVariants.map((variant) => ({
+    key: variant.id,
+    label: getVariantLabel(variant, lang),
+    value: Number(variant.price) || 0,
+  }));
+  const showSpicy = SPICY_CATS.has(item.category);
 
-  const sizeValue   = hasPrices && selectedSizeKey
-                        ? (Number(item.prices[selectedSizeKey]) || null)
-                        : null;
-  const basePrice   = hasPrices
-                        ? sizeValue
-                        : hasSinglePrice
-                        ? Number(item.price)
-                        : 0;
+  const sizeValue = selectedSizeKey
+    ? itemVariants.find((variant) => variant.id === selectedSizeKey)?.price ?? null
+    : null;
+  const basePrice = sizeValue ?? getItemSelectedPrice(item);
+  const selectedVariant = selectedSizeKey
+    ? itemVariants.find((variant) => variant.id === selectedSizeKey) ?? null
+    : null;
   const optionExtra = Object.values(selectedOptions).reduce(
-    (sum, opt) => sum + (typeof opt === "object" ? (opt?.extra ?? 0) : 0),
+    (sum, opt) => sum + getOptionExtra(opt),
     0
   );
   const totalPrice  = basePrice != null ? basePrice + optionExtra : null;
@@ -117,10 +119,10 @@ useEffect(() => {
   const handleSizeClick = (key) =>
     setSelectedSizeKey((prev) => (prev === key ? null : key));
 
-  const handleOptionToggle = (groupIdx, optLabel) =>
+  const handleOptionToggle = (groupIdx, option) =>
     setSelectedOptions((prev) => ({
       ...prev,
-      [groupIdx]: prev[groupIdx] === optLabel ? undefined : optLabel,
+      [groupIdx]: prev[groupIdx] === option ? undefined : option,
     }));
 
 const handleAdd = () => {
@@ -131,27 +133,20 @@ const handleAdd = () => {
   }
 
   addToCart?.({
-    id: item.docId || item.id || crypto.randomUUID(),
-
+    id: item.id,
     name: getLang(item.name, lang),
-
-    
-    image: item.id
-      ? `/images/${item.id}.webp`
-      : "/images/placeholder.webp",
-
+    image: item.imageUrl || null,
+    imageUrl: item.imageUrl || null,
     category: item.category,
-
     sizeKey: selectedSizeKey,
+    selectedVariant,
     sizeLabel: selectedSizeKey
-      ? selectedSizeKey.charAt(0).toUpperCase() +
-        selectedSizeKey.slice(1)
+      ? getVariantLabel(itemVariants.find((variant) => variant.id === selectedSizeKey), lang)
       : null,
-
     spicy: isSpicy,
     options: selectedOptions,
-
-    price: totalPrice,
+    variants: itemVariants,
+    branches: item.branches || ["mashaya", "gamaa"],
   });
 
   setAddedAnim(true);
@@ -182,13 +177,20 @@ const handleAdd = () => {
         </button>
 
         {/* hero */}
-<div className="drawer-hero">
-  {item.id ? (
+        <div className="drawer-hero">
+  {item.imageUrl ? (
     <img
-      src={`/images/${item.id}.webp`}
+      src={item.imageUrl}
       alt={itemName}
       draggable={false}
+      onError={(event) => {
+        event.currentTarget.style.display = "none";
+        event.currentTarget.nextElementSibling?.classList.remove("drawer-hero-placeholder--hidden");
+      }}
     />
+  ) : null}
+  {item.imageUrl ? (
+    <div className="drawer-hero-placeholder drawer-hero-placeholder--hidden"><span>🍽️</span></div>
   ) : (
     <div className="drawer-hero-placeholder">
       <span>🍽️</span>
@@ -202,7 +204,7 @@ const handleAdd = () => {
       {item.category}
     </span>
   )}
-</div>
+  </div>
 
         {/* scrollable body */}
         <div className="drawer-body">
@@ -212,7 +214,7 @@ const handleAdd = () => {
             <h2 className="drawer-name">{itemName}</h2>
             {hasSinglePrice && (
               <span className="drawer-price-pill">
-                {item.price} <em>EGP</em>
+                {itemVariants[0].price} <em>EGP</em>
               </span>
             )}
           </div>
@@ -283,14 +285,14 @@ const handleAdd = () => {
               </h3>
               <div className="drawer-options">
                 {group.options.map((opt, oi) => {
-                  const optLabel = typeof opt === "string" ? opt : getLang(opt, lang);
-                  const isActive = selectedOptions[gi] === optLabel;
+                  const optLabel = getOptionLabel(opt, lang);
+                  const isActive = selectedOptions[gi] === opt;
                   return (
                     <button
                       key={oi}
                       type="button"
                       className={`drawer-option ${isActive ? "drawer-option--active" : ""}`}
-                      onClick={() => handleOptionToggle(gi, optLabel)}
+                      onClick={() => handleOptionToggle(gi, opt)}
                     >
                       <span className="drawer-option-check">
                         {isActive && (
@@ -300,8 +302,8 @@ const handleAdd = () => {
                         )}
                       </span>
                       {optLabel}
-                      {opt?.extra > 0 && (
-                        <span className="drawer-option-extra">+{opt.extra} EGP</span>
+                      {getOptionExtra(opt) > 0 && (
+                        <span className="drawer-option-extra">+{getOptionExtra(opt)} EGP</span>
                       )}
                     </button>
                   );
@@ -324,8 +326,8 @@ const handleAdd = () => {
             type="button"
             className={[
               "drawer-add-btn",
-              addedAnim ? "drawer-add-btn--added"    : "",
-              !canAdd   ? "drawer-add-btn--disabled" : "",
+              addedAnim ? "drawer-add-btn--added" : "",
+              !canAdd ? "drawer-add-btn--disabled" : "",
             ].filter(Boolean).join(" ")}
             onClick={handleAdd}
             disabled={addedAnim}

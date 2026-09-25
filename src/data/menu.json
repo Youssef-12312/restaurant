@@ -1,1587 +1,5025 @@
 {
   "menu": [
     {
+      "id": "unique-name2",
+      "category": "Sauces",
+      "name": {
+        "ar": "باربيكيو صوص",
+        "en": "باربيكيو صوص"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 15
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "mayonnaise",
+      "category": "Sauces",
+      "name": {
+        "ar": "صوص مايونيز",
+        "en": "صوص مايونيز"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/mayonnaise.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 10
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name4",
+      "category": "Sauces",
+      "name": {
+        "ar": "صوص فريسكس",
+        "en": "صوص فريسكس"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 15
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name5",
+      "category": "Sauces",
+      "name": {
+        "ar": "ميني جار جبنة شيدر",
+        "en": "ميني جار جبنة شيدر"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 30
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name6",
+      "category": "Sauces",
+      "name": {
+        "ar": "جار جبنة شيدر",
+        "en": "جار جبنة شيدر"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 75
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name7",
+      "category": "Sauces",
+      "name": {
+        "ar": "صوص جبنة شيلتر",
+        "en": "صوص جبنة شيلتر"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 15
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name8",
+      "category": "Sauces",
+      "name": {
+        "ar": "صوص رانش",
+        "en": "صوص رانش"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 15
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name9",
+      "category": "Sauces",
+      "name": {
+        "ar": "صوص بافلو حار",
+        "en": "صوص بافلو حار"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 10
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name10",
+      "category": "Sauces",
+      "name": {
+        "ar": "صوص ريزو حار",
+        "en": "صوص ريزو حار"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 15
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "tahini",
+      "category": "Sauces",
+      "name": {
+        "ar": "صوص طحينة",
+        "en": "صوص طحينة"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/tahini.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 10
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "garlic-dip",
+      "category": "Sauces",
+      "name": {
+        "ar": "صوص الثومية",
+        "en": "صوص الثومية"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/garlic-dip.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 10
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name11",
+      "category": "Extras",
+      "name": {
+        "ar": "خبز كايزر برجر",
+        "en": "خبز كايزر برجر"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 10
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name12",
+      "category": "Extras",
+      "name": {
+        "ar": "خبز محمص",
+        "en": "خبز محمص"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 10
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "extra-mozzarella",
+      "category": "Extras",
+      "name": {
+        "ar": "جبنة موزريلا",
+        "en": "جبنة موزريلا"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/extra-mozzarella.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 20
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "extra-sausage",
+      "category": "Extras",
+      "name": {
+        "ar": "سجق",
+        "en": "سجق"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/extra-sausage.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 20
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "extra-pepperoni",
+      "category": "Extras",
+      "name": {
+        "ar": "بيروني أو سلامي",
+        "en": "بيروني أو سلامي"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/extra-pepperoni.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 20
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name13",
+      "category": "Extras",
+      "name": {
+        "ar": "خبز كايزر وجبة",
+        "en": "خبز كايزر وجبة"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 5
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name14",
+      "category": "Extras",
+      "name": {
+        "ar": "قطعه بروست صدر",
+        "en": "قطعه بروست صدر"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 50
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name15",
+      "category": "Extras",
+      "name": {
+        "ar": "قطعة بروست فخذ",
+        "en": "قطعة بروست فخذ"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 45
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name16",
+      "category": "Extras",
+      "name": {
+        "ar": "قطعة بروست دبوس",
+        "en": "قطعة بروست دبوس"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 35
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name17",
+      "category": "Extras",
+      "name": {
+        "ar": "شريحة استريس",
+        "en": "شريحة استريس"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 35
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name18",
+      "category": "Extras",
+      "name": {
+        "ar": "2 قطعة زنجر",
+        "en": "2 قطعة زنجر"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 20
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name19",
+      "category": "Extras",
+      "name": {
+        "ar": "هوت دوج",
+        "en": "هوت دوج"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 20
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name20",
+      "category": "Extras",
+      "name": {
+        "ar": "بيف بيكون أو رومي مدخن",
+        "en": "بيف بيكون أو رومي مدخن"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 15
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "green-salad",
+      "category": "Salads",
+      "name": {
+        "ar": "سلطة خضراء",
+        "en": "Green Salad"
+      },
+      "description": {
+        "ar": "خيار - طماطم - خس - فلفل - جزر",
+        "en": "",
+        "fallback": "خيار - طماطم - خس - فلفل - جزر"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/green-salad.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 45
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "chicken-ranch-salad",
+      "category": "Salads",
+      "name": {
+        "ar": "تشيكن رانش سلط",
+        "en": "Chicken Ranch Salad"
+      },
+      "description": {
+        "ar": "خس و طماطم و فلفل ألوان و صدور مشوية مع صوص الرانش",
+        "en": "",
+        "fallback": "خس و طماطم و فلفل ألوان و صدور مشوية مع صوص الرانش"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/chicken-ranch-salad.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 100
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "coleslaw",
+      "category": "Salads",
+      "name": {
+        "ar": "كولو سلو",
+        "en": "Coleslaw"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/coleslaw.webp",
+      "variants": [
+        {
+          "id": "price1",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 35
+        },
+        {
+          "id": "price2",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 25
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true,
+      "priceNote": "Two prices are shown in the menu without visible labels."
+    },
+    {
+      "id": "pickles",
+      "category": "Salads",
+      "name": {
+        "ar": "مخلل",
+        "en": "Pickles"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/pickles.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 15
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name21",
+      "category": "Kids' Meals",
+      "name": {
+        "ar": "بيف / تشيكن برجر",
+        "en": "Beef/Chicken Burger"
+      },
+      "description": {
+        "ar": "ساندوتش بيف أو تشيكن من اختيارك والبطاطس والعصير ولعبة هدية",
+        "en": "",
+        "fallback": "ساندوتش بيف أو تشيكن من اختيارك والبطاطس والعصير ولعبة هدية"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 120
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name22",
+      "category": "Kids' Meals",
+      "name": {
+        "ar": "استريس كيدز",
+        "en": "Stress Kids"
+      },
+      "description": {
+        "ar": "2 قطعة استريس وبطاطس و عصير و لعبة هدية",
+        "en": "",
+        "fallback": "2 قطعة استريس وبطاطس و عصير و لعبة هدية"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 120
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name23",
+      "category": "Kids' Meals",
+      "name": {
+        "ar": "أي وجبة أطفال بدون لعبة",
+        "en": "Any Kids Meal without Toy"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 95
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name24",
+      "category": "Kids' Meals",
+      "name": {
+        "ar": "لعبة",
+        "en": "Toy"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 25
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "caramel",
+      "category": "Waffle",
+      "name": {
+        "ar": "شريحة وافل كراميل",
+        "en": "Caramel"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/caramel.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 25
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "nutella",
+      "category": "Waffle",
+      "name": {
+        "ar": "شريحة وافل نوتيلا",
+        "en": "Nutella"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/nutella.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 25
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "white-chocolate",
+      "category": "Waffle",
+      "name": {
+        "ar": "شريحة وافل وايت شوكليت",
+        "en": "White Chocolate"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/white-chocolate.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 25
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name25",
+      "category": "Waffle",
+      "name": {
+        "ar": "شريحة وافل لوتس",
+        "en": "Lotus"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 30
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name26",
+      "category": "Waffle",
+      "name": {
+        "ar": "تورتة وافل",
+        "en": "Waffle Cake"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 90
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name27",
+      "category": "Drinks",
+      "name": {
+        "ar": "مياه معدنية صغيرة",
+        "en": "Small Water"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 15
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name28",
+      "category": "Drinks",
+      "name": {
+        "ar": "مشروب غازي",
+        "en": "Soda"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 20
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name29",
+      "category": "Drinks",
+      "name": {
+        "ar": "مشروب غازي لتر",
+        "en": "1 Liter Soda"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 35
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name30",
+      "category": "Drinks",
+      "name": {
+        "ar": "عصير صن توب",
+        "en": "Sun Top"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 20
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "french-fries",
+      "category": "Sides",
+      "name": {
+        "ar": "فرنش فرايز",
+        "en": "French Fries"
+      },
+      "description": {
+        "ar": "بطاطس مقرمشة بهار لذيذ من شيلتر",
+        "en": "",
+        "fallback": "بطاطس مقرمشة بهار لذيذ من شيلتر"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/french-fries.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 40
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "frisks-fries",
+      "category": "Sides",
+      "name": {
+        "ar": "بطاطس فريسكس",
+        "en": "Friskies fries"
+      },
+      "description": {
+        "ar": "بطاطس بتتبيلة كريسي خاصة بنا مع صوص الفرنسكس الرائع",
+        "en": "",
+        "fallback": "بطاطس بتتبيلة كريسي خاصة بنا مع صوص الفرنسكس الرائع"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/frisks-fries.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 50
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "onion-rings",
+      "category": "Sides",
+      "name": {
+        "ar": "حلقات بصل",
+        "en": "Onion Rings"
+      },
+      "description": {
+        "ar": "حلقات بصل مقرمشة",
+        "en": "",
+        "fallback": "حلقات بصل مقرمشة"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/onion-rings.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 50
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "mozzarella-sticks",
+      "category": "Sides",
+      "name": {
+        "ar": "أصابع موزريلا",
+        "en": "Mozzarella Sticks"
+      },
+      "description": {
+        "ar": "5 أصابع موزريلا مقرمست",
+        "en": "",
+        "fallback": "5 أصابع موزريلا مقرمست"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/mozzarella-sticks.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 60
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name31",
+      "category": "Sides",
+      "name": {
+        "ar": "كب زنجر",
+        "en": "Zinger Cup"
+      },
+      "description": {
+        "ar": "4 ( رانش صوص + شيدر صوص & سويت أند ساور صوص ) قطع فراخ مقرمشة بصوص من اختيارك",
+        "en": "",
+        "fallback": "4 ( رانش صوص + شيدر صوص & سويت أند ساور صوص ) قطع فراخ مقرمشة بصوص من اختيارك"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 90
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name32",
+      "category": "Sides",
+      "name": {
+        "ar": "تشيكن ريزو",
+        "en": "Chicken risotto"
+      },
+      "description": {
+        "ar": "أرز بسمتي مع قطع دجاج الزنجر الحارة و غرقانة صوص الريزو الرائع الحار",
+        "en": "",
+        "fallback": "أرز بسمتي مع قطع دجاج الزنجر الحارة و غرقانة صوص الريزو الرائع الحار"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 90
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "mac-and-cheese",
+      "category": "Sides",
+      "name": {
+        "ar": "ماك & تشيز",
+        "en": "Mac & Cheese"
+      },
+      "description": {
+        "ar": "طبق مكرونة بنا غرقان بصوص الجبنة الرائع",
+        "en": "",
+        "fallback": "طبق مكرونة بنا غرقان بصوص الجبنة الرائع"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/mac-and-cheese.webp",
+      "variants": [
+        {
+          "id": "price1",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 40
+        },
+        {
+          "id": "price2",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 65
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true,
+      "priceNote": "Two prices are shown in the menu without visible labels."
+    },
+    {
+      "id": "unique-name33",
+      "category": "Sides",
+      "name": {
+        "ar": "هالينو تشيز فرايز",
+        "en": "Jalapeño Cheese Fries"
+      },
+      "description": {
+        "ar": "بطاطس مقلية مع الهالينو الحار و صوص الجبنة الرائع",
+        "en": "",
+        "fallback": "بطاطس مقلية مع الهالينو الحار و صوص الجبنة الرائع"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 85
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "rice-platter",
+      "category": "Sides",
+      "name": {
+        "ar": "طبق أرز",
+        "en": "Rice Dish"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/rice-platter.webp",
+      "variants": [
+        {
+          "id": "price1",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 30
+        },
+        {
+          "id": "price2",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 45
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true,
+      "priceNote": "Two prices are shown in the menu without visible labels."
+    },
+    {
+      "id": "sweet-corn",
+      "category": "Sides",
+      "name": {
+        "ar": "سويت كورن",
+        "en": "Sweetcorn"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/sweet-corn.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 40
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name34",
+      "category": "Shelter Milkshake",
+      "name": {
+        "ar": "ميلك تشيك شيكولاتة",
+        "en": "Chocolate Milkshake"
+      },
+      "description": {
+        "ar": "مع اضافه صوص من اختيارك ( كراميل / شيكولاتة / بلو بيري / فراولة )",
+        "en": "",
+        "fallback": "مع اضافه صوص من اختيارك ( كراميل / شيكولاتة / بلو بيري / فراولة )"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 50
+        }
+      ],
+      "optionGroups": [
+        {
+          "title": "sauce",
+          "options": [
+            "كراميل",
+            "شيكولاتة",
+            "بلو بيري",
+            "فراولة"
+          ]
+        }
+      ],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name35",
+      "category": "Shelter Milkshake",
+      "name": {
+        "ar": "ميلك تشيك فانيليا",
+        "en": "Vanilla Milkshake"
+      },
+      "description": {
+        "ar": "مع اضافه صوص من اختيارك ( كراميل / شيكولاتة / بلو بيري / فراولة )",
+        "en": "",
+        "fallback": "مع اضافه صوص من اختيارك ( كراميل / شيكولاتة / بلو بيري / فراولة )"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 45
+        }
+      ],
+      "optionGroups": [
+        {
+          "title": "sauce",
+          "options": [
+            "كراميل",
+            "شيكولاتة",
+            "بلو بيري",
+            "فراولة"
+          ]
+        }
+      ],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name36",
+      "category": "Shelter Milkshake",
+      "name": {
+        "ar": "ميلك تشيك فراولة",
+        "en": "Strawberry Milkshake"
+      },
+      "description": {
+        "ar": "مع اضافه صوص من اختيارك ( كراميل / شيكولاتة / بلو بيري / فراولة )",
+        "en": "",
+        "fallback": "مع اضافه صوص من اختيارك ( كراميل / شيكولاتة / بلو بيري / فراولة )"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 45
+        }
+      ],
+      "optionGroups": [
+        {
+          "title": "sauce",
+          "options": [
+            "كراميل",
+            "شيكولاتة",
+            "بلو بيري",
+            "فراولة"
+          ]
+        }
+      ],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name37",
+      "category": "Mojitos",
+      "name": {
+        "ar": "موهيتو ليمون نعناع",
+        "en": "Mint Lemon Mojito"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 55
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name38",
+      "category": "Mojitos",
+      "name": {
+        "ar": "موهيتو بلوبيري",
+        "en": "Blueberry Mojito"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 55
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name39",
+      "category": "Mojitos",
+      "name": {
+        "ar": "موهيتو فراولة",
+        "en": "Strawberry Mojito"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 60
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name40",
+      "category": "Mojitos",
+      "name": {
+        "ar": "موهيتو فواكه استوائية",
+        "en": "Tropical Fruit Mojito"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 60
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "mix-grill-meal",
+      "category": "Meals",
+      "name": {
+        "ar": "مكس جريل",
+        "en": "Mix Grill"
+      },
+      "description": {
+        "ar": "شيش طاووق مع الكفتة المشوية و الصدور المشوية والخبر والكلو سلو و الطحينة",
+        "en": "",
+        "fallback": "شيش طاووق مع الكفتة المشوية و الصدور المشوية والخبر والكلو سلو و الطحينة"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/mix-grill-meal.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 300
+        }
+      ],
+      "optionGroups": [
+        {
+          "title": "sides",
+          "options": [
+            "ماك تشيز",
+            "الأرز",
+            "نودلز الخضار",
+            "بطاطس",
+            "سويت كورن"
+          ]
+        }
+      ],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "shish-tawook-meal",
+      "category": "Meals",
+      "name": {
+        "ar": "شيش طاووق",
+        "en": "Shish Tawook"
+      },
+      "description": {
+        "ar": "قطع الشيش طاووق المتبلة بتتبيلة شيلتر و الفلفل و البصل و الخبز و الثومية و الكلو سلو",
+        "en": "",
+        "fallback": "قطع الشيش طاووق المتبلة بتتبيلة شيلتر و الفلفل و البصل و الخبز و الثومية و الكلو سلو"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/shish-tawook-meal.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 250
+        }
+      ],
+      "optionGroups": [
+        {
+          "title": "sides",
+          "options": [
+            "ماك تشيز",
+            "الأرز",
+            "نودلز الخضار",
+            "بطاطس",
+            "سويت كورن"
+          ]
+        }
+      ],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name41",
+      "category": "Meals",
+      "name": {
+        "ar": "صدور مشوية",
+        "en": "Grilled Chicken Breasts"
+      },
+      "description": {
+        "ar": "شرائح الصدور المشوية مع الخبز و صوص الثومية الرائع من شيلتر و الكلو سلو",
+        "en": "",
+        "fallback": "شرائح الصدور المشوية مع الخبز و صوص الثومية الرائع من شيلتر و الكلو سلو"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 250
+        }
+      ],
+      "optionGroups": [
+        {
+          "title": "sides",
+          "options": [
+            "ماك تشيز",
+            "الأرز",
+            "نودلز الخضار",
+            "بطاطس",
+            "سويت كورن"
+          ]
+        }
+      ],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name42",
+      "category": "Meals",
+      "name": {
+        "ar": "تشيكن مشروم",
+        "en": "Chicken Mushroom"
+      },
+      "description": {
+        "ar": "الصدور المشوية مع صوص الديمجلاس و الماشروم الرائع مع الخبز و الكلو سلو",
+        "en": "",
+        "fallback": "الصدور المشوية مع صوص الديمجلاس و الماشروم الرائع مع الخبز و الكلو سلو"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 255
+        }
+      ],
+      "optionGroups": [
+        {
+          "title": "sides",
+          "options": [
+            "ماك تشيز",
+            "الأرز",
+            "نودلز الخضار",
+            "بطاطس",
+            "سويت كورن"
+          ]
+        }
+      ],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name43",
+      "category": "Meals",
+      "name": {
+        "ar": "كوردن بلو",
+        "en": "Cordon Bleu"
+      },
+      "description": {
+        "ar": "5 قطع كوردن بلو مع الخبز و الكلو سلو",
+        "en": "",
+        "fallback": "5 قطع كوردن بلو مع الخبز و الكلو سلو"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 255
+        }
+      ],
+      "optionGroups": [
+        {
+          "title": "sides",
+          "options": [
+            "ماك تشيز",
+            "الأرز",
+            "نودلز الخضار",
+            "بطاطس",
+            "سويت كورن"
+          ]
+        }
+      ],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name44",
+      "category": "Meals",
+      "name": {
+        "ar": "كرانشي تشيز سموكد",
+        "en": "Crunchy Smoked Cheese"
+      },
+      "description": {
+        "ar": "4 قطع استرس المقرمش الحار مع اسف بيكون و صوص الشيدر و الخبز و الكلو سلو",
+        "en": "",
+        "fallback": "4 قطع استرس المقرمش الحار مع اسف بيكون و صوص الشيدر و الخبز و الكلو سلو"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 275
+        }
+      ],
+      "optionGroups": [
+        {
+          "title": "sides",
+          "options": [
+            "ماك تشيز",
+            "الأرز",
+            "نودلز الخضار",
+            "بطاطس",
+            "سويت كورن"
+          ]
+        }
+      ],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "chicken-sticks",
+      "category": "Meals",
+      "name": {
+        "ar": "تشيكن استيكس",
+        "en": "Chicken Sticks"
+      },
+      "description": {
+        "ar": "3 قطع استرس مقرمش حار مع الخبز و صوص الريزو الحار",
+        "en": "",
+        "fallback": "3 قطع استرس مقرمش حار مع الخبز و صوص الريزو الحار"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/chicken-sticks.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 140
+        }
+      ],
+      "optionGroups": [
+        {
+          "title": "sides",
+          "options": [
+            "ماك تشيز",
+            "الأرز",
+            "نودلز الخضار",
+            "بطاطس",
+            "سويت كورن"
+          ]
+        }
+      ],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "crunchy-strips-meal",
+      "category": "Meals",
+      "name": {
+        "ar": "استربس كرانشي",
+        "en": "Crunchy Strips"
+      },
+      "description": {
+        "ar": "5 قطع استربس مقرمش حار مع الخبز و صوص الريزو الحار و الكلو سلو",
+        "en": "",
+        "fallback": "5 قطع استربس مقرمش حار مع الخبز و صوص الريزو الحار و الكلو سلو"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/crunchy-strips-meal.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 240
+        }
+      ],
+      "optionGroups": [
+        {
+          "title": "sides",
+          "options": [
+            "ماك تشيز",
+            "الأرز",
+            "نودلز الخضار",
+            "بطاطس",
+            "سويت كورن"
+          ]
+        }
+      ],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name45",
+      "category": "Meals",
+      "name": {
+        "ar": "ناشفل",
+        "en": "Nashville"
+      },
+      "description": {
+        "ar": "3 قطع استريس معاهم بطاطس وماك تشيز وصوص عسل وعيش ورايب",
+        "en": "",
+        "fallback": "3 قطع استريس معاهم بطاطس وماك تشيز وصوص عسل وعيش ورايب"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 225
+        }
+      ],
+      "optionGroups": [
+        {
+          "title": "sides",
+          "options": [
+            "ماك تشيز",
+            "الأرز",
+            "نودلز الخضار",
+            "بطاطس",
+            "سويت كورن"
+          ]
+        }
+      ],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name46",
+      "category": "Meals",
+      "name": {
+        "ar": "وجبة تندوري",
+        "en": "Tandoori Meal"
+      },
+      "description": {
+        "ar": "5 قطع تندوري وخبز وكلو سلو وصوص",
+        "en": "",
+        "fallback": "5 قطع تندوري وخبز وكلو سلو وصوص"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 245
+        }
+      ],
+      "optionGroups": [
+        {
+          "title": "sides",
+          "options": [
+            "ماك تشيز",
+            "الأرز",
+            "نودلز الخضار",
+            "بطاطس",
+            "سويت كورن"
+          ]
+        }
+      ],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "economic-snack",
+      "category": "Broast Saver",
+      "name": {
+        "ar": "سناك بوكس موفرة",
+        "en": "Snack Box Saver"
+      },
+      "description": {
+        "ar": "2 قطعه بروست و بطاطس و خبز و صوص الريزو الحار",
+        "en": "",
+        "fallback": "2 قطعه بروست و بطاطس و خبز و صوص الريزو الحار"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/economic-snack.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 125
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "dinner-box-saver",
+      "category": "Broast Saver",
+      "name": {
+        "ar": "دينر بوكس موفرة",
+        "en": "Dinner Box Saver"
+      },
+      "description": {
+        "ar": "3 قطع بروست و بطاطس و خبز و صوص الريزو الحار",
+        "en": "",
+        "fallback": "3 قطع بروست و بطاطس و خبز و صوص الريزو الحار"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/dinner-box-saver.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 165
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "4-pieces-of-broasted-chicken-saver",
+      "category": "Broast Saver",
+      "name": {
+        "ar": "4 قطع بروست موفرة",
+        "en": "4 pieces of Broasted chicken Saver"
+      },
+      "description": {
+        "ar": "4 قطع بروست و البطاطس والخبز و صوص الريزو الحار",
+        "en": "",
+        "fallback": "4 قطع بروست و البطاطس والخبز و صوص الريزو الحار"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/4-pieces-of-broasted-chicken-saver.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 200
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "super-dinner",
+      "category": "Broast Saver",
+      "name": {
+        "ar": "سوبر دينر موفرة",
+        "en": "Super Dinner Saver"
+      },
+      "description": {
+        "ar": "5 قطع بروست و البطاطس والخبز",
+        "en": "",
+        "fallback": "5 قطع بروست و البطاطس والخبز"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/super-dinner.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 235
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "snack-box",
+      "category": "Broast",
+      "name": {
+        "ar": "سناك بوكس",
+        "en": "Snack Box"
+      },
+      "description": {
+        "ar": "2 قطعه بروست و الأرز و البطاطس والخبز و الكلو سلو و صوص الريزو الحار",
+        "en": "",
+        "fallback": "2 قطعه بروست و الأرز و البطاطس والخبز و الكلو سلو و صوص الريزو الحار"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/snack-box.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 180
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "economic-dinner",
+      "category": "Broast",
+      "name": {
+        "ar": "دينر بوكس",
+        "en": "Dinner Box"
+      },
+      "description": {
+        "ar": "3 قطع بروست و الأرز و البطاطس والخبز و الكلو سلو و صوص الريزو الحار",
+        "en": "",
+        "fallback": "3 قطع بروست و الأرز و البطاطس والخبز و الكلو سلو و صوص الريزو الحار"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/economic-dinner.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 225
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "4-Piece-broasted-meal",
+      "category": "Broast",
+      "name": {
+        "ar": "وجبة 4 قطع بروست",
+        "en": "4-Piece Broasted Meal"
+      },
+      "description": {
+        "ar": "4 قطع بروست و الأرز والبطاطس والخبز و الكلو سلو و صوص الريزو الحار",
+        "en": "",
+        "fallback": "4 قطع بروست و الأرز والبطاطس والخبز و الكلو سلو و صوص الريزو الحار"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 265
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "economic-super-dinner",
+      "category": "Broast",
+      "name": {
+        "ar": "سوبر دينر",
+        "en": "Super Dinner"
+      },
+      "description": {
+        "ar": "5 قطع بروست و الأرز و البطاطس والخبز و الكلو سلو و صوص الريزو الحار",
+        "en": "",
+        "fallback": "5 قطع بروست و الأرز و البطاطس والخبز و الكلو سلو و صوص الريزو الحار"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/economic-super-dinner.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 290
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "10-strips",
+      "category": "Family Meals",
+      "name": {
+        "ar": "وجبة 10 قطع استربس",
+        "en": "10-Piece Chicken Meal"
+      },
+      "description": {
+        "ar": "10 قطع استربس والبطاطس و 4 خبز و كلو سلو عائلي و مشروب غازي لتر و صوص الريزو الحار",
+        "en": "",
+        "fallback": "10 قطع استربس والبطاطس و 4 خبز و كلو سلو عائلي و مشروب غازي لتر و صوص الريزو الحار"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/10-strips.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 450
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "9-broast",
+      "category": "Family Meals",
+      "name": {
+        "ar": "وجبة 9 قطع بروست",
+        "en": "9-Piece Broasted Chicken Meal"
+      },
+      "description": {
+        "ar": "9 قطع بروست و البطاطس و 3 خبز و كلو سلو عائلي و مشروب غازي لتر و صوص الريزو الحار",
+        "en": "",
+        "fallback": "9 قطع بروست و البطاطس و 3 خبز و كلو سلو عائلي و مشروب غازي لتر و صوص الريزو الحار"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/9-broast.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 500
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "12-Piece-broasted-chicken-meal",
+      "category": "Family Meals",
+      "name": {
+        "ar": "وجبة 12 قطعة بروست",
+        "en": "12-Piece Broasted Chicken Meal"
+      },
+      "description": {
+        "ar": "12 قطعة بروست و البطاطس و 4 خبز و كلو سلو عائلي و مشروب غازي لتر و صوص الريزو الحار",
+        "en": "",
+        "fallback": "12 قطعة بروست و البطاطس و 4 خبز و كلو سلو عائلي و مشروب غازي لتر و صوص الريزو الحار"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 675
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "torta-broast",
+      "category": "Family Meals",
+      "name": {
+        "ar": "تورتة بروست",
+        "en": "Broasted Chicken Cake"
+      },
+      "description": {
+        "ar": "20 قطعة بروست و البطاطس و 10 خبز و 2 كلو سلو عائلي و 2 مشروب غازي لتر و صوص الريزو الحار",
+        "en": "",
+        "fallback": "20 قطعة بروست و البطاطس و 10 خبز و 2 كلو سلو عائلي و 2 مشروب غازي لتر و صوص الريزو الحار"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/torta-broast.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 975
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name47",
+      "category": "Family Meals",
+      "name": {
+        "ar": "عرض الشلة",
+        "en": "Gang Deal"
+      },
+      "description": {
+        "ar": "14 قطعة بروست و البطاطس و 4 خبز و مشروب غازي لتر و نافورة الجبنة",
+        "en": "",
+        "fallback": "14 قطعة بروست و البطاطس و 4 خبز و مشروب غازي لتر و نافورة الجبنة"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 795
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "pizza-mix-cheese",
+      "category": "Pizza",
+      "name": {
+        "ar": "مكس تشيز",
+        "en": "Mixed Cheese"
+      },
+      "description": {
+        "ar": "صلصة البيتزا الرائعة مع الجبنة الموتزريلا و جبنة افانتي و الجبنة الرومي المبشورة و جبنة كيري و صوص جبنة شيدر",
+        "en": "",
+        "fallback": "صلصة البيتزا الرائعة مع الجبنة الموتزريلا و جبنة افانتي و الجبنة الرومي المبشورة و جبنة كيري و صوص جبنة شيدر"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/pizza-mix-cheese.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 170
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true,
+      "sizeNote": "All pizzas are 28 cm"
+    },
+    {
+      "id": "chicken-ranch-pizza",
+      "category": "Pizza",
+      "name": {
+        "ar": "تشيكن رانش",
+        "en": "Chicken Ranch"
+      },
+      "description": {
+        "ar": "صوص الرانش الخاص بشيلتر و صدور مشوية و الفلفل و الزيتون والجبنة الموتزريلا و جبنة افانتي",
+        "en": "",
+        "fallback": "صوص الرانش الخاص بشيلتر و صدور مشوية و الفلفل و الزيتون والجبنة الموتزريلا و جبنة افانتي"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/chicken-ranch-pizza.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 215
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true,
+      "sizeNote": "All pizzas are 28 cm"
+    },
+    {
+      "id": "unique-name48",
+      "category": "Pizza",
+      "name": {
+        "ar": "ألفريدو وايت صوص",
+        "en": "Alfredo White Sauce"
+      },
+      "description": {
+        "ar": "الوايت صوص الرائع مع الشيش طاووق وشرائح المشروم الفريش والفلفل والزيتون و الجبنة الموتزريلا وجبنة افانتي",
+        "en": "",
+        "fallback": "الوايت صوص الرائع مع الشيش طاووق وشرائح المشروم الفريش والفلفل والزيتون و الجبنة الموتزريلا وجبنة افانتي"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 215
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true,
+      "sizeNote": "All pizzas are 28 cm"
+    },
+    {
+      "id": "unique-name",
+      "category": "Pizza",
+      "name": {
+        "ar": "تشيكن بافلو زنجر",
+        "en": "Chicken Buffalo Zinger"
+      },
+      "description": {
+        "ar": "صوص البافلو الحار والرومي المدخن و قطع الاستربس الحارة و الرومي المدخن والفلفل والزيتون والجبنة الموتزريلا وجبنة افانتي",
+        "en": "",
+        "fallback": "صوص البافلو الحار والرومي المدخن و قطع الاستربس الحارة و الرومي المدخن والفلفل والزيتون والجبنة الموتزريلا وجبنة افانتي"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 215
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true,
+      "sizeNote": "All pizzas are 28 cm"
+    },
+    {
+      "id": "supreme-meat-pizza",
+      "category": "Pizza",
+      "name": {
+        "ar": "سوبريم لحوم",
+        "en": "Meat Supreme"
+      },
+      "description": {
+        "ar": "صلصة البيتزا والكفتة المشوية وشرائح الهوت دوج و البيبروني و السجق والفلفل والبصل والزيتون والجبنة الموتزريلا و جبنة افانتي",
+        "en": "",
+        "fallback": "صلصة البيتزا والكفتة المشوية وشرائح الهوت دوج و البيبروني و السجق والفلفل والبصل والزيتون والجبنة الموتزريلا و جبنة افانتي"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/supreme-meat-pizza.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 225
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true,
+      "sizeNote": "All pizzas are 28 cm"
+    },
+    {
+      "id": "double-pepperoni-pizza",
+      "category": "Pizza",
+      "name": {
+        "ar": "دابل ببروني",
+        "en": "Double Pepperoni"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/double-pepperoni-pizza.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 220
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true,
+      "sizeNote": "All pizzas are 28 cm"
+    },
+    {
+      "id": "unique-name49",
+      "category": "Pizza",
+      "name": {
+        "ar": "بيتزا بسطرمة",
+        "en": "Pastrami Pizza"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 230
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true,
+      "sizeNote": "All pizzas are 28 cm"
+    },
+    {
+      "id": "unique-name50",
+      "category": "Pasta",
+      "name": {
+        "ar": "باستا سي فود",
+        "en": "Seafood Pasta (Grilled or Fried)"
+      },
+      "description": {
+        "ar": "المكرونة بصوص جبنة شيدر الرائع مع الجمبري المشوي والمقلي و شرائح الكابوريا والكاليماري و الجبنة الموتزريلا",
+        "en": "",
+        "fallback": "المكرونة بصوص جبنة شيدر الرائع مع الجمبري المشوي والمقلي و شرائح الكابوريا والكاليماري و الجبنة الموتزريلا"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 280
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name51",
+      "category": "Pasta",
+      "name": {
+        "ar": "باستا جمبري",
+        "en": "Shrimp Pasta (Grilled or Fried)"
+      },
+      "description": {
+        "ar": "المكرونة بصوص جبنة شيدر الرائع مع الجمبري و الجبنة الموتزريلا و الجبنة الرومي",
+        "en": "",
+        "fallback": "المكرونة بصوص جبنة شيدر الرائع مع الجمبري و الجبنة الموتزريلا و الجبنة الرومي"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 205
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name52",
+      "category": "Pasta",
+      "name": {
+        "ar": "بنا ريد صوص",
+        "en": "Penne Red"
+      },
+      "description": {
+        "ar": "المكرونة البنا بالصوص الطماطم الرائع و الفلفل الألوان",
+        "en": "",
+        "fallback": "المكرونة البنا بالصوص الطماطم الرائع و الفلفل الألوان"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 110
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "bolognese",
+      "category": "Pasta",
+      "name": {
+        "ar": "باستا بولونيز",
+        "en": "Pasta Bolognese"
+      },
+      "description": {
+        "ar": "المكرونة البنا بصوص الطماطم الرائع و اللحمة المفرومة و الفلفل الألوان",
+        "en": "",
+        "fallback": "المكرونة البنا بصوص الطماطم الرائع و اللحمة المفرومة و الفلفل الألوان"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/bolognese.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 175
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name53",
+      "category": "Pasta",
+      "name": {
+        "ar": "نودلز صدور مشوية",
+        "en": "نودلز صدور مشوية"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 145
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name54",
+      "category": "Pasta",
+      "name": {
+        "ar": "نودلز زنجر",
+        "en": "نودلز زنجر"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 145
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name55",
+      "category": "Pasta",
+      "name": {
+        "ar": "نودلز خضروات",
+        "en": "نودلز خضروات"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 105
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "alfredo",
+      "category": "Pasta",
+      "name": {
+        "ar": "باستا ألفريدو",
+        "en": "Pasta Alfredo"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/alfredo.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 175
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "cordon-bleu-pasta",
+      "category": "Pasta",
+      "name": {
+        "ar": "كوردن بلو باستا",
+        "en": "Corden bleu Pasta"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/cordon-bleu-pasta.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 190
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "chicken-balls",
+      "category": "Pasta",
+      "name": {
+        "ar": "تشيكن بولز",
+        "en": "Chicken balls"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/chicken-balls.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 185
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "mix-meat-tasa",
+      "category": "Cheese Pan",
+      "name": {
+        "ar": "مكس لحوم تشيز طاسة",
+        "en": "Meat mix Cheese"
+      },
+      "description": {
+        "ar": "صوص الجبنة الخاصة بشيلتر مع الهوت دوج و السجق و البيروني و السلامي و الجبنة الموتزريلا",
+        "en": "",
+        "fallback": "صوص الجبنة الخاصة بشيلتر مع الهوت دوج و السجق و البيروني و السلامي و الجبنة الموتزريلا"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/mix-meat-tasa.webp",
+      "variants": [
+        {
+          "id": "variant-1",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 190
+        },
+        {
+          "id": "variant-2",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 205
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name56",
+      "category": "Cheese Pan",
+      "name": {
+        "ar": "سي فود تشيز طاسة",
+        "en": "Seafood Cheese (Grilled or Fried)"
+      },
+      "description": {
+        "ar": "صوص الجبنة الخاصة بشيلتر مع الجمبري و كالماري و شرائح الكابوريا و الجبنة الموتزريلا",
+        "en": "",
+        "fallback": "صوص الجبنة الخاصة بشيلتر مع الجمبري و كالماري و شرائح الكابوريا و الجبنة الموتزريلا"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "variant-1",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 190
+        },
+        {
+          "id": "variant-2",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 205
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name57",
+      "category": "Cheese Pan",
+      "name": {
+        "ar": "جمبري تشيز طاسة",
+        "en": "Shrimp Cheese (Grilled or Fried)"
+      },
+      "description": {
+        "ar": "صوص الجبنة الخاصة بشيلتر مع الجمبري المقلي أو المشوي و الجبنة الموتزريلا",
+        "en": "",
+        "fallback": "صوص الجبنة الخاصة بشيلتر مع الجمبري المقلي أو المشوي و الجبنة الموتزريلا"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "variant-1",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 180
+        },
+        {
+          "id": "variant-2",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 195
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "chilly-cheese-fries-tasa",
+      "category": "Cheese Pan",
+      "name": {
+        "ar": "تشيلي تشيز فرايز",
+        "en": "Chili Cheese Fries"
+      },
+      "description": {
+        "ar": "صوص الجبنة الخاصة بشيلتر مع اللحمة المفرومة و البطاطس المقلية و الجبنة الموتزريلا",
+        "en": "",
+        "fallback": "صوص الجبنة الخاصة بشيلتر مع اللحمة المفرومة و البطاطس المقلية و الجبنة الموتزريلا"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/chilly-cheese-fries-tasa.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 145
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "sausage-cheese-tasa",
+      "category": "Cheese Pan",
+      "name": {
+        "ar": "سجق تشيز طاسة",
+        "en": "Sausage Cheese"
+      },
+      "description": {
+        "ar": "صوص الجبنة الخاصة بشيلتر مع شرائح السجق المشوي و الجبنة الموتزريلا",
+        "en": "",
+        "fallback": "صوص الجبنة الخاصة بشيلتر مع شرائح السجق المشوي و الجبنة الموتزريلا"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/sausage-cheese-tasa.webp",
+      "variants": [
+        {
+          "id": "variant-1",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 175
+        },
+        {
+          "id": "variant-2",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 190
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "spinach-mushroom-tasa",
+      "category": "Cheese Pan",
+      "name": {
+        "ar": "سبانخ ماشروم تشيز طاسة",
+        "en": "Spinach Mushroom Cheese"
+      },
+      "description": {
+        "ar": "صوص الخاصة بشيلتر مع الماشروم و شرائح السبانخ الفريش الرائعة و الجبنة الموتزريلا",
+        "en": "",
+        "fallback": "صوص الخاصة بشيلتر مع الماشروم و شرائح السبانخ الفريش الرائعة و الجبنة الموتزريلا"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/spinach-mushroom-tasa.webp",
+      "variants": [
+        {
+          "id": "variant-1",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 155
+        },
+        {
+          "id": "variant-2",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 170
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "zinger-cheese-tasa",
+      "category": "Cheese Pan",
+      "name": {
+        "ar": "زنجر تشيز طاسة",
+        "en": "Zinger Cheese"
+      },
+      "description": {
+        "ar": "صوص الجبنة الخاصة بشيلتر مع شرائح الزنجر الحارة المقلية و الجبنة الموتزريلا",
+        "en": "",
+        "fallback": "صوص الجبنة الخاصة بشيلتر مع شرائح الزنجر الحارة المقلية و الجبنة الموتزريلا"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/zinger-cheese-tasa.webp",
+      "variants": [
+        {
+          "id": "variant-1",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 190
+        },
+        {
+          "id": "variant-2",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 205
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name58",
+      "category": "Cheese Pan",
+      "name": {
+        "ar": "تشيز فرايز",
+        "en": "Cheese Fries"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "variant-1",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 180
+        },
+        {
+          "id": "variant-2",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 195
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name59",
+      "category": "Cheese Pan",
+      "name": {
+        "ar": "طاسة بسطرمة",
+        "en": "Pastrami"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "variant-1",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 180
+        },
+        {
+          "id": "variant-2",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 195
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "street-burger",
+      "category": "Beef Burger",
+      "name": {
+        "ar": "ستريت برجر",
+        "en": "Street Burger"
+      },
+      "description": {
+        "ar": "بيف برجر - صوص البيج تيستي - خيار - خس - طماطم - بصل - صوص الشيدر",
+        "en": "",
+        "fallback": "بيف برجر - صوص البيج تيستي - خيار - خس - طماطم - بصل - صوص الشيدر"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/street-burger.webp",
+      "variants": [
+        {
+          "id": "single",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 205
+        },
+        {
+          "id": "double",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 255
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "jalapeno-maharaja-burger",
+      "category": "Beef Burger",
+      "name": {
+        "ar": "هالينو مهراجا",
+        "en": "Jalapeño Maharaja"
+      },
+      "description": {
+        "ar": "بيف برجر - صوص البيج تيستي - خيار - خس - بصل - شرائح الهالينو الحارة - صوص الشيدر",
+        "en": "",
+        "fallback": "بيف برجر - صوص البيج تيستي - خيار - خس - بصل - شرائح الهالينو الحارة - صوص الشيدر"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/jalapeno-maharaja-burger.webp",
+      "variants": [
+        {
+          "id": "single",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 215
+        },
+        {
+          "id": "double",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 265
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name60",
+      "category": "Beef Burger",
+      "name": {
+        "ar": "بيكون ماشروم",
+        "en": "Bacon Mushroom"
+      },
+      "description": {
+        "ar": "بيف برجر - صوص المايونيز - الخيار - الخس - البصل - الطماطم - البيف بيكون - الماشروم الفريش - صوص الشيدر",
+        "en": "",
+        "fallback": "بيف برجر - صوص المايونيز - الخيار - الخس - البصل - الطماطم - البيف بيكون - الماشروم الفريش - صوص الشيدر"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "single",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 215
+        },
+        {
+          "id": "double",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 265
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name61",
+      "category": "Beef Burger",
+      "name": {
+        "ar": "سموكي تشيز برجر",
+        "en": "Smoky Cheese Burger"
+      },
+      "description": {
+        "ar": "بيف برجر مع شرائح السموك بيف - صوص البيج تيستي - خيار - خس - بصل - طماطم - ماشرووم - صوص الشيدر",
+        "en": "",
+        "fallback": "بيف برجر مع شرائح السموك بيف - صوص البيج تيستي - خيار - خس - بصل - طماطم - ماشرووم - صوص الشيدر"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "single",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 200
+        },
+        {
+          "id": "double",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 305
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "molten-cheese-burger",
+      "category": "Beef Burger",
+      "name": {
+        "ar": "مولتن تشيز برجر",
+        "en": "Molten Cheese Burger"
+      },
+      "description": {
+        "ar": "بيف برجر المحشو مكس تشيز الرائع - صوص البيج تيستي - خيار - خس - بصل - مكرمل - مشروم بصوص الديمجلاس - بيف بيكون - صوص الشيدر",
+        "en": "",
+        "fallback": "بيف برجر المحشو مكس تشيز الرائع - صوص البيج تيستي - خيار - خس - بصل - مكرمل - مشروم بصوص الديمجلاس - بيف بيكون - صوص الشيدر"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/molten-cheese-burger.webp",
+      "variants": [
+        {
+          "id": "single",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 200
+        },
+        {
+          "id": "double",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 285
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "smash-burger",
+      "category": "Beef Burger",
+      "name": {
+        "ar": "سماش برجر",
+        "en": "Smash Burger"
+      },
+      "description": {
+        "ar": "شريحة اللحمة - صوص البيج تيستي - الخيار - البصل - الخس - الطماطم - صوص الشيدر",
+        "en": "",
+        "fallback": "شريحة اللحمة - صوص البيج تيستي - الخيار - البصل - الخس - الطماطم - صوص الشيدر"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/smash-burger.webp",
+      "variants": [
+        {
+          "id": "single",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 190
+        },
+        {
+          "id": "double",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 230
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name62",
+      "category": "Beef Burger",
+      "name": {
+        "ar": "شيلتر رينجز",
+        "en": "Shelter rings"
+      },
+      "description": {
+        "ar": "بيف برجر - صوص البيج تيستي - الخيار - الخس - حلقات البصل المقلية - أصابع موزتريلا - صوص الشيدر",
+        "en": "",
+        "fallback": "بيف برجر - صوص البيج تيستي - الخيار - الخس - حلقات البصل المقلية - أصابع موزتريلا - صوص الشيدر"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "single",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 200
+        },
+        {
+          "id": "double",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 280
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "chicken-jalapeno-burger",
+      "category": "Chicken Burger",
+      "name": {
+        "ar": "تشيكن هالينو",
+        "en": "Chicken Jalapeño"
+      },
+      "description": {
+        "ar": "صدور مقلية - صوص البيج تيستي - الخيار - الخس - الطماطم - صوص الشيدر - شرائح الهالينو - باربيكيو",
+        "en": "",
+        "fallback": "صدور مقلية - صوص البيج تيستي - الخيار - الخس - الطماطم - صوص الشيدر - شرائح الهالينو - باربيكيو"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/chicken-jalapeno-burger.webp",
+      "variants": [
+        {
+          "id": "single",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 160
+        },
+        {
+          "id": "double",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 220
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "crunchy-chicken-burger",
+      "category": "Chicken Burger",
+      "name": {
+        "ar": "تشيكن كرانشي",
+        "en": "Chicken Crunchy"
+      },
+      "description": {
+        "ar": "صدور مقلية - صوص البيج تيستي - خيار - خس - صوص الشيدر - رومي مدخن - جبنة موزتريلا",
+        "en": "",
+        "fallback": "صدور مقلية - صوص البيج تيستي - خيار - خس - صوص الشيدر - رومي مدخن - جبنة موزتريلا"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/crunchy-chicken-burger.webp",
+      "variants": [
+        {
+          "id": "single",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 160
+        },
+        {
+          "id": "double",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 220
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "chicken-grill-burger",
+      "category": "Chicken Burger",
+      "name": {
+        "ar": "تشيكن جريل",
+        "en": "Chicken Grill"
+      },
+      "description": {
+        "ar": "صدور مشوية - مايونيز - خيار - خس - البصل المكرمل - صوص الشيدر",
+        "en": "",
+        "fallback": "صدور مشوية - مايونيز - خيار - خس - البصل المكرمل - صوص الشيدر"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/chicken-grill-burger.webp",
+      "variants": [
+        {
+          "id": "single",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 160
+        },
+        {
+          "id": "double",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 220
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "cordon-bleu-burger",
+      "category": "Chicken Burger",
+      "name": {
+        "ar": "كوردن بلو",
+        "en": "Cordon Bleu"
+      },
+      "description": {
+        "ar": "كوردن بلو - مايونيز - خيار - خس - صوص الشيدر",
+        "en": "",
+        "fallback": "كوردن بلو - مايونيز - خيار - خس - صوص الشيدر"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/cordon-bleu-burger.webp",
+      "variants": [
+        {
+          "id": "single",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 160
+        },
+        {
+          "id": "double",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 220
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "chicken-shelter-burger",
+      "category": "Chicken Burger",
+      "name": {
+        "ar": "تشيكن شيلتر",
+        "en": "Chicken Shelter"
+      },
+      "description": {
+        "ar": "صدور مقرمشة - صوص البيج تيستي - خيار - خس - بيف بيكون - رومي مدخن - صوص الشيدر",
+        "en": "",
+        "fallback": "صدور مقرمشة - صوص البيج تيستي - خيار - خس - بيف بيكون - رومي مدخن - صوص الشيدر"
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/chicken-shelter-burger.webp",
+      "variants": [
+        {
+          "id": "single",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 180
+        },
+        {
+          "id": "double",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 240
+        },
+        {
+          "id": "triple",
+          "label": {
+            "ar": "تريل",
+            "en": "Triple"
+          },
+          "price": 300
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name63",
+      "category": "Chicken Burger",
+      "name": {
+        "ar": "تشيكن رانش",
+        "en": "Chicken Ranch"
+      },
+      "description": {
+        "ar": "صدور مقرمشة - صوص الرانش - خيار - خس - طماطم - رومي مدخن",
+        "en": "",
+        "fallback": "صدور مقرمشة - صوص الرانش - خيار - خس - طماطم - رومي مدخن"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "single",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 160
+        },
+        {
+          "id": "double",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 220
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name64",
+      "category": "Mix Box",
+      "name": {
+        "ar": "ميكس بوكس 2",
+        "en": "Mix Box 2"
+      },
+      "description": {
+        "ar": "ساندويش بيف برجر و ساندوتش تشيكن برجر مع بطاطس و مشروب و صوص",
+        "en": "",
+        "fallback": "ساندويش بيف برجر و ساندوتش تشيكن برجر مع بطاطس و مشروب و صوص"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 220
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name65",
+      "category": "Mix Box",
+      "name": {
+        "ar": "ميكس بوكس 4",
+        "en": "Mix Box 4"
+      },
+      "description": {
+        "ar": "2 بيف برجر و 2 تشيكن برجر مع البطاطس و مشروب لتر و 2 صوص",
+        "en": "",
+        "fallback": "2 بيف برجر و 2 تشيكن برجر مع البطاطس و مشروب لتر و 2 صوص"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 330
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name66",
+      "category": "Mix Box",
+      "name": {
+        "ar": "ميكس بوكس 6",
+        "en": "Mix Box 6"
+      },
+      "description": {
+        "ar": "3 بيف برجر و 3 تشيكن برجر مع بطاطس و حلقات بصل و مشروب لتر و 3 صوص",
+        "en": "",
+        "fallback": "3 بيف برجر و 3 تشيكن برجر مع بطاطس و حلقات بصل و مشروب لتر و 3 صوص"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 490
+        }
+      ],
+      "optionGroups": [
+        {
+          "title": "beef burger choices",
+          "options": [
+            "ستريت",
+            "بيكون مشروم",
+            "سماش برجر"
+          ]
+        },
+        {
+          "title": "chicken burger choices",
+          "options": [
+            "تشيكن هالينو",
+            "كرانشي",
+            "رانش"
+          ]
+        }
+      ],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name67",
+      "category": "Chicken Sandwich",
+      "name": {
+        "ar": "فاهيتا تشكن",
+        "en": "Chicken Fajita"
+      },
+      "description": {
+        "ar": "فاهيتا الدجاج المشوية مع المايونيز والخيار و صوص الباربيكيو والفلفل و البصل و الزيتون",
+        "en": "",
+        "fallback": "فاهيتا الدجاج المشوية مع المايونيز والخيار و صوص الباربيكيو والفلفل و البصل و الزيتون"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "price1",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 110
+        },
+        {
+          "id": "price2",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 140
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true,
+      "priceNote": "Two prices are shown in the menu without visible labels."
+    },
+    {
+      "id": "unique-name68",
+      "category": "Chicken Sandwich",
+      "name": {
+        "ar": "شيش طاووق",
+        "en": "Shish Tawook"
+      },
+      "description": {
+        "ar": "شيش طاووق مع صوص الثومية والخيار ومخلل والفلفل والبصل",
+        "en": "",
+        "fallback": "شيش طاووق مع صوص الثومية والخيار ومخلل والفلفل والبصل"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "price1",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 110
+        },
+        {
+          "id": "price2",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 140
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true,
+      "priceNote": "Two prices are shown in the menu without visible labels."
+    },
+    {
+      "id": "unique-name69",
+      "category": "Chicken Sandwich",
+      "name": {
+        "ar": "تاشكن زنجر",
+        "en": "Tashken Zanjar"
+      },
+      "description": {
+        "ar": "استريس مقرمش مع المايونيز و الخيار والمخلل والخس و الرومي المدخن والجبنة الموتزريلا و صوص التايجر الحار",
+        "en": "",
+        "fallback": "استريس مقرمش مع المايونيز و الخيار والمخلل والخس و الرومي المدخن والجبنة الموتزريلا و صوص التايجر الحار"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 145
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name70",
+      "category": "Chicken Sandwich",
+      "name": {
+        "ar": "كوردن بلو",
+        "en": "Cordon Bleu"
+      },
+      "description": {
+        "ar": "2 صابع كوردن مع المايونيز والخيار والمخلل و الخس و صوص الجبنة الشيدر",
+        "en": "",
+        "fallback": "2 صابع كوردن مع المايونيز والخيار والمخلل و الخس و صوص الجبنة الشيدر"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 155
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name71",
+      "category": "Chicken Sandwich",
+      "name": {
+        "ar": "تشيكن رول",
+        "en": "Chicken Roll"
+      },
+      "description": {
+        "ar": "الاستربس المقرمش في العيش السوري مع المايونيز و الخيار والمخلل والخس وصوص الجبنة و صوص التايجر الحار",
+        "en": "",
+        "fallback": "الاستربس المقرمش في العيش السوري مع المايونيز و الخيار والمخلل والخس وصوص الجبنة و صوص التايجر الحار"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 125
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "unique-name72",
+      "category": "Beef Sandwich",
+      "name": {
+        "ar": "الكفتة المشوية",
+        "en": "Grilled Kofta"
+      },
+      "description": {
+        "ar": "كفتة مشوية مع صوص الطحينة و الخيار وخضار الكفتة طماطم و بصل و بقدونس",
+        "en": "",
+        "fallback": "كفتة مشوية مع صوص الطحينة و الخيار وخضار الكفتة طماطم و بصل و بقدونس"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "price1",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 120
+        },
+        {
+          "id": "price2",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 160
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true,
+      "priceNote": "Two prices are shown in the menu without visible labels."
+    },
+    {
+      "id": "unique-name73",
+      "category": "Beef Sandwich",
+      "name": {
+        "ar": "السجق المشوي",
+        "en": "Grilled Sausage"
+      },
+      "description": {
+        "ar": "السجق المشوي مع صوص المايونيز و الخيار و الفلفل و الطماطم وصوص السجق",
+        "en": "",
+        "fallback": "السجق المشوي مع صوص المايونيز و الخيار و الفلفل و الطماطم وصوص السجق"
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "price1",
+          "label": {
+            "ar": "سنجل",
+            "en": "Single"
+          },
+          "price": 100
+        },
+        {
+          "id": "price2",
+          "label": {
+            "ar": "دبل",
+            "en": "Double"
+          },
+          "price": 125
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true,
+      "priceNote": "Two prices are shown in the menu without visible labels."
+    },
+    {
+      "id": "royal-mix-grill",
+      "category": "Meals",
+      "name": {
+        "ar": "رويال ميكس جريل",
+        "en": "Royal Mix Grill"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 450
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "kofta-meal",
+      "category": "Meals",
+      "name": {
+        "ar": "كفتة",
+        "en": "Kofta Meal"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 230
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "alfredo-chicken",
+      "category": "Pasta",
+      "name": {
+        "ar": "الفريدو تشيكن",
+        "en": "Alferedo Chicken"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 175
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "creamy-mushroom",
+      "category": "Pasta",
+      "name": {
+        "ar": "كريمي مشروم",
+        "en": "Creamy Mushroom"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 135
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "four-cheese",
+      "category": "Pasta",
+      "name": {
+        "ar": "فور تشيز",
+        "en": "Four Cheese"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 140
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "negresco",
+      "category": "Pasta",
+      "name": {
+        "ar": "نجريسكو",
+        "en": "Negresco"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": "https://CDN-PLACEHOLDER.example/menu/negresco.webp",
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 185
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "pesto-chicken",
+      "category": "Pasta",
+      "name": {
+        "ar": "بيستو تشيكن",
+        "en": "Pesto Chicken"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 185
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "arrabbiata-spicy",
+      "category": "Pasta",
+      "name": {
+        "ar": "بنا أرابياتا",
+        "en": "Arrabbiata Spicy"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 110
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "nashville-rice",
       "category": "Shelter Rice",
-    "id": "unique-name1",
-    "name": {
-      "ar": "شيلتر رايس",
-      "en": "Shelter Rice"
-    },
-    "price": 120,
-    "description": "معاه صوص من اختيارك: شيلتر ناشفل / شيلتر تندوري / شيلتر رايز كريسي / شيلتر فاهيتا / شيلتر شيش. معاه صوص من (رانش، سموكي، سويت اند، ساور، تشيز).",
-    "optionGroups": [
-      {
-        "title": "flavor",
-        "options": [
-          "شيلتر ناشفل",
-          "شيلتر تندوري",
-          "شيلتر رايز كريسي",
-          "شيلتر فاهيتا",
-          "شيلتر شيش"
-        ]
+      "name": {
+        "ar": "شيلتر رايز ناشفيل",
+        "en": "Nashville Rice"
       },
-      {
-        "title": "sauce",
-        "options": [
-          "رانش",
-          "سموكي",
-          "سويت اند",
-          "ساور",
-          "تشيز"
-        ]
-      }
-    ]
-  },
-  {
-    "category": "Sauces",
-    "id": "unique-name2",
-    "name": {
-      "ar": "باربيكيو صوص",
-      "en": "باربيكيو صوص"
-    },
-    "price": 15,
-    "description": ""
-  },
-  {
-    "category": "Sauces",
-    "id": "mayonnaise",
-    "name": {
-      "ar": "صوص مايونيز",
-      "en": "صوص مايونيز"
-    },
-    "price": 10,
-    "description": ""
-  },
-  {
-    "category": "Sauces",
-    "id": "unique-name4",
-    "name": {
-      "ar": "صوص فريسكس",
-      "en": "صوص فريسكس"
-    },
-    "price": 15,
-    "description": ""
-  },
-  {
-    "category": "Sauces",
-    "id": "unique-name5",
-    "name": {
-      "ar": "ميني جار جبنة شيدر",
-      "en": "ميني جار جبنة شيدر"
-    },
-    "price": 30,
-    "description": ""
-  },
-  {
-    "category": "Sauces",
-    "id": "unique-name6",
-    "name": {
-      "ar": "جار جبنة شيدر",
-      "en": "جار جبنة شيدر"
-    },
-    "price": 75,
-    "description": ""
-  },
-  {
-    "category": "Sauces",
-    "id": "unique-name7",
-    "name": {
-      "ar": "صوص جبنة شيلتر",
-      "en": "صوص جبنة شيلتر"
-    },
-    "price": 15,
-    "description": ""
-  },
-  {
-    "category": "Sauces",
-    "id": "unique-name8",
-    "name": {
-      "ar": "صوص رانش",
-      "en": "صوص رانش"
-    },
-    "price": 15,
-    "description": ""
-  },
-  {
-    "category": "Sauces",
-    "id": "unique-name9",
-    "name": {
-      "ar": "صوص بافلو حار",
-      "en": "صوص بافلو حار"
-    },
-    "price": 10,
-    "description": ""
-  },
-  {
-    "category": "Sauces",
-    "id": "unique-name10",
-    "name": {
-      "ar": "صوص ريزو حار",
-      "en": "صوص ريزو حار"
-    },
-    "price": 15,
-    "description": ""
-  },
-  {
-    "category": "Sauces",
-    "id": "tahini",
-    "name": {
-      "ar": "صوص طحينة",
-      "en": "صوص طحينة"
-    },
-    "price": 10,
-    "description": ""
-  },
-  {
-    "category": "Sauces",
-    "id": "garlic-dip",
-    "name": {
-      "ar": "صوص الثومية",
-      "en": "صوص الثومية"
-    },
-    "price": 10,
-    "description": ""
-  },
-  {
-    "category": "Extras",
-    "id": "unique-name11",
-    "name": {
-      "ar": "خبز كايزر برجر",
-      "en": "خبز كايزر برجر"
-    },
-    "price": 10,
-    "description": ""
-  },
-  {
-    "category": "Extras",
-    "id": "unique-name12",
-    "name": {
-      "ar": "خبز محمص",
-      "en": "خبز محمص"
-    },
-    "price": 10,
-    "description": ""
-  },
-  {
-    "category": "Extras",
-    "id": "extra-mozzarella",
-    "name": {
-      "ar": "جبنة موزريلا",
-      "en": "جبنة موزريلا"
-    },
-    "price": 20,
-    "description": ""
-  },
-  {
-    "category": "Extras",
-    "id": "extra-sausage",
-    "name": {
-      "ar": "سجق",
-      "en": "سجق"
-    },
-    "price": 20,
-    "description": ""
-  },
-  {
-    "category": "Extras",
-    "id": "extra-pepperoni",
-    "name": {
-      "ar": "بيروني أو سلامي",
-      "en": "بيروني أو سلامي"
-    },
-    "price": 20,
-    "description": ""
-  },
-  {
-    "category": "Extras",
-    "id": "unique-name13",
-    "name": {
-      "ar": "خبز كايزر وجبة",
-      "en": "خبز كايزر وجبة"
-    },
-    "price": 5,
-    "description": ""
-  },
-  {
-    "category": "Extras",
-    "id": "unique-name14",
-    "name": {
-      "ar": "قطعه بروست صدر",
-      "en": "قطعه بروست صدر"
-    },
-    "price": 50,
-    "description": ""
-  },
-  {
-    "category": "Extras",
-    "id": "unique-name15",
-    "name": {
-      "ar": "قطعة بروست فخذ",
-      "en": "قطعة بروست فخذ"
-    },
-    "price": 45,
-    "description": ""
-  },
-  {
-    "category": "Extras",
-    "id": "unique-name16",
-    "name": {
-      "ar": "قطعة بروست دبوس",
-      "en": "قطعة بروست دبوس"
-    },
-    "price": 35,
-    "description": ""
-  },
-  {
-    "category": "Extras",
-    "id": "unique-name17",
-    "name": {
-      "ar": "شريحة استريس",
-      "en": "شريحة استريس"
-    },
-    "price": 35,
-    "description": ""
-  },
-  {
-    "category": "Extras",
-    "id": "unique-name18",
-    "name": {
-      "ar": "2 قطعة زنجر",
-      "en": "2 قطعة زنجر"
-    },
-    "price": 20,
-    "description": ""
-  },
-  {
-    "category": "Extras",
-    "id": "unique-name19",
-    "name": {
-      "ar": "هوت دوج",
-      "en": "هوت دوج"
-    },
-    "price": 20,
-    "description": ""
-  },
-  {
-    "category": "Extras",
-    "id": "unique-name20",
-    "name": {
-      "ar": "بيف بيكون أو رومي مدخن",
-      "en": "بيف بيكون أو رومي مدخن"
-    },
-    "price": 15,
-    "description": ""
-  },
-  {
-    "category": "Salads",
-    "id": "green-salad",
-    "name": {
-      "ar": "سلطة خضراء",
-      "en": "Green Salad"
-    },
-    "price": 45,
-    "description": "خيار - طماطم - خس - فلفل - جزر"
-  },
-  {
-    "category": "Salads",
-    "id": "chicken-ranch-salad",
-    "name": {
-      "ar": "تشيكن رانش سلط",
-      "en": "Chicken Ranch Salad"
-    },
-    "price": 100,
-    "description": "خس و طماطم و فلفل ألوان و صدور مشوية مع صوص الرانش"
-  },
-  {
-    "category": "Salads",
-    "id": "coleslaw",
-    "name": {
-      "ar": "كولو سلو",
-      "en": "Coleslaw"
-    },
-    "prices": {
-      "price1": 35,
-      "price2": 25
-    },
-    "priceNote": "Two prices are shown in the menu without visible labels.",
-    "description": ""
-  },
-  {
-    "category": "Salads",
-    "id": "pickles",
-    "name": {
-      "ar": "مخلل",
-      "en": "Pickles"
-    },
-    "price": 15,
-    "description": ""
-  },
-  {
-    "category": "Kids' Meals",
-    "id": "unique-name21",
-    "name": {
-      "ar": "بيف / تشيكن برجر",
-      "en": "Beef/Chicken Burger"
-    },
-    "price": 120,
-    "description": "ساندوتش بيف أو تشيكن من اختيارك والبطاطس والعصير ولعبة هدية"
-  },
-  {
-    "category": "Kids' Meals",
-    "id": "unique-name22",
-    "name": {
-      "ar": "استريس كيدز",
-      "en": "Stress Kids"
-    },
-    "price": 120,
-    "description": "2 قطعة استريس وبطاطس و عصير و لعبة هدية"
-  },
-  {
-    "category": "Kids' Meals",
-    "id": "unique-name23",
-    "name": {
-      "ar": "أي وجبة أطفال بدون لعبة",
-      "en": "Any Kids Meal without Toy"
-    },
-    "price": 95,
-    "description": ""
-  },
-  {
-    "category": "Kids' Meals",
-    "id": "unique-name24",
-    "name": {
-      "ar": "لعبة",
-      "en": "Toy"
-    },
-    "price": 25,
-    "description": ""
-  },
-  {
-    "category": "Waffle",
-    "id": "caramel",
-    "name": {
-      "ar": "شريحة وافل كراميل",
-      "en": "Caramel"
-    },
-    "price": 25,
-    "description": ""
-  },
-  {
-    "category": "Waffle",
-    "id": "nutella",
-    "name": {
-      "ar": "شريحة وافل نوتيلا",
-      "en": "Nutella"
-    },
-    "price": 25,
-    "description": ""
-  },
-  {
-    "category": "Waffle",
-    "id": "white-chocolate",
-    "name": {
-      "ar": "شريحة وافل وايت شوكليت",
-      "en": "White Chocolate"
-    },
-    "price": 25,
-    "description": ""
-  },
-  {
-    "category": "Waffle",
-    "id": "unique-name25",
-    "name": {
-      "ar": "شريحة وافل لوتس",
-      "en": "Lotus"
-    },
-    "price": 30,
-    "description": ""
-  },
-  {
-    "category": "Waffle",
-    "id": "unique-name26",
-    "name": {
-      "ar": "تورتة وافل",
-      "en": "Waffle Cake"
-    },
-    "price": 90,
-    "description": ""
-  },
-  {
-    "category": "Drinks",
-    "id": "unique-name27",
-    "name": {
-      "ar": "مياه معدنية صغيرة",
-      "en": "Small Water"
-    },
-    "price": 15,
-    "description": ""
-  },
-  {
-    "category": "Drinks",
-    "id": "unique-name28",
-    "name": {
-      "ar": "مشروب غازي",
-      "en": "Soda"
-    },
-    "price": 20,
-    "description": ""
-  },
-  {
-    "category": "Drinks",
-    "id": "unique-name29",
-    "name": {
-      "ar": "مشروب غازي لتر",
-      "en": "1 Liter Soda"
-    },
-    "price": 35,
-    "description": ""
-  },
-  {
-    "category": "Drinks",
-    "id": "unique-name30",
-    "name": {
-      "ar": "عصير صن توب",
-      "en": "Sun Top"
-    },
-    "price": 20,
-    "description": ""
-  },
-  {
-    "category": "Sides",
-    "id": "french-fries",
-    "name": {
-      "ar": "فرنش فرايز",
-      "en": "French Fries"
-    },
-    "price": 35,
-    "description": "بطاطس مقرمشة بهار لذيذ من شيلتر"
-  },
-  {
-    "category": "Sides",
-    "id": "frisks-fries",
-    "name": {
-      "ar": "بطاطس فريسكس",
-      "en": "Friskies fries"
-    },
-    "price": 45,
-    "description": "بطاطس بتتبيلة كريسي خاصة بنا مع صوص الفرنسكس الرائع"
-  },
-  {
-    "category": "Sides",
-    "id": "onion-rings",
-    "name": {
-      "ar": "حلقات بصل",
-      "en": "Onion Rings"
-    },
-    "price": 40,
-    "description": "حلقات بصل مقرمشة"
-  },
-  {
-    "category": "Sides",
-    "id": "mozzarella-sticks",
-    "name": {
-      "ar": "أصابع موزريلا",
-      "en": "Mozzarella Sticks"
-    },
-    "price": 50,
-    "description": "5 أصابع موزريلا مقرمست"
-  },
-  {
-    "category": "Sides",
-    "id": "unique-name31",
-    "name": {
-      "ar": "كب زنجر",
-      "en": "Zinger Cup"
-    },
-    "price": 70,
-    "description": "4 ( رانش صوص + شيدر صوص & سويت أند ساور صوص ) قطع فراخ مقرمشة بصوص من اختيارك"
-  },
-  {
-    "category": "Sides",
-    "id": "unique-name32",
-    "name": {
-      "ar": "تشيكن ريزو",
-      "en": "Chicken risotto"
-    },
-    "price": 70,
-    "description": "أرز بسمتي مع قطع دجاج الزنجر الحارة و غرقانة صوص الريزو الرائع الحار"
-  },
-  {
-    "category": "Sides",
-    "id": "mac-and-cheese",
-    "name": {
-      "ar": "ماك & تشيز",
-      "en": "Mac & Cheese"
-    },
-    "prices": {
-      "price1": 55,
-      "price2": 30
-    },
-    "priceNote": "Two prices are shown in the menu without visible labels.",
-    "description": "طبق مكرونة بنا غرقان بصوص الجبنة الرائع"
-  },
-  {
-    "category": "Sides",
-    "id": "unique-name33",
-    "name": {
-      "ar": "هالينو تشيز فرايز",
-      "en": "Jalapeño Cheese Fries"
-    },
-    "price": 60,
-    "description": "بطاطس مقلية مع الهالينو الحار و صوص الجبنة الرائع"
-  },
-  {
-    "category": "Sides",
-    "id": "rice-platter",
-    "name": {
-      "ar": "طبق أرز",
-      "en": "Rice Dish"
-    },
-    "prices": {
-      "price1": 40,
-      "price2": 25
-    },
-    "priceNote": "Two prices are shown in the menu without visible labels.",
-    "description": ""
-  },
-  {
-    "category": "Sides",
-    "id": "sweet-corn",
-    "name": {
-      "ar": "سويت كورن",
-      "en": "Sweetcorn"
-    },
-    "price": 35,
-    "description": ""
-  },
-  {
-    "category": "Shelter Milkshake",
-    "id": "unique-name34",
-    "name": {
-      "ar": "ميلك تشيك شيكولاتة",
-      "en": "Chocolate Milkshake"
-    },
-    "price": 50,
-    "description": "مع اضافه صوص من اختيارك ( كراميل / شيكولاتة / بلو بيري / فراولة )",
-    "optionGroups": [
-      {
-        "title": "sauce",
-        "options": [
-          "كراميل",
-          "شيكولاتة",
-          "بلو بيري",
-          "فراولة"
-        ]
-      }
-    ]
-  },
-  {
-    "category": "Shelter Milkshake",
-    "id": "unique-name35",
-    "name": {
-      "ar": "ميلك تشيك فانيليا",
-      "en": "Vanilla Milkshake"
-    },
-    "price": 45,
-    "description": "مع اضافه صوص من اختيارك ( كراميل / شيكولاتة / بلو بيري / فراولة )",
-    "optionGroups": [
-      {
-        "title": "sauce",
-        "options": [
-          "كراميل",
-          "شيكولاتة",
-          "بلو بيري",
-          "فراولة"
-        ]
-      }
-    ]
-  },
-  {
-    "category": "Shelter Milkshake",
-    "id": "unique-name36",
-    "name": {
-      "ar": "ميلك تشيك فراولة",
-      "en": "Strawberry Milkshake"
-    },
-    "price": 45,
-    "description": "مع اضافه صوص من اختيارك ( كراميل / شيكولاتة / بلو بيري / فراولة )",
-    "optionGroups": [
-      {
-        "title": "sauce",
-        "options": [
-          "كراميل",
-          "شيكولاتة",
-          "بلو بيري",
-          "فراولة"
-        ]
-      }
-    ]
-  },
-  {
-    "category": "Mojitos",
-    "id": "unique-name37",
-    "name": {
-      "ar": "موهيتو ليمون نعناع",
-      "en": "Mint Lemon Mojito"
-    },
-    "price": 40,
-    "description": ""
-  },
-  {
-    "category": "Mojitos",
-    "id": "unique-name38",
-    "name": {
-      "ar": "موهيتو بلوبيري",
-      "en": "Blueberry Mojito"
-    },
-    "price": 45,
-    "description": ""
-  },
-  {
-    "category": "Mojitos",
-    "id": "unique-name39",
-    "name": {
-      "ar": "موهيتو فراولة",
-      "en": "Strawberry Mojito"
-    },
-    "price": 45,
-    "description": ""
-  },
-  {
-    "category": "Mojitos",
-    "id": "unique-name40",
-    "name": {
-      "ar": "موهيتو فواكه استوائية",
-      "en": "Tropical Fruit Mojito"
-    },
-    "price": 45,
-    "description": ""
-  },
-  {
-    "category": "Meals",
-    "id": "mix-grill-meal",
-    "name": {
-      "ar": "مكس جريل",
-      "en": "Mix Grill"
-    },
-    "price": 235,
-    "description": "شيش طاووق مع الكفتة المشوية و الصدور المشوية والخبر والكلو سلو و الطحينة",
-    "optionGroups": [
-      {
-        "title": "sides",
-        "options": [
-          "ماك تشيز",
-          "الأرز",
-          "نودلز الخضار",
-          "بطاطس",
-          "سويت كورن"
-        ]
-      }
-    ]
-  },
-  {
-    "category": "Meals",
-    "id": "shish-tawook-meal",
-    "name": {
-      "ar": "شيش طاووق",
-      "en": "Shish Tawook"
-    },
-    "price": 200,
-    "description": "قطع الشيش طاووق المتبلة بتتبيلة شيلتر و الفلفل و البصل و الخبز و الثومية و الكلو سلو",
-    "optionGroups": [
-      {
-        "title": "sides",
-        "options": [
-          "ماك تشيز",
-          "الأرز",
-          "نودلز الخضار",
-          "بطاطس",
-          "سويت كورن"
-        ]
-      }
-    ]
-  },
-  {
-    "category": "Meals",
-    "id": "unique-name41",
-    "name": {
-      "ar": "صدور مشوية",
-      "en": "Grilled Chicken Breasts"
-    },
-    "price": 200,
-    "description": "شرائح الصدور المشوية مع الخبز و صوص الثومية الرائع من شيلتر و الكلو سلو",
-    "optionGroups": [
-      {
-        "title": "sides",
-        "options": [
-          "ماك تشيز",
-          "الأرز",
-          "نودلز الخضار",
-          "بطاطس",
-          "سويت كورن"
-        ]
-      }
-    ]
-  },
-  {
-    "category": "Meals",
-    "id": "unique-name42",
-    "name": {
-      "ar": "تشيكن مشروم",
-      "en": "Chicken Mushroom"
-    },
-    "price": 210,
-    "description": "الصدور المشوية مع صوص الديمجلاس و الماشروم الرائع مع الخبز و الكلو سلو",
-    "optionGroups": [
-      {
-        "title": "sides",
-        "options": [
-          "ماك تشيز",
-          "الأرز",
-          "نودلز الخضار",
-          "بطاطس",
-          "سويت كورن"
-        ]
-      }
-    ]
-  },
-  {
-    "category": "Meals",
-    "id": "unique-name43",
-    "name": {
-      "ar": "كوردن بلو",
-      "en": "Cordon Bleu"
-    },
-    "price": 200,
-    "description": "5 قطع كوردن بلو مع الخبز و الكلو سلو",
-    "optionGroups": [
-      {
-        "title": "sides",
-        "options": [
-          "ماك تشيز",
-          "الأرز",
-          "نودلز الخضار",
-          "بطاطس",
-          "سويت كورن"
-        ]
-      }
-    ]
-  },
-  {
-    "category": "Meals",
-    "id": "unique-name44",
-    "name": {
-      "ar": "كرانشي تشيز سموكد",
-      "en": "Crunchy Smoked Cheese"
-    },
-    "price": 190,
-    "description": "4 قطع استرس المقرمش الحار مع اسف بيكون و صوص الشيدر و الخبز و الكلو سلو",
-    "optionGroups": [
-      {
-        "title": "sides",
-        "options": [
-          "ماك تشيز",
-          "الأرز",
-          "نودلز الخضار",
-          "بطاطس",
-          "سويت كورن"
-        ]
-      }
-    ]
-  },
-  {
-    "category": "Meals",
-    "id": "chicken-sticks",
-    "name": {
-      "ar": "تشيكن استيكس",
-      "en": "Chicken Sticks"
-    },
-    "price": 140,
-    "description": "3 قطع استرس مقرمش حار مع الخبز و صوص الريزو الحار",
-    "optionGroups": [
-      {
-        "title": "sides",
-        "options": [
-          "ماك تشيز",
-          "الأرز",
-          "نودلز الخضار",
-          "بطاطس",
-          "سويت كورن"
-        ]
-      }
-    ]
-  },
-  {
-    "category": "Meals",
-    "id": "crunchy-strips-meal",
-    "name": {
-      "ar": "استربس كرانشي",
-      "en": "Crunchy Strips"
-    },
-    "price": 195,
-    "description": "5 قطع استربس مقرمش حار مع الخبز و صوص الريزو الحار و الكلو سلو",
-    "optionGroups": [
-      {
-        "title": "sides",
-        "options": [
-          "ماك تشيز",
-          "الأرز",
-          "نودلز الخضار",
-          "بطاطس",
-          "سويت كورن"
-        ]
-      }
-    ]
-  },
-  {
-    "category": "Meals",
-    "id": "unique-name45",
-    "name": {
-      "ar": "ناشفل",
-      "en": "Nashville"
-    },
-    "price": 150,
-    "description": "3 قطع استريس معاهم بطاطس وماك تشيز وصوص عسل وعيش ورايب",
-    "optionGroups": [
-      {
-        "title": "sides",
-        "options": [
-          "ماك تشيز",
-          "الأرز",
-          "نودلز الخضار",
-          "بطاطس",
-          "سويت كورن"
-        ]
-      }
-    ]
-  },
-  {
-    "category": "Meals",
-    "id": "unique-name46",
-    "name": {
-      "ar": "وجبة تندوري",
-      "en": "Tandoori Meal"
-    },
-    "price": 200,
-    "description": "5 قطع تندوري وخبز وكلو سلو وصوص",
-    "optionGroups": [
-      {
-        "title": "sides",
-        "options": [
-          "ماك تشيز",
-          "الأرز",
-          "نودلز الخضار",
-          "بطاطس",
-          "سويت كورن"
-        ]
-      }
-    ]
-  },
-  {
-    "category": "Broast Saver",
-    "id": "economic-snack",
-    "name": {
-      "ar": "سناك بوكس موفرة",
-      "en": "Snack Box Saver"
-    },
-    "price": 125,
-    "description": "2 قطعه بروست و بطاطس و خبز و صوص الريزو الحار"
-  },
-  {
-    "category": "Broast Saver",
-    "id": "dinner-box-saver",
-    "name": {
-      "ar": "دينر بوكس موفرة",
-      "en": "Dinner Box Saver"
-    },
-    "price": 165,
-    "description": "3 قطع بروست و بطاطس و خبز و صوص الريزو الحار"
-  },
-  {
-    "category": "Broast Saver",
-    "id": "4-pieces-of-broasted-chicken-saver",
-    "name": {
-      "ar": "4 قطع بروست موفرة",
-      "en": "4 pieces of Broasted chicken Saver"
-    },
-    "price": 200,
-    "description": "4 قطع بروست و البطاطس والخبز و صوص الريزو الحار"
-  },
-  {
-    "category": "Broast Saver",
-    "id": "super-dinner",
-    "name": {
-      "ar": "سوبر دينر موفرة",
-      "en": "Super Dinner Saver"
-    },
-    "price": 235,
-    "description": "5 قطع بروست و البطاطس والخبز"
-  },
-  {
-    "category": "Broast",
-    "id": "snack-box",
-    "name": {
-      "ar": "سناك بوكس",
-      "en": "Snack Box"
-    },
-    "price": 155,
-    "description": "2 قطعه بروست و الأرز و البطاطس والخبز و الكلو سلو و صوص الريزو الحار"
-  },
-  {
-    "category": "Broast",
-    "id": "economic-dinner",
-    "name": {
-      "ar": "دينر بوكس",
-      "en": "Dinner Box"
-    },
-    "price": 200,
-    "description": "3 قطع بروست و الأرز و البطاطس والخبز و الكلو سلو و صوص الريزو الحار"
-  },
-  {
-    "category": "Broast",
-    "id": "4-Piece-broasted-meal",
-    "name": {
-      "ar": "وجبة 4 قطع بروست",
-      "en": "4-Piece Broasted Meal"
-    },
-    "price": 235,
-    "description": "4 قطع بروست و الأرز والبطاطس والخبز و الكلو سلو و صوص الريزو الحار"
-  },
-  {
-    "category": "Broast",
-    "id": "economic-super-dinner",
-    "name": {
-      "ar": "سوبر دينر",
-      "en": "Super Dinner"
-    },
-    "price": 270,
-    "description": "5 قطع بروست و الأرز و البطاطس والخبز و الكلو سلو و صوص الريزو الحار"
-  },
-  {
-    "category": "Family Meals",
-    "id": "10-strips",
-    "name": {
-      "ar": "وجبة 10 قطع استربس",
-      "en": "10-Piece Chicken Meal"
-    },
-    "price": 370,
-    "description": "10 قطع استربس والبطاطس و 4 خبز و كلو سلو عائلي و مشروب غازي لتر و صوص الريزو الحار"
-  },
-  {
-    "category": "Family Meals",
-    "id": "9-broast",
-    "name": {
-      "ar": "وجبة 9 قطع بروست",
-      "en": "9-Piece Broasted Chicken Meal"
-    },
-    "price": 450,
-    "description": "9 قطع بروست و البطاطس و 3 خبز و كلو سلو عائلي و مشروب غازي لتر و صوص الريزو الحار"
-  },
-  {
-    "category": "Family Meals",
-    "id": "12-Piece-broasted-chicken-meal",
-    "name": {
-      "ar": "وجبة 12 قطعة بروست",
-      "en": "12-Piece Broasted Chicken Meal"
-    },
-    "price": 595,
-    "description": "12 قطعة بروست و البطاطس و 4 خبز و كلو سلو عائلي و مشروب غازي لتر و صوص الريزو الحار"
-  },
-  {
-    "category": "Family Meals",
-    "id": "torta-broast",
-    "name": {
-      "ar": "تورتة بروست",
-      "en": "Broasted Chicken Cake"
-    },
-    "price": 840,
-    "description": "20 قطعة بروست و البطاطس و 10 خبز و 2 كلو سلو عائلي و 2 مشروب غازي لتر و صوص الريزو الحار"
-  },
-  {
-    "category": "Family Meals",
-    "id": "unique-name47",
-    "name": {
-      "ar": "عرض الشلة",
-      "en": "Gang Deal"
-    },
-    "price": 795,
-    "description": "14 قطعة بروست و البطاطس و 4 خبز و مشروب غازي لتر و نافورة الجبنة"
-  },
-  {
-    "category": "Pizza",
-    "id": "pizza-mix-cheese",
-    "name": {
-      "ar": "مكس تشيز",
-      "en": "Mixed Cheese"
-    },
-    "price": 150,
-    "description": "صلصة البيتزا الرائعة مع الجبنة الموتزريلا و جبنة افانتي و الجبنة الرومي المبشورة و جبنة كيري و صوص جبنة شيدر",
-    "sizeNote": "All pizzas are 28 cm"
-  },
-  {
-    "category": "Pizza",
-    "id": "chicken-ranch-pizza",
-    "name": {
-      "ar": "تشيكن رانش",
-      "en": "Chicken Ranch"
-    },
-    "price": 195,
-    "description": "صوص الرانش الخاص بشيلتر و صدور مشوية و الفلفل و الزيتون والجبنة الموتزريلا و جبنة افانتي",
-    "sizeNote": "All pizzas are 28 cm"
-  },
-  {
-    "category": "Pizza",
-    "id": "unique-name48",
-    "name": {
-      "ar": "ألفريدو وايت صوص",
-      "en": "Alfredo White Sauce"
-    },
-    "price": 195,
-    "description": "الوايت صوص الرائع مع الشيش طاووق وشرائح المشروم الفريش والفلفل والزيتون و الجبنة الموتزريلا وجبنة افانتي",
-    "sizeNote": "All pizzas are 28 cm"
-  },
-  {
-    "category": "Pizza",
-    "id": "unique-name",
-    "name": {
-      "ar": "تشيكن بافلو زنجر",
-      "en": "Chicken Buffalo Zinger"
-    },
-    "price": 190,
-    "description": "صوص البافلو الحار والرومي المدخن و قطع الاستربس الحارة و الرومي المدخن والفلفل والزيتون والجبنة الموتزريلا وجبنة افانتي",
-    "sizeNote": "All pizzas are 28 cm"
-  },
-  {
-    "category": "Pizza",
-    "id": "supreme-meat-pizza",
-    "name": {
-      "ar": "سوبريم لحوم",
-      "en": "Meat Supreme"
-    },
-    "price": 205,
-    "description": "صلصة البيتزا والكفتة المشوية وشرائح الهوت دوج و البيبروني و السجق والفلفل والبصل والزيتون والجبنة الموتزريلا و جبنة افانتي",
-    "sizeNote": "All pizzas are 28 cm"
-  },
-  {
-    "category": "Pizza",
-    "id": "double-pepperoni-pizza",
-    "name": {
-      "ar": "دابل ببروني",
-      "en": "Double Pepperoni"
-    },
-    "price": 210,
-    "description": "",
-    "sizeNote": "All pizzas are 28 cm"
-  },
-  {
-    "category": "Pizza",
-    "id": "unique-name49",
-    "name": {
-      "ar": "بيتزا بسطرمة",
-      "en": "Pastrami Pizza"
-    },
-    "price": 205,
-    "description": "",
-    "sizeNote": "All pizzas are 28 cm"
-  },
-  {
-    "category": "Pasta",
-    "id": "unique-name50",
-    "name": {
-      "ar": "باستا سي فود",
-      "en": "Seafood Pasta (Grilled or Fried)"
-    },
-    "price": 190,
-    "description": "المكرونة بصوص جبنة شيدر الرائع مع الجمبري المشوي والمقلي و شرائح الكابوريا والكاليماري و الجبنة الموتزريلا"
-  },
-  {
-    "category": "Pasta",
-    "id": "unique-name51",
-    "name": {
-      "ar": "باستا جمبري",
-      "en": "Shrimp Pasta (Grilled or Fried)"
-    },
-    "price": 180,
-    "description": "المكرونة بصوص جبنة شيدر الرائع مع الجمبري و الجبنة الموتزريلا و الجبنة الرومي"
-  },
-  {
-    "category": "Pasta",
-    "id": "unique-name52",
-    "name": {
-      "ar": "بنا ريد صوص",
-      "en": "Penne Red"
-    },
-    "price": 65,
-    "description": "المكرونة البنا بالصوص الطماطم الرائع و الفلفل الألوان"
-  },
-  {
-    "category": "Pasta",
-    "id": "bolognese",
-    "name": {
-      "ar": "باستا بولونيز",
-      "en": "Pasta Bolognese"
-    },
-    "price": 105,
-    "description": "المكرونة البنا بصوص الطماطم الرائع و اللحمة المفرومة و الفلفل الألوان"
-  },
-  {
-    "category": "Pasta",
-    "id": "unique-name53",
-    "name": {
-      "ar": "نودلز صدور مشوية",
-      "en": "نودلز صدور مشوية"
-    },
-    "price": 100,
-    "description": ""
-  },
-  {
-    "category": "Pasta",
-    "id": "unique-name54",
-    "name": {
-      "ar": "نودلز زنجر",
-      "en": "نودلز زنجر"
-    },
-    "price": 100,
-    "description": ""
-  },
-  {
-    "category": "Pasta",
-    "id": "unique-name55",
-    "name": {
-      "ar": "نودلز خضروات",
-      "en": "نودلز خضروات"
-    },
-    "price": 60,
-    "description": ""
-  },
-  {
-    "category": "Pasta",
-    "id": "alfredo",
-    "name": {
-      "ar": "باستا ألفريدو",
-      "en": "Pasta Alfredo"
-    },
-    "price": 170,
-    "description": ""
-  },
-  {
-    "category": "Pasta",
-    "id": "cordon-bleu-pasta",
-    "name": {
-      "ar": "كوردن بلو باستا",
-      "en": "Corden bleu Pasta"
-    },
-    "price": 165,
-    "description": ""
-  },
-  {
-    "category": "Pasta",
-    "id": "chicken-balls",
-    "name": {
-      "ar": "تشيكن بولز",
-      "en": "Chicken balls"
-    },
-    "price": 155,
-    "description": ""
-  },
-  {
-    "category": "Cheese Pan",
-    "id": "mix-meat-tasa",
-    "name": {
-      "ar": "مكس لحوم تشيز طاسة",
-      "en": "Meat mix Cheese"
-    },
-    "price": 145,
-    "description": "صوص الجبنة الخاصة بشيلتر مع الهوت دوج و السجق و البيروني و السلامي و الجبنة الموتزريلا"
-  },
-  {
-    "category": "Cheese Pan",
-    "id": "unique-name56",
-    "name": {
-      "ar": "سي فود تشيز طاسة",
-      "en": "Seafood Cheese (Grilled or Fried)"
-    },
-    "price": 190,
-    "description": "صوص الجبنة الخاصة بشيلتر مع الجمبري و كالماري و شرائح الكابوريا و الجبنة الموتزريلا"
-  },
-  {
-    "category": "Cheese Pan",
-    "id": "unique-name57",
-    "name": {
-      "ar": "جمبري تشيز طاسة",
-      "en": "Shrimp Cheese (Grilled or Fried)"
-    },
-    "price": 160,
-    "description": "صوص الجبنة الخاصة بشيلتر مع الجمبري المقلي أو المشوي و الجبنة الموتزريلا"
-  },
-  {
-    "category": "Cheese Pan",
-    "id": "chilly-cheese-fries-tasa",
-    "name": {
-      "ar": "تشيلي تشيز فرايز",
-      "en": "Chili Cheese Fries"
-    },
-    "price": 135,
-    "description": "صوص الجبنة الخاصة بشيلتر مع اللحمة المفرومة و البطاطس المقلية و الجبنة الموتزريلا"
-  },
-  {
-    "category": "Cheese Pan",
-    "id": "sausage-cheese-tasa",
-    "name": {
-      "ar": "سجق تشيز طاسة",
-      "en": "Sausage Cheese"
-    },
-    "price": 140,
-    "description": "صوص الجبنة الخاصة بشيلتر مع شرائح السجق المشوي و الجبنة الموتزريلا"
-  },
-  {
-    "category": "Cheese Pan",
-    "id": "spinach-mushroom-tasa",
-    "name": {
-      "ar": "سبانخ ماشروم تشيز طاسة",
-      "en": "Spinach Mushroom Cheese"
-    },
-    "price": 125,
-    "description": "صوص الخاصة بشيلتر مع الماشروم و شرائح السبانخ الفريش الرائعة و الجبنة الموتزريلا"
-  },
-  {
-    "category": "Cheese Pan",
-    "id": "zinger-cheese-tasa",
-    "name": {
-      "ar": "زنجر تشيز طاسة",
-      "en": "Zinger Cheese"
-    },
-    "price": 165,
-    "description": "صوص الجبنة الخاصة بشيلتر مع شرائح الزنجر الحارة المقلية و الجبنة الموتزريلا"
-  },
-  {
-    "category": "Cheese Pan",
-    "id": "unique-name58",
-    "name": {
-      "ar": "تشيز فرايز",
-      "en": "Cheese Fries"
-    },
-    "price": 115,
-    "description": ""
-  },
-  {
-    "category": "Cheese Pan",
-    "id": "unique-name59",
-    "name": {
-      "ar": "طاسة بسطرمة",
-      "en": "Pastrami"
-    },
-    "price": 140,
-    "description": ""
-  },
-  {
-    "category": "Beef Burger",
-    "id": "street-burger",
-    "name": {
-      "ar": "ستريت برجر",
-      "en": "Street Burger"
-    },
-    "prices": {
-      "single": 165,
-      "double": 210
-    },
-    "description": "بيف برجر - صوص البيج تيستي - خيار - خس - طماطم - بصل - صوص الشيدر"
-  },
-  {
-    "category": "Beef Burger",
-    "id": "jalapeno-maharaja-burger",
-    "name": {
-      "ar": "هالينو مهراجا",
-      "en": "Jalapeño Maharaja"
-    },
-    "prices": {
-      "single": 175,
-      "double": 220
-    },
-    "description": "بيف برجر - صوص البيج تيستي - خيار - خس - بصل - شرائح الهالينو الحارة - صوص الشيدر"
-  },
-  {
-    "category": "Beef Burger",
-    "id": "unique-name60",
-    "name": {
-      "ar": "بيكون ماشروم",
-      "en": "Bacon Mushroom"
-    },
-    "prices": {
-      "single": 175,
-      "double": 220
-    },
-    "description": "بيف برجر - صوص المايونيز - الخيار - الخس - البصل - الطماطم - البيف بيكون - الماشروم الفريش - صوص الشيدر"
-  },
-  {
-    "category": "Beef Burger",
-    "id": "unique-name61",
-    "name": {
-      "ar": "سموكي تشيز برجر",
-      "en": "Smoky Cheese Burger"
-    },
-    "prices": {
-      "single": 180,
-      "double": 260
-    },
-    "description": "بيف برجر مع شرائح السموك بيف - صوص البيج تيستي - خيار - خس - بصل - طماطم - ماشرووم - صوص الشيدر"
-  },
-  {
-    "category": "Beef Burger",
-    "id": "molten-cheese-burger",
-    "name": {
-      "ar": "مولتن تشيز برجر",
-      "en": "Molten Cheese Burger"
-    },
-    "prices": {
-      "single": 180,
-      "double": 240
-    },
-    "description": "بيف برجر المحشو مكس تشيز الرائع - صوص البيج تيستي - خيار - خس - بصل - مكرمل - مشروم بصوص الديمجلاس - بيف بيكون - صوص الشيدر"
-  },
-  {
-    "category": "Beef Burger",
-    "id": "smash-burger",
-    "name": {
-      "ar": "سماش برجر",
-      "en": "Smash Burger"
-    },
-    "prices": {
-      "single": 165,
-      "double": 200
-    },
-    "description": "شريحة اللحمة - صوص البيج تيستي - الخيار - البصل - الخس - الطماطم - صوص الشيدر"
-  },
-  {
-    "category": "Beef Burger",
-    "id": "unique-name62",
-    "name": {
-      "ar": "شيلتر رينجز",
-      "en": "Shelter rings"
-    },
-    "prices": {
-      "single": 180,
-      "double": 235
-    },
-    "description": "بيف برجر - صوص البيج تيستي - الخيار - الخس - حلقات البصل المقلية - أصابع موزتريلا - صوص الشيدر"
-  },
-  {
-    "category": "Chicken Burger",
-    "id": "chicken-jalapeno-burger",
-    "name": {
-      "ar": "تشيكن هالينو",
-      "en": "Chicken Jalapeño"
-    },
-    "prices": {
-      "single": 130,
-      "double": 165,
-      "triple": null
-    },
-    "description": "صدور مقلية - صوص البيج تيستي - الخيار - الخس - الطماطم - صوص الشيدر - شرائح الهالينو - باربيكيو"
-  },
-  {
-    "category": "Chicken Burger",
-    "id": "crunchy-chicken-burger",
-    "name": {
-      "ar": "تشيكن كرانشي",
-      "en": "Chicken Crunchy"
-    },
-    "prices": {
-      "single": 130,
-      "double": 160,
-      "triple": null
-    },
-    "description": "صدور مقلية - صوص البيج تيستي - خيار - خس - صوص الشيدر - رومي مدخن - جبنة موزتريلا"
-  },
-  {
-    "category": "Chicken Burger",
-    "id": "chicken-grill-burger",
-    "name": {
-      "ar": "تشيكن جريل",
-      "en": "Chicken Grill"
-    },
-    "prices": {
-      "single": 135,
-      "double": 165,
-      "triple": null
-    },
-    "description": "صدور مشوية - مايونيز - خيار - خس - البصل المكرمل - صوص الشيدر"
-  },
-  {
-    "category": "Chicken Burger",
-    "id": "cordon-bleu-burger",
-    "name": {
-      "ar": "كوردن بلو",
-      "en": "Cordon Bleu"
-    },
-    "prices": {
-      "single": 135,
-      "double": 180,
-      "triple": null
-    },
-    "description": "كوردن بلو - مايونيز - خيار - خس - صوص الشيدر"
-  },
-  {
-    "category": "Chicken Burger",
-    "id": "chicken-shelter-burger",
-    "name": {
-      "ar": "تشيكن شيلتر",
-      "en": "Chicken Shelter"
-    },
-    "prices": {
-      "single": 145,
-      "double": 175,
-      "triple": 210
-    },
-    "description": "صدور مقرمشة - صوص البيج تيستي - خيار - خس - بيف بيكون - رومي مدخن - صوص الشيدر"
-  },
-  {
-    "category": "Chicken Burger",
-    "id": "unique-name63",
-    "name": {
-      "ar": "تشيكن رانش",
-      "en": "Chicken Ranch"
-    },
-    "prices": {
-      "single": 115,
-      "double": 150,
-      "triple": null
-    },
-    "description": "صدور مقرمشة - صوص الرانش - خيار - خس - طماطم - رومي مدخن"
-  },
-  {
-    "category": "Mix Box",
-    "id": "unique-name64",
-    "name": {
-      "ar": "ميكس بوكس 2",
-      "en": "Mix Box 2"
-    },
-    "price": 150,
-    "description": "ساندويش بيف برجر و ساندوتش تشيكن برجر مع بطاطس و مشروب و صوص"
-  },
-  {
-    "category": "Mix Box",
-    "id": "unique-name65",
-    "name": {
-      "ar": "ميكس بوكس 4",
-      "en": "Mix Box 4"
-    },
-    "price": 260,
-    "description": "2 بيف برجر و 2 تشيكن برجر مع البطاطس و مشروب لتر و 2 صوص"
-  },
-  {
-    "category": "Mix Box",
-    "id": "unique-name66",
-    "name": {
-      "ar": "ميكس بوكس 6",
-      "en": "Mix Box 6"
-    },
-    "price": 390,
-    "description": "3 بيف برجر و 3 تشيكن برجر مع بطاطس و حلقات بصل و مشروب لتر و 3 صوص",
-    "optionGroups": [
-      {
-        "title": "beef burger choices",
-        "options": [
-          "ستريت",
-          "بيكون مشروم",
-          "سماش برجر"
-        ]
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
       },
-      {
-        "title": "chicken burger choices",
-        "options": [
-          "تشيكن هالينو",
-          "كرانشي",
-          "رانش"
-        ]
-      }
-    ]
-  },
-  {
-    "category": "Chicken Sandwich",
-    "id": "unique-name67",
-    "name": {
-      "ar": "فاهيتا تشكن",
-      "en": "Chicken Fajita"
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 155
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
     },
-    "prices": {
-      "price1": 115,
-      "price2": 95
+    {
+      "id": "strips-rice",
+      "category": "Shelter Rice",
+      "name": {
+        "ar": "شيلتر رايز استربس",
+        "en": "Strips Rice"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 155
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
     },
-    "priceNote": "Two prices are shown in the menu without visible labels.",
-    "description": "فاهيتا الدجاج المشوية مع المايونيز والخيار و صوص الباربيكيو والفلفل و البصل و الزيتون"
-  },
-  {
-    "category": "Chicken Sandwich",
-    "id": "unique-name68",
-    "name": {
-      "ar": "شيش طاووق",
-      "en": "Shish Tawook"
+    {
+      "id": "tandoori-rice",
+      "category": "Shelter Rice",
+      "name": {
+        "ar": "شيلتر رايز تندوري",
+        "en": "Tandoori Rice"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 155
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
     },
-    "prices": {
-      "price1": 110,
-      "price2": 90
+    {
+      "id": "shish-rice",
+      "category": "Shelter Rice",
+      "name": {
+        "ar": "شيلتر رايز شيش",
+        "en": "Shish Rice"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 155
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
     },
-    "priceNote": "Two prices are shown in the menu without visible labels.",
-    "description": "شيش طاووق مع صوص الثومية والخيار ومخلل والفلفل والبصل"
-  },
-  {
-    "category": "Chicken Sandwich",
-    "id": "unique-name69",
-    "name": {
-      "ar": "تاشكن زنجر",
-      "en": "Tashken Zanjar"
+    {
+      "id": "fajita-rice",
+      "category": "Shelter Rice",
+      "name": {
+        "ar": "شيلتر رايز فاهيتا",
+        "en": "Fahita Rice"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 155
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
     },
-    "price": 115,
-    "description": "استريس مقرمش مع المايونيز و الخيار والمخلل والخس و الرومي المدخن والجبنة الموتزريلا و صوص التايجر الحار"
-  },
-  {
-    "category": "Chicken Sandwich",
-    "id": "unique-name70",
-    "name": {
-      "ar": "كوردن بلو",
-      "en": "Cordon Bleu"
+    {
+      "id": "vegetables-noodles",
+      "category": "Pasta",
+      "name": {
+        "ar": "نودلز خضار",
+        "en": "Vegetables Noodles"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 105
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
     },
-    "price": 120,
-    "description": "2 صابع كوردن مع المايونيز والخيار والمخلل و الخس و صوص الجبنة الشيدر"
-  },
-  {
-    "category": "Chicken Sandwich",
-    "id": "unique-name71",
-    "name": {
-      "ar": "تشيكن رول",
-      "en": "Chicken Roll"
+    {
+      "id": "zanjar-noodles",
+      "category": "Pasta",
+      "name": {
+        "ar": "نودلز زنجر",
+        "en": "Zanjar Noodles"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 145
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
     },
-    "price": 115,
-    "description": "الاستربس المقرمش في العيش السوري مع المايونيز و الخيار والمخلل والخس وصوص الجبنة و صوص التايجر الحار"
-  },
-  {
-    "category": "Beef Sandwich",
-    "id": "unique-name72",
-    "name": {
-      "ar": "الكفتة المشوية",
-      "en": "Grilled Kofta"
+    {
+      "id": "grilled-chicken-noodles",
+      "category": "Pasta",
+      "name": {
+        "ar": "نودلز صدور مشوية",
+        "en": "Grilled Chicken Noodles"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 145
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
     },
-    "prices": {
-      "price1": 130,
-      "price2": 100
+    {
+      "id": "broast-strips-mix",
+      "category": "Broast",
+      "name": {
+        "ar": "وجبة مكس",
+        "en": "Mix Meal (Broasted & Strips)"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 775
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
     },
-    "priceNote": "Two prices are shown in the menu without visible labels.",
-    "description": "كفتة مشوية مع صوص الطحينة و الخيار وخضار الكفتة طماطم و بصل و بقدونس"
-  },
-  {
-    "category": "Beef Sandwich",
-    "id": "unique-name73",
-    "name": {
-      "ar": "السجق المشوي",
-      "en": "Grilled Sausage"
+    {
+      "id": "v-cola",
+      "category": "Drinks",
+      "name": {
+        "ar": "في كولا",
+        "en": "V-Cola"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 30
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
     },
-    "prices": {
-      "price1": 95,
-      "price2": 80
+    {
+      "id": "mc-cola",
+      "category": "Drinks",
+      "name": {
+        "ar": "ام سي كولا",
+        "en": "MC-Cola"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 20
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
     },
-    "priceNote": "Two prices are shown in the menu without visible labels.",
-    "description": "السجق المشوي مع صوص المايونيز و الخيار و الفلفل و الطماطم وصوص السجق"
+    {
+      "id": "mc-litre",
+      "category": "Drinks",
+      "name": {
+        "ar": "لتر ام سي",
+        "en": "MC Litre"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 35
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "mango-juice",
+      "category": "Fresh Juice",
+      "name": {
+        "ar": "مانجو",
+        "en": "Mango"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 90
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "strawberry-juice",
+      "category": "Fresh Juice",
+      "name": {
+        "ar": "فراولة",
+        "en": "Strawberry"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 90
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "mashaya",
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "cookie-dough",
+      "category": "Dessert",
+      "name": {
+        "ar": "كوكي دو",
+        "en": "Cookie dough"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 150
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "gamaa"
+      ],
+      "available": true
+    },
+    {
+      "id": "cookies",
+      "category": "Dessert",
+      "name": {
+        "ar": "كوكيز",
+        "en": "Cookies"
+      },
+      "description": {
+        "ar": "",
+        "en": "",
+        "fallback": ""
+      },
+      "imageUrl": null,
+      "variants": [
+        {
+          "id": "default",
+          "label": {
+            "ar": "عادي",
+            "en": "Regular"
+          },
+          "price": 80
+        }
+      ],
+      "optionGroups": [],
+      "branches": [
+        "gamaa"
+      ],
+      "available": true
     }
   ]
 }

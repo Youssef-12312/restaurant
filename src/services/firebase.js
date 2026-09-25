@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { getFunctions } from "firebase/functions";
 const firebaseConfig = {
   apiKey: "AIzaSyAC9Zuw9ahjkQjWqBqMHM6Atn2KueExjII",
   authDomain: "resturant-test-2553a.firebaseapp.com",
@@ -14,3 +15,4 @@ const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
 export const auth = getAuth(app); 
+export const functions = getFunctions(app, "us-central1");

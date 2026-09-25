@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { getItemSelectedPrice } from "../../utils/menuSchema.js";
 
 function getText(value, lang = "en") {
   if (typeof value === "string") return value;
@@ -7,14 +8,7 @@ function getText(value, lang = "en") {
 }
 
 function getPrice(item) {
-  if (typeof item.price === "number") return item.price;
-  if (item.prices && typeof item.prices === "object") {
-    const vals = Object.values(item.prices).filter(
-      (v) => typeof v === "number"
-    );
-    if (vals.length > 0) return vals[0];
-  }
-  return 0;
+  return getItemSelectedPrice(item) ?? 0;
 }
 
 function getOrderTypeLabel(orderType, t) {

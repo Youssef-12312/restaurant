@@ -16,6 +16,32 @@ const MANSOURA_BOUNDS = [
   [31.0700, 31.4100]
 ];
 
+function LocationMarker({ position, setPosition, setLocation, addressText, markerRef }) {
+  const map = useMapEvents({
+    click(e) {
+      const { lat, lng } = e.latlng;
+
+      setPosition([lat, lng]);
+      setLocation({ lat, lng });
+      setTimeout(() => markerRef.current?.openPopup(), 50);
+    }
+  });
+
+  useEffect(() => {
+    map.setView(position, map.getZoom());
+  }, [map, position]);
+
+  return (
+    <Marker position={position} icon={customIcon} ref={markerRef}>
+      <Popup autoPan={false} closeOnClick={false}>
+        <div style={{ textAlign: "center", direction: "rtl" }}>
+          {addressText && addressText.length > 3 ? `📍 ${addressText}` : "📍 جاري تحديد العنوان..."}
+        </div>
+      </Popup>
+    </Marker>
+  );
+}
+
 function LocationPicker({ setLocation, initialPosition, addressText }) {
   const [position, setPosition] = useState(
     initialPosition || [31.0409, 31.3785]
@@ -24,55 +50,14 @@ function LocationPicker({ setLocation, initialPosition, addressText }) {
   const markerRef = useRef(null);
 
   useEffect(() => {
-    if (
-      initialPosition &&
-      (initialPosition[0] !== position[0] ||
-        initialPosition[1] !== position[1])
-    ) {
+    if (!initialPosition) return undefined;
+
+    const frame = requestAnimationFrame(() => {
       setPosition(initialPosition);
-    }
-  }, [initialPosition]);
-
-  function LocationMarker() {
-    const map = useMapEvents({
-      click(e) {
-        const { lat, lng } = e.latlng;
-
-        setPosition([lat, lng]);
-        setLocation({ lat, lng });
-
-        // افتح البوب أب فورًا
-        setTimeout(() => {
-          markerRef.current?.openPopup();
-        }, 50);
-      }
     });
 
-    useEffect(() => {
-      map.setView(position, map.getZoom());
-    }, [position]);
-
-    return (
-      <Marker position={position} icon={customIcon} ref={markerRef}>
-        <Popup autoPan={false} closeOnClick={false}>
-          <div style={{ textAlign: "center", direction: "rtl" }}>
-            
-            {/* 🔥 هنا التعديل المهم */}
-            {addressText && addressText.length > 3 ? (
-              <>
-                📍 {addressText}
-              </>
-            ) : (
-              <>
-                📍 جاري تحديد العنوان...
-              </>
-            )}
-
-          </div>
-        </Popup>
-      </Marker>
-    );
-  }
+    return () => cancelAnimationFrame(frame);
+  }, [initialPosition]);
 
   return (
     <MapContainer
@@ -84,7 +69,13 @@ function LocationPicker({ setLocation, initialPosition, addressText }) {
       style={{ height: "300px", width: "100%", borderRadius: "10px"}}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      <LocationMarker />
+      <LocationMarker
+        position={position}
+        setPosition={setPosition}
+        setLocation={setLocation}
+        addressText={addressText}
+        markerRef={markerRef}
+      />
     </MapContainer>
   );
 }

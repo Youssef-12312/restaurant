@@ -1,6 +1,7 @@
 import { doc, getDoc } from "firebase/firestore"; // ⚠️ لاحظ إننا غيرنا collection و getDocs
 import { db } from "./firebase.js";
 import localMenu from "../data/menu.json";
+import { normalizeMenuData } from "../utils/menuSchema.js";
 
 const CACHE_KEY = "cached_menu_data_v2";
 const CACHE_TIME_KEY = "cached_menu_time_v2";
@@ -16,7 +17,7 @@ export function invalidateMenuV2Cache() {
 }
 
 export async function fetchMenuData() {
-  const EXPIRATION_HOURS = 12; // الكاش هيتجدد كل 12 ساعة
+  const EXPIRATION_MS = 5 * 60 * 1000;
 
   try {
     // ==========================================
@@ -26,12 +27,11 @@ export async function fetchMenuData() {
     const cacheTime = localStorage.getItem(CACHE_TIME_KEY);
 
     if (lastCache && cacheTime) {
-      // بنحسب هل عدى 12 ساعة ولا لأ
-      const isExpired = (Date.now() - parseInt(cacheTime)) > (EXPIRATION_HOURS * 60 * 60 * 1000);
+      const isExpired = (Date.now() - parseInt(cacheTime, 10)) > EXPIRATION_MS;
       
       if (!isExpired) {
         console.log("0 Reads");
-        return JSON.parse(lastCache);
+        return normalizeMenuData(JSON.parse(lastCache));
       }
     }
 
@@ -50,16 +50,17 @@ export async function fetchMenuData() {
 
     // بنسحب مصفوفة الأصناف من جوه الدوكيومنت
     const firebaseData = docSnap.data().items || [];
+    const normalizedData = normalizeMenuData(firebaseData);
 
-    console.log(`✅ تم جلب ${firebaseData.length} صنف من فيربيز بنجاح.`);
+    console.log(`✅ تم جلب ${normalizedData.length} صنف من فيربيز بنجاح.`);
 
     // ==========================================
     // 3. تحديث الكاش بالداتا الجديدة والوقت الحالي
     // ==========================================
-    localStorage.setItem(CACHE_KEY, JSON.stringify(firebaseData));
+    localStorage.setItem(CACHE_KEY, JSON.stringify(normalizedData));
     localStorage.setItem(CACHE_TIME_KEY, Date.now().toString());
     
-    return firebaseData;
+    return normalizedData;
 
   } catch (error) {
     // ==========================================
@@ -73,7 +74,7 @@ export async function fetchMenuData() {
     if (lastCache) {
       console.log("📦 تم التحميل من الكاش المحلي كبديل طوارئ.");
       try {
-  return JSON.parse(lastCache);
+  return normalizeMenuData(JSON.parse(lastCache));
 } catch {
   localStorage.removeItem(CACHE_KEY);
 }   
@@ -81,7 +82,7 @@ export async function fetchMenuData() {
 
     // ثانياً: لو مفيش كاش خالص، هات من ملف الـ JSON المحلي
     console.log("📂 تم التحميل من ملف menu.json المحلي.");
-    // يرجى التأكد إن هيكل localMenu.menu متوافق مع الداتا
-    return localMenu.menu || []; 
+    const fallbackItems = Array.isArray(localMenu?.menu) ? localMenu.menu : Array.isArray(localMenu?.items) ? localMenu.items : [];
+    return normalizeMenuData(fallbackItems);
   }
 }

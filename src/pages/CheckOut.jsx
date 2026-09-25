@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/checkout.css";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "../services/firebase";
 import { normalizeBranchKey } from "../services/branchSales";
+import { createTrustedOrder } from "../services/orderService.js";
 import { useTranslation } from "react-i18next";
 import useTable from "../components/useTable";
 import { getCartItemKey, getCartItemVariantLabels } from "../utils/cartItem.js";
+import { getItemSelectedPrice, validateCartForBranch } from "../utils/menuSchema.js";
 
 // استدعاء ملف الخريطة
 import LocationPicker from "../components/LocationPicker";
@@ -43,6 +43,69 @@ function isRestaurantOpen() {
     return false;
   }
   return true;
+}
+
+function getOrderErrorMessage(error, lang) {
+  const code = String(error?.code || "").replace(/^functions\//, "");
+  const message = String(error?.message || "").toLowerCase();
+
+  if (code === "permission-denied" || message.includes("invalid table")) {
+    return lang === "ar"
+      ? "بيانات الطاولة غير صالحة. برجاء مسح كود الطاولة مرة أخرى."
+      : "The table details are invalid. Please scan the table QR code again.";
+  }
+
+  if (message.includes("unknown or unavailable product")) {
+    return lang === "ar"
+      ? "أحد الأصناف لم يعد متاحًا. برجاء تحديث المنيو وإضافة الصنف مرة أخرى."
+      : "One of the selected items is no longer available. Please refresh the menu and add it again.";
+  }
+
+  if (message.includes("invalid option")) {
+    return lang === "ar"
+      ? "اختيار الإضافة غير صالح. برجاء اختيار الإضافات مرة أخرى."
+      : "One of the selected options is invalid. Please choose the options again.";
+  }
+
+  if (message.includes("invalid size")) {
+    return lang === "ar"
+      ? "الحجم المختار غير صالح. برجاء اختيار الحجم مرة أخرى."
+      : "The selected size is invalid. Please choose the size again.";
+  }
+
+  if (message.includes("minimum order")) {
+    return lang === "ar"
+      ? "الحد الأدنى للطلب هو 100 جنيه."
+      : "The minimum order is 100 EGP.";
+  }
+
+  if (message.includes("location is required")) {
+    return lang === "ar"
+      ? "برجاء تحديد موقعك من الخريطة قبل إرسال الطلب."
+      : "Please select your location on the map before placing the order.";
+  }
+
+  if (message.includes("invalid branch")) {
+    return lang === "ar"
+      ? "فرع الاستلام غير صالح. برجاء اختيار الفرع مرة أخرى."
+      : "The pickup branch is invalid. Please choose the branch again.";
+  }
+
+  if (message.includes("invalid quantity") || message.includes("invalid items")) {
+    return lang === "ar"
+      ? "بيانات الأصناف غير صالحة. برجاء تحديث السلة والمحاولة مرة أخرى."
+      : "The cart items are invalid. Please refresh the cart and try again.";
+  }
+
+  if (code === "failed-precondition" || message.includes("menu is unavailable")) {
+    return lang === "ar"
+      ? "المنيو غير متاحة حاليًا. برجاء المحاولة مرة أخرى بعد قليل."
+      : "The menu is currently unavailable. Please try again shortly.";
+  }
+
+  return lang === "ar"
+    ? "حدث خطأ أثناء إرسال الطلب، برجاء المحاولة مرة أخرى."
+    : "An error occurred while sending the order. Please try again.";
 }
 
 
@@ -151,18 +214,7 @@ function Checkout({ cart = [] }) {
     return value[lang] || value.ar || value.en || "";
   };
 
-  const getPrice = (item) => {
-    if (typeof item.price === "number") return item.price;
-
-    if (item.prices && typeof item.prices === "object") {
-      const vals = Object.values(item.prices).filter(
-        (v) => typeof v === "number"
-      );
-      if (vals.length > 0) return vals[0];
-    }
-
-    return 0;
-  };
+  const getPrice = (item) => getItemSelectedPrice(item) ?? 0;
 
   const subtotal = cart.reduce(
     (sum, item) => sum + getPrice(item) * (item.qty || 1),
@@ -293,12 +345,6 @@ function Checkout({ cart = [] }) {
     setIsSubmitting(true);
 
     try {
-      const shortOrderNumber = Math.floor(
-        100000 + Math.random() * 900000
-      ).toString();
-
-      setOrderNumber(shortOrderNumber);
-
       // تحديد الفرع الذي سيتم إرساله في قاعدة البيانات
       let finalBranch = branchName; // الافتراضي للـ Dine-in
       if (!isDineIn) {
@@ -312,8 +358,18 @@ function Checkout({ cart = [] }) {
       const normalizedBranch =
         normalizeBranchKey(finalBranch) ?? normalizeBranchKey(String(finalBranch ?? "")) ?? null;
 
-      await addDoc(collection(db, "orders"), {
-        orderNumber: shortOrderNumber,
+      const branchValidation = validateCartForBranch(cart, normalizedBranch);
+      if (!branchValidation.valid) {
+        const firstInvalid = branchValidation.invalidItems?.[0];
+        const message = lang === "ar"
+          ? `"${firstInvalid?.itemName || "هذا المنتج"}" مخصص فقط لفرع حي الجامعة`
+          : `This item is only available at ${firstInvalid?.allowedBranches?.join(" / ") || "the selected branch"}, and cannot be fulfilled from ${normalizedBranch === "mashaya" ? "Mashaya" : "Gamaa"}.`;
+        alert(message);
+        setIsSubmitting(false);
+        return;
+      }
+
+      const result = await createTrustedOrder({
         customerName: formData.name,
         phone: isDineIn ? "" : formData.phone,
         address: isDineIn ? "" : formData.address,
@@ -323,16 +379,19 @@ function Checkout({ cart = [] }) {
         table: isDineIn ? Number(tableNumber) : null, 
         branch: normalizedBranch,
         tableToken: isDineIn ? tableToken : null,
-        items: cart,
-        subtotal,
-        vat,
-        deliveryFee,
-        total: finalTotal,
-        status: "new",
-        createdAt: serverTimestamp(),
+        items: cart.map(({ id, sizeKey, sizeLabel, spicy, options, qty }) => ({
+          id,
+          sizeKey: sizeKey || null,
+          sizeLabel: sizeLabel || null,
+          spicy: spicy ?? null,
+          options: options || {},
+          qty: qty || 1,
+        })),
         lat: mapPosition[0],
         lng: mapPosition[1]
       });
+
+      setOrderNumber(result.orderNumber);
 
       if (isDineIn) {
         sessionStorage.removeItem("tableNumber");
@@ -345,15 +404,7 @@ function Checkout({ cart = [] }) {
       console.error("Order error:", err);
       
      
-      if (err.code === 'permission-denied') {
-        alert(lang === "ar" 
-          ? "عذراً، يبدو أن هناك مشكلة في بيانات الطاولة. يرجى مسح الكود من على الطاولة مرة أخرى وعدم تعديل الرابط." 
-          : "Invalid QR Code data. Please scan the table's QR code again.");
-      } else {
-        alert(lang === "ar" 
-          ? "حدث خطأ أثناء إرسال الطلب، برجاء المحاولة مرة أخرى." 
-          : "An error occurred, please try again.");
-      }
+      alert(getOrderErrorMessage(err, lang));
     } finally {
       setIsSubmitting(false);
     }

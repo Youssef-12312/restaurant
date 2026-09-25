@@ -124,11 +124,7 @@ function CustomerMenu({ cart, setCart }) {
         }
 
         if (data && Array.isArray(data)) {
-          const dataWithImages = data.map((item) => ({
-            ...item,
-            image: item.image || `/images/${item.id}.webp`,
-          }));
-          setMenu(dataWithImages);
+          setMenu(data);
         } else {
           setMenu([]);
         }

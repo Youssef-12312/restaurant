@@ -46,7 +46,6 @@ export function normalizeBranchKey(value) {
     branch.includes("جامعه") ||
     branch.includes("الجامعة") ||
     branch.includes("الجامعه") ||
-    branch.includes("university") ||
     (branch.includes("حي") && (branch.includes("جامعة") || branch.includes("جامعه")))
   ) {
     return "gamaa";

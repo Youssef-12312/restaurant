@@ -1,3 +1,5 @@
+import { getItemBasePrice, getItemVariants } from "./menuSchema.js";
+
 function sortValue(value) {
   if (Array.isArray(value)) {
     return value.map(sortValue);

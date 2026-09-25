@@ -3,18 +3,10 @@ import { useNavigate } from "react-router-dom";
 import "../styles/menu.css";
 import { useTranslation } from "react-i18next";
 import { getCartItemKey, getCartItemVariantLabels } from "../utils/cartItem.js";
+import { getItemSelectedPrice } from "../utils/menuSchema.js";
 
 function getPrice(item) {
-  if (typeof item.price === "number") return item.price;
-
-  if (item.prices && typeof item.prices === "object") {
-    const priceValues = Object.values(item.prices).filter(
-      (value) => typeof value === "number"
-    );
-    if (priceValues.length > 0) return priceValues[0];
-  }
-
-  return 0;
+  return getItemSelectedPrice(item) ?? 0;
 }
 
 function CartContent({
@@ -47,17 +39,17 @@ function CartContent({
 
             return (
               <div className="cart__item" key={itemKey}>
-<img
-  className="cart__item-img"
-  src={
-    item.image
-      ? item.image
-      : item.id
-      ? `/images/${item.id}.webp`
-      : "/images/placeholder.webp"
-  }
-  alt={getText(item.name)}
-/>
+{item.imageUrl ? (
+  <img
+    className="cart__item-img"
+    src={item.imageUrl}
+    alt={getText(item.name)}
+  />
+) : (
+  <div className="cart__item-img cart__item-img--placeholder" aria-label={getText(item.name)}>
+    <span aria-hidden="true">🍽️</span>
+  </div>
+)}
 
                 <div className="cart__item-info">
                   <p className="cart__item-name">{getText(item.name)}</p>

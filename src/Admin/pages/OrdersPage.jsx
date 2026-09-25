@@ -17,6 +17,7 @@ import { buildBranchStatsFromOrders } from "../../services/branchSales.js";
 import { saveDailyOrdersSnapshot } from "../../services/salesService.js";
 import { getCartItemVariantSuffix } from "../../utils/cartItem.js";
 import { useTranslation } from "react-i18next";
+import { getItemSelectedPrice } from "../../utils/menuSchema.js";
 const ACTIVE_STATUSES = ["new", "preparing", "on_the_way"];
 const FILTERS = ["all", "new", "preparing", "on_the_way", "completed", "cancelled"];
 
@@ -27,14 +28,7 @@ function getText(value, lang = "en") {
 }
 
 function getPrice(item) {
-  if (typeof item.price === "number") return item.price;
-
-  if (item.prices && typeof item.prices === "object") {
-    const vals = Object.values(item.prices).filter((v) => typeof v === "number");
-    if (vals.length > 0) return vals[0];
-  }
-
-  return 0;
+  return getItemSelectedPrice(item) ?? 0;
 }
 
 function getPrintableItemName(item, lang) {
